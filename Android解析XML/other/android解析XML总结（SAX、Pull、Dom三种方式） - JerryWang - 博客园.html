@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>android解析XML总结（SAX、Pull、Dom三种方式） - JerryWang - 博客园</title>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/blog/css/common.css?id=20121215"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="http://common.cnblogs.com/Skins/HabaHaba/style.css?id=20121215"/>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/blog/css/common2.css"/>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/css/shStyle.css"/>
+<link type="text/css" rel="stylesheet" href="http://www.cnblogs.com/JerryWang1991/customcss.aspx?id=86129"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/JerryWang1991/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/JerryWang1991/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/JerryWang1991/wlwmanifest.xml"/>
+<script src="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">
+var currentBlogApp = 'JerryWang1991';
+</script>
+<script src="http://common.cnblogs.com/blog/script/common.js?id=20121215" type="text/javascript"></script> 
+<script src="http://common.cnblogs.com/script/json2.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://common.cnblogs.com/script/syntaxHighlighter.js"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<table width="100%" class="Framework" cellspacing="0" cellpadding="0">
+	<tr>
+		<td colspan="2">
+			
+<div id="top">
+<table width="100%" cellpadding="8" cellspacing="0">
+	<tr>
+		<td nowrap>
+			<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/JerryWang1991/">wangyan9110</a></h1>
+			记录点点滴滴。。
+		</td>
+	</tr>
+</table>
+</div>
+<div id="sub">
+<div class="BlogStats">posts - 12, comments - 36, trackbacks - 0, articles - 13</div></div>
+
+
+</td>
+	</tr>
+	<tr>
+		<td class="LeftCell">
+			<div id="leftmenu">
+                
+                    
+<h3>导航</h3>
+<ul>
+	<li>
+		<a id="MyLinks2_HomeLink" href="http://www.cnblogs.com/">博客园</a>
+	<li>
+		<a id="MyLinks2_MyHomeLink" href="http://www.cnblogs.com/JerryWang1991/">首页</a>
+	<li>
+		<a id="MyLinks2_NewPostLink" rel="nofollow" href="http://www.cnblogs.com/JerryWang1991/admin/EditPosts.aspx?opt=1">新随笔</a>
+	<li>
+		<a id="MyLinks2_ContactLink" accesskey="9" rel="nofollow" href="http://space.cnblogs.com/msg/send/JerryWang">联系</a>
+	<li>
+		<a id="MyLinks2_XMLLink" href="http://www.cnblogs.com/JerryWang1991/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a><a id="MyLinks2_Syndication" href="http://www.cnblogs.com/JerryWang1991/rss">订阅</a>
+	<li>
+		<a id="MyLinks2_Admin" rel="nofollow" href="http://www.cnblogs.com/JerryWang1991/admin/EditPosts.aspx">管理</a></li>
+</ul>
+
+                    
+<h3>公告</h3>
+<div id="news">
+	<div id="blog-news"></div>
+</div>
+                    <div id="blog-calendar-block" style="display:none"><div id="blog-calendar"></div>
+</div>
+                    <div id="blog-sidecolumn"></div>
+                	        
+			</div>
+		</td>
+		<td class="MainCell" width="100%">
+			<div id="main">
+				
+	
+	<div class="post">
+		<div class="posthead">
+			<h2>
+				<a id="cb_post_title_url" class="singleposttitle" href="http://www.cnblogs.com/JerryWang1991/archive/2012/02/24/2365507.html">android解析XML总结（SAX、Pull、Dom三种方式）</a>
+			</h2>
+ 			Posted on <span id="post-date">2012-02-24 12:38</span> <a href='http://www.cnblogs.com/JerryWang1991/'>JerryWang</a> 阅读(2768) 评论(<span id="post-comment-count">4</span>)  <a href ="http://www.cnblogs.com/JerryWang1991/admin/EditPosts.aspx?postid=2365507" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(2365507);return false;">收藏</a>
+			<img src ="http://www.cnblogs.com/JerryWang1991/aggbug/2365507.html?type=1&amp;webview=1" width="1" height="1" alt=""/>
+			
+		</div>
+		<div class="postbody"><div id="cnblogs_post_body"><p>&nbsp; &nbsp; &nbsp; &nbsp;在android开发中，经常用到去解析xml文件，常见的解析xml的方式有一下三种：SAX、Pull、Dom解析方式。最近做了一个android版的<a href="http://blog.csdn.net/wangyan9110/article/details/7260765" target="_blank">CSDN阅读器</a>，用到了其中的两种（sax,pull），今天对android解析xml的这三种方式进行一次总结。</p>
+<p>&nbsp; &nbsp; &nbsp;今天解析的xml示例（channels.xml）如下：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">&lt;?</span><span style="color: #ff00ff;">xml version="1.0" encoding="utf-8"</span><span style="color: #0000ff;">?&gt;</span><br /><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">channel</span><span style="color: #0000ff;">&gt;</span><br /><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">item </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="0"</span><span style="color: #ff0000;"> url</span><span style="color: #0000ff;">="http://www.baidu.com"</span><span style="color: #0000ff;">&gt;</span>百度<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">item</span><span style="color: #0000ff;">&gt;</span><br /><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">item </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="1"</span><span style="color: #ff0000;"> url</span><span style="color: #0000ff;">="http://www.qq.com"</span><span style="color: #0000ff;">&gt;</span>腾讯<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">item</span><span style="color: #0000ff;">&gt;</span><br /><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">item </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="2"</span><span style="color: #ff0000;"> url</span><span style="color: #0000ff;">="http://www.sina.com.cn"</span><span style="color: #0000ff;">&gt;</span>新浪<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">item</span><span style="color: #0000ff;">&gt;</span><br /><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">item </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="3"</span><span style="color: #ff0000;"> url</span><span style="color: #0000ff;">="http://www.taobao.com"</span><span style="color: #0000ff;">&gt;</span>淘宝<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">item</span><span style="color: #0000ff;">&gt;</span><br /><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">channel</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<p>&nbsp;</p>
+<p><strong><span style="font-size: 14pt;">&nbsp;一、使用sax方式解析</span></strong></p>
+<p><span style="color: #ff0000;">&nbsp;基础知识：</span></p>
+<p>&nbsp; &nbsp; &nbsp;这种方式解析是一种基于事件驱动的api，有两个部分，解析器和事件处理器，解析器就是XMLReader接口，负责读取XML文档，和向事件处理器发送事件(也是事件源)，事件处理器ContentHandler接口，负责对发送的事件响应和进行XML文档处理。</p>
+<p>&nbsp; &nbsp; &nbsp;下面是ContentHandler接口的常用方法</p>
+<p>&nbsp; &nbsp; &nbsp;public abstract void characters (char[] ch, int start, int length)</p>
+<p>&nbsp; &nbsp; &nbsp; 这个方法来接收字符块通知，解析器通过这个方法来报告字符数据块，解析器为了提高解析效率把读到的所有字符串放到一个字符数组（ch）中，作为参数传递给character的方法中，如果想获取本次事件中读取到的字符数据，需要使用start和length属性。</p>
+<p>&nbsp; &nbsp;&nbsp;public abstract void startDocument () 接收文档开始的通知</p>
+<p>&nbsp; &nbsp;&nbsp;&nbsp;public abstract void endDocument () 接收文档结束的通知</p>
+<p>&nbsp; &nbsp;&nbsp;public abstract void startElement (String uri, String localName, String qName, Attributes atts) 接收文档开始的标签</p>
+<p>&nbsp; &nbsp;&nbsp;public abstract void endElement (String uri, String localName, String qName) 接收文档结束的标签</p>
+<p>&nbsp; &nbsp; 在一般使用中为了简化开发，在<span>org.xml.sax.helpers提供了一个</span>DefaultHandler类，它实现了ContentHandler的方法，我们只想继承DefaultHandler方法即可。</p>
+<p>&nbsp; &nbsp;另外SAX解析器提供了一个工厂类：SAXParserFactory，SAX的解析类为SAXParser 可以调用它的parser方法进行解析。</p>
+<p>&nbsp; &nbsp;看了些基础以后开始上代码吧（核心代码，下载代码在附件）</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> SAXPraserHelper <span style="color: #0000ff;">extends</span> DefaultHandler {<br /><span style="color: #008080;"> 2</span> <br /><span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span> ITEM = 0x0005;<br /><span style="color: #008080;"> 4</span> <br /><span style="color: #008080;"> 5</span>     List&lt;channel&gt; list;<br /><span style="color: #008080;"> 6</span>     channel chann;<br /><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">int</span> currentState = 0;<br /><span style="color: #008080;"> 8</span> <br /><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">public</span> List&lt;channel&gt; getList() {<br /><span style="color: #008080;">10</span>         <span style="color: #0000ff;">return</span> list;<br /><span style="color: #008080;">11</span>     }<br /><span style="color: #008080;">12</span> <br /><span style="color: #008080;">13</span>     <span style="color: #008000;">/*</span><span style="color: #008000;"><br /></span><span style="color: #008080;">14</span> <span style="color: #008000;">     * 接口字符块通知<br /></span><span style="color: #008080;">15</span> <span style="color: #008000;">*/</span><br /><span style="color: #008080;">16</span>     @Override<br /><span style="color: #008080;">17</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> characters(<span style="color: #0000ff;">char</span>[] ch, <span style="color: #0000ff;">int</span> start, <span style="color: #0000ff;">int</span> length)<br /><span style="color: #008080;">18</span>             <span style="color: #0000ff;">throws</span> SAXException {<br /><span style="color: #008080;">19</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated method stub<br /></span><span style="color: #008080;">20</span> <span style="color: #008000;">//</span><span style="color: #008000;"> super.characters(ch, start, length);</span><span style="color: #008000;"><br /></span><span style="color: #008080;">21</span>         String theString = String.valueOf(ch, start, length);<br /><span style="color: #008080;">22</span>         <span style="color: #0000ff;">if</span> (currentState != 0) {<br /><span style="color: #008080;">23</span>             chann.setName(theString);<br /><span style="color: #008080;">24</span>             currentState = 0;<br /><span style="color: #008080;">25</span>         }<br /><span style="color: #008080;">26</span>         <span style="color: #0000ff;">return</span>;<br /><span style="color: #008080;">27</span>     }<br /><span style="color: #008080;">28</span> <br /><span style="color: #008080;">29</span>     <span style="color: #008000;">/*</span><span style="color: #008000;"><br /></span><span style="color: #008080;">30</span> <span style="color: #008000;">     * 接收文档结束通知<br /></span><span style="color: #008080;">31</span> <span style="color: #008000;">*/</span><br /><span style="color: #008080;">32</span>     @Override<br /><span style="color: #008080;">33</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> endDocument() <span style="color: #0000ff;">throws</span> SAXException {<br /><span style="color: #008080;">34</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated method stub</span><span style="color: #008000;"><br /></span><span style="color: #008080;">35</span>         <span style="color: #0000ff;">super</span>.endDocument();<br /><span style="color: #008080;">36</span>     }<br /><span style="color: #008080;">37</span> <br /><span style="color: #008080;">38</span>     <span style="color: #008000;">/*</span><span style="color: #008000;"><br /></span><span style="color: #008080;">39</span> <span style="color: #008000;">     * 接收标签结束通知<br /></span><span style="color: #008080;">40</span> <span style="color: #008000;">*/</span><br /><span style="color: #008080;">41</span>     @Override<br /><span style="color: #008080;">42</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> endElement(String uri, String localName, String qName)<br /><span style="color: #008080;">43</span>             <span style="color: #0000ff;">throws</span> SAXException {<br /><span style="color: #008080;">44</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated method stub</span><span style="color: #008000;"><br /></span><span style="color: #008080;">45</span>         <span style="color: #0000ff;">if</span> (localName.equals("item"))<br /><span style="color: #008080;">46</span>             list.add(chann);<br /><span style="color: #008080;">47</span>     }<br /><span style="color: #008080;">48</span> <br /><span style="color: #008080;">49</span>     <span style="color: #008000;">/*</span><span style="color: #008000;"><br /></span><span style="color: #008080;">50</span> <span style="color: #008000;">     * 文档开始通知<br /></span><span style="color: #008080;">51</span> <span style="color: #008000;">*/</span><br /><span style="color: #008080;">52</span>     @Override<br /><span style="color: #008080;">53</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> startDocument() <span style="color: #0000ff;">throws</span> SAXException {<br /><span style="color: #008080;">54</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated method stub</span><span style="color: #008000;"><br /></span><span style="color: #008080;">55</span>         list = <span style="color: #0000ff;">new</span> ArrayList&lt;channel&gt;();<br /><span style="color: #008080;">56</span>     }<br /><span style="color: #008080;">57</span> <br /><span style="color: #008080;">58</span>     <span style="color: #008000;">/*</span><span style="color: #008000;"><br /></span><span style="color: #008080;">59</span> <span style="color: #008000;">     * 标签开始通知<br /></span><span style="color: #008080;">60</span> <span style="color: #008000;">*/</span><br /><span style="color: #008080;">61</span>     @Override<br /><span style="color: #008080;">62</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> startElement(String uri, String localName, String qName,<br /><span style="color: #008080;">63</span>             Attributes attributes) <span style="color: #0000ff;">throws</span> SAXException {<br /><span style="color: #008080;">64</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated method stub</span><span style="color: #008000;"><br /></span><span style="color: #008080;">65</span>         chann = <span style="color: #0000ff;">new</span> channel();<br /><span style="color: #008080;">66</span>         <span style="color: #0000ff;">if</span> (localName.equals("item")) {<br /><span style="color: #008080;">67</span>             <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 0; i &lt; attributes.getLength(); i++) {<br /><span style="color: #008080;">68</span>                 <span style="color: #0000ff;">if</span> (attributes.getLocalName(i).equals("id")) {<br /><span style="color: #008080;">69</span>                     chann.setId(attributes.getValue(i));<br /><span style="color: #008080;">70</span>                 } <span style="color: #0000ff;">else</span> <span style="color: #0000ff;">if</span> (attributes.getLocalName(i).equals("url")) {<br /><span style="color: #008080;">71</span>                     chann.setUrl(attributes.getValue(i));<br /><span style="color: #008080;">72</span>                 }<br /><span style="color: #008080;">73</span>             }<br /><span style="color: #008080;">74</span>             currentState = ITEM;<br /><span style="color: #008080;">75</span>             <span style="color: #0000ff;">return</span>;<br /><span style="color: #008080;">76</span>         }<br /><span style="color: #008080;">77</span>         currentState = 0;<br /><span style="color: #008080;">78</span>         <span style="color: #0000ff;">return</span>;<br /><span style="color: #008080;">79</span>     }<br /><span style="color: #008080;">80</span> }</pre>
+</div>
+<div class="cnblogs_code">
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">private</span> List&lt;channel&gt; getChannelList() <span style="color: #0000ff;">throws</span> ParserConfigurationException, SAXException, IOException<br /><span style="color: #008080;"> 2</span>     {<br /><span style="color: #008080;"> 3</span>         <span style="color: #008000;">//</span><span style="color: #008000;">实例化一个SAXParserFactory对象</span><span style="color: #008000;"><br /></span><span style="color: #008080;"> 4</span>         SAXParserFactory factory=SAXParserFactory.newInstance();<br /><span style="color: #008080;"> 5</span>         SAXParser parser;<br /><span style="color: #008080;"> 6</span>         <span style="color: #008000;">//</span><span style="color: #008000;">实例化SAXParser对象，创建XMLReader对象，解析器</span><span style="color: #008000;"><br /></span><span style="color: #008080;"> 7</span>         parser=factory.newSAXParser();<br /><span style="color: #008080;"> 8</span>         XMLReader xmlReader=parser.getXMLReader();<br /><span style="color: #008080;"> 9</span>         <span style="color: #008000;">//</span><span style="color: #008000;">实例化handler，事件处理器</span><span style="color: #008000;"><br /></span><span style="color: #008080;">10</span>         SAXPraserHelper helperHandler=<span style="color: #0000ff;">new</span> SAXPraserHelper();<br /><span style="color: #008080;">11</span>         <span style="color: #008000;">//</span><span style="color: #008000;">解析器注册事件</span><span style="color: #008000;"><br /></span><span style="color: #008080;">12</span>         xmlReader.setContentHandler(helperHandler);<br /><span style="color: #008080;">13</span>         <span style="color: #008000;">//</span><span style="color: #008000;">读取文件流</span><span style="color: #008000;"><br /></span><span style="color: #008080;">14</span>         InputStream stream=getResources().openRawResource(R.raw.channels);<br /><span style="color: #008080;">15</span>         InputSource is=<span style="color: #0000ff;">new</span> InputSource(stream);<br /><span style="color: #008080;">16</span>         <span style="color: #008000;">//</span><span style="color: #008000;">解析文件</span><span style="color: #008000;"><br /></span><span style="color: #008080;">17</span>         xmlReader.parse(is);<br /><span style="color: #008080;">18</span>         <span style="color: #0000ff;">return</span> helperHandler.getList();<br /><span style="color: #008080;">19</span>     }</pre>
+</div>
+<p>从第二部分代码，可以看出使用SAX解析XML的步骤：</p>
+<p>1、实例化一个工厂SAXParserFactory</p>
+<p>2、实例化SAXPraser对象，创建XMLReader 解析器</p>
+<p>3、实例化handler，处理器</p>
+<p>4、解析器注册一个事件</p>
+<p>4、读取文件流</p>
+<p>5、解析文件</p>
+<p><strong><span style="font-size: 14pt;">二、使用pull方式解析</span></strong></p>
+<p><span style="color: #ff0000;">基础知识：</span></p>
+<p>&nbsp; &nbsp; &nbsp; 在android系统中，很多资源文件中,很多都是xml格式，在android系统中解析这些xml的方式，是使用pul解析器进行解析的，它和sax解析一样（个人感觉要比sax简单点），也是采用事件驱动进行解析的，当pull解析器，开始解析之后，我们可以调用它的next（）方法，来获取下一个解析事件（就是开始文档，结束文档，开始标签，结束标签），当处于某个元素时可以调用XmlPullParser的getAttributte()方法来获取属性的值，也可调用它的nextText()获取本节点的值。</p>
+<p>其实以上描述，就是对整个解析步骤的一个描述，看看代码吧</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">private</span> List&lt;Map&lt;String, String&gt;&gt; getData() {<br /><span style="color: #008080;"> 2</span>         List&lt;Map&lt;String, String&gt;&gt; list = <span style="color: #0000ff;">new</span> ArrayList&lt;Map&lt;String, String&gt;&gt;();<br /><span style="color: #008080;"> 3</span>         XmlResourceParser xrp = getResources().getXml(R.xml.channels);<br /><span style="color: #008080;"> 4</span> <br /><span style="color: #008080;"> 5</span>         <span style="color: #0000ff;">try</span> {<br /><span style="color: #008080;"> 6</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> 直到文档的结尾处</span><span style="color: #008000;"><br /></span><span style="color: #008080;"> 7</span>             <span style="color: #0000ff;">while</span> (xrp.getEventType() != XmlResourceParser.END_DOCUMENT) {<br /><span style="color: #008080;"> 8</span>                 <span style="color: #008000;">//</span><span style="color: #008000;"> 如果遇到了开始标签</span><span style="color: #008000;"><br /></span><span style="color: #008080;"> 9</span>                 <span style="color: #0000ff;">if</span> (xrp.getEventType() == XmlResourceParser.START_TAG) {<br /><span style="color: #008080;">10</span>                     String tagName = xrp.getName();<span style="color: #008000;">//</span><span style="color: #008000;"> 获取标签的名字</span><span style="color: #008000;"><br /></span><span style="color: #008080;">11</span>                     <span style="color: #0000ff;">if</span> (tagName.equals("item")) {<br /><span style="color: #008080;">12</span>                         Map&lt;String, String&gt; map = <span style="color: #0000ff;">new</span> HashMap&lt;String, String&gt;();<br /><span style="color: #008080;">13</span>                         String id = xrp.getAttributeValue(<span style="color: #0000ff;">null</span>, "id");<span style="color: #008000;">//</span><span style="color: #008000;"> 通过属性名来获取属性值</span><span style="color: #008000;"><br /></span><span style="color: #008080;">14</span>                         map.put("id", id);<br /><span style="color: #008080;">15</span>                         String url = xrp.getAttributeValue(1);<span style="color: #008000;">//</span><span style="color: #008000;"> 通过属性索引来获取属性值</span><span style="color: #008000;"><br /></span><span style="color: #008080;">16</span>                         map.put("url", url);<br /><span style="color: #008080;">17</span>                         map.put("name", xrp.nextText());<br /><span style="color: #008080;">18</span>                         list.add(map);<br /><span style="color: #008080;">19</span>                     }<br /><span style="color: #008080;">20</span>                 }<br /><span style="color: #008080;">21</span>                 xrp.next();<span style="color: #008000;">//</span><span style="color: #008000;"> 获取解析下一个事件</span><span style="color: #008000;"><br /></span><span style="color: #008080;">22</span>             }<br /><span style="color: #008080;">23</span>         } <span style="color: #0000ff;">catch</span> (XmlPullParserException e) {<br /><span style="color: #008080;">24</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated catch block</span><span style="color: #008000;"><br /></span><span style="color: #008080;">25</span>             e.printStackTrace();<br /><span style="color: #008080;">26</span>         } <span style="color: #0000ff;">catch</span> (IOException e) {<br /><span style="color: #008080;">27</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated catch block</span><span style="color: #008000;"><br /></span><span style="color: #008080;">28</span>             e.printStackTrace();<br /><span style="color: #008080;">29</span>         }<br /><span style="color: #008080;">30</span> <br /><span style="color: #008080;">31</span>         <span style="color: #0000ff;">return</span> list;<br /><span style="color: #008080;">32</span>     }</pre>
+</div>
+<p>&nbsp;</p>
+<p><strong><span style="font-size: 14pt;">三、使用Dom方式解析</span></strong></p>
+<p><span style="color: #ff0000;">基础知识：</span></p>
+<p>&nbsp; &nbsp; &nbsp;最后来看看Dom解析方式，这种方式解析自己之前也没有用过（在j2ee开发中比较常见，没有做过这方面的东西），在Dom解析的过程中，是先把dom全部文件读入到内存中，然后使用dom的api遍历所有数据，检索想要的数据，这种方式显然是一种比较消耗内存的方式，对于像手机这样的移动设备来讲，内存是非常有限的，所以对于比较大的XML文件,不推荐使用这种方式，但是Dom也有它的优点，它比较直观，在一些方面比SAX方式比较简单。在xml文档比较小的情况下也可以考虑使用dom方式。</p>
+<p>Dom方式解析的核心代码如下：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> List&lt;channel&gt; getChannelList(InputStream stream)<br /><span style="color: #008080;"> 2</span>     {<br /><span style="color: #008080;"> 3</span>         List&lt;channel&gt; list=<span style="color: #0000ff;">new</span> ArrayList&lt;channel&gt;();<br /><span style="color: #008080;"> 4</span>         <br /><span style="color: #008080;"> 5</span>         <span style="color: #008000;">//</span><span style="color: #008000;">得到 DocumentBuilderFactory 对象, 由该对象可以得到 DocumentBuilder 对象</span><span style="color: #008000;"><br /></span><span style="color: #008080;"> 6</span>         DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();<br /><span style="color: #008080;"> 7</span>         <br /><span style="color: #008080;"> 8</span>         <span style="color: #0000ff;">try</span> {<br /><span style="color: #008080;"> 9</span>             <span style="color: #008000;">//</span><span style="color: #008000;">得到DocumentBuilder对象</span><span style="color: #008000;"><br /></span><span style="color: #008080;">10</span>             DocumentBuilder builder=factory.newDocumentBuilder();<br /><span style="color: #008080;">11</span>             <span style="color: #008000;">//</span><span style="color: #008000;">得到代表整个xml的Document对象</span><span style="color: #008000;"><br /></span><span style="color: #008080;">12</span>             Document document=builder.parse(stream);<br /><span style="color: #008080;">13</span>             <span style="color: #008000;">//</span><span style="color: #008000;">得到 "根节点" </span><span style="color: #008000;"><br /></span><span style="color: #008080;">14</span>             Element root=document.getDocumentElement();<br /><span style="color: #008080;">15</span>             <span style="color: #008000;">//</span><span style="color: #008000;">获取根节点的所有items的节点</span><span style="color: #008000;"><br /></span><span style="color: #008080;">16</span>             NodeList items=root.getElementsByTagName("item");  <br /><span style="color: #008080;">17</span>             <span style="color: #008000;">//</span><span style="color: #008000;">遍历所有节点</span><span style="color: #008000;"><br /></span><span style="color: #008080;">18</span>             <span style="color: #0000ff;">for</span>(<span style="color: #0000ff;">int</span> i=0;i&lt;items.getLength();i++)<br /><span style="color: #008080;">19</span>             {<br /><span style="color: #008080;">20</span>                 channel chann=<span style="color: #0000ff;">new</span> channel();<br /><span style="color: #008080;">21</span>                 Element item=(Element)items.item(i);<br /><span style="color: #008080;">22</span>                 chann.setId(item.getAttribute("id"));<br /><span style="color: #008080;">23</span>                 chann.setUrl(item.getAttribute("url"));<br /><span style="color: #008080;">24</span>                 chann.setName(item.getFirstChild().getNodeValue());<br /><span style="color: #008080;">25</span>                 list.add(chann);<br /><span style="color: #008080;">26</span>             }<br /><span style="color: #008080;">27</span>             <br /><span style="color: #008080;">28</span>         } <span style="color: #0000ff;">catch</span> (ParserConfigurationException e) {<br /><span style="color: #008080;">29</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated catch block</span><span style="color: #008000;"><br /></span><span style="color: #008080;">30</span>             e.printStackTrace();<br /><span style="color: #008080;">31</span>         } <span style="color: #0000ff;">catch</span> (SAXException e) {<br /><span style="color: #008080;">32</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated catch block</span><span style="color: #008000;"><br /></span><span style="color: #008080;">33</span>             e.printStackTrace();<br /><span style="color: #008080;">34</span>         } <span style="color: #0000ff;">catch</span> (IOException e) {<br /><span style="color: #008080;">35</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated catch block</span><span style="color: #008000;"><br /></span><span style="color: #008080;">36</span>             e.printStackTrace();<br /><span style="color: #008080;">37</span>         }<br /><span style="color: #008080;">38</span>         <br /><span style="color: #008080;">39</span>         <span style="color: #0000ff;">return</span> list;<br /><span style="color: #008080;">40</span>     }</pre>
+</div>
+<p>总结一下Dom解析的步骤（和sax类似）</p>
+<p>1、<span>调用 DocumentBuilderFactory.newInstance() 方法得到 DOM 解析器工厂类实例。</span></p>
+<p>2、<span>调用解析</span><span>器工厂实例类的</span><span>&nbsp;newDoc</span><span>umentBui</span><span>lder() 方法得到 DOM 解析器对象</span></p>
+<p><!--EndFragment-->3、<span>调用 DOM 解析器对象的 parse()</span><span>&nbsp;方法解析 XML 文档</span><span>得到代表整个文档的 Document 对象。</span></p>
+<p><strong><span style="font-size: 14pt;">四、总结</span></strong></p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;除以上三种外还有很多解析xml的方法，比如DOM4J、JDOM等等。但其基本的解析方式包含两种，一种是事件驱动的（代表SAX），另一种方式是基于文档结构（代表DOM）。其他的只不过语法不一样而已。</p>
+<p>附（本文示例运行截屏）：</p>
+<p><img src="http://pic002.cnblogs.com/images/2012/152534/2012022412304193.gif" alt="" />&nbsp;&nbsp;</p>
+<p><img src="http://pic002.cnblogs.com/images/2012/152534/2012022412310612.gif" alt="" /></p>
+<p>&nbsp;</p>
+<p><a href="http://files.cnblogs.com/JerryWang1991/XMLParser.zip" target="_blank">下载源码</a></p></div><div id="MySignature"></div>
+<script type="text/javascript">
+var isLogined = false;
+var cb_blogId = 86129;
+var cb_entryId = 2365507;
+var cb_blogApp = currentBlogApp;
+var cb_blogUserGuid = "a5607efa-48a7-df11-8eb9-001cf0cd104b";
+var cb_entryCreatedDate = '2012/2/24 12:38:00';
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+</script>
+<div id="blog_post_info_block">
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+<script type="text/javascript">
+    //SyntaxHighlighter.config.strings.expandSource = '<span><img src="http://static.cnblogs.com/images/expand-code.gif" alt="" class="expand-code-icon"/>View Code</span>';
+    $(function () {             
+        fixPostBodyFormat();
+        loadAdUnderPost();
+        loadBlogSignature();
+        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);        
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);        
+    });
+</script></div>
+	</div><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.loadComments();</script>
+<div id="comment_form" class="commentform">
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"></div>
+
+<script type="text/javascript">
+    if (typeof commentManager === 'undefined') {
+        commentManager = new blogCommentManager();
+    }
+    commentManager.loadCommentForm();   
+</script>
+
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.cnblogs.com/" target="_blank" title="程序员的网上家园">博客园首页</a><a href="http://q.cnblogs.com/" target="_blank" title="程序员问答社区">博问</a><a href="http://news.cnblogs.com/" target="_blank" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/ing/" target="_blank">闪存</a><a href="http://job.cnblogs.com/" target="_blank">程序员招聘</a><a href="http://kb.cnblogs.com/" target="_blank">知识库</a></div>
+<div id="ad_under_post_holder"></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+</div>
+
+
+
+
+
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" class="FooterCell">
+			
+<p id="footer">
+	Powered by: 
+	<br />
+	
+	<a id="Footer1_Hyperlink3" NAME="Hyperlink1" href="http://www.cnblogs.com/" style="font-family:Verdana;font-size:12px;">博客园</a>
+	<br />
+	Copyright &copy; JerryWang
+</p>
+		</td>
+	</tr>
+</table>
+
+
+<script type="text/javascript" src="http://common.cnblogs.com/script/google-analytics.js"></script>
+</body>
+</html>

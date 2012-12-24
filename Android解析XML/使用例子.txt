@@ -1,0 +1,35 @@
+EBook ebook = new EBook();
+		SAXReader saxReader = new SAXReader();
+		Document doc = null;
+		try {
+		    doc = saxReader.read(new File(decryptEBookInfoXml));
+		    mLogger.info("ebooks_encrypt.xml:\n"+doc.asXML().toString());
+		    Node name = doc.selectSingleNode("Content/Name");
+		    Node price = doc.selectSingleNode("Content/Price");
+		    Node size = doc.selectSingleNode("Content/Size");
+		    Node creator = doc.selectSingleNode("Content/creator");
+		    Node picture = doc.selectSingleNode("Content/Picture");
+		    Node publisher = doc.selectSingleNode("Content/publisher");
+		    Node publishTime = doc.selectSingleNode("Content/date");
+		    Node description = doc.selectSingleNode("Content/description");
+		    Node eBook = doc.selectSingleNode("Content/eBook");
+		    Node uid = doc.selectSingleNode("Content/Uid");
+		    Node contentId = doc.selectSingleNode("Content/ContentId");
+		    Node contentKey = doc.selectSingleNode("Content/ContentKey");
+		    
+		    ebook.setCid(contentId.getStringValue().trim());
+		    ebook.setCkey(contentKey.getStringValue().trim());
+		    ebook.setName(name.getStringValue().trim());
+		    ebook.setCreator(creator.getStringValue().trim());
+		    ebook.setDescription(description.getStringValue().trim());
+		    ebook.setEbookEntity(eBook.getStringValue().trim());
+		    ebook.setPrice(price.getStringValue().trim());
+		    ebook.setPublisher(publisher.getStringValue().trim());
+		    ebook.setPicture(picture.getStringValue().trim());
+		    ebook.setPublishTime(publishTime.getStringValue().trim());
+		    ebook.setSize(size.getStringValue().trim());
+		    ebook.setUid(uid.getStringValue().trim());
+		   
+		} catch (DocumentException e) {
+			mLogger.error("读解密后的xml出错!",e);
+		}

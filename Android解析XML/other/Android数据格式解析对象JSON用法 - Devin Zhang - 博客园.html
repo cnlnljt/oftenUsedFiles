@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0065)http://www.cnblogs.com/devinzhang/archive/2012/01/09/2317315.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Android数据格式解析对象JSON用法 - Devin Zhang - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/style.css">
+<link type="text/css" rel="stylesheet" href="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/common2.css">
+<link type="text/css" rel="stylesheet" href="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/shStyle.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/devinzhang/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/devinzhang/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/devinzhang/wlwmanifest.xml">
+<script async="" type="text/javascript" src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/gpt.js"></script><script type="text/javascript" async="" src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/ga.js"></script><script type="text/javascript" src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/encoder.js"></script><script src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">
+var currentBlogApp = 'devinzhang';
+</script>
+<script src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/common.js" type="text/javascript"></script> 
+<script src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/json2.js" type="text/javascript"></script>
+<script type="text/javascript" src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/syntaxHighlighter.js"></script>
+<script async="" type="text/javascript" src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/google_ads_gpt.js"></script><script type="text/javascript" src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/osd.js"></script></head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="header">
+	
+<!--done-->
+<div class="header">
+	<div class="headerText">
+		<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/devinzhang/">Devin Zhang</a><br>
+		
+	</div>
+</div>
+
+</div>
+
+<div id="mytopmenu">
+	
+		<div id="mylinks">
+<!--done-->
+<a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a> &nbsp;
+<a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/devinzhang/">首页</a> &nbsp;
+<a href="http://q.cnblogs.com/" class="menu">博问</a> &nbsp;
+<a href="http://home.cnblogs.com/ing/" class="menu">闪存</a> &nbsp;
+<a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://www.cnblogs.com/devinzhang/admin/EditPosts.aspx?opt=1">新随笔</a> &nbsp;
+<a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://space.cnblogs.com/msg/send/Devin+Zhang">联系</a> &nbsp;
+<a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/devinzhang/rss">订阅</a><a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/devinzhang/rss"><img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/xml.gif" alt="订阅"></a>&nbsp;
+<a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://www.cnblogs.com/devinzhang/admin/EditPosts.aspx">管理</a>
+</div>
+		<div id="mystats">
+<!--done-->
+随笔-117&nbsp;
+评论-54&nbsp;
+文章-0&nbsp;
+trackbacks-0
+</div>
+	
+</div>
+<div id="centercontent">
+	
+	
+<div class="post">
+	<h1 class="postTitle"><a id="cb_post_title_url" class="postTitle2" href="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/Android数据格式解析对象JSON用法 - Devin Zhang - 博客园.html">Android数据格式解析对象JSON用法</a></h1>
+	<div id="cnblogs_post_body"><p>&nbsp;</p>
+<p>1.JSON概念：</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一种轻量级的数据交换格式，具有良好的可读和便于快速编写的特性，从而可以在不同平台间进行数据交换。JSON采用兼容性很高的文本格式，同时也具备类似于C语言体系的行为。&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; JSON可以将Java对象转成json格式的字符串，可以将json字符串转换成Java。比XML更轻量级，Json使用起来比较轻便和简单。JSON数据格式，在Android中被广泛运用于客户端和服务器通信，在网络数据传输与解析时非常方便。</p>
+<p>&nbsp;</p>
+<p>2.环境配置</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a title="http://code.google.com/p/google-gson/" href="http://code.google.com/p/google-gson/">http://code.google.com/p/google-gson/</a>里有一个名为Gson的类库，可以用它来解析Json数据，并且，Adroid 3.0平台里其实也就是把这一部分直接整合进Android里了。我们要解析Json数据，直接去网站上下载个jar包，导入到工程里，就可以解析Json数据了。</p>
+<p>3.JSON应用</p>
+<p>&nbsp; &nbsp;(1).JSON是一种轻量级的数据交换格式<br> &nbsp; &nbsp;(2).JSON基于两种数据结构：Object和Array。其中Object是“名称/值”对的集合。</p>
+<p>（3）在Android中包含四个与JSON相关的类和一个Exceptions：</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a.JSONObject</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 这是系统中有关JSON定义的基本单元，其包含一对儿(Key/Value)数值。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b.JSONArray</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 它代表一组有序的数值。将其转换为String输出(toString)所表现的形式是用方括号包裹，数值以逗号”,”分隔（例如：[value1,value2,value3]</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c.JSONStringer</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 这个类可以帮助快速和便捷的创建JSONtext。其最大的优点在于可以减少由于格式的错误导致程序异常，引用这个类可以自动严格按照JSON语法规则（syntaxrules）创建JSON text。每个JSONStringer实体只能对应创建一个JSON text。例如：</p>
+<div class="cnblogs_code">
+<pre>String myString = <span style="color: #0000ff;">new</span> JSONStringer().object()   <br>.key("name")  <br>.value("小猪")   <br>.endObject()  <br>.toString(); </pre>
+</div>
+<p>myString ={"name" : "小猪"}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d.JSONTokener</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 这个是系统为JSONObject和JSONArray构造器解析JSON source string的类，它可以从source string中提取数值信息。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e.JSONException</p>
+<p>&nbsp;</p>
+<p>&nbsp;（4）JSON格式举例</p>
+<p><em>a.Object</em><em>实例：</em><em></em></p>
+<p>&nbsp;</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>{<br>     "Image": {<br>      "Width":  800,<br>      "Height": 600,<br>      "Title":  "View from 15th Floor",<br>      "Thumbnail": {<br>          "Url":    "http://www.example.com/image/481989943",<br>          "Height": 125,<br>          "Width":  "100"<br>      },<br>      "IDs": [116, 943, 234, 38793]<br>    }<br>}</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><em>b.Array</em><em>实例</em><em>:</em></p>
+<p>&nbsp;</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>[<br>   {<br>      "precision": "zip",<br>      "Latitude":  37.7668,<br>      "Longitude": -122.3959,<br>      "Address":   "",<br>      "City":      "SAN FRANCISCO",<br>      "State":     "CA",<br>      "Zip":       "94107",<br>      "Country":   "US"<br>   },<br><br>   {<br>      "precision": "zip",<br>      "Latitude":  37.371991,<br>      "Longitude": -122.026020,<br>      "Address":   "",<br>      "City":      "SUNNYVALE",<br>      "State":     "CA",<br>      "Zip":       "94085",<br>      "Country":   "US"<br>   }<br>]</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>4.JSON解析案例<br> &nbsp; &nbsp; &nbsp;(1)解析Object之一:</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>String jsonString ={"url":"http://www.cnblogs.com/qianxudetianxia"};<br><br>解析方法：<br><br>JSONObject demoJson = <span style="color: #0000ff;">new</span> JSONObject(jsonString);<br><br>String url = demoJson.getString("url");</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp; &nbsp; (2)解析Object之二:</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>String jsonString ={"name":"android"," version":"Beta1.0"};<br><br>解析方法:<br><br>JSONObject demoJson = <span style="color: #0000ff;">new</span> JSONObject(jsonString);<br><br>String name = demoJson.getString("name");<br>String version = demoJson.getString("version");<br><br>System.out.println("name:"+name+",version:"+version);</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp; (3).解析Array之一:</p>
+<div class="cnblogs_Highlighter">
+<div><div id="highlighter_542095" class="syntaxhighlighter nogutter  csharp"><div class="toolbar"><span><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/09/2317315.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="csharp plain">String jsonString ={</code><code class="csharp string">"number"</code><code class="csharp plain">:[1,2,3]};</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="csharp spaces">&nbsp;</code><code class="csharp plain">解析方法：</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="csharp plain">JSONObject demoJson = </code><code class="csharp keyword">new</code> <code class="csharp plain">JSONObject(jsonString);</code></div><div class="line number6 index5 alt1"><code class="csharp plain">JSONArray numberList = demoJson.getJSONArray(</code><code class="csharp string">"number"</code><code class="csharp plain">);</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="csharp keyword">for</code><code class="csharp plain">(</code><code class="csharp keyword">int</code> <code class="csharp plain">i=0; i&lt;numberList.length(); i++){</code></div><div class="line number9 index8 alt2"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp comments">//因为数组中的类型为int，所以为getInt，其他getString，getLong同用</code></div><div class="line number10 index9 alt1"><code class="csharp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="csharp plain">System.</code><code class="csharp keyword">out</code><code class="csharp plain">.println(numberList.getInt(i));</code></div><div class="line number11 index10 alt2"><code class="csharp plain">}</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>(4).解析Array之二:</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>String jsonString ={"number":[[1],[2],[3]]};<br><br>解析方法:<br><br><span style="color: #008000;">//</span><span style="color: #008000;">嵌套数组遍历</span><span style="color: #008000;"><br></span>JSONObject demoJson = <span style="color: #0000ff;">new</span> JSONObject(jsonString);<br>JSONArray numberList = demoJson.getJSONArray("number");<br><br><span style="color: #0000ff;">for</span>(<span style="color: #0000ff;">int</span> i=0; i&lt;numberList.length(); i++){<br>      <span style="color: #008000;">//</span><span style="color: #008000;">获取数组中的数组</span><span style="color: #008000;"><br></span>      System.out.println(numberList.getJSONArray(i).getInt(0));<br>}</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><em>(5).</em><em>解析</em><em>Object</em><em>和</em><em>Array:</em></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>String jsonString ={"mobile":[{"name":"android"},{"name":"iphone"}]};<br><br>解析方法:<br><br>JSONObject demoJson = <span style="color: #0000ff;">new</span> JSONObject(jsonString);<br>JSONArray numberList = demoJson.getJSONArray("mobile");<br><br><span style="color: #0000ff;">for</span>(<span style="color: #0000ff;">int</span> i=0; i&lt;numberList.length(); i++){<br>      System.out.println(numberList.getJSONObject(i).getString("name"));<br>}</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>(6).使用optType:</p>
+<p>上面的例子，使用getType在碰到查找不到节点的时候，会抛出异常。<br>如果使用optType，找不到节点，则返回null或者默认值。<em></em></p>
+<div class="cnblogs_code">
+<pre><span style="color: #008000;">//</span><span style="color: #008000;">无url节点，抛出异常</span><span style="color: #008000;"><br></span>String url = demoJson.getString("url");<br><br><span style="color: #008000;">//</span><span style="color: #008000;">无url节点，返回空，如果为基本类型，则返回默认值</span><span style="color: #008000;"><br></span>String url = demoJson.optString("url");</pre>
+</div>
+<p><em>(7).UTF-8</em><em>的</em><em>BOM</em><em>头导致解析</em><em>JSON</em><em>异常的问题</em><br> &nbsp; &nbsp; &nbsp; 到json文件保存为utf-8的时候，在windows平台下，会产生bom头"EF BB EF"字节在文本的最前面（需要用十六进制工具打开才能看的到）。<br> &nbsp; &nbsp; &nbsp; 有两种解决方法：<br> &nbsp; &nbsp; &nbsp; a.使用UltraEdit打开json文件， 另存为的时候，选择格式UTF-8,无BOM头，如果还不行，在用记事本打开，另存为UTF-8下，多试几次就可以了。<br> &nbsp; &nbsp; &nbsp; b.使用代码处理，截取json主体内容：</p>
+<p>&nbsp;</p>
+<div class="cnblogs_code">
+<pre>String jsonString = getJsonString();<br><br>jsonString =jsonString.substring(jsonString.indexOf("{"),jsonString.lastIndexOf("}")+1);</pre>
+</div>
+<p>&nbsp;&nbsp;</p></div><div id="MySignature"></div>
+<script type="text/javascript">
+var isLogined = false;
+var cb_blogId = 104312;
+var cb_entryId = 2317315;
+var cb_blogApp = currentBlogApp;
+var cb_blogUserGuid = "65ff1fe1-c126-e011-ac81-842b2b196315";
+var cb_entryCreatedDate = '2012/1/9 17:03:00';
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+</script>
+<div id="blog_post_info_block">
+<div id="blog_post_info"><div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/devinzhang/category/349641.html">Android之JSON</a></div>
+<div id="EntryTag"></div>
+<div id="green_channel">
+绿色通道：
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(cb_entryId,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://space.cnblogs.com/msg/send/Devin+Zhang" target="_blank">与我联系</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/icon_weibo_24.png" alt=""></a>
+</div>
+<div id="digg_block">
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/devinzhang/">Devin Zhang</a><br>
+<a href="http://home.cnblogs.com/u/devinzhang/followees">关注 - 0</a><br>
+<a href="http://home.cnblogs.com/u/devinzhang/followers">粉丝 - 98</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+<a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+	<div class="diggit" onclick="votePost(cb_entryId,&#39;Digg&#39;)"> 
+		<span class="diggnum" id="digg_count">0</span>
+	</div>
+	<div class="buryit" onclick="votePost(cb_entryId,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/08/2316671.html" class="p_n_p_prefix">« </a> 博主上一篇：<a href="http://www.cnblogs.com/devinzhang/archive/2012/01/08/2316671.html" title="发布于2012-01-08 22:29">Handler的另外一种用法（HandlerThread）</a><br><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/11/2319193.html" class="p_n_p_prefix">» </a> 博主下一篇：<a href="http://www.cnblogs.com/devinzhang/archive/2012/01/11/2319193.html" title="发布于2012-01-11 13:53">Java内部类使用总结</a><br></div>
+</div>
+<script type="text/javascript">
+    //SyntaxHighlighter.config.strings.expandSource = '<span><img src="http://static.cnblogs.com/images/expand-code.gif" alt="" class="expand-code-icon"/>View Code</span>';
+    $(function () {             
+        fixPostBodyFormat();
+        loadAdUnderPost();
+        loadBlogSignature();
+        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);        
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);        
+    });
+</script>
+	<div class="postDesc">posted on <span id="post-date">2012-01-09 17:03</span> <a href="http://www.cnblogs.com/devinzhang/">Devin Zhang</a> 阅读(1049) 评论(<span id="post-comment-count">0</span>)  <a href="http://www.cnblogs.com/devinzhang/admin/EditPosts.aspx?postid=2317315" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/devinzhang/archive/2012/01/09/2317315.html#" onclick="AddToWz(2317315);return false;">收藏</a></div>
+</div>
+<img src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/2317315.html" width="1" height="1" alt="">
+
+<div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.loadComments();</script>
+<div id="comment_form" class="commentform">
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/09/2317315.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/09/2317315.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+
+<script type="text/javascript">
+    if (typeof commentManager === 'undefined') {
+        commentManager = new blogCommentManager();
+    }
+    commentManager.loadCommentForm();   
+</script>
+
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"><a href="http://job.cnblogs.com/Offer/28184/" target="_blank"><b>沪江网诚聘中级/高级.NET程序员（社区方向）</b></a><br><a href="http://www.cnblogs.com/cmt/archive/2012/12/17/2821527.html" target="_blank"><b>园豆兑换阿里云代金券，1元体验阿里云Linux主机</b></a><br></div>
+<div id="site_nav_under"><a href="http://www.cnblogs.com/" target="_blank" title="程序员的网上家园">博客园首页</a><a href="http://q.cnblogs.com/" target="_blank" title="程序员问答社区">博问</a><a href="http://news.cnblogs.com/" target="_blank" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/ing/" target="_blank">闪存</a><a href="http://job.cnblogs.com/" target="_blank">程序员招聘</a><a href="http://kb.cnblogs.com/" target="_blank">知识库</a></div>
+<div id="ad_under_post_holder">
+<div id="google_ad_c1" class="c_ad_block">
+    <!-- cnblogs_blogpost_C1_sitehome -->
+    <div id="div-gpt-ad-1346480159711-0" style="width: 300px; height: 250px; ">
+    
+    <iframe id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; "></iframe><iframe id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__hidden__" name="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__hidden__" width="0" height="0" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; visibility: hidden; display: none; "></iframe></div>
+</div>
+<div id="blog_news_kb"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/167351/" target="_blank">Try F#：在浏览器中编写 F# 代码</a><br> ·  <a href="http://news.cnblogs.com/n/167346/" target="_blank">IT科技业2012事件与人物：掌门人成改革垫脚石</a><br> ·  <a href="http://news.cnblogs.com/n/167350/" target="_blank">研究称IQ测试是神话</a><br> ·  <a href="http://news.cnblogs.com/n/167349/" target="_blank">Windows 8真的很简单、易用</a><br> ·  <a href="http://news.cnblogs.com/n/167345/" target="_blank">程序员都是傻逼——世界末日前的遗言</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/167310/" target="_blank">云服务器（云主机）与VPS的区别</a><br> ·  <a href="http://kb.cnblogs.com/page/112881/" target="_blank">图解HTTPS</a><br> ·  <a href="http://kb.cnblogs.com/page/112901/" target="_blank">走进JVM，浅水也能捉鱼</a><br> ·  <a href="http://kb.cnblogs.com/page/143965/" target="_blank">程序员对内存的理解</a><br> ·  <a href="http://kb.cnblogs.com/page/165694/" target="_blank">防止代码变质的思考与方法</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="google_ad_c2" class="c_ad_block">
+    <!-- cnblogs_blogpost_C2_sitehome -->
+    <div id="div-gpt-ad-1346479110744-1" style="width: 468px; height: 60px; ">
+    
+    <iframe id="google_ads_iframe_/1090369/cnblogs_blogpost_C2_sitehome_0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C2_sitehome_0" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; "></iframe></div>
+</div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+</div>
+
+
+
+
+
+</div>
+<div id="leftcontent">
+	
+		<div id="leftcontentcontainer">
+			
+<!--done-->
+<div class="newsItem">
+	<div id="blog-news" style=""><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/devinzhang/">Devin Zhang</a><br>园龄：<a href="http://home.cnblogs.com/u/devinzhang/" title="入园时间：2011-01-23">1年10个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/devinzhang/followers/">98</a><br>关注：<a href="http://home.cnblogs.com/u/devinzhang/followees/">0</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;65ff1fe1-c126-e011-ac81-842b2b196315&#39;)">+加关注</a></div></div></div>
+</div>
+
+			<div id="blog-calendar-block" style=""><div id="blog-calendar"><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2011/12/01&#39;);return false;">&lt;</a></td><td align="center">2012年1月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2012/02/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td></tr><tr><td class="CalWeekendDay" align="center">1</td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/02.html"><u>2</u></a></td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/03.html"><u>3</u></a></td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/04.html"><u>4</u></a></td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/05.html"><u>5</u></a></td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/06.html"><u>6</u></a></td><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/07.html"><u>7</u></a></td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/08.html"><u>8</u></a></td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/09.html"><u>9</u></a></td><td align="center">10</td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/11.html"><u>11</u></a></td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/12.html"><u>12</u></a></td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/13.html"><u>13</u></a></td><td class="CalWeekendDay" align="center">14</td></tr><tr><td class="CalWeekendDay" align="center">15</td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/16.html"><u>16</u></a></td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/17.html"><u>17</u></a></td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/18.html"><u>18</u></a></td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/19.html"><u>19</u></a></td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/20.html"><u>20</u></a></td><td class="CalWeekendDay" align="center">21</td></tr><tr><td class="CalWeekendDay" align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/25.html"><u>25</u></a></td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/26.html"><u>26</u></a></td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/27.html"><u>27</u></a></td><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/28.html"><u>28</u></a></td></tr><tr><td class="CalWeekendDay" align="center">29</td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/30.html"><u>30</u></a></td><td align="center"><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/31.html"><u>31</u></a></td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td></tr>
+</tbody></table></div>
+</div><br>
+			<div id="blog-sidecolumn">
+
+<div class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+
+</div>
+
+
+<h3 class="catListTitle">我的标签</h3>
+<div id="MyTag">
+<ul>
+
+</ul>
+</div>
+		<h3 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(115)</span></h3>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_0" class="listitem" href="http://www.cnblogs.com/devinzhang/category/349645.html">Android之Activity(8)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_1" class="listitem" href="http://www.cnblogs.com/devinzhang/category/350267.html">Android之Adapter(1)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_2" class="listitem" href="http://www.cnblogs.com/devinzhang/category/350233.html">Android之ContentProvider(1)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_3" class="listitem" href="http://www.cnblogs.com/devinzhang/category/349635.html">Android之Handler(4)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_4" class="listitem" href="http://www.cnblogs.com/devinzhang/category/349641.html">Android之JSON(2)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_5" class="listitem" href="http://www.cnblogs.com/devinzhang/category/349634.html">Android之Service(4)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_6" class="listitem" href="http://www.cnblogs.com/devinzhang/category/349639.html">Android之SharedPreferences(2)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_7" class="listitem" href="http://www.cnblogs.com/devinzhang/category/349637.html">Android之SQLite(2)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_8" class="listitem" href="http://www.cnblogs.com/devinzhang/category/350251.html">Android之SurfaceView(5)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_9" class="listitem" href="http://www.cnblogs.com/devinzhang/category/350586.html">Android之Widget(1)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_10" class="listitem" href="http://www.cnblogs.com/devinzhang/category/349640.html">Android之XML(1)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_11" class="listitem" href="http://www.cnblogs.com/devinzhang/category/350975.html">Android之菜单(1)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_12" class="listitem" href="http://www.cnblogs.com/devinzhang/category/350662.html">Android之单元测试(1)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_13" class="listitem" href="http://www.cnblogs.com/devinzhang/category/349644.html">Android之调试开发工具(4)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_14" class="listitem" href="http://www.cnblogs.com/devinzhang/category/357974.html">Android之多点触控(2)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_15" class="listitem" href="http://www.cnblogs.com/devinzhang/category/349638.html">Android之环境配置(4)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_16" class="listitem" href="http://www.cnblogs.com/devinzhang/category/357975.html">Android之基础知识(2)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_17" class="listitem" href="http://www.cnblogs.com/devinzhang/category/349908.html">Android之界面布局(6)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_18" class="listitem" href="http://www.cnblogs.com/devinzhang/category/357973.html">Android之图形图像(1)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_19" class="listitem" href="http://www.cnblogs.com/devinzhang/category/349642.html">Android之网络编程(9)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_20" class="listitem" href="http://www.cnblogs.com/devinzhang/category/350164.html">Android之文件操作(1)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_21" class="listitem" href="http://www.cnblogs.com/devinzhang/category/349643.html">Android之优化技术(3)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_22" class="listitem" href="http://www.cnblogs.com/devinzhang/category/359065.html">Android之游戏开发(4)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_23" class="listitem" href="http://www.cnblogs.com/devinzhang/category/342339.html">Java基础知识(17)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_24" class="listitem" href="http://www.cnblogs.com/devinzhang/category/358002.html">Java之安全通信(2)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_25" class="listitem" href="http://www.cnblogs.com/devinzhang/category/350523.html">Java之集合类(4)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_26" class="listitem" href="http://www.cnblogs.com/devinzhang/category/350551.html">Java之数据结构(3)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_27" class="listitem" href="http://www.cnblogs.com/devinzhang/category/349646.html">Java之线程池和对象池(3)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_28" class="listitem" href="http://www.cnblogs.com/devinzhang/category/342301.html">设计模式(16)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_0_Link_29" class="listitem" href="http://www.cnblogs.com/devinzhang/category/375934.html">杂谈(1)</a></li>
+			
+				</ul>
+			
+	
+		<h3 class="catListTitle">随笔档案<span style="font-size:11px;font-weight:normal">(117)</span></h3>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_1_Link_0" class="listitem" href="http://www.cnblogs.com/devinzhang/archive/2012/10.html">2012年10月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_1_Link_1" class="listitem" href="http://www.cnblogs.com/devinzhang/archive/2012/09.html">2012年9月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_1_Link_2" class="listitem" href="http://www.cnblogs.com/devinzhang/archive/2012/08.html">2012年8月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_1_Link_3" class="listitem" href="http://www.cnblogs.com/devinzhang/archive/2012/07.html">2012年7月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_1_Link_4" class="listitem" href="http://www.cnblogs.com/devinzhang/archive/2012/06.html">2012年6月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_1_Link_5" class="listitem" href="http://www.cnblogs.com/devinzhang/archive/2012/05.html">2012年5月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_1_Link_6" class="listitem" href="http://www.cnblogs.com/devinzhang/archive/2012/04.html">2012年4月 (9)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_1_Link_7" class="listitem" href="http://www.cnblogs.com/devinzhang/archive/2012/03.html">2012年3月 (5)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_1_Link_8" class="listitem" href="http://www.cnblogs.com/devinzhang/archive/2012/02.html">2012年2月 (24)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_1_Link_9" class="listitem" href="http://www.cnblogs.com/devinzhang/archive/2012/01.html">2012年1月 (46)</a></li>
+			
+				<li class="catListItem"> <a id="ctl02_CatList_LinkList_1_Link_10" class="listitem" href="http://www.cnblogs.com/devinzhang/archive/2011/12.html">2011年12月 (23)</a></li>
+			
+				</ul>
+			
+	
+
+<h3>积分与排名</h3>
+<ul>
+	<li>
+		积分 -
+		83554
+	</li><li>
+		排名 -
+		1317
+	</li>
+</ul>
+
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/devinzhang/archive/2011/12/14/2287675.html">1. Java synchronized详解(9306)</a></li><li><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/20/2328334.html">2. Android之Adapter用法总结(7575)</a></li><li><a href="http://www.cnblogs.com/devinzhang/archive/2012/02/13/2350070.html">3. android AsyncTask介绍(6923)</a></li><li><a href="http://www.cnblogs.com/devinzhang/archive/2012/02/29/2373729.html">4. Android之NDK开发(6617)</a></li><li><a href="http://www.cnblogs.com/devinzhang/archive/2012/02/16/2354981.html">5. Android消息推送(5301)</a></li></ul></div>
+</div>
+
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/20/2328334.html">1. Android之Adapter用法总结(7)</a></li><li><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/11/2319433.html">2. Thread和Service应用场合的区别(5)</a></li><li><a href="http://www.cnblogs.com/devinzhang/archive/2012/01/05/2313406.html">3. Java对象池示例(5)</a></li><li><a href="http://www.cnblogs.com/devinzhang/archive/2012/02/29/2373729.html">4. Android之NDK开发(4)</a></li><li><a href="http://www.cnblogs.com/devinzhang/archive/2012/02/13/2350070.html">5. android AsyncTask介绍(4)</a></li></ul></div>
+</div></div></div>
+	
+</div>
+
+<!--done-->
+<div class="footer">
+	Powered by: <a href="http://www.cnblogs.com/">博客园</a>	模板提供：<a href="http://blog.hjenglish.com/">沪江博客</a>
+	Copyright ©2012 Devin Zhang
+</div>
+
+
+
+<script type="text/javascript" src="./Android数据格式解析对象JSON用法 - Devin Zhang - 博客园_files/google-analytics.js"></script>
+
+
+</body></html>

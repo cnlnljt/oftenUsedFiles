@@ -1,0 +1,634 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0039)http://gundumw100.iteye.com/blog/845436 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title> android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站</title>
+    <meta name="description" content="SAX具体怎么用就不说了，网上搜搜一大片。 第一步：建立公共抽象类BaseHandler   package com.dc.handler;    import java.io.StringReader;  import java.util.HashMap;  import java.util.Map;    import javax.xml.parsers.SAXParser;  import j ...">
+    <meta name="keywords" content="XML, Android, Java, junit  android中使用SAX解析xml（封装）">
+    <link rel="shortcut icon" href="http://gundumw100.iteye.com/images/favicon.ico" type="image/x-icon">
+    <link rel="search" type="application/opensearchdescription+xml" href="http://gundumw100.iteye.com/open_search.xml" title="ITeye">
+    <link href="http://gundumw100.iteye.com/rss" rel="alternate" title="短裤党" type="application/rss+xml">
+    <link href="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/blog.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/blue.css" media="screen" rel="stylesheet" type="text/css">
+    <script type="text/javascript" async="" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/ga.js"></script><iframe style="position: absolute; width: 100px; height: 1px; z-index: -10240; visibility: hidden; top: 0px; left: 0px; " src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/e.html"></iframe><script src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/application.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-535605-1']);
+  _gaq.push(['_setDomainName', 'iteye.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+      <link href="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/SyntaxHighlighter.css" media="screen" rel="stylesheet" type="text/css">
+  <script src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/shCoreCommon.js" type="text/javascript"></script>
+<script src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/hotkey.js" type="text/javascript"></script>
+  <script src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/code_favorites.js" type="text/javascript"></script>
+<script src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/weiboshare.js" type="text/javascript"></script>
+  <style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style></head>
+  <body>
+    <div id="header">
+      <div id="blog_site_nav">
+  <a href="http://www.iteye.com/" class="homepage">首页</a>
+  <a href="http://www.iteye.com/news">资讯</a>
+  <a href="http://www.iteye.com/magazines">精华</a>
+  <a href="http://www.iteye.com/forums">论坛</a>
+  <a href="http://www.iteye.com/ask">问答</a>
+  <a href="http://www.iteye.com/blogs">博客</a>
+  <a href="http://www.iteye.com/blogs/subjects">专栏</a>
+  <a href="http://www.iteye.com/groups">群组</a>
+  <a href="http://gundumw100.iteye.com/blog/845436#" onclick="return false;" id="msna"><u>更多</u> <small>▼</small></a>
+  <div class="quick_menu" style="display:none;">
+    <a target="_blank" href="http://job.iteye.com/iteye">招聘</a>
+    <a href="http://www.iteye.com/search">搜索</a>
+  </div>
+</div>
+
+      <div id="user_nav">
+      <a href="http://gundumw100.iteye.com/login" class="welcome" title="登录">您还未登录 !</a>
+    <a href="http://gundumw100.iteye.com/login">登录</a>
+    <a href="http://gundumw100.iteye.com/signup" class="nobg">注册</a>
+  </div>
+
+    </div>
+
+    <div id="page">
+      <div id="branding" class="clearfix">
+        <div id="blog_name">
+          <h1><a href="http://gundumw100.iteye.com/">短裤党</a></h1>
+        </div>
+        <div id="fd"></div>
+        <div id="blog_navbar">
+          <ul>
+            <li class="blog_navbar_for"><a href="http://gundumw100.iteye.com/"><strong>博客</strong></a></li>
+            <li><a href="http://gundumw100.iteye.com/weibo">微博</a></li>
+            <li><a href="http://gundumw100.iteye.com/album">相册</a></li>
+            <li><a href="http://gundumw100.iteye.com/link">收藏</a></li>
+            <li><a href="http://gundumw100.iteye.com/blog/guest_book">留言</a></li>
+            <li><a href="http://gundumw100.iteye.com/blog/profile">关于我</a></li>
+          </ul>
+    
+          <div class="search">
+            <form action="http://gundumw100.iteye.com/blog/search" method="get">
+              <input class="search_text" id="query" name="query" style="margin-left: 10px;width: 110px;" type="text" value="">
+              <input class="submit_search" type="submit" value="">
+            </form>
+          </div> 
+          <div id="fd"></div>         
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          
+
+
+
+          
+
+
+<div class="blog_main">
+  <div class="blog_title">
+    <h3>
+      <a href="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站.html"> android中使用SAX解析xml（封装）</a>
+      <em class="actions">      </em>
+    </h3>
+    <ul class="blog_categories"><strong>博客分类：</strong> <li><a href="http://gundumw100.iteye.com/category/74186">android</a></li> </ul>
+        <div class="news_tag"><a href="http://www.iteye.com/blogs/tag/XML">XML</a><a href="http://www.iteye.com/blogs/tag/Android">Android</a><a href="http://www.iteye.com/blogs/tag/Java">Java</a><a href="http://www.iteye.com/blogs/tag/junit">junit</a></div>
+  </div>
+
+  <div id="blog_content" class="blog_content">
+    SAX具体怎么用就不说了，网上搜搜<a target="_blank" href="http://www.cnblogs.com/felix-hua/archive/2012/01/10/2317404.html">一大片</a>。
+<br>
+<br>第一步：建立公共抽象类BaseHandler
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Java代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=package%20com.dc.handler%3B%0A%0Aimport%20java.io.StringReader%3B%0Aimport%20java.util.HashMap%3B%0Aimport%20java.util.Map%3B%0A%0Aimport%20javax.xml.parsers.SAXParser%3B%0Aimport%20javax.xml.parsers.SAXParserFactory%3B%0A%0Aimport%20org.xml.sax.Attributes%3B%0Aimport%20org.xml.sax.InputSource%3B%0Aimport%20org.xml.sax.SAXException%3B%0Aimport%20org.xml.sax.XMLReader%3B%0Aimport%20org.xml.sax.helpers.DefaultHandler%3B%0A%0Apublic%20abstract%20class%20BaseHandler%20extends%20DefaultHandler%20%7B%0A%09%0A%09%2F%2F%E7%BC%93%E5%AD%98%EF%BC%81%E5%85%AC%E5%85%B1%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E6%94%BE%E7%B1%BB%EF%BC%8C%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E9%83%BD%E4%BB%8E%E8%BF%99%E9%87%8C%E5%8F%96%EF%BC%8C%E4%B8%80%E8%88%AC%E5%B0%86%E5%AE%83%E5%86%99%E5%9C%A8Const%E7%B1%BB%E4%B8%AD%EF%BC%8C%E8%BF%99%E9%87%8C%E6%88%91%E5%B0%B1%E4%B8%8D%E5%BB%BAConst.java%E4%BA%86%0A%09public%20static%20Map%20hash%3Dnew%20HashMap()%3B%2F%2F%E6%94%BE%E5%9C%A8Const.java%E4%B8%AD%EF%BC%81%0A%09%0A%09public%20abstract%20boolean%20parse(String%20xmlString)%3B%0A%09%0A%09public%20static%20void%20parserXml(BaseHandler%20baseHandler%2C%20String%20xmlString)%0A%09%09%09throws%20Exception%20%7B%0A%09%09if%20(xmlString%20%3D%3D%20null%20%7C%7C%20xmlString.length()%20%3D%3D%200)%0A%09%09%09return%3B%0A%0A%09%09SAXParserFactory%20factory%20%3D%20SAXParserFactory.newInstance()%3B%0A%09%09SAXParser%20parser%20%3D%20factory.newSAXParser()%3B%0A%09%09XMLReader%20xmlReader%20%3D%20parser.getXMLReader()%3B%0A%09%09xmlReader.setContentHandler(baseHandler)%3B%0A%0A%09%09%2F%2F%E8%A7%A3%E6%9E%90%E6%96%87%E4%BB%B6%0A%2F%2F%09%09xmlReader.parse(new%20InputSource(new%20URL(%22main.xml%22).openStream()))%3B%2F%2F%E6%96%87%E4%BB%B6%0A%09%09%2F%2F%20%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAxml%E5%AD%97%E7%AC%A6%E4%B8%B2%0A%09%09StringReader%20read%20%3D%20new%20StringReader(xmlString)%3B%0A%09%09%2F%2F%20%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E8%BE%93%E5%85%A5%E6%BA%90SAX%20%E8%A7%A3%E6%9E%90%E5%99%A8%E5%B0%86%E4%BD%BF%E7%94%A8%20InputSource%E5%AF%B9%E8%B1%A1%E6%9D%A5%E7%A1%AE%E5%AE%9A%E5%A6%82%E4%BD%95%E8%AF%BB%E5%8F%96%20XML%20%E8%BE%93%E5%85%A5%0A%09%09InputSource%20source%20%3D%20new%20InputSource(read)%3B%0A%09%09xmlReader.parse(source)%3B%0A%09%09read.close()%3B%0A%09%7D%0A%09%0A%09public%20abstract%20void%20characters(char%5B%5D%20ch%2C%20int%20start%2C%20int%20length)%0A%09%09%09throws%20SAXException%3B%0A%0A%09public%20abstract%20void%20endDocument()%20throws%20SAXException%3B%0A%0A%09public%20abstract%20void%20endElement(String%20uri%2C%20String%20localName%2C%20String%20qName)%0A%09%09%09throws%20SAXException%3B%0A%0A%09public%20abstract%20void%20startDocument()%20throws%20SAXException%3B%0A%0A%09public%20abstract%20void%20startElement(String%20uri%2C%20String%20localName%2C%20String%20qName%2CAttributes%20attributes)%20throws%20SAXException%3B%0A%09%09%09%0A%7D%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-j"><li><span><span class="keyword">package</span><span>&nbsp;com.dc.handler;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">import</span><span>&nbsp;java.io.StringReader;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;java.util.HashMap;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;java.util.Map;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">import</span><span>&nbsp;javax.xml.parsers.SAXParser;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;javax.xml.parsers.SAXParserFactory;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">import</span><span>&nbsp;org.xml.sax.Attributes;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;org.xml.sax.InputSource;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;org.xml.sax.SAXException;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;org.xml.sax.XMLReader;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;org.xml.sax.helpers.DefaultHandler;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">abstract</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;BaseHandler&nbsp;</span><span class="keyword">extends</span><span>&nbsp;DefaultHandler&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//缓存！公共数据的存放类，所有数据都从这里取，一般将它写在Const类中，这里我就不建Const.java了</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;Map&nbsp;hash=</span><span class="keyword">new</span><span>&nbsp;HashMap();</span><span class="comment">//放在Const.java中！</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">abstract</span><span>&nbsp;</span><span class="keyword">boolean</span><span>&nbsp;parse(String&nbsp;xmlString);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;parserXml(BaseHandler&nbsp;baseHandler,&nbsp;String&nbsp;xmlString)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">throws</span><span>&nbsp;Exception&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(xmlString&nbsp;==&nbsp;</span><span class="keyword">null</span><span>&nbsp;||&nbsp;xmlString.length()&nbsp;==&nbsp;</span><span class="number">0</span><span>)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SAXParserFactory&nbsp;factory&nbsp;=&nbsp;SAXParserFactory.newInstance();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SAXParser&nbsp;parser&nbsp;=&nbsp;factory.newSAXParser();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XMLReader&nbsp;xmlReader&nbsp;=&nbsp;parser.getXMLReader();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlReader.setContentHandler(baseHandler);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//解析文件</span><span>&nbsp;&nbsp;</span></span></li><li><span><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlReader.parse(new&nbsp;InputSource(new&nbsp;URL("main.xml").openStream()));//文件</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;创建一个xml字符串</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StringReader&nbsp;read&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;StringReader(xmlString);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;创建新的输入源SAX&nbsp;解析器将使用&nbsp;InputSource对象来确定如何读取&nbsp;XML&nbsp;输入</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InputSource&nbsp;source&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;InputSource(read);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlReader.parse(source);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read.close();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">abstract</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;characters(</span><span class="keyword">char</span><span>[]&nbsp;ch,&nbsp;</span><span class="keyword">int</span><span>&nbsp;start,&nbsp;</span><span class="keyword">int</span><span>&nbsp;length)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">throws</span><span>&nbsp;SAXException;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">abstract</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;endDocument()&nbsp;</span><span class="keyword">throws</span><span>&nbsp;SAXException;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">abstract</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;endElement(String&nbsp;uri,&nbsp;String&nbsp;localName,&nbsp;String&nbsp;qName)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">throws</span><span>&nbsp;SAXException;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">abstract</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;startDocument()&nbsp;</span><span class="keyword">throws</span><span>&nbsp;SAXException;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">abstract</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;startElement(String&nbsp;uri,&nbsp;String&nbsp;localName,&nbsp;String&nbsp;qName,Attributes&nbsp;attributes)&nbsp;</span><span class="keyword">throws</span><span>&nbsp;SAXException;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="java" style="display: none; " codeable_id="845436" codeable_type="Blog" source_url="http://gundumw100.iteye.com/blog/845436" pre_index="0" title=" android中使用SAX解析xml（封装）">package com.dc.handler;
+
+import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.DefaultHandler;
+
+public abstract class BaseHandler extends DefaultHandler {
+	
+	//缓存！公共数据的存放类，所有数据都从这里取，一般将它写在Const类中，这里我就不建Const.java了
+	public static Map hash=new HashMap();//放在Const.java中！
+	
+	public abstract boolean parse(String xmlString);
+	
+	public static void parserXml(BaseHandler baseHandler, String xmlString)
+			throws Exception {
+		if (xmlString == null || xmlString.length() == 0)
+			return;
+
+		SAXParserFactory factory = SAXParserFactory.newInstance();
+		SAXParser parser = factory.newSAXParser();
+		XMLReader xmlReader = parser.getXMLReader();
+		xmlReader.setContentHandler(baseHandler);
+
+		//解析文件
+//		xmlReader.parse(new InputSource(new URL("main.xml").openStream()));//文件
+		// 创建一个xml字符串
+		StringReader read = new StringReader(xmlString);
+		// 创建新的输入源SAX 解析器将使用 InputSource对象来确定如何读取 XML 输入
+		InputSource source = new InputSource(read);
+		xmlReader.parse(source);
+		read.close();
+	}
+	
+	public abstract void characters(char[] ch, int start, int length)
+			throws SAXException;
+
+	public abstract void endDocument() throws SAXException;
+
+	public abstract void endElement(String uri, String localName, String qName)
+			throws SAXException;
+
+	public abstract void startDocument() throws SAXException;
+
+	public abstract void startElement(String uri, String localName, String qName,Attributes attributes) throws SAXException;
+			
+}
+</pre>
+<br>
+<br>第二步：实现类
+<br>比如，我们要解析一个xml字符串，该字符串可以来自网络。
+<br>&lt;students&gt;
+<br>&lt;student sn='001'&gt;&lt;id&gt;1&lt;/id&gt;&lt;name&gt;benny&lt;/name&gt;&lt;age&gt;20&lt;/age&gt;&lt;/student&gt;
+<br>&lt;student sn='002'&gt;&lt;id&gt;2&lt;/id&gt;&lt;name&gt;jimmy&lt;/name&gt;&lt;age&gt;30&lt;/age&gt;&lt;/student&gt;
+<br>&lt;/students&gt;
+<br>解析它：
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Java代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=package%20com.dc.handler%3B%0A%0Aimport%20java.util.HashMap%3B%0Aimport%20java.util.Stack%3B%0Aimport%20java.util.Vector%3B%0A%0Aimport%20org.xml.sax.Attributes%3B%0Aimport%20org.xml.sax.SAXException%3B%0A%0Aimport%20com.dc.model.Student%3B%0A%0A%2F%2F%E5%AE%9E%E7%8E%B0%E7%B1%BB%0Apublic%20class%20StudentHandler%20extends%20BaseHandler%20%7B%0A%0A%09private%20static%20final%20String%20tag%3D%22StudentHandler%22%3B%0A%09%40Override%0A%09public%20void%20characters(char%5B%5D%20ch%2C%20int%20start%2C%20int%20length)%0A%09%09%09throws%20SAXException%20%7B%0A%09%09%2F%2F%20TODO%20Auto-generated%20method%20stub%0A%09%09String%20chars%20%3D%20new%20String(ch%2C%20start%2C%20length).trim()%3B%0A%09%09if(chars!%3Dnull)%20%7B%0A%09%09%09String%20tagName%20%3D%20(String)tagStack.peek()%3B%2F%2F%E6%9F%A5%E7%9C%8B%E6%A0%88%E9%A1%B6%E5%AF%B9%E8%B1%A1%E8%80%8C%E4%B8%8D%E7%A7%BB%E9%99%A4%E5%AE%83%20%0A%09%09%09Student%20object%3Dstudents.lastElement()%3B%0A%2F%2F%09%09%09System.out.println(%22chars%3D%22%2Bchars)%3B%0A%09%09%09if%20(tagName.equals(%22id%22))%20%7B%0A%09%09%09%09object.setId(chars)%3B%0A%09%09%09%7Delse%20if(tagName.equals(%22name%22))%7B%0A%09%09%09%09object.setName(chars)%3B%0A%09%09%09%7Delse%20if(tagName.equals(%22age%22))%7B%0A%09%09%09%09object.setAge(chars)%3B%0A%09%09%09%7D%0A%09%09%7D%0A%09%7D%0A%0A%09%40Override%0A%09public%20void%20endDocument()%20throws%20SAXException%20%7B%0A%09%09%2F%2F%20TODO%20Auto-generated%20method%20stub%0A%2F%2F%09%09Consts.hash.put(%22students%22%2C%20students.lastElement())%3B%2F%2F%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%0A%09%09%20hash.put(%22students%22%2C%20students)%3B%2F%2F%E4%BF%9D%E5%AD%98%E5%85%A5hash%EF%BC%8C%E8%BF%99%E9%87%8C%E4%BF%9D%E5%AD%98%E7%9A%84%E6%98%AFVector%E5%AF%B9%E8%B1%A1%0A%09%09%20students%3Dnull%3B%2F%2F%E6%B2%A1%E7%94%A8%E4%BA%86%E5%B0%B1%E6%B8%85%E6%8E%89%0A%09%7D%0A%0A%09%40Override%0A%09public%20void%20endElement(String%20uri%2C%20String%20localName%2C%20String%20qName)%0A%09%09%09throws%20SAXException%20%7B%0A%09%09%2F%2F%20TODO%20Auto-generated%20method%20stub%0A%09%09tagStack.pop()%3B%2F%2F%E7%A7%BB%E9%99%A4%E6%A0%88%E9%A1%B6%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%9C%E4%B8%BA%E6%AD%A4%E5%87%BD%E6%95%B0%E7%9A%84%E5%80%BC%E8%BF%94%E5%9B%9E%E8%AF%A5%E5%AF%B9%E8%B1%A1%0A%09%7D%0A%0A%09%40Override%0A%09public%20boolean%20parse(String%20xmlString)%20%7B%0A%09%09%2F%2F%20TODO%20Auto-generated%20method%20stub%0A%09%09try%20%7B%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20super.parserXml(this%2C%20xmlString)%3B%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20true%3B%20%20%0A%20%20%20%20%20%20%20%20%7D%20catch%20(Exception%20e)%20%7B%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20e.printStackTrace()%3B%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20false%3B%20%20%0A%20%20%20%20%20%20%20%20%7D%20%20%0A%09%7D%0A%0A%09%40Override%0A%09public%20void%20startDocument()%20throws%20SAXException%20%7B%0A%09%09%2F%2F%20TODO%20Auto-generated%20method%20stub%0A%0A%09%7D%0A%09private%20Stack%3CString%3E%20tagStack%20%3D%20new%20Stack%3CString%3E()%3B%0A%09private%20Vector%3CStudent%3E%20students%20%3D%20new%20Vector%3CStudent%3E()%3B%20%0A%09%40Override%0A%09public%20void%20startElement(String%20uri%2C%20String%20localName%2C%20String%20qName%2C%0A%09%09%09Attributes%20attributes)%20throws%20SAXException%20%7B%0A%09%09%2F%2F%20TODO%20Auto-generated%20method%20stub%0A%2F%2F%09%09System.out.println(%22qName%3D%22%2BqName)%3B%0A%09%09if(qName.equals(%22student%22))%7B%0A%09%09%09Student%20object%3Dnew%20Student()%3B%0A%09%09%09object.setSn(attributes.getValue(%22sn%22))%3B%0A%09%09%09students.addElement(object)%3B%0A%09%09%7D%0A%09%09tagStack.push(qName)%3B%0A%09%7D%0A%09%0A%7D%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-j"><li><span><span class="keyword">package</span><span>&nbsp;com.dc.handler;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">import</span><span>&nbsp;java.util.HashMap;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;java.util.Stack;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;java.util.Vector;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">import</span><span>&nbsp;org.xml.sax.Attributes;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;org.xml.sax.SAXException;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">import</span><span>&nbsp;com.dc.model.Student;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="comment">//实现类</span><span>&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;StudentHandler&nbsp;</span><span class="keyword">extends</span><span>&nbsp;BaseHandler&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">final</span><span>&nbsp;String&nbsp;tag=</span><span class="string">"StudentHandler"</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="annotation">@Override</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;characters(</span><span class="keyword">char</span><span>[]&nbsp;ch,&nbsp;</span><span class="keyword">int</span><span>&nbsp;start,&nbsp;</span><span class="keyword">int</span><span>&nbsp;length)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">throws</span><span>&nbsp;SAXException&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;chars&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;String(ch,&nbsp;start,&nbsp;length).trim();&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(chars!=</span><span class="keyword">null</span><span>)&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;tagName&nbsp;=&nbsp;(String)tagStack.peek();<span class="comment">//查看栈顶对象而不移除它&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student&nbsp;object=students.lastElement();&nbsp;&nbsp;</span></li><li><span><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("chars="+chars);</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(tagName.equals(</span><span class="string">"id"</span><span>))&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object.setId(chars);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<span class="keyword">else</span><span>&nbsp;</span><span class="keyword">if</span><span>(tagName.equals(</span><span class="string">"name"</span><span>)){&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object.setName(chars);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<span class="keyword">else</span><span>&nbsp;</span><span class="keyword">if</span><span>(tagName.equals(</span><span class="string">"age"</span><span>)){&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object.setAge(chars);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="annotation">@Override</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;endDocument()&nbsp;</span><span class="keyword">throws</span><span>&nbsp;SAXException&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span>&nbsp;&nbsp;</span></span></li><li><span><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consts.hash.put("students",&nbsp;students.lastElement());//一个对象</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hash.put(<span class="string">"students"</span><span>,&nbsp;students);</span><span class="comment">//保存入hash，这里保存的是Vector对象</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;students=<span class="keyword">null</span><span>;</span><span class="comment">//没用了就清掉</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="annotation">@Override</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;endElement(String&nbsp;uri,&nbsp;String&nbsp;localName,&nbsp;String&nbsp;qName)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">throws</span><span>&nbsp;SAXException&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tagStack.pop();<span class="comment">//移除栈顶对象并作为此函数的值返回该对象</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="annotation">@Override</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">boolean</span><span>&nbsp;parse(String&nbsp;xmlString)&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">try</span><span>&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span><span>.parserXml(</span><span class="keyword">this</span><span>,&nbsp;xmlString);&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;</span><span class="keyword">true</span><span>;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">catch</span><span>&nbsp;(Exception&nbsp;e)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;</span><span class="keyword">false</span><span>;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="annotation">@Override</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;startDocument()&nbsp;</span><span class="keyword">throws</span><span>&nbsp;SAXException&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;Stack&lt;String&gt;&nbsp;tagStack&nbsp;=&nbsp;</span><span class="keyword">new</span><span>&nbsp;Stack&lt;String&gt;();&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;Vector&lt;Student&gt;&nbsp;students&nbsp;=&nbsp;</span><span class="keyword">new</span><span>&nbsp;Vector&lt;Student&gt;();&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="annotation">@Override</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;startElement(String&nbsp;uri,&nbsp;String&nbsp;localName,&nbsp;String&nbsp;qName,&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Attributes&nbsp;attributes)&nbsp;<span class="keyword">throws</span><span>&nbsp;SAXException&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span>&nbsp;&nbsp;</span></span></li><li><span><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("qName="+qName);</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(qName.equals(</span><span class="string">"student"</span><span>)){&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student&nbsp;object=<span class="keyword">new</span><span>&nbsp;Student();&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object.setSn(attributes.getValue(<span class="string">"sn"</span><span>));&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;students.addElement(object);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tagStack.push(qName);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="java" style="display: none; " codeable_id="845436" codeable_type="Blog" source_url="http://gundumw100.iteye.com/blog/845436" pre_index="1" title=" android中使用SAX解析xml（封装）">package com.dc.handler;
+
+import java.util.HashMap;
+import java.util.Stack;
+import java.util.Vector;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+
+import com.dc.model.Student;
+
+//实现类
+public class StudentHandler extends BaseHandler {
+
+	private static final String tag="StudentHandler";
+	@Override
+	public void characters(char[] ch, int start, int length)
+			throws SAXException {
+		// TODO Auto-generated method stub
+		String chars = new String(ch, start, length).trim();
+		if(chars!=null) {
+			String tagName = (String)tagStack.peek();//查看栈顶对象而不移除它 
+			Student object=students.lastElement();
+//			System.out.println("chars="+chars);
+			if (tagName.equals("id")) {
+				object.setId(chars);
+			}else if(tagName.equals("name")){
+				object.setName(chars);
+			}else if(tagName.equals("age")){
+				object.setAge(chars);
+			}
+		}
+	}
+
+	@Override
+	public void endDocument() throws SAXException {
+		// TODO Auto-generated method stub
+//		Consts.hash.put("students", students.lastElement());//一个对象
+		 hash.put("students", students);//保存入hash，这里保存的是Vector对象
+		 students=null;//没用了就清掉
+	}
+
+	@Override
+	public void endElement(String uri, String localName, String qName)
+			throws SAXException {
+		// TODO Auto-generated method stub
+		tagStack.pop();//移除栈顶对象并作为此函数的值返回该对象
+	}
+
+	@Override
+	public boolean parse(String xmlString) {
+		// TODO Auto-generated method stub
+		try {  
+            super.parserXml(this, xmlString);  
+            return true;  
+        } catch (Exception e) {  
+            e.printStackTrace();  
+            return false;  
+        }  
+	}
+
+	@Override
+	public void startDocument() throws SAXException {
+		// TODO Auto-generated method stub
+
+	}
+	private Stack&lt;String&gt; tagStack = new Stack&lt;String&gt;();
+	private Vector&lt;Student&gt; students = new Vector&lt;Student&gt;(); 
+	@Override
+	public void startElement(String uri, String localName, String qName,
+			Attributes attributes) throws SAXException {
+		// TODO Auto-generated method stub
+//		System.out.println("qName="+qName);
+		if(qName.equals("student")){
+			Student object=new Student();
+			object.setSn(attributes.getValue("sn"));
+			students.addElement(object);
+		}
+		tagStack.push(qName);
+	}
+	
+}
+</pre>
+<br>下面是Student的model类：
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Java代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=package%20com.dc.model%3B%0A%0Apublic%20class%20Student%20%7B%0A%09%0A%09private%20String%20sn%3B%0A%09private%20String%20id%3B%0A%09private%20String%20name%3B%0A%09private%20String%20age%3B%0A%09public%20String%20getSn()%20%7B%0A%09%09return%20sn%3B%0A%09%7D%0A%09public%20void%20setSn(String%20sn)%20%7B%0A%09%09this.sn%20%3D%20sn%3B%0A%09%7D%0A%09public%20String%20getId()%20%7B%0A%09%09return%20id%3B%0A%09%7D%0A%09public%20void%20setId(String%20id)%20%7B%0A%09%09this.id%20%3D%20id%3B%0A%09%7D%0A%09public%20String%20getName()%20%7B%0A%09%09return%20name%3B%0A%09%7D%0A%09public%20void%20setName(String%20name)%20%7B%0A%09%09this.name%20%3D%20name%3B%0A%09%7D%0A%09public%20String%20getAge()%20%7B%0A%09%09return%20age%3B%0A%09%7D%0A%09public%20void%20setAge(String%20age)%20%7B%0A%09%09this.age%20%3D%20age%3B%0A%09%7D%0A%0A%7D%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-j"><li><span><span class="keyword">package</span><span>&nbsp;com.dc.model;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;Student&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;String&nbsp;sn;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;String&nbsp;id;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;String&nbsp;name;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;String&nbsp;age;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;getSn()&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;sn;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setSn(String&nbsp;sn)&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.sn&nbsp;=&nbsp;sn;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;getId()&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;id;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setId(String&nbsp;id)&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.id&nbsp;=&nbsp;id;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;getName()&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;name;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setName(String&nbsp;name)&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.name&nbsp;=&nbsp;name;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;getAge()&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;age;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setAge(String&nbsp;age)&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.age&nbsp;=&nbsp;age;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="java" style="display: none; " codeable_id="845436" codeable_type="Blog" source_url="http://gundumw100.iteye.com/blog/845436" pre_index="2" title=" android中使用SAX解析xml（封装）">package com.dc.model;
+
+public class Student {
+	
+	private String sn;
+	private String id;
+	private String name;
+	private String age;
+	public String getSn() {
+		return sn;
+	}
+	public void setSn(String sn) {
+		this.sn = sn;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAge() {
+		return age;
+	}
+	public void setAge(String age) {
+		this.age = age;
+	}
+
+}
+</pre>
+<br>
+<br>第三步：TestCase测试
+<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Java代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=package%20com.dc.test%3B%0A%0Aimport%20java.util.Vector%3B%0A%0Aimport%20junit.framework.TestCase%3B%0Aimport%20com.dc.handler.BaseHandler%3B%0Aimport%20com.dc.handler.StudentHandler%3B%0Aimport%20com.dc.model.Student%3B%0A%0Apublic%20class%20TestStudentHandler%20extends%20TestCase%20%7B%0A%09%0A%09public%20void%20test1()%7B%0A%09%09String%20data%3D%22%3Cstudents%3E%3Cstudent%20sn%3D&#39;001&#39;%3E%3Cid%3E1%3C%2Fid%3E%3Cname%3Ebenny%3C%2Fname%3E%3Cage%3E20%3C%2Fage%3E%3C%2Fstudent%3E%3Cstudent%20sn%3D&#39;002&#39;%3E%3Cid%3E2%3C%2Fid%3E%3Cname%3Ejimmy%3C%2Fname%3E%3Cage%3E30%3C%2Fage%3E%3C%2Fstudent%3E%3C%2Fstudents%3E%22%3B%0A%09%09BaseHandler%20handler%3Dnew%20StudentHandler()%3B%20%20%0A%09%09handler.parse(data)%3B%0A%09%09%0A%09%09Vector%20students%3D(Vector)BaseHandler.hash.get(%22students%22)%3B%2F%2Fhash%E5%BE%88%E9%87%8D%E8%A6%81%EF%BC%8C%E6%89%80%E6%9C%89%E7%9A%84%E4%B8%9C%E8%A5%BF%E9%83%BD%E5%9C%A8hash%E4%B8%AD%0A%09%09%0A%09%09for(int%20i%3D0%3Bi%3Cstudents.size()%3Bi%2B%2B)%7B%0A%09%09%09Student%20student%3D(Student)students.elementAt(i)%3B%0A%09%09%09if(student%3D%3Dnull)%7B%0A%09%09%09%09System.out.println(%22student%20is%20null%22)%3B%0A%09%09%09%7Delse%7B%0A%09%09%09%09System.out.println(student.getSn()%2B%22%3A%22%2Bstudent.getId()%2B%22%3A%22%2Bstudent.getName()%2B%22%3A%22%2Bstudent.getAge())%3B%0A%09%09%09%7D%0A%09%09%7D%0A%09%7D%0A%7D%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/spinner.gif" style="display:none"></a></div></div><ol start="1" class="dp-j"><li><span><span class="keyword">package</span><span>&nbsp;com.dc.test;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">import</span><span>&nbsp;java.util.Vector;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">import</span><span>&nbsp;junit.framework.TestCase;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;com.dc.handler.BaseHandler;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;com.dc.handler.StudentHandler;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;com.dc.model.Student;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;TestStudentHandler&nbsp;</span><span class="keyword">extends</span><span>&nbsp;TestCase&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;test1(){&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;data=<span class="string">"&lt;students&gt;&lt;student&nbsp;sn='001'&gt;&lt;id&gt;1&lt;/id&gt;&lt;name&gt;benny&lt;/name&gt;&lt;age&gt;20&lt;/age&gt;&lt;/student&gt;&lt;student&nbsp;sn='002'&gt;&lt;id&gt;2&lt;/id&gt;&lt;name&gt;jimmy&lt;/name&gt;&lt;age&gt;30&lt;/age&gt;&lt;/student&gt;&lt;/students&gt;"</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BaseHandler&nbsp;handler=<span class="keyword">new</span><span>&nbsp;StudentHandler();&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;handler.parse(data);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vector&nbsp;students=(Vector)BaseHandler.hash.get(<span class="string">"students"</span><span>);</span><span class="comment">//hash很重要，所有的东西都在hash中</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>(</span><span class="keyword">int</span><span>&nbsp;i=</span><span class="number">0</span><span>;i&lt;students.size();i++){&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student&nbsp;student=(Student)students.elementAt(i);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(student==</span><span class="keyword">null</span><span>){&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span class="string">"student&nbsp;is&nbsp;null"</span><span>);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<span class="keyword">else</span><span>{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(student.getSn()+<span class="string">":"</span><span>+student.getId()+</span><span class="string">":"</span><span>+student.getName()+</span><span class="string">":"</span><span>+student.getAge());&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="java" style="display: none; " codeable_id="845436" codeable_type="Blog" source_url="http://gundumw100.iteye.com/blog/845436" pre_index="3" title=" android中使用SAX解析xml（封装）">package com.dc.test;
+
+import java.util.Vector;
+
+import junit.framework.TestCase;
+import com.dc.handler.BaseHandler;
+import com.dc.handler.StudentHandler;
+import com.dc.model.Student;
+
+public class TestStudentHandler extends TestCase {
+	
+	public void test1(){
+		String data="&lt;students&gt;&lt;student sn='001'&gt;&lt;id&gt;1&lt;/id&gt;&lt;name&gt;benny&lt;/name&gt;&lt;age&gt;20&lt;/age&gt;&lt;/student&gt;&lt;student sn='002'&gt;&lt;id&gt;2&lt;/id&gt;&lt;name&gt;jimmy&lt;/name&gt;&lt;age&gt;30&lt;/age&gt;&lt;/student&gt;&lt;/students&gt;";
+		BaseHandler handler=new StudentHandler();  
+		handler.parse(data);
+		
+		Vector students=(Vector)BaseHandler.hash.get("students");//hash很重要，所有的东西都在hash中
+		
+		for(int i=0;i&lt;students.size();i++){
+			Student student=(Student)students.elementAt(i);
+			if(student==null){
+				System.out.println("student is null");
+			}else{
+				System.out.println(student.getSn()+":"+student.getId()+":"+student.getName()+":"+student.getAge());
+			}
+		}
+	}
+}
+</pre>
+<br>打印出：
+<br>001:1:benny:20
+<br>002:2:jimmy:30
+<br>
+<br>其实这个解析和j2me中jsr172解析xml基本一样。
+<br>请看我在j2me中是怎么解析的：
+<br><a target="_blank" href="http://gundumw100.iteye.com/admin/blogs/762763">http://gundumw100.iteye.com/admin/blogs/762763</a>
+<br>
+<br>另：奉送j2me中KXML解析xml
+<br><a target="_blank" href="http://gundumw100.iteye.com/admin/blogs/760163">http://gundumw100.iteye.com/admin/blogs/760163</a>
+<br>
+<br>Android数据格式解析对象JSON用法
+<br><a target="_blank" href="http://www.cnblogs.com/devinzhang/archive/2012/01/09/2317315.html">http://www.cnblogs.com/devinzhang/archive/2012/01/09/2317315.html</a>
+  </div>
+
+  
+
+
+  <iframe src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/794.html" scrolling="no" width="468" height="60" frameborder="0"></iframe>
+  
+  <div id="bottoms" class="clearfix">
+    
+    <div id="share_weibo">分享到：
+      <a data-type="sina" href="javascript:;" title="分享到新浪微博"><img src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/sina.jpg"></a>
+      <a data-type="qq" href="javascript:;" title="分享到腾讯微博"><img src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/tec.jpg"></a>
+    </div>
+  </div>
+
+  <div class="blog_nav">
+    <div class="pre_next">
+      <a href="http://gundumw100.iteye.com/blog/849729" class="next" title="android图片处理方法（不断收集中）">android图片处理方法（不断收集中）</a>
+      |
+      <a href="http://gundumw100.iteye.com/blog/839672" class="pre" title="3个RPG练习，最后一个是卡马克卷轴">3个RPG练习，最后一个是卡马克卷轴</a>
+    </div>
+  </div>
+  <div class="blog_bottom">
+    <ul>
+      <li>2010-12-17 12:15</li>
+      <li>浏览 2385</li>
+      <li><a href="http://gundumw100.iteye.com/blog/845436#comments">评论(0)</a></li>
+      
+      
+      <li>分类:<a href="http://www.iteye.com/blogs/category/mobile">移动开发</a></li>      
+      <li class="last"><a href="http://www.iteye.com/wiki/blog/845436" target="_blank" class="more">相关推荐</a></li>
+    </ul>
+  </div>
+
+  <div class="blog_comment">
+    <h5>评论</h5>
+    <a id="comments" name="comments"></a>
+    
+    
+    
+  </div>
+
+  <div class="blog_comment">
+    <h5>发表评论</h5>
+            <p style="text-align:center; margin-top:30px;margin-bottom:0px;"><a href="http://gundumw100.iteye.com/login" style="background-color:white;"> <img src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/login_icon.png" style="vertical-align:middle; margin-right: 10px;"></a><a href="http://gundumw100.iteye.com/login">  您还没有登录,请您登录后再发表评论 </a></p>
+      </div>
+</div>
+
+
+<script type="text/javascript">
+  dp.SyntaxHighlighter.HighlightAll('code', true, true);
+
+  $$('#main .blog_content pre[name=code]').each(function(pre, index){ // blog content
+    var post_id = 845436;
+    var location = window.location;
+    source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+    pre.writeAttribute('codeable_id', post_id);
+    pre.writeAttribute('codeable_type', "Blog");
+    pre.writeAttribute('source_url', source_url);
+    pre.writeAttribute('pre_index', index);
+    pre.writeAttribute('title', ' android中使用SAX解析xml（封装）');
+  });
+  $$('#main .blog_comment > div').each(function(comment){// comment
+    var post_id = comment.id.substr(2);
+    $$("#"+comment.id+" pre[name=code]").each(function(pre, index){
+      var location = window.location;
+      source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+      source_url += "#" + comment.id;
+      pre.writeAttribute('codeable_id', post_id);
+      pre.writeAttribute('codeable_type', "BlogComment");
+      pre.writeAttribute('source_url', source_url);
+      pre.writeAttribute('pre_index', index);
+      pre.writeAttribute('title', ' android中使用SAX解析xml（封装）');
+    });
+  });
+  code_favorites_init();
+
+  fix_image_size($$('div.blog_content img'), 700);
+  function quote_comment(id) {
+    new Ajax.Request('/editor/quote', {
+      parameters: {'id':id, 'type':'BlogComment'},
+      onSuccess:function(response){editor.bbcode_editor.textarea.insertAfterSelection(response.responseText);
+        Element.scrollTo(editor.bbcode_editor.textarea.element);}
+    });
+  }
+
+  new WeiboShare({share_buttons: $('share_weibo'), img_scope: $('blog_content')});
+</script>
+
+
+
+
+        </div>
+
+        <div id="local">
+          <div class="local_top"></div>
+          <div id="blog_owner">
+  <div id="blog_owner_logo"><a href="http://gundumw100.iteye.com/"><img alt="gundumw100的博客" class="logo" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/7b9db6f2-9873-327d-8213-526e2ee80b07.jpg" title="gundumw100的博客: 短裤党"></a></div>
+  <div id="blog_owner_name">gundumw100</div>
+</div>
+
+          <div id="blog_actions">
+            <ul>
+              <li>浏览: 867377 次</li>
+              <li>性别: <img alt="Icon_minigender_1" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/icon_minigender_1.gif" title="男"></li>
+              <li>来自: 上海</li>
+              <li><img src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/offline.gif"></li>
+              
+            </ul>
+          </div>
+          <div id="user_visits" class="clearfix">
+            <h5>最近访客 <span style="font-weight:normal;font-size:12px;padding-left:30px;"><a href="http://gundumw100.iteye.com/blog/user_visits">更多访客&gt;&gt;</a></span></h5>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://lsoxi-2020.iteye.com/" target="_blank"><img alt="lsoxi_2020的博客" class="logo" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/user-logo-thumb.gif" title="lsoxi_2020的博客: "></a></div>
+                <div class="left"><a href="http://lsoxi-2020.iteye.com/" target="_blank" title="lsoxi_2020">lsoxi_2020</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://chenxiaohong.iteye.com/" target="_blank"><img alt="Jack-chen的博客" class="logo" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/18d1ca7c-debf-39c4-80ae-6ea5c3b9df9a-thumb.jpg" title="Jack-chen的博客: Jack-Chen"></a></div>
+                <div class="left"><a href="http://chenxiaohong.iteye.com/" target="_blank" title="Jack-chen">Jack-chen</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://muyeziliang.iteye.com/" target="_blank"><img alt="muyeziliang的博客" class="logo" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/user-logo-thumb.gif" title="muyeziliang的博客: "></a></div>
+                <div class="left"><a href="http://muyeziliang.iteye.com/" target="_blank" title="muyeziliang">muyeziliang</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://go2ll.iteye.com/" target="_blank"><img alt="go2ll的博客" class="logo" src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/user-logo-thumb.gif" title="go2ll的博客: go2ll"></a></div>
+                <div class="left"><a href="http://go2ll.iteye.com/" target="_blank" title="go2ll">go2ll</a></div>
+              </div>
+            
+          </div>
+
+          
+
+                      <div id="blog_menu">
+              <h5>文章分类</h5>
+              <ul>
+                <li><a href="http://gundumw100.iteye.com/">全部博客 (682)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/186300">WindowsPhone (0)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74186">android (90)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/156626">android基础 (22)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/156628">android进阶 (103)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/156629">android高级 (0)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/156627">android拾遗 (49)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/156622">android动画&amp;效果 (45)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/166625">LUA (5)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74173">j2me (32)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74172">jQuery (39)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74174">spring (26)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74175">hibernate (20)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74176">struts (26)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74177">tomcat (9)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74178">javascript+css+html (62)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74179">jsp+servlet+javabean (14)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74277">java (37)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74181">velocity+FCKeditor (13)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74182">linux+批处理 (9)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74183">mysql (19)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74185">MyEclipse (9)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/74191">ajax (7)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/81861">wap (8)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/83127">j2ee+apache (24)</a></li>
+                
+                  <li><a href="http://gundumw100.iteye.com/category/76210">其他 (13)</a></li>
+                
+              </ul>
+            </div>
+            <div id="month_blogs">
+              <h5>社区版块</h5>
+              <ul>
+                <li><a href="http://gundumw100.iteye.com/blog/news">我的资讯</a> (0)</li>
+                <li>
+                  <a href="http://gundumw100.iteye.com/blog/post">我的论坛</a> (203)
+                </li>
+                <li><a href="http://gundumw100.iteye.com/blog/answered_problems">我的问答</a> (124)</li>
+              </ul>
+            </div>
+            <div id="month_blogs">
+              <h5>存档分类</h5>
+              <ul>
+                
+                  <li><a href="http://gundumw100.iteye.com/blog/monthblog/2012-12">2012-12</a> (1)</li>
+                
+                  <li><a href="http://gundumw100.iteye.com/blog/monthblog/2012-11">2012-11</a> (4)</li>
+                
+                  <li><a href="http://gundumw100.iteye.com/blog/monthblog/2012-09">2012-09</a> (1)</li>
+                
+                <li><a href="http://gundumw100.iteye.com/blog/monthblog_more">更多存档...</a></li>
+              </ul>
+            </div>
+            
+            
+              <div id="comments_top">
+                <h5>评论排行榜</h5>
+                <ul>
+                  
+                    <li><a href="http://gundumw100.iteye.com/blog/1544679" title="Gallery组件实现循环显示图像">Gallery组件实现循环显示图像</a></li>
+                  
+                    <li><a href="http://gundumw100.iteye.com/blog/1546381" title="仿人人网右边可推出的效果（带拖动）">仿人人网右边可推出的效果（带拖动）</a></li>
+                  
+                    <li><a href="http://gundumw100.iteye.com/blog/1420725" title="解决TextView排版自动换行问题">解决TextView排版自动换行问题</a></li>
+                  
+                    <li><a href="http://gundumw100.iteye.com/blog/1446507" title="自定义AutoCompleteTextView">自定义AutoCompleteTextView</a></li>
+                  
+                    <li><a href="http://gundumw100.iteye.com/blog/1533693" title="仿微信的开门效果">仿微信的开门效果</a></li>
+                  
+                </ul>
+              </div>
+            
+
+            <div id="guest_books">
+              <h5>最新评论</h5>
+              <ul>
+                
+                <li>
+                  <a href="http://bdstudyhard.iteye.com/" target="_blank" title="bdstudyhard">bdstudyhard</a>： 
+                   ...<br>
+                  <a href="http://gundumw100.iteye.com/blog/1056728#bc2294039">ListView实现简单的过滤，排序等控制</a>
+                </li>
+                
+                <li>
+                  <a href="http://hubenshan.iteye.com/" target="_blank" title="hubenshan">hubenshan</a>： 
+                  kankan<br>
+                  <a href="http://gundumw100.iteye.com/blog/1087524#bc2291731">简单位移动画TranslateAnimation</a>
+                </li>
+                
+                <li>
+                  <a href="http://weisi2375.iteye.com/" target="_blank" title="weisi2375">weisi2375</a>： 
+                  很全，&nbsp; 牛逼~~~~<br>
+                  <a href="http://gundumw100.iteye.com/blog/1560318#bc2290645">图片下载工具类：BitmapUtil</a>
+                </li>
+                
+                <li>
+                  <a href="http://weisi2375.iteye.com/" target="_blank" title="weisi2375">weisi2375</a>： 
+                  学习了 ~~~~~~~~~~~~~~~~~~~~~~~<br>
+                  <a href="http://gundumw100.iteye.com/blog/1583094#bc2290644">使用FileObserver对sdcard文件或文件夹监控</a>
+                </li>
+                
+                <li>
+                  <a href="http://xuyongfeng86.iteye.com/" target="_blank" title="xuyongfeng86">xuyongfeng86</a>： 
+                  效果很好，我想加到获得焦点后这种效果，能实现吗？
+<br>
+                  <a href="http://gundumw100.iteye.com/blog/1205547#bc2290616">采用Bitmap的extractAlpha产生图片边缘光晕效果</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="local_bottom"></div>
+          
+        </div>
+      </div>
+
+      <div id="footer" class="clearfix">
+        <div id="copyright">
+          <hr>
+          声明：ITeye文章版权属于作者，受法律保护。没有作者书面许可不得转载。若作者同意转载，必须以超链接形式标明文章原始出处和作者。<br>
+          © 2003-2012 ITeye.com.   All rights reserved.  [ 京ICP证110151号  京公网安备110105010620 ]
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+  document.write("<img src='http://stat.iteye.com/?url="+ encodeURIComponent(document.location.href) + "&referrer=" + encodeURIComponent(document.referrer) + "&user_id=' width='0' height='0' />");
+</script><img src="./android中使用SAX解析xml（封装） - 短裤党 - ITeye技术网站_files/saved_resource" width="0" height="0">
+
+    
+    
+  
+
+</body></html>
