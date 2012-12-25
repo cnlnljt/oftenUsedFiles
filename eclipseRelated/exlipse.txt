@@ -1,0 +1,73 @@
+---------------------------------------------------------------------------
+1.eclipse高亮显示相同变量功能消失
+
+原因：在导包的时候不小心按下了alt + shift + o，从而导致关闭了该功能。
+
+恢复方法：windows-> preferences->java->Editor->Mark Occurences，选中最上方的复选框即可。
+
+2.android工程出现莫名奇妙的错误
+
+试试project->clean
+
+3.linux下svn出现Failed to load JavaHL Library.错误
+
+是因为没有安装javaHL
+
+装一下即可，终端运行sudo apt-get install libsvn-java
+
+再进行一下配置：
+
+修改eclipse.ini文件，添加下面内容： -Djava.library.path=/usr/lib/jni 重启eclipse
+
+如果还出现Incompatible JavaHL library loaded. 1.7.x or later required错误，那么查看一下你的版本是否是1.8.x，这个版本需要对应1.7.x的javaHL，官方源还是1.6.x的，安装1.6.x的svn即可。
+
+4.ubuntu 11.04和11.10将eclipse固定在启动器上
+
+11.04比较方便，桌面，右击->创建启动器，然后将创建好的启动器拖到边栏上即可。
+
+11.10没了这个功能。可以按如下步骤创建：
+
+输入命令sudo gedit /usr/share/applications/Eclipse.desktop
+
+打开文件按如下修改，保存
+
+[Desktop Entry]
+
+Name=Eclipse   //AP名称
+
+Comment=Eclipse   //注释
+
+Exec=/home/kesenhoo/Program/eclipse-indigo-J2EE/eclipse   //执行文件目录
+
+Icon=/home/kesenhoo/Program/eclipse-indigo-J2EE/icon.xpm   //图标位置
+
+Terminal=false              //
+
+Type=Application         //
+
+Categories=GNOME;Application;Programing    //为这个AP分类
+
+StartupNotify=true     //
+
+4.在eclipse中显示空格和tab
+
+Window->Preferences->General->Editors->Text Editors->Show whitespace characters
+
+5.eclipse中编译出现@Override错误
+
+@Override是JDK5 就已经有了，但有个小小的Bug，就是不支持对接口的实现，认为这不是Override
+而JDK6 修正了这个Bug，无论是对父类的方法覆盖还是对接口的实现都可以加上@Override
+
+修改你的eclipse指定的编译器版本
+在选项里的java compiler中指定版本至少在5.0以上
+
+在myEclipse中改变编译器的方法：Project->Properties->Java Compiler->Configure Workspace Setting，在弹出的页面中可以进行设置，改成1.6即可。
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+
