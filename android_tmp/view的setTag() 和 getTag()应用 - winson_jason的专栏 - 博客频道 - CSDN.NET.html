@@ -1,0 +1,545 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>view的setTag() 和 getTag()应用 - winson_jason的专栏 - 博客频道 - CSDN.NET</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="原文地址：http://www.cnblogs.com/qingblog/archive/2012/07/03/2575140.htmlView中的setTag(Onbect)表示给View添加一个格外的数据，以后可以用getTag()将这个数据取出来。可以用在多个Button添加一个监听器，每个Button都设置不同的setTag。这个监听器就通过getTag来分辨是哪个Bu" />
+<script src="http://static.blog.csdn.net/scripts/jquery.js" type="text/javascript"></script>
+<script src="http://static.blog.csdn.net/scripts/plugins.js" type="text/javascript"></script>
+<script src="http://static.blog.csdn.net/scripts/common.js?v=1.2" type="text/javascript"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/ad.js?v=1.1"></script>
+<link rel="Stylesheet" type="text/css" href="http://static.blog.csdn.net/skin/default/css/style.css?v=1.1" />
+<link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="/winson_jason/rss/list" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link type="text/css" rel="stylesheet" href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/default.css" />
+</head>
+<body>
+<script src="http://csdnimg.cn/pubnav/js/pub_topnav_2011.js"type="text/javascript"></script>
+<div id="container">
+<div id="header">
+    <div class="header">
+        <div id="blog_title">
+            <h1><a href="/winson_jason">winson_jason的专栏</a></h1>
+            <h2></h2>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div id="navigator">
+    <div class="navigator_bg"></div>
+    <div class="navigator">
+        <ul>
+            <li id="btnContents"><a href="/winson_jason?viewmode=contents"><span><img src="http://static.blog.csdn.net/images/ico_list.gif">目录视图</span></a></li>
+            <li id="btnView"><a href="/winson_jason?viewmode=list"><span><img src="http://static.blog.csdn.net/images/ico_summary.gif">摘要视图</span></a></li>
+            <li id="btnRss"><a href="/winson_jason/rss/list"><span><img src="http://static.blog.csdn.net/images/ico_rss.gif">订阅</span></a></li>
+</ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var username = "winson_jason";
+    var blog_address = "http://blog.csdn.net/winson_jason";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";
+</script>
+        
+<div id="body">
+<div id="main">
+<div class="main">
+<div class="notice"> 
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/8424776" target="_blank">
+<font color=red>
+2013年4月微软MVP申请开始啦！   </font></a>
+
+&nbsp;&nbsp;
+
+<a href="http://bbs.csdn.net/topics/390312398
+" target="_blank"><font color=red>CSDN论坛2012年度职场优秀帖评选活动正式开始！</font></a>
+
+&nbsp;&nbsp;
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/8424675
+" target="_blank"><font color=red>CSDN博客频道年终送好礼！</font></a>
+
+
+<br />
+
+
+
+
+
+<a href="http://vote.blog.csdn.net/details/blogstar"target="_blank">
+<font color=red>2012CSDN博客之星评选正式上线 </font></a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="http://blog.csdn.net/zhangoi391/article/details/8161343"target="_blank">
+<font color=red>2000元大奖征异构开发博文  </font></a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="http://huiyi.csdn.net/cmdn/view/183"target="_blank">
+<font color=red>Q14年互联网产品进化史   </font></a>
+
+</div><div id="article_details" class="details">
+    <div class="article_title">
+    <span class="ico ico_type_Repost"></span>
+    <h3>
+        <span class="link_title"><a href="/winson_jason/article/details/8147020">
+        view的setTag() 和 getTag()应用
+        </a></span>
+    </h3>
+</div>
+
+        
+    <div class="article_manage">
+        <span class="link_categories">
+        分类：
+            <a href="/winson_jason/article/category/1264126">android基础知识</a> 
+        </span>
+    <span class="link_postdate">2012-11-04 22:53</span>
+    <span class="link_view" title="阅读次数">15人阅读</span>
+    <span class="link_comments" title="评论次数"><a href="#comments">评论</a>(0)</span>
+    <span class="link_collect"><a href="javascript:void(0);" onclick="javascript:collectArticle('view的setTag() 和 getTag()应用','8147020');return false;" title="收藏">收藏</a></span>
+    <span class="link_report"><a href="#report"  onclick="javascript:report(8147020,2);return false;" title="举报">举报</a></span>
+    
+</div>
+
+
+    
+<div id="article_content" class="article_content">
+
+<p>原文地址：<a href="http://www.cnblogs.com/qingblog/archive/2012/07/03/2575140.html">http://www.cnblogs.com/qingblog/archive/2012/07/03/2575140.html</a></p>
+<div id="cnblogs_post_body">
+<div id="blog_content" class="blog_content">View中的setTag(Onbect)表示给View添加一个&#26684;外的数据，以后可以用getTag()将这个数据取出来。
+<br>
+<br>
+可以用在多个Button添加一个监听器，每个Button都设置不同的setTag。这个监听器就通过getTag来分辨是哪个Button 被按下。 <br>
+<br>
+<div class="dp-highlighter">
+<div class="bar">
+<div class="tools">Java代码 <a title="复制代码" href="http://wen66.iteye.com/blog/1224202">
+<img alt="复制代码" src="http://wen66.iteye.com/images/icon_copy.gif"></a>&nbsp;<a title="收藏这段代码" href=""><img class="star" alt="收藏代码" src="http://wen66.iteye.com/images/icon_star.png"><img class="spinner" alt="" src="http://wen66.iteye.com/images/spinner.gif" style=""></a></div>
+</div>
+<ol class="dp-j">
+<li><span><span class="keyword">import</span><span>&nbsp;android.app.Activity; &nbsp;&nbsp;</span></span></li><li><span class="keyword">import</span><span>&nbsp;android.os.Bundle; &nbsp;&nbsp;</span></li><li><span class="keyword">import</span><span>&nbsp;android.view.View; &nbsp;&nbsp;</span></li><li><span class="keyword">import</span><span>&nbsp;android.widget.Button; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;Main&nbsp;</span><span class="keyword">extends</span><span>&nbsp;Activity&nbsp;{ &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span class="annotation">@Override</span><span>&nbsp;&nbsp;</span></li><li><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;onCreate(Bundle&nbsp;savedInstanceState){&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">super</span><span>.onCreate(savedInstanceState);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;setContentView(R.layout.main);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;Button&nbsp;button1&nbsp;=&nbsp;(Button)&nbsp;findViewById(R.id.Button01);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;Button&nbsp;button2&nbsp;=&nbsp;(Button)&nbsp;findViewById(R.id.Button02);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;Button&nbsp;button3&nbsp;=&nbsp;(Button)&nbsp;findViewById(R.id.Button03);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;Button&nbsp;button4&nbsp;=&nbsp;(Button)&nbsp;findViewById(R.id.Button04);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;MyListener&nbsp;listener&nbsp;=&nbsp;</span><span class="keyword">new</span><span>&nbsp;MyListener();&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;button1.setTag(</span><span class="number">1</span><span>);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;button1.setOnClickListener(listener);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;button2.setTag(</span><span class="number">2</span><span>);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;button2.setOnClickListener(listener);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;button3.setTag(</span><span class="number">3</span><span>);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;button3.setOnClickListener(listener);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;button4.setTag(</span><span class="number">4</span><span>);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;button4.setOnClickListener(listener);&nbsp; &nbsp;&nbsp;</span></li><li><span>} &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;MyListener&nbsp;</span><span class="keyword">implements</span><span>&nbsp;View.OnClickListener&nbsp;{ &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="annotation">@Override</span><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;onClick(View&nbsp;v)&nbsp;{ &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">int</span><span>&nbsp;tag&nbsp;=&nbsp;(Integer)&nbsp;v.getTag(); &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">switch</span><span>&nbsp;(tag){&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">case</span><span>&nbsp;</span><span class="number">1</span><span>:&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(</span><span class="string">&quot;button1&nbsp;click&quot;</span><span>);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">break</span><span>;&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">case</span><span>&nbsp;</span><span class="number">2</span><span>:&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(</span><span class="string">&quot;button2&nbsp;click&quot;</span><span>);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">break</span><span>;&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">case</span><span>&nbsp;</span><span class="number">3</span><span>:&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(</span><span class="string">&quot;button3&nbsp;click&quot;</span><span>);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">break</span><span>;&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">case</span><span>&nbsp;</span><span class="number">4</span><span>:&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(</span><span class="string">&quot;button4&nbsp;click&quot;</span><span>); &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">break</span><span>;&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;</span></li><li><span>&nbsp;} &nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol>
+</div>
+<pre class="java" name="code">import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+ 
+public class Main extends Activity {
+ 
+@Override
+public void onCreate(Bundle savedInstanceState){ 
+ 
+ 
+    super.onCreate(savedInstanceState); 
+    setContentView(R.layout.main); 
+ 
+ 
+    Button button1 = (Button) findViewById(R.id.Button01); 
+    Button button2 = (Button) findViewById(R.id.Button02); 
+    Button button3 = (Button) findViewById(R.id.Button03); 
+    Button button4 = (Button) findViewById(R.id.Button04); 
+ 
+ 
+    MyListener listener = new MyListener(); 
+    button1.setTag(1); 
+    button1.setOnClickListener(listener); 
+ 
+ 
+    button2.setTag(2); 
+    button2.setOnClickListener(listener); 
+ 
+ 
+    button3.setTag(3); 
+    button3.setOnClickListener(listener); 
+ 
+ 
+    button4.setTag(4); 
+    button4.setOnClickListener(listener); 
+}
+ 
+public class MyListener implements View.OnClickListener {
+ 
+    @Override
+    public void onClick(View v) {
+        int tag = (Integer) v.getTag();
+        switch (tag){ 
+        case 1: 
+           System.out.println(&quot;button1 click&quot;); 
+        break; 
+ 
+ 
+        case 2: 
+           System.out.println(&quot;button2 click&quot;); 
+        break; 
+ 
+ 
+        case 3: 
+           System.out.println(&quot;button3 click&quot;); 
+        break; 
+ 
+ 
+        case 4: 
+        System.out.println(&quot;button4 click&quot;);
+        break; 
+     }
+   }
+ }
+}
+</pre><br>
+<br>
+在写listView 时候要重写BaseAdapter <br>
+需要在每个item都加上button 点击button做相应操作 <br>
+这个时候需要button里面设置下 这行的属性button.setTag(item.user.name); <br>
+然后处理button事件。 <br>
+这个东西在一些需要用到Adapter自定控件显示方式的时候非常有用 <br>
+Adapter 有个getView方法，可以使用setTag把查找的view缓存起来方便多次重用 <br>
+<br>
+<div class="dp-highlighter">
+<div class="bar">
+<div class="tools">Java代码 <a title="复制代码" href="http://wen66.iteye.com/blog/1224202">
+<img alt="复制代码" src="http://wen66.iteye.com/images/icon_copy.gif"></a>&nbsp;<a title="收藏这段代码" href=""><img class="star" alt="收藏代码" src="http://wen66.iteye.com/images/icon_star.png"><img class="spinner" alt="" src="http://wen66.iteye.com/images/spinner.gif" style=""></a></div>
+</div>
+<ol class="dp-j">
+<li><span><span class="keyword">public</span><span>&nbsp;View&nbsp;getView(</span><span class="keyword">int</span><span>&nbsp;position,&nbsp;View&nbsp;convertView,&nbsp;ViewGroup&nbsp;parent)&nbsp;{ &nbsp;&nbsp;</span></span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;ViewHolder&nbsp;vh; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">if</span><span>&nbsp;(convertView&nbsp;==&nbsp;</span><span class="keyword">null</span><span>){&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LayoutInflater&nbsp;inflater&nbsp;=&nbsp;(LayoutInflater)&nbsp;mWidgetsSwitchApp&nbsp;.getSystemService(Context.LAYOUT_INFLATER_SERVICE);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;convertView&nbsp;=&nbsp;inflater.inflate(R.layout.app_gallery_item,&nbsp;</span><span class="keyword">null</span><span>);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vh&nbsp;=&nbsp;</span><span class="keyword">new</span><span>&nbsp;ViewHolder();&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vh.view1&nbsp;=&nbsp;(ImageView)&nbsp;convertView.findViewById(R.id.view1);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vh.view2&nbsp;=&nbsp;(ImageView)&nbsp;convertView.findViewById(R.id.view2);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vh.view3=&nbsp;(ImageView)&nbsp;convertView.findViewById(R.id.view3);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vh.view4&nbsp;=&nbsp;(ImageView)&nbsp;convertView.findViewById(R.id.view4);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;convertView.setTag(vh);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}</span><span class="keyword">else</span><span>{&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vh&nbsp;=&nbsp;(ViewHolder)&nbsp;convertView.getTag();&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//其他的代码可以直接使用&nbsp;vh.view1、vh.view2、vh.view3&nbsp;、vh.view4
+</span><span>&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol>
+</div>
+<pre class="java" name="code">public View getView(int position, View convertView, ViewGroup parent) {
+ 
+    ViewHolder vh;
+    if (convertView == null){ 
+        LayoutInflater inflater = (LayoutInflater) mWidgetsSwitchApp .getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
+        convertView = inflater.inflate(R.layout.app_gallery_item, null); 
+        vh = new ViewHolder(); 
+        vh.view1 = (ImageView) convertView.findViewById(R.id.view1); 
+        vh.view2 = (ImageView) convertView.findViewById(R.id.view2); 
+        vh.view3= (ImageView) convertView.findViewById(R.id.view3); 
+        vh.view4 = (ImageView) convertView.findViewById(R.id.view4); 
+        convertView.setTag(vh); 
+    }else{ 
+       vh = (ViewHolder) convertView.getTag(); 
+    }
+    //其他的代码可以直接使用 vh.view1、vh.view2、vh.view3 、vh.view4
+}
+</pre><br>
+<br>
+你可以看看android的源码，特别有listview的，你就会发现这个函数很多时候有妙用!呵呵! <br>
+我的一点理解是，绑定数据，特别是绑定数据到view。而且可以用getTag()取得，很方便，而且是任意类型的数据，真的很酷。 <br>
+在实例BaseAdapter()的getView(position, convertView, par)里有用到。convertView这里会用到setTag() getTag()。就可以生成convertView并复用里面的widget
+<br>
+一直觉得这个东西没啥用setTag()，不过只要能用上 就是比较巧的了 <br>
+在一个程序中呢 我有好多个button 我想点击一个出现1 点击第二个出现2 <br>
+<br>
+<div class="dp-highlighter">
+<div class="bar">
+<div class="tools">Java代码 <a title="复制代码" href="http://wen66.iteye.com/blog/1224202">
+<img alt="复制代码" src="http://wen66.iteye.com/images/icon_copy.gif"></a>&nbsp;<a title="收藏这段代码" href=""><img class="star" alt="收藏代码" src="http://wen66.iteye.com/images/icon_star.png"><img class="spinner" alt="" src="http://wen66.iteye.com/images/spinner.gif" style=""></a></div>
+</div>
+<ol class="dp-j">
+<li><span><span class="keyword">for</span><span>&nbsp;(</span><span class="keyword">int</span><span>&nbsp;i&nbsp;=&nbsp;</span><span class="number">0</span><span>;&nbsp;i&nbsp;&lt;&nbsp;</span><span class="number">20</span><span>;&nbsp;i&#43;&#43;)&nbsp;{ &nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cells[i]&nbsp;=&nbsp;(ImageView)&nbsp;findViewById(cellIDs[i]); &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cells[cellnumber&#43;&#43;].setOnClickListener(</span><span class="keyword">new</span><span>&nbsp;OnClickListener()&nbsp;{ &nbsp;&nbsp;</span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;onClick(View&nbsp;v){&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cellClicked(cellnumber,&nbsp;v);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}); &nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol>
+</div>
+<pre class="java" name="code">for (int i = 0; i &lt; 20; i++) {
+     cells[i] = (ImageView) findViewById(cellIDs[i]);
+     cells[cellnumber++].setOnClickListener(new OnClickListener() {
+ 
+          public void onClick(View v){ 
+              cellClicked(cellnumber, v); 
+          }
+      });
+}
+</pre><br>
+<br>
+上面的代码效率不高 而且 无论点击哪一个都会出现21 当然这是我逻辑错误那怎么实现呢 <br>
+<br>
+<div class="dp-highlighter">
+<div class="bar">
+<div class="tools">Java代码 <a title="复制代码" href="http://wen66.iteye.com/blog/1224202">
+<img alt="复制代码" src="http://wen66.iteye.com/images/icon_copy.gif"></a>&nbsp;<a title="收藏这段代码" href=""><img class="star" alt="收藏代码" src="http://wen66.iteye.com/images/icon_star.png"><img class="spinner" alt="" src="http://wen66.iteye.com/images/spinner.gif" style=""></a></div>
+</div>
+<ol class="dp-j">
+<li><span><span>OnClickListener&nbsp;listener&nbsp;=&nbsp;</span><span class="keyword">new</span><span>&nbsp;OnClickListener()&nbsp;{ &nbsp;&nbsp;</span></span></li><li><span>&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;onClick(View&nbsp;v){&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">int</span><span>&nbsp;cellId&nbsp;=&nbsp;(Integer)&nbsp;v.getTag();&nbsp;cellClicked(cellId,&nbsp;v);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;</span></li><li><span>} &nbsp;&nbsp;</span></li><li><span>View&nbsp;v; &nbsp;&nbsp;</span></li><li><span class="keyword">for</span><span>&nbsp;(</span><span class="keyword">int</span><span>&nbsp;i&nbsp;=&nbsp;</span><span class="number">0</span><span>;&nbsp;i&nbsp;&lt;&nbsp;</span><span class="number">20</span><span>;&nbsp;i&#43;&#43;){&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;v&nbsp;=&nbsp;findViewById(cellIDs[i]);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;v.setOnClickListener(listener);&nbsp; &nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;v.setTag(i);&nbsp; &nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol>
+</div>
+<pre class="java" name="code">OnClickListener listener = new OnClickListener() {
+ 
+     public void onClick(View v){ 
+        int cellId = (Integer) v.getTag(); cellClicked(cellId, v); 
+     }
+}
+View v;
+for (int i = 0; i &lt; 20; i++){ 
+    v = findViewById(cellIDs[i]); 
+    v.setOnClickListener(listener); 
+    v.setTag(i); 
+}
+</pre><br>
+<br>
+这样呢就实例话一个listener，同时通过tag传&#20540;就不是每一个实例都做了 </div>
+</div>
+
+</div>
+<div class="share_buttons" id="sharePanel"></div>
+<!--192.168.1.236-->
+<div class="article_next_prev">
+    <li class="prev_article"><span>上一篇：</span><a href="/winson_jason/article/details/8144974">android SQLite使用SQLiteOpenHelper类对数据库进行操作</a></li>
+    <li class="next_article"><span>下一篇：</span><a href="/winson_jason/article/details/8149284">Handler sendMessage 与 obtainMessage (sendToTarget)比较</a></li>
+</div>
+
+
+    
+</div>
+<div id="ad_cen"></div>
+<script type="text/javascript">
+    new Ad(4, 'ad_cen');
+</script>
+<div id="comment_title" class="panel_head">查看评论<a name="comments"></a></div>
+<div id="comment_list"></div>
+<div id="comment_bar"></div>
+<div id="comment_form"></div>
+<div class="announce">* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>
+<script type="text/javascript">
+    var fileName = '8147020';
+    var commentscount = 0;
+    var islock = false
+</script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/comment.js?v=1.8"></script>
+<div id="ad_bot"></div>
+<script type="text/javascript">
+    new Ad(5, 'ad_bot');
+</script>
+<div id="report_dialog"></div>
+
+<div id="d-top">
+<a href="#" onclick="javascript:document.body.scrollTop=0;document.documentElement.scrollTop=0;this.blur();return false;" title="回到顶部">
+<img src="http://static.blog.csdn.net/images/top.png" alt="TOP" /></a>
+</div>
+
+
+
+<div class="clear"></div>
+</div>
+</div>
+
+<div id="side">
+<div class="side">
+<div id="panel_Profile" class="panel">
+    <ul class="panel_head"><span>个人资料</span></ul>
+    <ul class="panel_body profile">
+        <div id="blog_userface">
+            <a href="http://my.csdn.net/winson_jason" target="_blank">
+            <img src="http://avatar.csdn.net/1/B/1/1_winson_jason.jpg" title="访问我的空间" style="max-width:90%"/>
+            </a>
+            <br />
+            <span><a href="http://my.csdn.net/winson_jason" class="user_name" target="_blank">winson_jason</a></span>
+        </div>
+<div class="interact">
+<!--<a href="#" class="attented" title="已关注"></a>-->
+<a href="#" class="attent" id="span_add_follow" title="[加关注]"></a>
+<a href="http://my.csdn.net/my/letter/send/winson_jason" class="letter" title="[发私信]"></a>
+</div>
+        <div id="blog_medal">
+        </div>
+        <ul id="blog_rank">
+            <li>访问：<span>11379次</span></li>
+            <li>积分：<span>381分</span></li>
+            <li>排名：<span>千里之外</span></li>
+        </ul>
+        <ul id="blog_statistics">
+            <li>原创：<span>13篇</span></li>
+            <li>转载：<span>86篇</span></li>
+            <li>译文：<span>1篇</span></li>
+            <li>评论：<span>0条</span></li>
+        </ul>
+    </ul>
+</div>
+<script type="text/javascript">
+    var _blogger = 'winson_jason';
+</script>
+<script type='text/javascript'>
+$(document).ready(function () {
+    var un = getUN().toLowerCase();
+    if (un == _blogger.toLowerCase()) {
+        $('.interact').hide();
+    } else if(un) {
+        var url = "http://my.csdn.net/index.php/follow/check_is_followed/" + encodeURIComponent(un) + "/" + encodeURIComponent(_blogger) + "?jsonpcallback=?";
+        $.getJSON(url, {}, function (data) {
+            if (data.succ == 1 && data.info == 1) {
+                $('#span_add_follow').attr('class', 'attented');
+            } else {
+                $('#span_add_follow').click(guanzhu);
+            }
+        }, 'json');
+    }
+});
+function guanzhu() {
+    var url = "http://my.csdn.net/index.php/follow/do_follow?jsonpcallback=?";
+    $.getJSON(url, { "username": _blogger }, function (data) {
+        if (data.succ == 1) {
+            alert('关注成功！');
+            $('#span_add_follow').attr('class', 'attented').click(function () { return false; });
+        } else {
+            alert(data.msg);
+        }
+    });
+    return false;
+}
+function getUN() {
+    var m = document.cookie.match(new RegExp("(^| )UserName=([^;]*)(;|$)"));
+    if (m) return m[2];
+    else return '';
+}
+</script>
+
+<div class="panel" id="panel_Search">
+    <ul class="panel_head"><span>文章搜索</span></ul>
+    <ul class="panel_body">
+        <form id="frmSearch" action="http://so.csdn.net/search" class="form_search" target="_blank">
+        <span><input id="inputSearch" type="text" class="blogsearch" title="请输入关键字" /></span>
+        <input id="btnSubmit" type="submit" value="搜索" title="search in blog" />
+        <input type="hidden" name="q" id="inputQ" />
+        <input type="hidden" name="t" value="blog" />
+        <a id="btnSearchBlog" target="_blank"></a>
+        </form>
+    </ul>
+</div><div id="panel_Category" class="panel">
+    <ul class="panel_head"><span>文章分类</span></ul>
+    <ul class="panel_body">
+        <li>
+        <a href="http://blog.csdn.net/winson_jason/article/category/915871">Wince</a><span>(2)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/winson_jason/article/category/1073136">C/C++</a><span>(26)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/winson_jason/article/category/1073802">小家电设计</a><span>(5)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/winson_jason/article/category/1095736">职场知识</a><span>(3)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/winson_jason/article/category/1113783">JAVA</a><span>(6)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/winson_jason/article/category/1214893">android</a><span>(39)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/winson_jason/article/category/1264126">android基础知识</a><span>(19)</span>
+        </li>
+    </ul>
+</div><div id="panel_Archive" class="panel">
+    <ul class="panel_head"><span>文章存档</span></ul>
+    <ul class="panel_body">
+        <div id="archive_list">
+        <!--归档统计-->
+        <li><a href="http://blog.csdn.net/winson_jason/article/month/2012/12">2012年12月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/winson_jason/article/month/2012/11">2012年11月</a><span>(26)</span></li><li><a href="http://blog.csdn.net/winson_jason/article/month/2012/10">2012年10月</a><span>(23)</span></li><li><a href="http://blog.csdn.net/winson_jason/article/month/2012/09">2012年09月</a><span>(5)</span></li><li><a href="http://blog.csdn.net/winson_jason/article/month/2012/08">2012年08月</a><span>(5)</span></li><li><a href="http://blog.csdn.net/winson_jason/article/month/2012/05">2012年05月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/winson_jason/article/month/2012/04">2012年04月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/winson_jason/article/month/2012/03">2012年03月</a><span>(5)</span></li><li><a href="http://blog.csdn.net/winson_jason/article/month/2012/02">2012年02月</a><span>(24)</span></li><li><a href="http://blog.csdn.net/winson_jason/article/month/2012/01">2012年01月</a><span>(2)</span></li><li><a href="http://blog.csdn.net/winson_jason/article/month/2011/12">2011年12月</a><span>(1)</span></li>
+        </div>
+    </ul>
+</div>
+<div id="hotarticls" class="panel">
+    <ul class="panel_head"><span>阅读排行</span></ul>
+    <ul class="panel_body itemlist">
+        <li>
+            <a href="/winson_jason/article/details/7496708" title="关于档案问题">关于档案问题</a><span>(500)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/7175434" title="【转】ExitProcess与TerminateProcess">【转】ExitProcess与TerminateProcess</a><span>(492)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/8050995" title="Android获取SD卡视频音频文件">Android获取SD卡视频音频文件</a><span>(490)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/7949294" title="Android eclipse中程序调试">Android eclipse中程序调试</a><span>(477)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/7241730" title="小家电安规简介">小家电安规简介</a><span>(465)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/8051006" title="android 读取SD卡文件">android 读取SD卡文件</a><span>(449)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/7240213" title="已知单向链表的头结点head，写一个函数把这个链表逆序 ( Intel)">已知单向链表的头结点head，写一个函数把这个链表逆序 ( Intel)</a><span>(444)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/8041930" title="Android数据的四种存储方式SharedPreferences、SQLite、Content Provider和File">Android数据的四种存储方式SharedPreferences、SQLite、Content Provider和File</a><span>(371)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/7244417" title="C语言：动态内存会被自动释放吗？杜绝“野指针”">C语言：动态内存会被自动释放吗？杜绝“野指针”</a><span>(362)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/7547938" title="串连的RC电路电容充放电的时间计算">串连的RC电路电容充放电的时间计算</a><span>(359)</span>
+        </li>
+    </ul>
+</div>
+<div id="hotarticls2" class="panel">
+    <ul class="panel_head"><span>评论排行</span></ul>
+    <ul class="panel_body itemlist">
+        <li>
+            <a href="/winson_jason/article/details/8045367" title="LayoutInflater作用及使用">LayoutInflater作用及使用</a><span>(0)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/8072544" title="如何将应用安装到/system/app下">如何将应用安装到/system/app下</a><span>(0)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/8072906" title="ANDROID开机动画bootanimation.zip的详细制作方法">ANDROID开机动画bootanimation.zip的详细制作方法</a><span>(0)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/8075084" title="android系统编译资料">android系统编译资料</a><span>(0)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/8103849" title="详解 Android 的 Activity 组件">详解 Android 的 Activity 组件</a><span>(0)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/8115846" title="android之manifest.xml内provider详解 .">android之manifest.xml内provider详解 .</a><span>(0)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/8126856" title=".Audio Focus机制以及AudioManager的使用">.Audio Focus机制以及AudioManager的使用</a><span>(0)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/8135767" title="onMeasure和onLayout .">onMeasure和onLayout .</a><span>(0)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/8138087" title="Android开发——MediaProvider源码分析 .">Android开发——MediaProvider源码分析 .</a><span>(0)</span>
+        </li>
+        <li>
+            <a href="/winson_jason/article/details/8144974" title="android SQLite使用SQLiteOpenHelper类对数据库进行操作">android SQLite使用SQLiteOpenHelper类对数据库进行操作</a><span>(0)</span>
+        </li>
+    </ul>
+</div>
+<div id="homepageArticles" class="panel">
+    <ul class="panel_head"><span>推荐文章</span></ul>
+    <ul class="panel_body" id="ad_commend">
+    </ul>
+</div>
+<script type="text/javascript">
+    new Ad(12, 'ad_commend');
+</script></div>
+<div class="clear"></div>
+</div>
+
+<div class="clear"></div>
+</div>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/SyntaxHighlighter/shCore-src.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/article_code.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/cnick.js"></script>
+
+<script type="text/javascript" src="http://medal.blog.csdn.net/scripts/show.js"></script>
+<script type="text/javascript" src="http://medal.blog.csdn.net/showblogmedal.ashx?blogid=1199753"></script>
+
+<script type="text/javascript" src="http://csdnimg.cn/pubfooter/js/publib_footer.js"></script>
+
+<script type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</script>
+<script type="text/javascript" src="http://www.csdn.net/ui/scripts/Csdn/counter.js"></script>
+
+<!--ad.csdn.net-->
+<script type="text/javascript" src="http://ad.csdn.net/scripts/ad-blog.js"></script>
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>android去掉titlebar - Ant space - ITeye技术网站</title>
+    <meta name="description" content="      方法一：修改code     在 public void onCreate(Bundle savedInstanceState)函数体中加     " />
+    <meta name="keywords" content=" android去掉titlebar" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="search" type="application/opensearchdescription+xml" href="/open_search.xml" title="ITeye" />
+    <link href="/rss" rel="alternate" title="Ant space" type="application/rss+xml" />
+    <link href="http://www.iteye.com/stylesheets/blog.css?1356505374" media="screen" rel="stylesheet" type="text/css" />
+<link href="http://www.iteye.com/stylesheets/themes/blog/blue.css?1326191326" media="screen" rel="stylesheet" type="text/css" />
+    <script src="http://www.iteye.com/javascripts/application.js?1338174647" type="text/javascript"></script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-535605-1']);
+  _gaq.push(['_setDomainName', 'iteye.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+      <link href="http://www.iteye.com/javascripts/syntaxhighlighter/SyntaxHighlighter.css?1348819953" media="screen" rel="stylesheet" type="text/css" />
+  <script src="http://www.iteye.com/javascripts/syntaxhighlighter/shCoreCommon.js?1325907333" type="text/javascript"></script>
+<script src="http://www.iteye.com/javascripts/hotkey.js?1324994303" type="text/javascript"></script>
+  <script src="http://www.iteye.com/javascripts/code_favorites.js?1325907333" type="text/javascript"></script>
+<script src="http://www.iteye.com/javascripts/weiboshare.js?1324994303" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="header">
+      <div id="blog_site_nav">
+  <a href="http://www.iteye.com/" class="homepage">首页</a>
+  <a href="http://www.iteye.com/news">资讯</a>
+  <a href="http://www.iteye.com/magazines">精华</a>
+  <a href="http://www.iteye.com/forums">论坛</a>
+  <a href="http://www.iteye.com/ask">问答</a>
+  <a href="http://www.iteye.com/blogs">博客</a>
+  <a href="http://www.iteye.com/blogs/subjects">专栏</a>
+  <a href="http://www.iteye.com/groups">群组</a>
+  <a href="#" onclick="return false;" id="msna"><u>更多</u> <small>▼</small></a>
+  <div class="quick_menu" style="display:none;">
+    <a target="_blank" href="http://job.iteye.com/iteye">招聘</a>
+    <a href="http://www.iteye.com/search">搜索</a>
+  </div>
+</div>
+
+      <div id="user_nav">
+      <a href="/login" class="welcome" title="登录">您还未登录 !</a>
+    <a href="/login">登录</a>
+    <a href="/signup" class="nobg">注册</a>
+  </div>
+
+    </div>
+
+    <div id="page">
+      <div id="branding" class="clearfix">
+        <div id="blog_name">
+          <h1><a href="/">Ant space</a></h1>
+        </div>
+        <div id='fd'></div>
+        <div id="blog_navbar">
+          <ul>
+            <li class='blog_navbar_for'><a href="http://geyubin.iteye.com"><strong>博客</strong></a></li>
+            <li ><a href="/weibo">微博</a></li>
+            <li ><a href="/album">相册</a></li>
+            <li ><a href="/link">收藏</a></li>
+            <li ><a href="/blog/guest_book">留言</a></li>
+            <li ><a href="/blog/profile">关于我</a></li>
+          </ul>
+    
+          <div class="search">
+            <form action="/blog/search" method="get">
+              <input class="search_text" id="query" name="query" style="margin-left: 10px;width: 110px;" type="text" value="" />
+              <input class="submit_search" type="submit" value="" />
+            </form>
+          </div> 
+          <div id="fd"></div>         
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          
+
+
+
+          
+
+
+<div class="blog_main">
+  <div class="blog_title">
+    <h3>
+      <a href="/blog/1472610">android去掉titlebar</a>
+      <em class="actions">      </em>
+    </h3>
+    <ul class='blog_categories'><strong>博客分类：</strong> <li><a href="/category/96313">android</a></li> </ul>
+        <div class='news_tag'>&nbsp;</div>
+  </div>
+
+  <div id="blog_content" class="blog_content">
+    <p>
+</p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="line-height: 31px; font-size: 16pt;" xml:lang="EN-US"> </span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><strong><span style="" xml:lang="ZH-CN">方法一：修改</span></strong><strong><span style="" xml:lang="EN-US">code</span></strong></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; text-indent: 24pt; padding: 0px;"><span style="color: black;" xml:lang="EN-US"> </span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; text-indent: 24pt; padding: 0px;"><span style="color: black;" xml:lang="ZH-CN">在</span> <strong><span style="color: #7f0055;" xml:lang="EN-US">public</span></strong> <strong><span style="color: #7f0055;" xml:lang="EN-US">void</span></strong> <span style="color: black;" xml:lang="EN-US"><span style="background-image: none; background-color: silver; background-position: 0% 0%;">onCreate</span>(Bundle savedInstanceState)</span><span style="color: black;" xml:lang="ZH-CN">函数体中加</span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="color: black;" xml:lang="EN-US"><span style="">  </span></span> <span style="color: red;" xml:lang="EN-US">this.requestWindowFeature(Window.FEATURE_NO_TITLE);</span><span style="color: red;" xml:lang="EN-US"><span style=""> </span></span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="" xml:lang="ZH-CN">些方法明显能看到</span><span style="" xml:lang="EN-US">title bar</span><span style="" xml:lang="ZH-CN">显示了之后又消失了，给</span><span style="" xml:lang="EN-US">user</span><span style="" xml:lang="ZH-CN">的感觉不好。</span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="" xml:lang="EN-US"> </span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><strong><span style="" xml:lang="ZH-CN">方法二：修改</span></strong><strong><span style="" xml:lang="EN-US">AndroidManifest.xml</span></strong></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="" xml:lang="EN-US"><span style="">  </span></span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="" xml:lang="EN-US"><span style="">  </span></span> <span style="" xml:lang="ZH-CN">第一处：</span> <span style="" xml:lang="ZH-CN">好像修改这一处就可以了，不必要修改第二处的</span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="color: teal;" xml:lang="EN-US">&lt;</span><span style="color: #3f7f7f;" xml:lang="EN-US">application</span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; text-indent: 24pt; padding: 0px;"><span style="color: #7f007f;" xml:lang="EN-US">android:label</span><span style="color: black;" xml:lang="EN-US">=</span><em><span style="color: #2a00ff;" xml:lang="EN-US">"@string/app_name"</span></em></p>
+<p style="margin-bottom: 5px; margin-left: 24pt; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="color: #7f007f;" xml:lang="EN-US">android:icon</span><span style="color: black;" xml:lang="EN-US">=</span><em><span style="color: #2a00ff;" xml:lang="EN-US">"@drawable/logo"</span></em> <span style="" xml:lang="EN-US"><strong><span style="color: #7f007f;">android:theme</span><span style="color: black;">=</span><em><span style="color: #2a00ff;">"@android:style/Theme.NoTitleBar"</span></em></strong></span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="color: teal;" xml:lang="EN-US">&gt;</span><span style="" xml:lang="EN-US"> </span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="" xml:lang="EN-US"><span style="">  </span></span> <span style="" xml:lang="ZH-CN">第二处：</span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="" xml:lang="EN-US"><span style="">  </span></span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="color: teal;" xml:lang="EN-US">&lt;</span><span style="color: #3f7f7f;" xml:lang="EN-US">activity</span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="" xml:lang="EN-US"><span style="">    </span> <span style="color: #7f007f;">android:label</span><span style="color: black;">=</span><em><span style="color: #2a00ff;">"@string/app_name"</span></em></span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="" xml:lang="EN-US"><span style="">    </span> <span style="color: #7f007f;">android:name</span><span style="color: black;">=</span><em><span style="color: #2a00ff;">"MAndFileBrowser"</span></em></span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><strong><span style="color: red;" xml:lang="EN-US"><span style="">    </span> android:configChanges=<em>"keyboardHidden|orientation"</em></span></strong></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><strong><span style="color: red;" xml:lang="EN-US"><span style="">    </span> android:theme=<em>"@android:style/Theme.NoTitleBar"</em></span></strong></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; text-indent: 6pt; padding: 0px;"><span style="color: teal;" xml:lang="EN-US">&gt;</span><span style="color: teal;" xml:lang="EN-US"> </span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="color: teal;" xml:lang="EN-US"> </span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><strong><span style="" xml:lang="ZH-CN">方法三：修改</span></strong><strong style="font-weight: bold;"><span style="line-height: 19px; font-size: 9.5pt; color: #212121;" xml:lang="EN-US">style</span></strong><strong><span style="" xml:lang="ZH-CN">配置文件</span></strong></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><strong><span style="" xml:lang="EN-US"> </span></strong></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="" xml:lang="EN-US"><span style="">  </span></span> <span style="" xml:lang="ZH-CN">第一处：</span><span style="" xml:lang="ZH-CN">在</span><span style="" xml:lang="EN-US">res/values</span><span style="" xml:lang="ZH-CN">文件夹下创建一个</span><span style="" xml:lang="EN-US">xml</span><span style="" xml:lang="ZH-CN">文件</span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="" xml:lang="EN-US"><span style="">  </span></span> <span style="" xml:lang="ZH-CN">内容如下：</span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; text-indent: 24pt; padding: 0px;"><span style="line-height: 19px; font-size: 10pt; color: teal;" xml:lang="EN-US">&lt;?</span><span style="line-height: 19px; font-size: 10pt; color: #3f7f7f;" xml:lang="EN-US">xml</span><span style="line-height: 19px; font-size: 10pt;" xml:lang="EN-US"><span style="color: #7f007f;">version</span><span style="color: black;">=</span><em><span style="color: #2a00ff;">"1.0"</span></em> <span style="color: #7f007f;">encoding</span><span style="color: black;">=</span><em><span style="color: #2a00ff;">"utf-8"</span></em><span style="color: teal;">?&gt;</span></span><span style="line-height: 19px; font-size: 10pt; color: black;" xml:lang="EN-US"><span style=""> </span></span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; text-indent: 24pt; padding: 0px;"><span style="line-height: 19px; font-size: 10pt; color: teal;" xml:lang="EN-US">&lt;</span><span style="line-height: 19px; font-size: 10pt; color: #3f7f7f;" xml:lang="EN-US">resources</span><span style="line-height: 19px; font-size: 10pt; color: teal;" xml:lang="EN-US">&gt;</span><span style="line-height: 19px; font-size: 10pt; color: black;" xml:lang="EN-US"><span style=""> </span></span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="line-height: 19px; font-size: 10pt; color: black;" xml:lang="EN-US"><span style="">  </span></span> <span style="line-height: 19px; font-size: 10pt; color: black;" xml:lang="EN-US"><span style=""> </span></span> <span style="line-height: 19px; font-size: 10pt; color: teal;" xml:lang="EN-US">&lt;</span><span style="line-height: 19px; font-size: 10pt; color: #3f7f7f;" xml:lang="EN-US">style</span> <span style="line-height: 19px; font-size: 10pt;" xml:lang="EN-US"><span style="color: #7f007f;">name</span><span style="color: black;">=</span><em><span style="color: #2a00ff;">"NoTitle"</span></em> <span style="color: #7f007f;">parent</span><span style="color: black;">=</span><em><span style="color: #2a00ff;">"android:Theme"</span></em><span style="color: teal;">&gt;</span></span><span style="line-height: 19px; font-size: 10pt; color: black;" xml:lang="EN-US"><span style=""> </span></span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="line-height: 19px; font-size: 10pt; color: black;" xml:lang="EN-US"><span style="">   </span></span> <span style="line-height: 19px; font-size: 10pt; color: teal;" xml:lang="EN-US">&lt;</span><span style="line-height: 19px; font-size: 10pt; color: #3f7f7f;" xml:lang="EN-US">item</span> <span style="line-height: 19px; font-size: 10pt;" xml:lang="EN-US"><span style="color: #7f007f;">name</span><span style="color: black;">=</span><em><span style="color: #2a00ff;">"android:windowNoTitle"</span></em><span style="color: teal;">&gt;</span><span style="color: black;">true</span><span style="color: teal;">&lt;/</span><span style="color: #3f7f7f;">item</span><span style="color: teal;">&gt;</span></span><span style="line-height: 19px; font-size: 10pt; color: black;" xml:lang="EN-US"><span style=""> </span></span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="line-height: 19px; font-size: 10pt; color: black;" xml:lang="EN-US"><span style="">   </span></span> <span style="line-height: 19px; font-size: 10pt; color: teal;" xml:lang="EN-US">&lt;/</span><span style="line-height: 19px; font-size: 10pt; color: #3f7f7f;" xml:lang="EN-US">style</span><span style="line-height: 19px; font-size: 10pt; color: teal;" xml:lang="EN-US">&gt;</span><span style="line-height: 19px; font-size: 10pt; color: black;" xml:lang="EN-US"><span style=""> </span></span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; text-indent: 24pt; padding: 0px;"><span style="line-height: 19px; font-size: 10pt; color: teal;" xml:lang="EN-US">&lt;/</span><span style="line-height: 19px; font-size: 10pt; color: #3f7f7f;" xml:lang="EN-US">resources</span><span style="line-height: 19px; font-size: 10pt; color: teal;" xml:lang="EN-US">&gt;</span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="" xml:lang="EN-US"> </span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="" xml:lang="EN-US"><span style="">  </span></span> <span style="" xml:lang="ZH-CN">第二处：</span><strong><span style="" xml:lang="EN-US">AndroidManifest.xml</span></strong></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="" xml:lang="EN-US"><span style="">  </span></span> <span style="line-height: 19px; font-size: 10pt; color: teal;" xml:lang="EN-US">&lt;</span><span style="line-height: 19px; font-size: 10pt; color: #3f7f7f;" xml:lang="EN-US">activity</span></p>
+<p style="margin-bottom: 5px; margin-left: 48pt; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><span style="line-height: 19px; font-size: 10pt; color: #7f007f;" xml:lang="EN-US">android:label</span><span style="line-height: 19px; font-size: 10pt; color: black;" xml:lang="EN-US">=</span><em><span style="line-height: 19px; font-size: 10pt; color: #2a00ff;" xml:lang="EN-US">"@string/app_name"</span></em> <span style="line-height: 19px; font-size: 10pt;" xml:lang="EN-US"><span style="color: #7f007f;">android:name</span><span style="color: black;">=</span><em><span style="color: #2a00ff;">"MAndFileBrowser"</span></em></span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; padding: 0px;"><strong><span style="line-height: 19px; font-size: 10pt; color: red;" xml:lang="EN-US"><span style="">      </span></span></strong> <strong><span style="line-height: 19px; font-size: 10pt; color: red;" xml:lang="EN-US"><span style=""> </span></span></strong> <strong><span style="line-height: 19px; font-size: 10pt; color: red;" xml:lang="EN-US">android:theme=<em>"@style/NoTitle"</em></span></strong></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; text-indent: 24pt; padding: 0px;"><span style="line-height: 19px; font-size: 10pt; color: teal;" xml:lang="EN-US">&gt;</span><span style="line-height: 19px; font-size: 10pt; color: black;" xml:lang="EN-US"><span style=""> </span></span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; text-indent: 24pt; padding: 0px;"><span style="line-height: 19px; font-size: 10pt; color: black;" xml:lang="EN-US"> </span></p>
+<p style="margin-bottom: 5px; line-height: 21px; color: #494949; font-size: 14px; text-align: left; background-color: #c9f3e9; text-indent: 24pt; padding: 0px;"><span style="line-height: 19px; font-size: 10pt; color: black;" xml:lang="ZH-CN">以上都经过我的测试了，都可以成功，建议用第二种方法或第三种方法吧。更多数据请参考</span> <span style="line-height: 19px; font-size: 10pt; color: black;" xml:lang="EN-US"><a style="text-decoration: none; color: #785e44;" href="http://alex-yang-xiansoftware-com.iteye.com/blog/760080"><span style="">http://alex-yang-xiansoftware-com.iteye.com/blog/760080</span></a></span></p>
+
+  </div>
+
+  
+
+
+  
+  
+  <div id="bottoms" class="clearfix">
+    
+    <div id="share_weibo">分享到：
+      <a data-type='sina' href="javascript:;" title="分享到新浪微博"><img src="/images/sina.jpg"></a>
+      <a data-type='qq' href="javascript:;" title="分享到腾讯微博"><img src="/images/tec.jpg"></a>
+    </div>
+  </div>
+
+  <div class="blog_nav">
+    <div class="pre_next">
+      <a href="/blog/1472726" class="next" title="android中tab的使用">android中tab的使用</a>
+      |
+      <a href="/blog/1472430" class="pre" title="android中的AsyncQueryHandler">android中的AsyncQueryHandler</a>
+    </div>
+  </div>
+  <div class="blog_bottom">
+    <ul>
+      <li>2012-04-01 15:06</li>
+      <li>浏览 407</li>
+      <li><a href="#comments">评论(0)</a></li>
+      
+      
+      <li>分类:<a href="http://www.iteye.com/blogs/category/mobile">移动开发</a></li>      
+      <li class='last'><a href="http://www.iteye.com/wiki/blog/1472610" target="_blank" class="more">相关推荐</a></li>
+    </ul>
+  </div>
+
+  <div class="blog_comment">
+    <h5>评论</h5>
+    <a id="comments" name="comments"></a>
+    
+    
+    
+  </div>
+
+  <div class="blog_comment">
+    <h5>发表评论</h5>
+            <p style="text-align:center; margin-top:30px;margin-bottom:0px;"><a href="/login" style="background-color:white;"> <img src="/images/login_icon.png" style="vertical-align:middle; margin-right: 10px;" /></a><a href="/login">  您还没有登录,请您登录后再发表评论 </a></p>
+      </div>
+</div>
+
+
+<script type="text/javascript">
+  dp.SyntaxHighlighter.HighlightAll('code', true, true);
+
+  $$('#main .blog_content pre[name=code]').each(function(pre, index){ // blog content
+    var post_id = 1472610;
+    var location = window.location;
+    source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+    pre.writeAttribute('codeable_id', post_id);
+    pre.writeAttribute('codeable_type', "Blog");
+    pre.writeAttribute('source_url', source_url);
+    pre.writeAttribute('pre_index', index);
+    pre.writeAttribute('title', 'android去掉titlebar');
+  });
+  $$('#main .blog_comment > div').each(function(comment){// comment
+    var post_id = comment.id.substr(2);
+    $$("#"+comment.id+" pre[name=code]").each(function(pre, index){
+      var location = window.location;
+      source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+      source_url += "#" + comment.id;
+      pre.writeAttribute('codeable_id', post_id);
+      pre.writeAttribute('codeable_type', "BlogComment");
+      pre.writeAttribute('source_url', source_url);
+      pre.writeAttribute('pre_index', index);
+      pre.writeAttribute('title', 'android去掉titlebar');
+    });
+  });
+  code_favorites_init();
+
+  fix_image_size($$('div.blog_content img'), 700);
+  function quote_comment(id) {
+    new Ajax.Request('/editor/quote', {
+      parameters: {'id':id, 'type':'BlogComment'},
+      onSuccess:function(response){editor.bbcode_editor.textarea.insertAfterSelection(response.responseText);
+        Element.scrollTo(editor.bbcode_editor.textarea.element);}
+    });
+  }
+
+  new WeiboShare({share_buttons: $('share_weibo'), img_scope: $('blog_content')});
+</script>
+
+
+
+
+        </div>
+
+        <div id="local">
+          <div class="local_top"></div>
+          <div id="blog_owner">
+  <div id="blog_owner_logo"><a href='http://geyubin.iteye.com'><img alt="寻梦者的博客" class="logo" src="http://www.iteye.com/upload/logo/user/176698/8aca8937-e12d-3e5e-9e71-ac1070cb913e.jpg?1260015584" title="寻梦者的博客: Ant space" /></a></div>
+  <div id="blog_owner_name">寻梦者</div>
+</div>
+
+          <div id="blog_actions">
+            <ul>
+              <li>浏览: 92319 次</li>
+              <li>性别: <img alt="Icon_minigender_1" src="http://www.iteye.com/images/icon_minigender_1.gif?1324994303" title="男" /></li>
+              <li>来自: 杭州</li>
+              <li><img src='/images/status/offline.gif'/></li>
+              
+            </ul>
+          </div>
+          <div id="user_visits" class="clearfix">
+            <h5>最近访客 <span style='font-weight:normal;font-size:12px;padding-left:30px;'><a href="/blog/user_visits">更多访客&gt;&gt;</a></span></h5>
+            
+              <div class="user_visit">
+                <div class="logo"><a href='http://hcdieche.iteye.com' target='_blank'><img alt="hcdieche的博客" class="logo" src="http://www.iteye.com/images/user-logo-thumb.gif?1324994303" title="hcdieche的博客: " /></a></div>
+                <div class="left"><a href='http://hcdieche.iteye.com' target='_blank' title='hcdieche'>hcdieche</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href='http://stanlyy.iteye.com' target='_blank'><img alt="Stanlyy的博客" class="logo" src="http://www.iteye.com/upload/logo/user/132332/33a33cd8-9572-3cd4-8a41-8c42f89fbe35-thumb.jpg?1249434652" title="Stanlyy的博客: 只要相信，期待就会成真！" /></a></div>
+                <div class="left"><a href='http://stanlyy.iteye.com' target='_blank' title='Stanlyy'>Stanlyy</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href='http://fantouch.iteye.com' target='_blank'><img alt="fantouch的博客" class="logo" src="http://www.iteye.com/images/user-logo-thumb.gif?1324994303" title="fantouch的博客: " /></a></div>
+                <div class="left"><a href='http://fantouch.iteye.com' target='_blank' title='fantouch'>fantouch</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href='http://yingya-tang.iteye.com' target='_blank'><img alt="yingya.tang的博客" class="logo" src="http://www.iteye.com/images/user-logo-thumb.gif?1324994303" title="yingya.tang的博客: " /></a></div>
+                <div class="left"><a href='http://yingya-tang.iteye.com' target='_blank' title='yingya.tang'>yingya.tang</a></div>
+              </div>
+            
+          </div>
+
+          
+
+                      <div id="blog_menu">
+              <h5>文章分类</h5>
+              <ul>
+                <li><a href="/">全部博客 (289)</a></li>
+                
+                  <li><a href="/category/89038">javaBase (29)</a></li>
+                
+                  <li><a href="/category/89040">design pattern (3)</a></li>
+                
+                  <li><a href="/category/90689">javaWeb (4)</a></li>
+                
+                  <li><a href="/category/96313">android (213)</a></li>
+                
+                  <li><a href="/category/131419">IDE (4)</a></li>
+                
+                  <li><a href="/category/137896">linux (10)</a></li>
+                
+                  <li><a href="/category/137897">jsp (0)</a></li>
+                
+                  <li><a href="/category/139196">ext (2)</a></li>
+                
+                  <li><a href="/category/252550">生活 (1)</a></li>
+                
+              </ul>
+            </div>
+            <div id='month_blogs'>
+              <h5>社区版块</h5>
+              <ul>
+                <li><a href="/blog/news">我的资讯</a> (0)</li>
+                <li>
+                  <a href="/blog/post">我的论坛</a> (0)
+                </li>
+                <li><a href="/blog/answered_problems">我的问答</a> (0)</li>
+              </ul>
+            </div>
+            <div id="month_blogs">
+              <h5>存档分类</h5>
+              <ul>
+                
+                  <li><a href="/blog/monthblog/2012-11">2012-11</a> (7)</li>
+                
+                  <li><a href="/blog/monthblog/2012-10">2012-10</a> (5)</li>
+                
+                  <li><a href="/blog/monthblog/2012-09">2012-09</a> (15)</li>
+                
+                <li><a href="/blog/monthblog_more">更多存档...</a></li>
+              </ul>
+            </div>
+            
+            
+              <div id="comments_top">
+                <h5>评论排行榜</h5>
+                <ul>
+                  
+                    <li><a href="/blog/1533494" title="android启动过程再研">android启动过程再研</a></li>
+                  
+                    <li><a href="/blog/1553002" title="editorView默认不获取焦点方法">editorView默认不获取焦点方法</a></li>
+                  
+                    <li><a href="/blog/1330128" title="android中如何让listview的内容全部显示出来">android中如何让listview的内容全部显示出 ...</a></li>
+                  
+                    <li><a href="/blog/1507567" title="android读取大图片并缓存">android读取大图片并缓存</a></li>
+                  
+                    <li><a href="/blog/1664330" title="android中ViewStub使用">android中ViewStub使用</a></li>
+                  
+                </ul>
+              </div>
+            
+
+            <div id="guest_books">
+              <h5>最新评论</h5>
+              <ul>
+                
+                <li>
+                  <a href='http://android-gqs.iteye.com' target='_blank' title='Android_gqs'>Android_gqs</a>： 
+                  请问博主，Viewstub 可实现多次隐藏和显示吗？ <br />
+                  <a href="/blog/1664330#bc2294263">android中ViewStub使用</a>
+                </li>
+                
+                <li>
+                  <a href='http://213peng.iteye.com' target='_blank' title='213peng'>213peng</a>： 
+                  ResolutionUtil.getWPx()这个是什么啊<br />
+                  <a href="/blog/1330128#bc2289954">android中如何让listview的内容全部显示出来</a>
+                </li>
+                
+                <li>
+                  <a href='http://ctlemon.iteye.com' target='_blank' title='ctlemon'>ctlemon</a>： 
+                  楼主，timer你从来没有cancel过呢……<br />
+                  <a href="/blog/1188360#bc2287860">定时更新UI之service跟broadcast</a>
+                </li>
+                
+                <li>
+                  <a href='http://goingshow.iteye.com' target='_blank' title='goingshow'>goingshow</a>： 
+                  淫蛋，做个标记看看。<br />
+                  <a href="/blog/1533494#bc2282647">android启动过程再研</a>
+                </li>
+                
+                <li>
+                  <a href='http://peterlocas.iteye.com' target='_blank' title='PeterLocas'>PeterLocas</a>： 
+                  看不太懂啊<br />
+                  <a href="/blog/1045748#bc2278256">android 软键盘 返回键 消失事件 监听</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="local_bottom"></div>
+          
+        </div>
+      </div>
+
+      <div id="footer" class="clearfix">
+        <div id="copyright">
+          <hr/>
+          声明：ITeye文章版权属于作者，受法律保护。没有作者书面许可不得转载。若作者同意转载，必须以超链接形式标明文章原始出处和作者。<br />
+          &copy; 2003-2012 ITeye.com.   All rights reserved.  [ 京ICP证110151号  京公网安备110105010620 ]
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+  document.write("<img src='http://stat.iteye.com/?url="+ encodeURIComponent(document.location.href) + "&referrer=" + encodeURIComponent(document.referrer) + "&user_id=' width='0' height='0' />");
+</script>
+
+    
+    
+  </body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>android学习摘记——自定义Adapter的心得 - 流光映雪 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/blog/css/common.css?id=20121226"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="http://common.cnblogs.com/Skins/BlackSun/style.css?id=20121226"/>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/blog/css/common2.css"/>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/css/shStyle.css"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/wangjianhui/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/wangjianhui/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/wangjianhui/wlwmanifest.xml"/>
+<script src="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">
+var currentBlogApp = 'wangjianhui';
+</script>
+<script src="http://common.cnblogs.com/blog/script/common.js?id=20121226" type="text/javascript"></script> 
+<script src="http://common.cnblogs.com/script/json2.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://common.cnblogs.com/script/syntaxHighlighter.js"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="top">
+	
+<div>
+	<table class="HeaderTitles">
+		<tr>
+			<td>
+				<h1 class="HeaderTitle"><a id="Header1_HeaderTitle" class="HeaderMainTitle" href="http://www.cnblogs.com/wangjianhui/">流光映雪</a></h1>
+				<p id="tagline"></p>
+			</td>
+		</tr>
+	</table>
+</div>
+<div>
+	<table id="HeaderBar" class="HeaderBar">
+		<tr>
+			<td class="HeaderBarTab" nowrap>
+				
+&nbsp;
+<a id="Header1_MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</a>&nbsp;::
+<a id="Header1_MyLinks1_MyHomeLink" href="http://www.cnblogs.com/wangjianhui/">首页</a>&nbsp;::
+<a id="Header1_MyLinks1_ContactLink" accesskey="9" rel="nofollow" href="http://space.cnblogs.com/msg/send/%e6%b5%81%e5%85%89%e6%98%a0%e9%9b%aa">联系</a>&nbsp;::
+<a id="Header1_MyLinks1_Syndication" href="http://www.cnblogs.com/wangjianhui/rss">订阅</a>
+<a id="Header1_MyLinks1_XMLLink" class="XMLLink" href="http://www.cnblogs.com/wangjianhui/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>&nbsp;::
+<a id="Header1_MyLinks1_Admin" rel="nofollow" href="http://www.cnblogs.com/wangjianhui/admin/EditPosts.aspx">管理</a>
+
+			</td>
+			
+			<td class="HeaderBarTabBack" nowrap width="100%">
+				
+
+	<table class="BlogStatsBar">
+		<tr>
+			<td width="100%">
+			</td>
+			<td class="BlogStatsBar" nowrap>
+				&nbsp;
+				18 
+				Posts&nbsp;::
+				3 Stories
+				::
+				6 Comments
+				::
+				0 Trackbacks
+			</td>
+		</tr>
+	</table>
+
+			</td>
+		</tr>
+	</table>
+</div>
+
+</div>
+<table id="maintable">
+	<tr><td id="leftmenu">
+	
+		
+<h3>公告</h3>
+<div class="News">
+	<div id="blog-news"></div>
+</div>
+
+		<div id="blog-sidecolumn"></div>
+	
+</td><td id="main">
+	
+	
+<div class="post">
+			<div class="postTitle">
+				<a id="cb_post_title_url" href="http://www.cnblogs.com/wangjianhui/archive/2011/06/15/2081714.html">android学习摘记——自定义Adapter的心得</a>
+			</div>
+	
+	<div class="postText">
+		<div id="cnblogs_post_body"><p>在ListView，GridView。。。。中经常用到适配器Adapter，但是anroid 提供的Adapter只是几种框架，如果我们有需求，还是要自己根据需求而自定义Adapter的<br /><br />android提供的三种Adapter主要有ArrayAdapter，SimpleAdapter，SimpleCursorAdapter，ArraAdapter是简单的字符串适配器（很丑，因为没办法帅。。。），SimpleAdapter是可以自定义子View布局的，可以有图片（只限于本地图片，如果要用网络加载图片，请参考我之前的一篇Blog），SimpleCursorAdapter主要用于数据库，前两个的数据来源一般都是String[]或者List，后一个的数据来源一般是数据库查询得到的Cursor<br /><br />而我们自定义用的最多的还是继承自SimpleAdapter，下面说一下具体用法<br /><br />我还是连着上一篇Blog，想做一个显示带下载进度条的子View显示于ListView中，SimpleAdapter可以显示一般的图片，但是无法显示进度条（因为不只是要显示，还要有实时更新），所以我们的做法是继承SimpleAdapter，具体要复写的方法有4个：<br /><br />public int getCount()&nbsp;<br />public Object getItem(int position)<br />public long getItemId(int position)<br />public View getView(int position, View convertView, ViewGroup parent)&nbsp;<br /><br />还有一个更重要的是其构造方法MyAdapter(Context context, List&lt;Map&lt;String, Object&gt;&gt; list)<i>，</i>参数不是固定的，可以根据要用到的数据自己定义，第一个参数是要显示的上下文环境，第二个参数是用来记录各个条目的信息<br /><br /><br />第一个方法主要是返回ListView中要显示的子View数量，也就是下载任务数，只要返回构造方法中的list的条目就可以了<br /><br />第二个方法是要返回一个子View，即ListView中的一个子条目，当然你也可以自定义返回你想要的信息<br /><br />第三个方法是根据ListView中的位置返回id、<br /><br />最重要最难理解的也就是第四个方法了，第四个方法主要是返回这个条目的整个信息，它是一个单独的布局文件，当然根据android结构也是一个View类的继承类了，这里还有一个知识点是LayoutInflater类，它的inflate()方法可以根据布局文件获得其View返回值，而最重要的思想是你要从这些条目中获得其子View（关系为ListView中有很多条目，每个条目中又有很多组件，我这里是ListView中多个下载任务是不同的条目，每个下载任务中的名字，进度又是其子View的组件），再得到其子组件之后，就可以根据构造方法中List&lt;Map&lt;String, Object&gt;&gt; list参数传递的值进行对应的赋值或者设置资源了，具体代码如下：</p>
+<p>
+<div class="cnblogs_code">
+<pre><div><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;<br /></span><span style="color: #008080;"> 2</span> <span style="color: #000000;"></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Map;<br /></span><span style="color: #008080;"> 3</span> <span style="color: #000000;"><br /></span><span style="color: #008080;"> 4</span> <span style="color: #000000;"></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> android.content.Context;<br /></span><span style="color: #008080;"> 5</span> <span style="color: #000000;"></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> android.view.LayoutInflater;<br /></span><span style="color: #008080;"> 6</span> <span style="color: #000000;"></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> android.view.View;<br /></span><span style="color: #008080;"> 7</span> <span style="color: #000000;"></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> android.view.ViewGroup;<br /></span><span style="color: #008080;"> 8</span> <span style="color: #000000;"></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> android.widget.BaseAdapter;<br /></span><span style="color: #008080;"> 9</span> <span style="color: #000000;"></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> android.widget.LinearLayout;<br /></span><span style="color: #008080;">10</span> <span style="color: #000000;"></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> android.widget.ProgressBar;<br /></span><span style="color: #008080;">11</span> <span style="color: #000000;"></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> android.widget.TextView;<br /></span><span style="color: #008080;">12</span> <span style="color: #000000;"><br /></span><span style="color: #008080;">13</span> <span style="color: #000000;"></span><span style="color: #0000ff;">public</span><span style="color: #000000;"> </span><span style="color: #0000ff;">class</span><span style="color: #000000;"> MyAdapter </span><span style="color: #0000ff;">extends</span><span style="color: #000000;"> BaseAdapter<br /></span><span style="color: #008080;">14</span> <span style="color: #000000;">{<br /></span><span style="color: #008080;">15</span> <span style="color: #000000;">    </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> Context context;<br /></span><span style="color: #008080;">16</span> <span style="color: #000000;">    <br /></span><span style="color: #008080;">17</span> <span style="color: #000000;">    </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> LayoutInflater layoutInflater;<br /></span><span style="color: #008080;">18</span> <span style="color: #000000;">    <br /></span><span style="color: #008080;">19</span> <span style="color: #000000;">    </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> List</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Map</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">String, Object</span><span style="color: #000000;">&gt;&gt;</span><span style="color: #000000;"> list;<br /></span><span style="color: #008080;">20</span> <span style="color: #000000;">    <br /></span><span style="color: #008080;">21</span> <span style="color: #000000;">    </span><span style="color: #008000;">//</span><span style="color: #008000;">构造方法，参数list传递的就是这一组数据的信息</span><span style="color: #008000;"><br /></span><span style="color: #008080;">22</span> <span style="color: #008000;"></span><span style="color: #000000;">    </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> MyAdapter(Context context, List</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Map</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">String, Object</span><span style="color: #000000;">&gt;&gt;</span><span style="color: #000000;"> list)<br /></span><span style="color: #008080;">23</span> <span style="color: #000000;">    {<br /></span><span style="color: #008080;">24</span> <span style="color: #000000;">        </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.context </span><span style="color: #000000;">=</span><span style="color: #000000;"> context;<br /></span><span style="color: #008080;">25</span> <span style="color: #000000;">        <br /></span><span style="color: #008080;">26</span> <span style="color: #000000;">        layoutInflater </span><span style="color: #000000;">=</span><span style="color: #000000;"> LayoutInflater.from(context);<br /></span><span style="color: #008080;">27</span> <span style="color: #000000;">        <br /></span><span style="color: #008080;">28</span> <span style="color: #000000;">        </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.list </span><span style="color: #000000;">=</span><span style="color: #000000;"> list;<br /></span><span style="color: #008080;">29</span> <span style="color: #000000;">    }<br /></span><span style="color: #008080;">30</span> <span style="color: #000000;">    <br /></span><span style="color: #008080;">31</span> <span style="color: #000000;">    </span><span style="color: #008000;">//</span><span style="color: #008000;">得到总的数量</span><span style="color: #008000;"><br /></span><span style="color: #008080;">32</span> <span style="color: #008000;"></span><span style="color: #000000;">    </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> </span><span style="color: #0000ff;">int</span><span style="color: #000000;"> getCount() <br /></span><span style="color: #008080;">33</span> <span style="color: #000000;">    {<br /></span><span style="color: #008080;">34</span> <span style="color: #000000;">        </span><span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated method stub</span><span style="color: #008000;"><br /></span><span style="color: #008080;">35</span> <span style="color: #008000;"></span><span style="color: #000000;">        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.list</span><span style="color: #000000;">!=</span><span style="color: #0000ff;">null</span><span style="color: #000000;">?</span><span style="color: #000000;"> </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.list.size(): </span><span style="color: #000000;">0</span><span style="color: #000000;"> ;<br /></span><span style="color: #008080;">36</span> <span style="color: #000000;">    }<br /></span><span style="color: #008080;">37</span> <span style="color: #000000;"><br /></span><span style="color: #008080;">38</span> <span style="color: #000000;">    </span><span style="color: #008000;">//</span><span style="color: #008000;">根据ListView位置返回View</span><span style="color: #008000;"><br /></span><span style="color: #008080;">39</span> <span style="color: #008000;"></span><span style="color: #000000;">    </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> Object getItem(</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> position)<br /></span><span style="color: #008080;">40</span> <span style="color: #000000;">    {<br /></span><span style="color: #008080;">41</span> <span style="color: #000000;">        </span><span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated method stub</span><span style="color: #008000;"><br /></span><span style="color: #008080;">42</span> <span style="color: #008000;"></span><span style="color: #000000;">        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.list.get(position);<br /></span><span style="color: #008080;">43</span> <span style="color: #000000;">    }<br /></span><span style="color: #008080;">44</span> <span style="color: #000000;"><br /></span><span style="color: #008080;">45</span> <span style="color: #000000;">    </span><span style="color: #008000;">//</span><span style="color: #008000;">根据ListView位置得到List中的ID</span><span style="color: #008000;"><br /></span><span style="color: #008080;">46</span> <span style="color: #008000;"></span><span style="color: #000000;">    </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> </span><span style="color: #0000ff;">long</span><span style="color: #000000;"> getItemId(</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> position) <br /></span><span style="color: #008080;">47</span> <span style="color: #000000;">    {<br /></span><span style="color: #008080;">48</span> <span style="color: #000000;">        </span><span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated method stub</span><span style="color: #008000;"><br /></span><span style="color: #008080;">49</span> <span style="color: #008000;"></span><span style="color: #000000;">        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> position;<br /></span><span style="color: #008080;">50</span> <span style="color: #000000;">    }<br /></span><span style="color: #008080;">51</span> <span style="color: #000000;"><br /></span><span style="color: #008080;">52</span> <span style="color: #000000;">    </span><span style="color: #008000;">//</span><span style="color: #008000;">根据位置得到View对象</span><span style="color: #008000;"><br /></span><span style="color: #008080;">53</span> <span style="color: #008000;"></span><span style="color: #000000;">    </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> View getView(</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> position, View convertView, ViewGroup parent) <br /></span><span style="color: #008080;">54</span> <span style="color: #000000;">    {    <br /></span><span style="color: #008080;">55</span> <span style="color: #000000;">        </span><span style="color: #0000ff;">if</span><span style="color: #000000;">(convertView </span><span style="color: #000000;">==</span><span style="color: #000000;"> </span><span style="color: #0000ff;">null</span><span style="color: #000000;">)<br /></span><span style="color: #008080;">56</span> <span style="color: #000000;">        {    <br /></span><span style="color: #008080;">57</span> <span style="color: #000000;">            convertView </span><span style="color: #000000;">=</span><span style="color: #000000;"> layoutInflater.inflate(R.layout.item, </span><span style="color: #0000ff;">null</span><span style="color: #000000;">);<br /></span><span style="color: #008080;">58</span> <span style="color: #000000;">        }<br /></span><span style="color: #008080;">59</span> <span style="color: #000000;">        <br /></span><span style="color: #008080;">60</span> <span style="color: #000000;">        </span><span style="color: #008000;">//</span><span style="color: #008000;">得到条目中的子组件</span><span style="color: #008000;"><br /></span><span style="color: #008080;">61</span> <span style="color: #008000;"></span><span style="color: #000000;">        TextView tv1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> (TextView)convertView.findViewById(R.id.nameTextView);<br /></span><span style="color: #008080;">62</span> <span style="color: #000000;">        ProgressBar pb </span><span style="color: #000000;">=</span><span style="color: #000000;"> (ProgressBar)convertView.findViewById(R.id.sizeProgressBar);<br /></span><span style="color: #008080;">63</span> <span style="color: #000000;">        TextView tv2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> (TextView)convertView.findViewById(R.id.sizeTextView);<br /></span><span style="color: #008080;">64</span> <span style="color: #000000;">        <br /></span><span style="color: #008080;">65</span> <span style="color: #000000;">        </span><span style="color: #008000;">//</span><span style="color: #008000;">从list对象中为子组件赋值</span><span style="color: #008000;"><br /></span><span style="color: #008080;">66</span> <span style="color: #008000;"></span><span style="color: #000000;">        tv1.setText(list.get(position).get(</span><span style="color: #000000;">"</span><span style="color: #000000;">name</span><span style="color: #000000;">"</span><span style="color: #000000;">).toString());<br /></span><span style="color: #008080;">67</span> <span style="color: #000000;">        pb.setProgress(Integer.parseInt(list.get(position).get(</span><span style="color: #000000;">"</span><span style="color: #000000;">size</span><span style="color: #000000;">"</span><span style="color: #000000;">).toString()));<br /></span><span style="color: #008080;">68</span> <span style="color: #000000;">        tv2.setText(list.get(position).get(</span><span style="color: #000000;">"</span><span style="color: #000000;">size</span><span style="color: #000000;">"</span><span style="color: #000000;">).toString());<br /></span><span style="color: #008080;">69</span> <span style="color: #000000;">        <br /></span><span style="color: #008080;">70</span> <span style="color: #000000;">        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> convertView;<br /></span><span style="color: #008080;">71</span> <span style="color: #000000;">    }<br /></span><span style="color: #008080;">72</span> <span style="color: #000000;">}</span></div></pre>
+</div>
+</p></div><div id="MySignature"></div>
+<script type="text/javascript">
+var isLogined = false;
+var cb_blogId = 88736;
+var cb_entryId = 2081714;
+var cb_blogApp = currentBlogApp;
+var cb_blogUserGuid = "0c454b94-abec-df11-ac81-842b2b196315";
+var cb_entryCreatedDate = '2011/6/15 18:08:00';
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+</script>
+<div id="blog_post_info_block">
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+<script type="text/javascript">
+    //SyntaxHighlighter.config.strings.expandSource = '<span><img src="http://static.cnblogs.com/images/expand-code.gif" alt="" class="expand-code-icon"/>View Code</span>';
+    $(function () {             
+        fixPostBodyFormat();
+        loadAdUnderPost();
+        loadBlogSignature();
+        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);        
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);        
+    });
+</script>
+	</div>
+	
+	<div class="postfoot">
+		posted on <span id="post-date">2011-06-15 18:08</span> <a href='http://www.cnblogs.com/wangjianhui/'>流光映雪</a> 阅读(2008) 评论(<span id="post-comment-count">0</span>)  <a href ="http://www.cnblogs.com/wangjianhui/admin/EditPosts.aspx?postid=2081714" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(2081714);return false;">收藏</a>
+	</div>
+</div>
+<img src ="http://www.cnblogs.com/wangjianhui/aggbug/2081714.html?type=1&amp;webview=1" width="1" height="1" alt=""/>
+
+<div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.loadComments();</script>
+<div id="comment_form" class="commentform">
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"></div>
+
+<script type="text/javascript">
+    if (typeof commentManager === 'undefined') {
+        commentManager = new blogCommentManager();
+    }
+    commentManager.loadCommentForm();   
+</script>
+
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.cnblogs.com/" target="_blank" title="程序员的网上家园">博客园首页</a><a href="http://q.cnblogs.com/" target="_blank" title="程序员问答社区">博问</a><a href="http://news.cnblogs.com/" target="_blank" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/ing/" target="_blank">闪存</a><a href="http://job.cnblogs.com/" target="_blank">程序员招聘</a><a href="http://kb.cnblogs.com/" target="_blank">知识库</a></div>
+<div id="ad_under_post_holder"></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+</div>
+
+
+
+
+
+</tr>
+</table>
+
+<p id="footer">
+	Copyright @
+	流光映雪<BR>
+	Powered by:
+	<a href="http://scottwater.com/blog" target=_blank>.Text</a> and 
+	<a href="http://asp.net" target=_blank>ASP.NET</a>
+	<br>
+	Theme by: <a href="http://www.DotNetMonster.com" target=_blank>.NET Monster</a>
+</p>
+
+
+<script type="text/javascript" src="http://common.cnblogs.com/script/google-analytics.js"></script>
+</body>
+</html>

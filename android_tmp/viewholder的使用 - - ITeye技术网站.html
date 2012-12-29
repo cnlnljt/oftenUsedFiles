@@ -1,0 +1,531 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>viewholder的使用 -  - ITeye技术网站</title>
+    <meta name="description" content="Adapter的作用就是ListView界面与数据之间的桥梁，当列表里的每一项显示到页面时，都会调用Adapter的getView方法返回一个View。 优化的思路两种： 1. View的重用      View的每次创建是比较耗时的，因此对于getview方法传入的convertView应充分利用 != null的判断 2.ViewHolder的应用 View的findViewById()方法也是 ..." />
+    <meta name="keywords" content=" viewholder的使用" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="search" type="application/opensearchdescription+xml" href="/open_search.xml" title="ITeye" />
+    <link href="/rss" rel="alternate" title="" type="application/rss+xml" />
+    <link href="http://www.iteye.com/stylesheets/blog.css?1356487644" media="screen" rel="stylesheet" type="text/css" />
+<link href="http://www.iteye.com/stylesheets/themes/blog/blue.css?1326191326" media="screen" rel="stylesheet" type="text/css" />
+    <script src="http://www.iteye.com/javascripts/application.js?1338174647" type="text/javascript"></script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-535605-1']);
+  _gaq.push(['_setDomainName', 'iteye.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+      <link href="http://www.iteye.com/javascripts/syntaxhighlighter/SyntaxHighlighter.css?1348819953" media="screen" rel="stylesheet" type="text/css" />
+  <script src="http://www.iteye.com/javascripts/syntaxhighlighter/shCoreCommon.js?1325907333" type="text/javascript"></script>
+<script src="http://www.iteye.com/javascripts/hotkey.js?1324994303" type="text/javascript"></script>
+  <script src="http://www.iteye.com/javascripts/code_favorites.js?1325907333" type="text/javascript"></script>
+<script src="http://www.iteye.com/javascripts/weiboshare.js?1324994303" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="header">
+      <div id="blog_site_nav">
+  <a href="http://www.iteye.com/" class="homepage">首页</a>
+  <a href="http://www.iteye.com/news">资讯</a>
+  <a href="http://www.iteye.com/magazines">精华</a>
+  <a href="http://www.iteye.com/forums">论坛</a>
+  <a href="http://www.iteye.com/ask">问答</a>
+  <a href="http://www.iteye.com/blogs">博客</a>
+  <a href="http://www.iteye.com/blogs/subjects">专栏</a>
+  <a href="http://www.iteye.com/groups">群组</a>
+  <a href="#" onclick="return false;" id="msna"><u>更多</u> <small>▼</small></a>
+  <div class="quick_menu" style="display:none;">
+    <a target="_blank" href="http://job.iteye.com/iteye">招聘</a>
+    <a href="http://www.iteye.com/search">搜索</a>
+  </div>
+</div>
+
+      <div id="user_nav">
+      <a href="/login" class="welcome" title="登录">您还未登录 !</a>
+    <a href="/login">登录</a>
+    <a href="/signup" class="nobg">注册</a>
+  </div>
+
+    </div>
+
+    <div id="page">
+      <div id="branding" class="clearfix">
+        <div id="blog_name">
+          <h1><a href="/">lhdst-163-com</a></h1>
+        </div>
+        <div id='fd'></div>
+        <div id="blog_navbar">
+          <ul>
+            <li class='blog_navbar_for'><a href="http://lhdst-163-com.iteye.com"><strong>博客</strong></a></li>
+            <li ><a href="/weibo">微博</a></li>
+            <li ><a href="/album">相册</a></li>
+            <li ><a href="/link">收藏</a></li>
+            <li ><a href="/blog/guest_book">留言</a></li>
+            <li ><a href="/blog/profile">关于我</a></li>
+          </ul>
+    
+          <div class="search">
+            <form action="/blog/search" method="get">
+              <input class="search_text" id="query" name="query" style="margin-left: 10px;width: 110px;" type="text" value="" />
+              <input class="submit_search" type="submit" value="" />
+            </form>
+          </div> 
+          <div id="fd"></div>         
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          
+
+
+
+          
+
+
+<div class="blog_main">
+  <div class="blog_title">
+    <h3>
+      <a href="/blog/1150692">viewholder的使用</a>
+      <em class="actions">      </em>
+    </h3>
+    <ul class='blog_categories'><strong>博客分类：</strong> <li><a href="/category/171420">android 开发</a></li> </ul>
+        <div class='news_tag'></div>
+  </div>
+
+  <div id="blog_content" class="blog_content">
+     Adapter的作用就是ListView界面与数据之间的桥梁，当列表里的每一项显示到页面时，都会调用Adapter的getView方法返回一个View。<br /><br />优化的思路两种：<br /><br />1. View的重用 <br />&nbsp;&nbsp;&nbsp; View的每次创建是比较耗时的，因此对于getview方法传入的convertView应充分利用 != null的判断<br /><br />2.ViewHolder的应用<br /><br />View的findViewById()方法也是比较耗时的，因此需要考虑只调用一次，之后就用View.getTag()方法来获得ViewHolder对象。<br /><br /><br />下面是优化后的代码供参考：<br /><pre name="code" class="java">
+public class MyAdapter extends BaseAdapter {
+	private Context mContext;
+	private LayoutInflater mInflater;
+
+	public MyAdapter(Context context) {
+		this.mContext = context;
+		mInflater = LayoutInflater.from(mContext);
+	}
+
+	public int getCount() {
+		return mmsList.size();
+	}
+
+	public Object getItem(int arg0) {
+		return arg0;
+	}
+
+	public long getItemId(int arg0) {
+		return arg0;
+	}
+
+	public View getView(int position, View convertView, ViewGroup parent) {
+		ViewHolder holder = null;
+		if (convertView == null) {
+			holder = new ViewHolder();
+			convertView = mInflater.inflate(R.layout.mmslistitem, null);
+			holder.img = (ImageView) convertView.findViewById(R.id.mmsflag);
+			holder.subject = (TextView) convertView
+					.findViewById(R.id.mmssubject);
+			holder.date = (TextView) convertView.findViewById(R.id.mmsdate);
+			convertView.setTag(holder);
+		} else {
+			holder = (ViewHolder) convertView.getTag();
+		}
+		MMSDBItem mmsItem = mmsList.get(position);
+		holder.subject.setText(mmsItem.getSubject());
+		String today = DateFormat.format("yyyy-MM-dd",
+				System.currentTimeMillis()).toString();
+		String dateStr = DateFormat.format("yyyy-MM-dd kk:mm",
+				mmsItem.getDate()).toString();
+		holder.date.setText(dateStr);
+		if (mmsItem.getFlag() == 0) {
+			holder.img.setBackgroundResource(R.drawable.new_message_32);
+		} else {
+			holder.img
+					.setBackgroundResource(R.drawable.message_already_read_32);
+		}
+		return convertView;
+	}
+
+	public final class ViewHolder {
+		public ImageView img;
+		public TextView subject;
+		public TextView date;
+	}
+}
+</pre><br />
+  </div>
+
+  
+
+
+  <IFRAME SRC="/iframe_ggbd/794" SCROLLING=no WIDTH=468 HEIGHT=60 FRAMEBORDER=0></IFRAME>
+  
+  <div id="bottoms" class="clearfix">
+    
+    <div id="share_weibo">分享到：
+      <a data-type='sina' href="javascript:;" title="分享到新浪微博"><img src="/images/sina.jpg"></a>
+      <a data-type='qq' href="javascript:;" title="分享到腾讯微博"><img src="/images/tec.jpg"></a>
+    </div>
+  </div>
+
+  <div class="blog_nav">
+    <div class="pre_next">
+      <a href="/blog/1151113" class="next" title="Android的PackageManager和ActivityManager的功能简介">Android的PackageManager和ActivityManage ...</a>
+      |
+      <a href="/blog/1128836" class="pre" title="模拟器开启错误">模拟器开启错误</a>
+    </div>
+  </div>
+  <div class="blog_bottom">
+    <ul>
+      <li>2011-08-16 17:53</li>
+      <li>浏览 1786</li>
+      <li><a href="#comments">评论(4)</a></li>
+      
+      
+      <li>分类:<a href="http://www.iteye.com/blogs/category/mobile">移动开发</a></li>      
+      <li class='last'><a href="http://www.iteye.com/wiki/blog/1150692" target="_blank" class="more">相关推荐</a></li>
+    </ul>
+  </div>
+
+  <div class="blog_comment">
+    <h5>评论</h5>
+    <a id="comments" name="comments"></a>
+    <div id="bc2227371">
+  <div class="comment_title">
+    4 楼
+    <a href='http://xiaohexing374.iteye.com' target='_blank' title='xiaohexing374'>xiaohexing374</a>
+    2011-11-07&nbsp;&nbsp;
+    
+    
+  </div>
+  <div class="comment_content"><img src="/images/smiles/icon_redface.gif" /> </div>
+</div>
+
+<div id="bc2216505">
+  <div class="comment_title">
+    3 楼
+    <a href='http://lhdst-163-com.iteye.com' target='_blank' title='flex_莫冲'>flex_莫冲</a>
+    2011-09-13&nbsp;&nbsp;
+    
+    
+  </div>
+  <div class="comment_content"><div class="quote_title">xiaojian623 写道</div><div class="quote_div">好乱的代码~~~<img src="/images/smiles/icon_cry.gif" /> </div><br />哈哈。谢谢。</div>
+</div>
+
+<div id="bc2216477">
+  <div class="comment_title">
+    2 楼
+    <a href='http://xiaojian623.iteye.com' target='_blank' title='xiaojian623'>xiaojian623</a>
+    2011-09-13&nbsp;&nbsp;
+    
+    
+  </div>
+  <div class="comment_content">个人按理解分段的代码：<pre name="code" class="java">  
+public class MyAdapter extends BaseAdapter {
+ private Context mContext; 
+private LayoutInflater mInflater; 
+public MyAdapter(Context context) { 
+    this.mContext = context; 
+    mInflater = LayoutInflater.from(mContext); 
+} 
+public int getCount() {
+    return mmsList.size(); } 
+public Object getItem(int arg0) {
+     return arg0; } 
+public long getItemId(int arg0) { 
+     return arg0; } 
+public View getView(int position, View convertView, ViewGroup parent) { 
+    ViewHolder holder = null;
+    if (convertView == null) { 
+        holder = new ViewHolder(); 
+        convertView = mInflater.inflate(R.layout.mmslistitem, null);  
+        holder.img = (ImageView) convertView.findViewById(R.id.mmsflag);
+        holder.subject = (TextView) convertView .findViewById(R.id.mmssubject); 
+        holder.date = (TextView) convertView.findViewById(R.id.mmsdate); 
+        convertView.setTag(holder); } 
+    else { 
+          holder = (ViewHolder) convertView.getTag(); } 
+    MMSDBItem mmsItem = mmsList.get(position); 
+    holder.subject.setText(mmsItem.getSubject()); 
+    String today = DateFormat.format("yyyy-MM-dd", System.currentTimeMillis()).toString(); 
+    String dateStr = DateFormat.format("yyyy-MM-dd kk:mm", mmsItem.getDate()).toString(); 
+    holder.date.setText(dateStr); 
+    if (mmsItem.getFlag() == 0) { holder.img.setBackgroundResource(R.drawable.new_message_32); } 
+    else { holder.img .setBackgroundResource(R.drawable.message_already_read_32); } 
+    return convertView; } 
+public final class ViewHolder { 
+    public ImageView img; 
+    public TextView subject; public TextView date; 
+    } 
+} </pre></div>
+</div>
+
+<div id="bc2216474">
+  <div class="comment_title">
+    1 楼
+    <a href='http://xiaojian623.iteye.com' target='_blank' title='xiaojian623'>xiaojian623</a>
+    2011-09-13&nbsp;&nbsp;
+    
+    
+  </div>
+  <div class="comment_content">好乱的代码~~~<img src="/images/smiles/icon_cry.gif" /> </div>
+</div>
+
+
+    
+    
+  </div>
+
+  <div class="blog_comment">
+    <h5>发表评论</h5>
+            <p style="text-align:center; margin-top:30px;margin-bottom:0px;"><a href="/login" style="background-color:white;"> <img src="/images/login_icon.png" style="vertical-align:middle; margin-right: 10px;" /></a><a href="/login">  您还没有登录,请您登录后再发表评论 </a></p>
+      </div>
+</div>
+
+
+<script type="text/javascript">
+  dp.SyntaxHighlighter.HighlightAll('code', true, true);
+
+  $$('#main .blog_content pre[name=code]').each(function(pre, index){ // blog content
+    var post_id = 1150692;
+    var location = window.location;
+    source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+    pre.writeAttribute('codeable_id', post_id);
+    pre.writeAttribute('codeable_type', "Blog");
+    pre.writeAttribute('source_url', source_url);
+    pre.writeAttribute('pre_index', index);
+    pre.writeAttribute('title', 'viewholder的使用');
+  });
+  $$('#main .blog_comment > div').each(function(comment){// comment
+    var post_id = comment.id.substr(2);
+    $$("#"+comment.id+" pre[name=code]").each(function(pre, index){
+      var location = window.location;
+      source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+      source_url += "#" + comment.id;
+      pre.writeAttribute('codeable_id', post_id);
+      pre.writeAttribute('codeable_type', "BlogComment");
+      pre.writeAttribute('source_url', source_url);
+      pre.writeAttribute('pre_index', index);
+      pre.writeAttribute('title', 'viewholder的使用');
+    });
+  });
+  code_favorites_init();
+
+  fix_image_size($$('div.blog_content img'), 700);
+  function quote_comment(id) {
+    new Ajax.Request('/editor/quote', {
+      parameters: {'id':id, 'type':'BlogComment'},
+      onSuccess:function(response){editor.bbcode_editor.textarea.insertAfterSelection(response.responseText);
+        Element.scrollTo(editor.bbcode_editor.textarea.element);}
+    });
+  }
+
+  new WeiboShare({share_buttons: $('share_weibo'), img_scope: $('blog_content')});
+</script>
+
+
+
+
+        </div>
+
+        <div id="local">
+          <div class="local_top"></div>
+          <div id="blog_owner">
+  <div id="blog_owner_logo"><a href='http://lhdst-163-com.iteye.com'><img alt="flex_莫冲的博客" class="logo" src="http://www.iteye.com/images/user-logo.gif?1324994303" title="flex_莫冲的博客: " /></a></div>
+  <div id="blog_owner_name">flex_莫冲</div>
+</div>
+
+          <div id="blog_actions">
+            <ul>
+              <li>浏览: 25144 次</li>
+              <li>性别: <img alt="Icon_minigender_1" src="http://www.iteye.com/images/icon_minigender_1.gif?1324994303" title="男" /></li>
+              <li>来自: 广州</li>
+              <li><img src='/images/status/offline.gif'/></li>
+              
+            </ul>
+          </div>
+          <div id="user_visits" class="clearfix">
+            <h5>最近访客 <span style='font-weight:normal;font-size:12px;padding-left:30px;'><a href="/blog/user_visits">更多访客&gt;&gt;</a></span></h5>
+            
+              <div class="user_visit">
+                <div class="logo"><a href='http://liumingwei2009.iteye.com' target='_blank'><img alt="liumingwei2009的博客" class="logo" src="http://www.iteye.com/images/user-logo-thumb.gif?1324994303" title="liumingwei2009的博客: " /></a></div>
+                <div class="left"><a href='http://liumingwei2009.iteye.com' target='_blank' title='liumingwei2009'>liumingwei2009</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href='http://zrzdemon.iteye.com' target='_blank'><img alt="zrzdemon的博客" class="logo" src="http://www.iteye.com/upload/logo/user/102414/82cf68fe-80af-3660-8a02-d027e1b4ef5c-thumb.jpg?1242027686" title="zrzdemon的博客: 不落的太阳" /></a></div>
+                <div class="left"><a href='http://zrzdemon.iteye.com' target='_blank' title='zrzdemon'>zrzdemon</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href='http://wswjx-163-com.iteye.com' target='_blank'><img alt="无风也飘飘的博客" class="logo" src="http://www.iteye.com/images/user-logo-thumb.gif?1324994303" title="无风也飘飘的博客: " /></a></div>
+                <div class="left"><a href='http://wswjx-163-com.iteye.com' target='_blank' title='无风也飘飘'>无风也飘飘</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href='http://jspzhao.iteye.com' target='_blank'><img alt="jspzhao的博客" class="logo" src="http://www.iteye.com/upload/logo/user/343476/bc6143f4-02cb-3780-9fde-e504bf4d90c6-thumb.jpg?1288928783" title="jspzhao的博客: jspzhao" /></a></div>
+                <div class="left"><a href='http://jspzhao.iteye.com' target='_blank' title='jspzhao'>jspzhao</a></div>
+              </div>
+            
+          </div>
+
+          
+
+                      <div id="blog_menu">
+              <h5>文章分类</h5>
+              <ul>
+                <li><a href="/">全部博客 (88)</a></li>
+                
+                  <li><a href="/category/163122">java基础 (2)</a></li>
+                
+                  <li><a href="/category/171420">android 开发 (8)</a></li>
+                
+                  <li><a href="/category/181979">HTMLCSS (6)</a></li>
+                
+                  <li><a href="/category/183412">javascript (16)</a></li>
+                
+                  <li><a href="/category/185498">javascript html5 (4)</a></li>
+                
+                  <li><a href="/category/187714">mobile web (9)</a></li>
+                
+                  <li><a href="/category/188104">jquery (8)</a></li>
+                
+                  <li><a href="/category/189199">ipad (2)</a></li>
+                
+                  <li><a href="/category/192403">HTML (1)</a></li>
+                
+                  <li><a href="/category/200710">svg (1)</a></li>
+                
+                  <li><a href="/category/202650">php (12)</a></li>
+                
+                  <li><a href="/category/214153">jboss (1)</a></li>
+                
+                  <li><a href="/category/221728">html5 (2)</a></li>
+                
+                  <li><a href="/category/228745">icenium (1)</a></li>
+                
+                  <li><a href="/category/246297">apache (1)</a></li>
+                
+                  <li><a href="/category/248928">mysql (2)</a></li>
+                
+                  <li><a href="/category/251861">backbone (1)</a></li>
+                
+                  <li><a href="/category/253509">jquery easyui (1)</a></li>
+                
+                  <li><a href="/category/254252">indesign (1)</a></li>
+                
+                  <li><a href="/category/259240">session (1)</a></li>
+                
+                  <li><a href="/category/259733">flex (2)</a></li>
+                
+                  <li><a href="/category/259865">reg (1)</a></li>
+                
+                  <li><a href="/category/261628">timestamp (1)</a></li>
+                
+              </ul>
+            </div>
+            <div id='month_blogs'>
+              <h5>社区版块</h5>
+              <ul>
+                <li><a href="/blog/news">我的资讯</a> (0)</li>
+                <li>
+                  <a href="/blog/post">我的论坛</a> (21)
+                </li>
+                <li><a href="/blog/answered_problems">我的问答</a> (3)</li>
+              </ul>
+            </div>
+            <div id="month_blogs">
+              <h5>存档分类</h5>
+              <ul>
+                
+                  <li><a href="/blog/monthblog/2012-12">2012-12</a> (6)</li>
+                
+                  <li><a href="/blog/monthblog/2012-11">2012-11</a> (2)</li>
+                
+                  <li><a href="/blog/monthblog/2012-10">2012-10</a> (8)</li>
+                
+                <li><a href="/blog/monthblog_more">更多存档...</a></li>
+              </ul>
+            </div>
+            
+            
+              <div id="comments_top">
+                <h5>评论排行榜</h5>
+                <ul>
+                  
+                    <li><a href="/blog/1625334" title="wamp2.2下安装pear">wamp2.2下安装pear</a></li>
+                  
+                    <li><a href="/blog/1409677" title="html5的离线存储applicationCache在ipod上有问题">html5的离线存储applicationCache在ipod上 ...</a></li>
+                  
+                </ul>
+              </div>
+            
+
+            <div id="guest_books">
+              <h5>最新评论</h5>
+              <ul>
+                
+                <li>
+                  <a href='http://fancy612215.iteye.com' target='_blank' title='fancy612215'>fancy612215</a>： 
+                  谢谢，好文章，真的解决了 找了一大堆文档 还是你的好~<br />
+                  <a href="/blog/1625334#bc2284355">wamp2.2下安装pear</a>
+                </li>
+                
+                <li>
+                  <a href='http://alexniver.iteye.com' target='_blank' title='Alexniver'>Alexniver</a>： 
+                  好文, 找了一圈, 到你这解决了!<br />
+                  <a href="/blog/1625334#bc2284110">wamp2.2下安装pear</a>
+                </li>
+                
+                <li>
+                  <a href='http://zhaodidong.iteye.com' target='_blank' title='zhaodidong'>zhaodidong</a>： 
+                  非常感谢哦 文本框不能输入那  我还在_end方法那使劲呢 a ...<br />
+                  <a href="/blog/1239784#bc2278734">iscroll介绍</a>
+                </li>
+                
+                <li>
+                  <a href='http://lhdst-163-com.iteye.com' target='_blank' title='flex_莫冲'>flex_莫冲</a>： 
+                  ipod的safari最多只能存储50M的容量。超过就会失效， ...<br />
+                  <a href="/blog/1409677#bc2268005">html5的离线存储applicationCache在ipod上有问题</a>
+                </li>
+                
+                <li>
+                  <a href='http://xiaohexing374.iteye.com' target='_blank' title='xiaohexing374'>xiaohexing374</a>： 
+                   ...<br />
+                  <a href="/blog/1150692#bc2227371">viewholder的使用</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="local_bottom"></div>
+          
+        </div>
+      </div>
+
+      <div id="footer" class="clearfix">
+        <div id="copyright">
+          <hr/>
+          声明：ITeye文章版权属于作者，受法律保护。没有作者书面许可不得转载。若作者同意转载，必须以超链接形式标明文章原始出处和作者。<br />
+          &copy; 2003-2012 ITeye.com.   All rights reserved.  [ 京ICP证110151号  京公网安备110105010620 ]
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+  document.write("<img src='http://stat.iteye.com/?url="+ encodeURIComponent(document.location.href) + "&referrer=" + encodeURIComponent(document.referrer) + "&user_id=' width='0' height='0' />");
+</script>
+
+    
+    
+  </body>
+</html>

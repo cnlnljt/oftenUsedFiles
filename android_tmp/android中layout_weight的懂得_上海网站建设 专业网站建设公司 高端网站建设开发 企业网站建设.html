@@ -1,0 +1,349 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	android中layout_weight的懂得_上海网站建设|专业网站建设公司|高端网站建设开发|企业网站建设
+</title><meta name="keywords" content="上海网站建设，企业网站建设，专业网站建设公司，上海企业网站建设，网站建设，高端网站建设，网站开发" /><meta name="description" content="著名上海网站建设公司,8年企业网站建设经验,上海专业网站建设案例,有大众汽车公司,CG投资集团,上海交大,Stanley,上海警卫局等。上海网站建设电话57700304" /><meta content="上海百微信息科技有限公司 2012版权所有" name="author" /><meta content="All" name="Robots" /><link href="http://www.byywee.com/Style.css" rel="stylesheet" type="text/css" /><link rel="stylesheet" href="http://www.byywee.com/css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="http://www.byywee.com/js/prototype.js"></script>
+<script type="text/javascript" src="http://www.byywee.com/js/scriptaculous.js?load=effects"></script>
+<script type="text/javascript" src="http://www.byywee.com/js/lightbox.js"></script>
+<SCRIPT src="http://www.byywee.com/Js/Banner1.js"  type=text/javascript></SCRIPT>
+<SCRIPT src="http://www.byywee.com/Js/Banner2.js"  type=text/javascript></SCRIPT>   
+
+
+<style type="text/css">
+a{
+	font-size:12px;
+	color:#000;
+	text-decoration:none;
+}
+a:hover{
+	font-size:12px;
+	color:#06C;
+	text-decoration:underline;
+}
+
+#NavaTree{border:1px solid #CCC;}
+
+p{
+	padding:0px;
+	margin:0px;
+}
+	br{
+		line-height:15px;}
+
+</style>
+</head>
+<body>
+<form name="form1" method="post" action="Content.aspx?ContentID=716755" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJLTkwMTcwNTc2D2QWAgIDD2QWAmYPPCsACQBkZAmAjJdwrVSqMOEEAJrmIrNtsJNZ" />
+
+<table width="974" border="0" cellpadding="0" cellspacing="0" align="center"> 
+  <tr>
+    <td width="32" rowspan="2" align="right">&nbsp;</td>
+    <td width="161" height="72" rowspan="2" align="right"><a href="http://www.byywee.com" ><img src="http://www.byywee.com/images/Logo.png" border="0" alt="上海百微网络" /></a></td>
+    <td height="28" align="right" valign="bottom">
+    <a href="http://sighttp.qq.com/cgi-bin/check?sigkey=7e155cfcb9d282f7b625dbab13dc1692aa87daeb8982bc707e0b43841af8bf66"; target=_blank; onclick="var tempSrc='http://sighttp.qq.com/wpa.js?rantime='+Math.random()+'&sigkey=7e155cfcb9d282f7b625dbab13dc1692aa87daeb8982bc707e0b43841af8bf66';var oldscript=document.getElementById('testJs');var newscript=document.createElement('script');newscript.setAttribute('type','text/javascript'); newscript.setAttribute('id', 'testJs');newscript.setAttribute('src',tempSrc);if(oldscript == null){document.body.appendChild(newscript);}else{oldscript.parentNode.replaceChild(newscript, oldscript);}return false;"><img border="0" src='http://www.byywee.com/images/qq.gif' alt="" /></a>&nbsp;&nbsp;&nbsp;&nbsp;<img border="0" src='http://www.byywee.com/images/phone.png' alt="" />
+    <td width="10" align="right" valign="bottom">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="772" height="44"><table width="728" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td >&nbsp;</td>
+        <td width="11"></td>
+        <td width="78" ><a href="http://www.byywee.com"  class="top_menu_link">首 页</a></td>
+        <td width="20"></td>
+        <td width="78"><a href="http://www.byywee.com/page/list/2.html"  class="top_menu_link2">新闻动态</a></td>
+        <td width="19"></td>
+        <td width="78"><a href="http://www.byywee.com/About.aspx"  class="top_menu_link2">关于百微</a></td>
+        <td width="19"></td>
+        <td width="78" ><a href="http://www.byywee.com/Solutions.aspx"  class="top_menu_link2">解决方案</a></td>
+        <td width="19"></td>
+        <td width="78" ><a href="http://www.byywee.com/Design.aspx"  class="top_menu_link2">网站建设</a></td>
+        <td width="19"></td>
+        <td width="78" ><a href="http://www.byywee.com/Case.aspx"  class="top_menu_link2">精品案例</a></td>
+        <td width="19"></td>
+        <td width="92" ><a href="http://www.byywee.com/Contact.aspx"  class="top_menu_link2">联系我们</a></td>
+      </tr>
+    </table></td>
+    <td align="right">&nbsp;</td>
+  </tr>
+</table>
+    <table width="980" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td width="10"><img src="http://www.byywee.com/images/tit_left.gif"  width="10" height="32" /></td>
+    <td width="980" align="left" background="http://www.byywee.com/images/tit_bg.gif"  class="title_font">百维观点</td>
+    <td width="10"><img src="http://www.byywee.com/images/tit_right.gif"  width="10" height="32" /></td>
+  </tr>
+  <tr>
+  <td width="10"></td>
+  <td><a href="../../../List.aspx?classid=0">根目录</a>>><a href="../../../List.aspx?classid=10035">企业信息化</a>>><a href="../../../List.aspx?classid=10071">企业信息化其他</a></td>
+  </tr>
+                
+</table>
+    <table cellspacing=0 cellpadding=0 width=980 align=center border=0>
+      <tbody>
+        <tr>
+          <td valign=top colspan=2>
+
+<br />
+
+ <img src="http://www.byywee.com/images/Img_line.gif" height="1" width="750" /><br />
+		    <div align="center"><h1>android中layout_weight的懂得</h1>
+            <img src="http://www.byywee.com/images/Img_line.gif" height="1" width="750" /><br />
+            <font color="#999999" style="font-size:12px">Admin</font><br />
+            <font color="#999999" style="font-size:12px">2012年4月8日</font></div>
+             
+名人名言：正派的男人连工作的时间还嫌不够，他哪能白浪费时间去打扮自己，去做降低自己身份的事情？我宁愿一下子牺牲自己的生命，也不愿意把它减价为零。——巴尔扎克 <br />
+
+            <div id="Content" style="color:#000;"> <p>　　SDK中的申明</p><br /><p>Indicates how much of the <strong>extra space</strong> in the LinearLayout will be allocated to the view associated with these LayoutParams. Specify 0 if the view should not be stretched. Otherwise the extra pixels will be <strong>pro-rated</strong> among all views whose weight is greater than 0.</p><br /><p>　　重点有两个，一个是layout_weight默示LinearLayout中额外空间的划分（可能扩大应用layout_weight前的大小也可能紧缩），另一个是按比例.</p><br /><p>　　以下说的都以&nbsp;android:orientation="horizontal" 为例</p><br /><p>　　看了一下源码，虽说不太懂，但懂得了下可能意思，遵守本身的懂得总结一下，直接写一下简化的代码吧（下面的代码是LinearLayout源文件中一项目组的精简，变量名称含义可能不正确，为论述便利暂作此申明）:</p><br /><div class="cnblogs_code"><br /><pre><span style="color: ＃008000;">//</span><span style="color: ＃008000;">Either expand children with weight to take up available space or<br /></span><span style="color: ＃008000;">//</span><span style="color: ＃008000;"> shrink them if they extend beyond our current bounds</span><span style="color: ＃008000;"><br /></span><span style="color: ＃0000ff;">int</span> delta = widthSize - mTotalLength;<br /><span style="color: ＃0000ff;">if</span> （delta != 0 &amp;&amp; totalWeight &gt; 0.0f） {<br />    <span style="color: ＃0000ff;">float</span> weightSum = mWeightSum &gt; 0.0f ？ mWeightSum : totalWeight;<br />    <span style="color: ＃0000ff;">for</span> （<span style="color: ＃0000ff;">int</span> i = 0; i &lt; count; ++i） {<br />        <span style="color: ＃0000ff;">final</span> View child = getVirtualChildAt（i）;<br /><br />        <span style="color: ＃0000ff;">if</span> （child == <span style="color: ＃0000ff;">null</span> || child.getVisibility（） == View.GONE） {<br />            <span style="color: ＃0000ff;">continue</span>;<br />        }<br />        <br />        <span style="color: ＃0000ff;">final</span> LinearLayout.LayoutParams lp =<br />                （LinearLayout.LayoutParams） child.getLayoutParams（）;<br /><br />        <span style="color: ＃0000ff;">float</span> childExtra = lp.weight;<br />        <span style="color: ＃0000ff;">if</span> （childExtra &gt; 0） {<br />            <span style="color: ＃0000ff;">int</span> share = （<span style="color: ＃0000ff;">int</span>） （childExtra * delta / weightSum）;<br />　　　　　　　weightSum -= childExtra;<br />　　　　　　  delta  -= share;</pre><br /><pre>            <span style="color: ＃0000ff;">int</span> childWidth = child.getMeasuredWidth（） + share;<br />            <span style="color: ＃0000ff;">if</span> （childWidth &lt; 0） {<br />                childWidth = 0;<br />            }<br />        }<br />    }<br />}</pre><br /></div><br /><p>变量含义</p><br /><p>widthSize:　　　　&nbsp;LinearLayout的宽度</p><br /><p>mTotalLength:　　所有子View的宽度的和（还没用推敲layout_weight）</p><br /><p>totalWeight:　　　所有子View的layout_weight的和</p><br /><p>mWeihtSUm:　　 &nbsp;LinearLayout的android:weightSum属性</p><br /><p>过程解析:</p><br /><p>起首策画出额外空间（可认为负）若是额外空间不为0并且有子View的layout_weight不为0的话按layout_weight分派额外空间:</p><br /><div class="cnblogs_code"><br /><pre><span style="color: ＃0000ff;">int</span> delta = widthSize - mTotalLength;<br /><span style="color: ＃0000ff;">if</span> （delta != 0 &amp;&amp; totalWeight &gt; 0.0f） {<br />  ...<br />}</pre><br /></div><br /><p>若是LinearLayout设置了weightSum则覆盖子View的layout_weight的和:</p><br /><div class="cnblogs_code"><br /><pre><span style="color: ＃0000ff;">float</span> weightSum = mWeightSum &gt; 0.0f ？ mWeightSum : totalWeight;</pre><br /></div><br /><p>然后遍历LinearLayout的子元素，若是不为null且Visibility不为GONE的话，取得它的LayoutParams，若是它的layout_weight大于0，按照weightSum与它的weight策画出分派给它的额外空间</p><br /><div class="cnblogs_code"><br /><pre><span style="color: ＃0000ff;">if</span> （childExtra &gt; 0） {<br />    <span style="color: ＃0000ff;">int</span> share = （<span style="color: ＃0000ff;">int</span>） （childExtra * delta / weightSum）;<br />　　 weightSum -= childExtra;<br />　　 delta -= share;<br /><br />    <span style="color: ＃0000ff;">int</span> childWidth = child.getMeasuredWidth（） + share;<br />    <span style="color: ＃0000ff;">if</span> （childWidth &lt; 0） {<br />        childWidth = 0;<br />    }<br />}</pre><br /></div><br /><p><br />网上有申明说layout_weight默示首要程度，默示划分额外空间的优先级，经由过程代码可以知道这种概念是错误的.layout_weight默示划分的比例，至于当View的layout_width为fill_parent时layout_weight比例相反的题目按我的懂得可以作以下申明:</p><br /><p>比如说如下XML:</p><br /><div class="cnblogs_code"><br /><pre><span style="color: ＃0000ff;">&lt;？</span><span style="color: ＃ff00ff;">xml version="1.0" encoding="utf-8"</span><span style="color: ＃0000ff;">？&gt;</span><br /><span style="color: ＃0000ff;">&lt;</span><span style="color: ＃800000;">LinearLayout </span><span style="color: ＃ff0000;">xmlns:android</span><span style="color: ＃0000ff;">="http://schemas.android.com/apk/res/android"</span><span style="color: ＃ff0000;"><br />    android:layout_width</span><span style="color: ＃0000ff;">="fill_parent"</span><span style="color: ＃ff0000;"><br />    android:layout_height</span><span style="color: ＃0000ff;">="wrap_content"</span><span style="color: ＃ff0000;"><br />    android:background</span><span style="color: ＃0000ff;">="＃00ff00"</span><span style="color: ＃ff0000;"><br />    android:weightSum</span><span style="color: ＃0000ff;">="0"</span><span style="color: ＃ff0000;"><br />    android:orientation</span><span style="color: ＃0000ff;">="horizontal"</span> <span style="color: ＃0000ff;">&gt;</span><br /><br />    <span style="color: ＃0000ff;">&lt;</span><span style="color: ＃800000;">Button<br />        </span><span style="color: ＃ff0000;">android:id</span><span style="color: ＃0000ff;">="＠+id/imageViewLoginState"</span><span style="color: ＃ff0000;"><br />        android:layout_width</span><span style="color: ＃0000ff;">="fill_parent"</span><span style="color: ＃ff0000;"><br />        android:layout_height</span><span style="color: ＃0000ff;">="fill_parent"</span><span style="color: ＃ff0000;"><br />        android:layout_weight</span><span style="color: ＃0000ff;">="1"</span><span style="color: ＃ff0000;"><br />        android:text</span><span style="color: ＃0000ff;">="1"</span> <span style="color: ＃0000ff;">&gt;</span><br />    <span style="color: ＃0000ff;">&lt;/</span><span style="color: ＃800000;">Button</span><span style="color: ＃0000ff;">&gt;</span><br /><br />    <span style="color: ＃0000ff;">&lt;</span><span style="color: ＃800000;">Button<br />        </span><span style="color: ＃ff0000;">android:id</span><span style="color: ＃0000ff;">="＠+id/imageViewLoginState1"</span><span style="color: ＃ff0000;"><br />        android:layout_width</span><span style="color: ＃0000ff;">="fill_parent"</span><span style="color: ＃ff0000;"><br />        android:layout_height</span><span style="color: ＃0000ff;">="fill_parent"</span><span style="color: ＃ff0000;"><br />        android:layout_weight</span><span style="color: ＃0000ff;">="1"</span><span style="color: ＃ff0000;"><br />        android:text</span><span style="color: ＃0000ff;">="2"</span> <span style="color: ＃0000ff;">&gt;</span><br />    <span style="color: ＃0000ff;">&lt;/</span><span style="color: ＃800000;">Button</span><span style="color: ＃0000ff;">&gt;</span><br /><br />    <span style="color: ＃0000ff;">&lt;</span><span style="color: ＃800000;">Button<br />        </span><span style="color: ＃ff0000;">android:id</span><span style="color: ＃0000ff;">="＠+id/imageViewLoginState2"</span><span style="color: ＃ff0000;"><br />        android:layout_width</span><span style="color: ＃0000ff;">="fill_parent"</span><span style="color: ＃ff0000;"><br />        android:layout_height</span><span style="color: ＃0000ff;">="fill_parent"</span><span style="color: ＃ff0000;"><br />        android:layout_weight</span><span style="color: ＃0000ff;">="2"</span><span style="color: ＃ff0000;"><br />        android:text</span><span style="color: ＃0000ff;">="3"</span> <span style="color: ＃0000ff;">&gt;</span><br />    <span style="color: ＃0000ff;">&lt;/</span><span style="color: ＃800000;">Button</span><span style="color: ＃0000ff;">&gt;</span><br /><br /><span style="color: ＃0000ff;">&lt;/</span><span style="color: ＃800000;">LinearLayout</span><span style="color: ＃0000ff;">&gt;</span></pre><br /></div><br /><p><br /><br /></p><br /><p>按一般懂得，3个Button的比例应当为1:1:2，但实际景象是如许的:</p><br /><p><img  src="http://pic-server2.byywee.com/M0/S716/716755-0.jpg"></p><br /><p>按我的懂得，体系是如许设置按钮的大小的，变量名按前面代码的意义:</p><br /><p>假设Container即LinearLayout的宽度为PARENT_WIDTH</p><br /><p>三个按钮的宽度都是FILL_PARENT，所以在应用layout_width之前，三个按钮的宽度都为PARENT_WIDTH</p><br /><p>所以额外空间 delta = PARENT_WIDTH - 3 * PARENT_WIDTH = -2 * PARENT</p><br /><p>因为LinearLayout没有设置android:weightSum（默认为0，设置为0就当没设置吧），所以 mWeightSum = 1 + 1 +2 =4</p><br /><p>所以:</p><br /><p>　　第一个按钮的宽度为PARENT_WIDTH + share = PARENT_WIDTH + （layout_weight * delta / mWeightSum） = PARENT_WIDTH + （1 * （-2 * PARENT_WIDTH） /4） =&nbsp;1 /2 *PARENT_WIDTH</p><br /><pre>　　　　weightSum -= childExtra;（=3）<br />　　　　delta  -= share;（=-3/2 * PARENT_WIDTH）</pre><br /><p>　　第二个按钮的宽度为PARENT_WIDTH + share = PARENT_WIDTH + （layout_weight * delta / mWeightSum）&nbsp;= PARENT_WIDTH + （1 * （-3 / 2 * PARENT_WIDTH） /3） =&nbsp;1 /2 *PARENT_WIDTH</p><br /><pre>　　　　weightSum -= childExtra;（=2）<br />　　　　delta  -= share;（=-PARENT_WIDTH）</pre><br /><p>　　第三个按钮的宽度为PARENT_WIDTH + share = PARENT_WIDTH + （layout_weight * delta / mWeightSum）&nbsp;= PARENT_WIDTH + （2 * （- PARENT_WIDTH） /2） =&nbsp;0</p><br /><p>所以终极的罢了就是前两个按钮等分LinearLayout，第三个按钮消散了.</p><br /><p>&nbsp;</p><br /><p>　　大致过程是如许，但不全对，比如若是上例中LinearLayout的weightSum设置为2的话，前两个按钮的宽度为0，但当策画第三个按钮的宽度是mWeightSum = 0，但layout_weight * delta / mWeightSum无法策画，不知道体系怎么处理惩罚的，在我的才能之外了，weightSum为2时的结果图:</p><br /><p><img  src="http://pic-server2.byywee.com/M0/S716/716755-1.jpg"></p><br /><p>　　weightSum为3时的结果图:</p><br /><p><img  src="http://pic-server2.byywee.com/M0/S716/716755-2.jpg"></p><br /><p>&nbsp;</p><br /><p>　　SDK中申明的是，layout_weight默示额外空间怎么划分，要重视额外2字，要有额外的空间才可以将按比例将其分派给设置了layout_weight的子View，所以，若是LinearLayout设置为WRAP_CONTENT的话是没有额外的空间的，layout_weight就没有效处，所只要layout_width不设置为WRAP_CONTENT就行，也可以设置为具体的值，若是值太小的话，额外空间为负，可能紧缩子控件，使其大小比XML文件中定义的小，例如:</p><br /><div class="cnblogs_code"><br /><pre><span style="color: ＃0000ff;">&lt;？</span><span style="color: ＃ff00ff;">xml version="1.0" encoding="utf-8"</span><span style="color: ＃0000ff;">？&gt;</span><br /><span style="color: ＃0000ff;">&lt;</span><span style="color: ＃800000;">LinearLayout </span><span style="color: ＃ff0000;">xmlns:android</span><span style="color: ＃0000ff;">="http://schemas.android.com/apk/res/android"</span><span style="color: ＃ff0000;"><br />    android:layout_width</span><span style="color: ＃0000ff;">="100dp"</span><span style="color: ＃ff0000;"><br />    android:layout_height</span><span style="color: ＃0000ff;">="wrap_content"</span><span style="color: ＃ff0000;"><br />    android:background</span><span style="color: ＃0000ff;">="＃00ff00"</span><span style="color: ＃ff0000;"><br />    android:orientation</span><span style="color: ＃0000ff;">="horizontal"</span> <span style="color: ＃0000ff;">&gt;</span><br /><br />    <span style="color: ＃0000ff;">&lt;</span><span style="color: ＃800000;">Button<br />        </span><span style="color: ＃ff0000;">android:id</span><span style="color: ＃0000ff;">="＠+id/button1"</span><span style="color: ＃ff0000;"><br />        android:layout_width</span><span style="color: ＃0000ff;">="60dp"</span><span style="color: ＃ff0000;"><br />        android:layout_height</span><span style="color: ＃0000ff;">="fill_parent"</span><span style="color: ＃ff0000;"><br />        android:layout_weight</span><span style="color: ＃0000ff;">="1"</span><span style="color: ＃ff0000;"><br />        android:text</span><span style="color: ＃0000ff;">="1"</span> <span style="color: ＃0000ff;">&gt;</span><br />    <span style="color: ＃0000ff;">&lt;/</span><span style="color: ＃800000;">Button</span><span style="color: ＃0000ff;">&gt;</span><br /><br />    <span style="color: ＃0000ff;">&lt;</span><span style="color: ＃800000;">Button<br />        </span><span style="color: ＃ff0000;">android:id</span><span style="color: ＃0000ff;">="＠+id/button2"</span><span style="color: ＃ff0000;"><br />        android:layout_width</span><span style="color: ＃0000ff;">="60dp"</span><span style="color: ＃ff0000;"><br />        android:layout_height</span><span style="color: ＃0000ff;">="fill_parent"</span><span style="color: ＃ff0000;"><br />        android:layout_weight</span><span style="color: ＃0000ff;">="1"</span><span style="color: ＃ff0000;"><br />        android:text</span><span style="color: ＃0000ff;">="2"</span> <span style="color: ＃0000ff;">&gt;</span><br />    <span style="color: ＃0000ff;">&lt;/</span><span style="color: ＃800000;">Button</span><span style="color: ＃0000ff;">&gt;</span><br /><br />    <span style="color: ＃0000ff;">&lt;</span><span style="color: ＃800000;">Button<br />        </span><span style="color: ＃ff0000;">android:id</span><span style="color: ＃0000ff;">="＠+id/button3"</span><span style="color: ＃ff0000;"><br />        android:layout_width</span><span style="color: ＃0000ff;">="60dp"</span><span style="color: ＃ff0000;"><br />        android:layout_height</span><span style="color: ＃0000ff;">="fill_parent"</span><span style="color: ＃ff0000;"><br />        android:layout_weight</span><span style="color: ＃0000ff;">="2"</span><span style="color: ＃ff0000;"><br />        android:text</span><span style="color: ＃0000ff;">="3"</span> <span style="color: ＃0000ff;">&gt;</span><br />    <span style="color: ＃0000ff;">&lt;/</span><span style="color: ＃800000;">Button</span><span style="color: ＃0000ff;">&gt;</span><br /><br /><span style="color: ＃0000ff;">&lt;/</span><span style="color: ＃800000;">LinearLayout</span><span style="color: ＃0000ff;">&gt;</span></pre><br /></div><br /><p>额外空间 delta = 100- 3 * 60 = -80</p><br /><p>mWeightSum = 1 + 1 +2 =4</p><br /><p>所以:</p><br /><p>　　第一个按钮的宽度为60+ share = 60 + （layout_weight * delta / mWeightSum） = 60 + （1 * （-80） /4） =&nbsp;40</p><br /><pre>　　　　weightSum -= childExtra;（=3）<br />　　　　delta  -= share;（=-60）</pre><br /><p>　　第二个按钮的宽度为60 + share = 60 + （layout_weight * delta / mWeightSum）&nbsp;= 60 + （1 * （-60） /3） =&nbsp;40</p><br /><pre>　　　　weightSum -= childExtra;（=2）<br />　　　　delta  -= share;（=-40）</pre><br /><p>　　第三个按钮的宽度为60 + share = 60 + （layout_weight * delta / mWeightSum）&nbsp;= 60 + （2 * （-40） /2） = 20</p><br /><p>结果图:</p><br /><p><img  src="http://pic-server2.byywee.com/M0/S716/716755-3.jpg"></p><br /><p>&nbsp;</p><br /><p>以下代码也说了然layout_weight默示额外空间的分派:</p><br /><div class="cnblogs_code"><br /><pre><span style="color: ＃0000ff;">&lt;？</span><span style="color: ＃ff00ff;">xml version="1.0" encoding="utf-8"</span><span style="color: ＃0000ff;">？&gt;</span><br /><span style="color: ＃0000ff;">&lt;</span><span style="color: ＃800000;">LinearLayout </span><span style="color: ＃ff0000;">xmlns:android</span><span style="color: ＃0000ff;">="http://schemas.android.com/apk/res/android"</span><span style="color: ＃ff0000;"><br />    android:layout_width</span><span style="color: ＃0000ff;">="200dp"</span><span style="color: ＃ff0000;"><br />    android:layout_height</span><span style="color: ＃0000ff;">="wrap_content"</span><span style="color: ＃ff0000;"><br />    android:background</span><span style="color: ＃0000ff;">="＃00ff00"</span><span style="color: ＃ff0000;"><br />    android:orientation</span><span style="color: ＃0000ff;">="horizontal"</span> <span style="color: ＃0000ff;">&gt;</span><br /><br />    <span style="color: ＃0000ff;">&lt;</span><span style="color: ＃800000;">Button<br />        </span><span style="color: ＃ff0000;">android:id</span><span style="color: ＃0000ff;">="＠+id/button1"</span><span style="color: ＃ff0000;"><br />        android:layout_width</span><span style="color: ＃0000ff;">="60dp"</span><span style="color: ＃ff0000;"><br />        android:layout_height</span><span style="color: ＃0000ff;">="fill_parent"</span><span style="color: ＃ff0000;"><br />        android:layout_weight</span><span style="color: ＃0000ff;">="1"</span><span style="color: ＃ff0000;"><br />        android:text</span><span style="color: ＃0000ff;">="1"</span> <span style="color: ＃0000ff;">&gt;</span><br />    <span style="color: ＃0000ff;">&lt;/</span><span style="color: ＃800000;">Button</span><span style="color: ＃0000ff;">&gt;</span><br /><br />    <span style="color: ＃0000ff;">&lt;</span><span style="color: ＃800000;">Button<br />        </span><span style="color: ＃ff0000;">android:id</span><span style="color: ＃0000ff;">="＠+id/button2"</span><span style="color: ＃ff0000;"><br />        android:layout_width</span><span style="color: ＃0000ff;">="40dp"</span><span style="color: ＃ff0000;"><br />        android:layout_height</span><span style="color: ＃0000ff;">="fill_parent"</span><span style="color: ＃ff0000;"><br />        android:layout_weight</span><span style="color: ＃0000ff;">="1"</span><span style="color: ＃ff0000;"><br />        android:text</span><span style="color: ＃0000ff;">="2"</span> <span style="color: ＃0000ff;">&gt;</span><br />    <span style="color: ＃0000ff;">&lt;/</span><span style="color: ＃800000;">Button</span><span style="color: ＃0000ff;">&gt;</span><br /><br />   <br /><span style="color: ＃0000ff;">&lt;/</span><span style="color: ＃800000;">LinearLayout</span><span style="color: ＃0000ff;">&gt;</span></pre><br /></div><br /><p>额外空间为100，所以Button2的宽度为60+100/2=100，Button2的宽度为40+100/2=90<br /><br /></p></div><div id="MySignature"><br /><br /><br /><br /><hr><br />作者：AngelDevil<br /><br />博客：www.cnblogs.com/angeldevil</div></div>
+            <br /><br />
+             <img src="http://www.byywee.com/images/Img_line.gif" height="1" width="750" /><br />
+            正派的男人连工作的时间还嫌不够，他哪能白浪费时间去打扮自己，去做降低自己身份的事情？我宁愿一下子牺牲自己的生命，也不愿意把它减价为零。——巴尔扎克<br />
+
+         </td>
+          <td width="205" valign=top>
+          
+          <DIV id="NavaTree">
+  <DIV id="rightbgcolor">
+  <TABLE width="200" height="80" border="0" cellspacing="0" cellpadding="0">
+
+<TBODY>
+<tr><td>
+<br></td></tr>
+<TR>
+    <TD height="20" class="ClassNameB"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="7" height="21"><STRONG><A href="http://www.byywee.com/page/list/1.html">行业咨询</A></STRONG></TD>
+</TR>
+  
+<TR>
+    <TD height="6"><IMG src="http://www.byywee.com/images/nava/dibu.gif" width="200" height="8"></TD>
+</TR>
+  
+
+
+  <TR>
+    <TD class="ItemName">
+<IMG src="http://www.byywee.com/images/nava/bbb.gif" width="13" height="15"><A href="http://www.byywee.com/page/list/2.html">业界动态
+</A><IMG src="http://www.byywee.com/images/nava/lll.gif" width="15" height="15"><A href="http://www.byywee.com/page/list/3.html">收购融资
+</A><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/lll.gif" width="15" height="15"></SPAN><A href="http://www.byywee.com/page/list/4.html">门户动态
+</A></TD>
+  </TR>
+    <TR>
+    <TD class="ItemName"><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/bbb.gif" alt="" width="13" height="15"><A href="http://www.byywee.com/page/list/5.html">设计比赛
+</A><IMG src="http://www.byywee.com/images/nava/lll.gif" alt="" width="15" height="15"><A href="http://www.byywee.com/page/list/6.html">搜索引擎
+</A><IMG src="http://www.byywee.com/images/nava/lll.gif" width="15" height="15"><A href="http://www.byywee.com/page/list/7.html">其他信息
+</A><IMG src="http://www.byywee.com/images/nava/bbb.gif" alt="" width="13" height="15"><A href="http://www.byywee.com/page/list/32.html">站长在线
+</A><IMG src="http://www.byywee.com/images/nava/lll.gif" width="15" height="15"><A href="http://www.byywee.com/page/list/43.html">电子商务</A>
+<IMG src="http://www.byywee.com/images/nava/lll.gif" width="15" height="15"><A href="http://www.byywee.com/page/list/39.html">访谈</A></SPAN></TD>
+  </TR>
+ 
+ 
+
+
+
+
+<TR>
+    <TD height="20" class="ClassNameB"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="7" height="21"><STRONG><A href="http://www.byywee.com/page/list/8.html">技术文档</A></STRONG></TD>
+</TR>
+  
+<TR>
+    <TD height="6"><IMG src="http://www.byywee.com/images/nava/dibu.gif" width="200" height="8"></TD>
+</TR>
+  
+
+  <TR>
+    <TD class="ItemName"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="13" height="15"><SPAN class="ItemName2"><A href="http://www.byywee.com/page/list/9.html">图形图像</A></SPAN><IMG src="http://www.byywee.com/images/nava/lll.gif" width="15" height="15"><SPAN class="ItemName2"><A href="http://www.byywee.com/page/list/11.html">网络编程
+</A><IMG src="http://www.byywee.com/images/nava/lll.gif" width="15" height="15"></SPAN><A href="http://www.byywee.com/page/list/12.html">网站建设</A></TD>
+  </TR>
+    <TR>
+    <TD class="ItemName"><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/bbb.gif" alt="" width="13" height="15"><A href="http://www.byywee.com/page/list/13.html">网页制作</A><IMG src="http://www.byywee.com/images/nava/lll.gif" alt="" width="15" height="15"><A href="http://www.byywee.com/page/list/10.html">多媒体制作
+</A></SPAN></TD>
+  </TR>
+ 
+ 
+
+  
+<TR>
+    <TD height="20" class="ClassNameB"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="7" height="21"><STRONG><A href="http://www.byywee.com/page/list/14.html">艺术设计</A></STRONG></TD>
+</TR>
+  
+<TR>
+    <TD height="6"><IMG src="http://www.byywee.com/images/nava/dibu.gif" width="200" height="8"></TD>
+</TR>
+  
+  <TR>
+    <TD class="ItemName"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="13" height="15"><A href="http://www.byywee.com/page/list/15.html">设计理论</A><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/lll.gif" width="15" height="15"></SPAN><A href="http://www.byywee.com/page/list/17.html">像素设计</A><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/lll.gif" alt="" width="15" height="15"><A href="http://www.byywee.com/page/list/18.html">佳作欣赏</A></SPAN></TD>
+  </TR>
+    <TR>
+    <TD class="ItemName"><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/bbb.gif" alt="" width="13" height="15"><A href="http://www.byywee.com/page/list/31.html">好站推荐</A><IMG src="http://www.byywee.com/images/nava/lll.gif" alt="" width="15" height="15"><A href="http://www.byywee.com/page/list/38.html">网页设计</A><IMG src="http://www.byywee.com/images/nava/lll.gif" width="15" height="15"><A href="http://www.byywee.com/page/list/45.html">咨询</A></SPAN></TD>
+  </TR>
+
+<TR>
+    <TD height="20" class="ClassNameB"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="7" height="15"><STRONG><A href="http://www.byywee.com/page/list/20.html">摄影摄像</A></STRONG></TD>
+</TR>
+  
+<TR>
+    <TD height="6"><IMG src="http://www.byywee.com/images/nava/dibu.gif" width="200" height="8"></TD>
+</TR>
+  
+  <TR>
+    <TD class="ItemName"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="13" height="15"><A href="http://www.byywee.com/page/list/21.html">摄影作品</A><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/lll.gif" width="15" height="15"></SPAN><A href="http://www.byywee.com/page/list/22.html">摄影游记</A><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/lll.gif" alt="" width="15" height="15"><A href="http://www.byywee.com/page/list/23.html">摄影器材</A></SPAN></TD>
+  </TR>
+      <TR>
+    <TD class="ItemName"><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/bbb.gif" alt="" width="13" height="15"><A href="http://www.byywee.com/page/list/24.html">摄影技巧</A><IMG src="http://www.byywee.com/images/nava/lll.gif" alt="" width="15" height="15"><A href="http://www.byywee.com/page/list/25.html">摄影动态</A></SPAN></TD>
+  </TR>
+  
+<TR>
+    <TD height="20" class="ClassNameB"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="7" height="21"><STRONG><A href="http://www.byywee.com/page/list/26.html">计算机技术</A></STRONG></TD>
+</TR>
+  
+<TR>
+    <TD height="6"><IMG src="http://www.byywee.com/images/nava/dibu.gif" width="200" height="8"></TD>
+</TR>
+  
+  <TR>
+    <TD class="ItemName"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="13" height="15"><A href="http://www.byywee.com/page/list/27.html">操作系统</A><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/lll.gif" width="15" height="15"></SPAN><A href="http://www.byywee.com/page/list/28.html">网络安全</A><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/lll.gif" alt="" width="15" height="15"><A href="http://www.byywee.com/page/list/29.html">应用程序</A></SPAN></TD>
+  </TR>
+  
+  <TR>
+    <TD class="ItemName"><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/bbb.gif" alt="" width="13" height="15"><A href="http://www.byywee.com/page/list/30.html">网络工程</A></SPAN></TD>
+  </TR>
+  
+  <TR>
+    <TD height="20" class="ClassNameB"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="7" height="21"><STRONG><A href="http://www.byywee.com/page/list/33.html">网站运营</A></STRONG></TD>
+</TR>
+  
+<TR>
+    <TD height="6"><IMG src="http://www.byywee.com/images/nava/dibu.gif" width="200" height="8"></TD>
+</TR>
+  
+  <TR>
+    <TD class="ItemName"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="13" height="15"><A href="http://www.byywee.com/page/list/35.html">策划盈利</A><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/lll.gif" width="15" height="15"></SPAN><A href="http://www.byywee.com/page/list/36.html">搜索优化</A><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/lll.gif" alt="" width="15" height="15"><A href="http://www.byywee.com/page/list/40.html">新手教程</A></SPAN></TD>
+  </TR>
+  
+  <TR>
+    <TD class="ItemName"><SPAN class="ItemName2"><IMG src="http://www.byywee.com/images/nava/bbb.gif" alt="" width="13" height="15"><A href="http://www.byywee.com/page/list/41.html">网赚</A></SPAN></TD>
+  </TR>
+  
+ <TR>
+    <TD height="20" class="ClassNameB"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="7" height="21"><STRONG><A href="http://www.byywee.com/page/list/34.html">建站经验</A></STRONG></TD>
+</TR>
+  
+<TR>
+    <TD height="6"><IMG src="http://www.byywee.com/images/nava/dibu.gif" width="200" height="8"></TD>
+</TR>
+
+<TR>
+    <TD height="20" class="ClassNameB"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="7" height="21"><STRONG><A href="http://www.byywee.com/page/list/37.html">网站推广</A></STRONG></TD>
+</TR>
+  
+<TR>
+    <TD height="6"><IMG src="http://www.byywee.com/images/nava/dibu.gif" width="200" height="8"></TD>
+</TR>
+
+<TR>
+    <TD height="20" class="ClassNameB"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="7" height="21"><STRONG><A href="http://www.byywee.com/page/list/42.html">互联网</A></STRONG></TD>
+</TR>
+  
+<TR>
+    <TD height="6"><IMG src="http://www.byywee.com/images/nava/dibu.gif" width="200" height="8"></TD>
+</TR>
+
+<TR>
+    <TD height="20" class="ClassNameB"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="7" height="21"><STRONG><A href="http://www.byywee.com/page/list/44.html">休闲</A></STRONG></TD>
+</TR>
+  
+<TR>
+    <TD height="6"><IMG src="http://www.byywee.com/images/nava/dibu.gif" width="200" height="8"><br /><br /></TD>
+</TR>
+
+
+
+<TR>
+    <TD height="20" class="ClassNameB"><IMG src="http://www.byywee.com/images/nava/bbb.gif" width="7" height="21"><STRONG><A href="javascript:void(0);">随机新闻</A></STRONG></TD>
+</TR>
+<TR>
+    <TD height="6"><IMG src="http://www.byywee.com/images/nava/dibu.gif" width="200" height="8"></TD>
+</TR>
+<TR>
+    <TD class="ItemName">
+     <table id="dlTitleList" cellspacing="0" border="0">
+	<tr>
+		<td> &nbsp;&nbsp;<a href="http://www.byywee.com/page/M0/S216/216321.html"> 几种主板BIOS报警声音的含..</a></span>
+                  </td>
+	</tr><tr>
+		<td> &nbsp;&nbsp;<a href="http://www.byywee.com/page/M0/S216/216322.html"> What’s new: Wi..</a></span>
+                  </td>
+	</tr><tr>
+		<td> &nbsp;&nbsp;<a href="http://www.byywee.com/page/M0/S216/216323.html"> 关于Windows Phon..</a></span>
+                  </td>
+	</tr><tr>
+		<td> &nbsp;&nbsp;<a href="http://www.byywee.com/page/M0/S216/216324.html"> 『原创』用C++开发WM应用..</a></span>
+                  </td>
+	</tr><tr>
+		<td> &nbsp;&nbsp;<a href="http://www.byywee.com/page/M0/S216/216325.html"> Windows Server..</a></span>
+                  </td>
+	</tr><tr>
+		<td> &nbsp;&nbsp;<a href="http://www.byywee.com/page/M0/S216/216326.html"> 深度解析Windows Ph..</a></span>
+                  </td>
+	</tr><tr>
+		<td> &nbsp;&nbsp;<a href="http://www.byywee.com/page/M0/S216/216327.html"> WinMobile学习笔记5</a></span>
+                  </td>
+	</tr><tr>
+		<td> &nbsp;&nbsp;<a href="http://www.byywee.com/page/M0/S216/216328.html"> 微软MIX10在即，我们会看..</a></span>
+                  </td>
+	</tr><tr>
+		<td> &nbsp;&nbsp;<a href="http://www.byywee.com/page/M0/S216/216329.html"> 在WM系统上构建你的销售系统..</a></span>
+                  </td>
+	</tr><tr>
+		<td> &nbsp;&nbsp;<a href="http://www.byywee.com/page/M0/S216/216330.html"> 『原创』用C++开发WM应用..</a></span>
+                  </td>
+	</tr>
+</table>
+    </TD>
+  </TR>
+
+</TBODY></TABLE>
+  </DIV>
+</DIV>
+          
+
+          </td>
+        </tr>
+      </tbody>
+  </table><br />
+    <table width="800" border="0" cellspacing="0" cellpadding="0" align="center">
+
+  <tr>
+    <td height="5" background="http://www.byywee.com/images/Img_bottom_line.gif" ></td>
+  </tr>
+<tr><td align="center">
+
+</td></tr>
+  <tr>
+    <td class="he01"></td>
+  </tr>
+  
+  <tr>
+    <td class="he01"></td>
+  </tr>
+</table>
+<table width="980" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td height="5" background="images/Img_bottom_line.gif" ></td>
+  </tr>
+ <tr>
+    <td align="center">
+    <a  href="http://www.byywee.com" >上海网站建设</a>Copyright   2005-2010 All Rights Reserved <br />
+      地址：上海市天云路259号&nbsp;电话：021-57700304 &nbsp;传真:57661889<br />
+      <a  href="http://www.byywee.com">沪ICP备05011021号
+      </a>
+      <script src="http://s70.cnzz.com/stat.php?id=1978260&web_id=1978260" language="JavaScript"></script>
+	</td>
+  </tr>
+  <tr>
+    <td class="he01"></td>
+  </tr>
+</table></form>
+</body>
+</html>

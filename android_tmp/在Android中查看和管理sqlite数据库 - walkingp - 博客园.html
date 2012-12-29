@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>在Android中查看和管理sqlite数据库 - walkingp - 博客园</title>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/blog/css/common.css?id=20121226"/>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/blog/css/common2.css"/>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/css/shStyle.css"/>
+<link type="text/css" rel="stylesheet" href="http://www.cnblogs.com/walkingp/customcss.aspx?id=55154"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/walkingp/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/walkingp/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/walkingp/wlwmanifest.xml"/>
+<script src="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">
+var currentBlogApp = 'walkingp';
+</script>
+<script src="http://common.cnblogs.com/blog/script/common.js?id=20121226" type="text/javascript"></script> 
+<script src="http://common.cnblogs.com/script/json2.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://common.cnblogs.com/script/syntaxHighlighter.js"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<center>
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/walkingp/"><img id="blogLogo" src="/Skins/LoveIsIntheAir/images/logo.gif" alt="" /></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/walkingp/">walkingp</a></h1>
+<h2>扬长方能避短</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+	<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+	<li><a href="http://q.cnblogs.com" class="menu">博问</a></li>
+    <li><a href="http://home.cnblogs.com/ing/" class="menu">闪存</a></li>
+	<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/walkingp/">首页</a></li>
+	<li><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://www.cnblogs.com/walkingp/admin/EditPosts.aspx?opt=1">新随笔</a></li>
+	<li><a id="MyLinks1_ContactLink" accesskey="9" class="menu" rel="nofollow" href="http://space.cnblogs.com/msg/send/walkingp">联系</a></li>
+	<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://www.cnblogs.com/walkingp/admin/EditPosts.aspx">管理</a></li>
+	<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/walkingp/rss">订阅</a>
+	<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/walkingp/rss"><img src="/Skins/Custom/images/rss.gif" alt="订阅" /></a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+<!--done-->
+随笔- 67&nbsp;
+文章- 0&nbsp;
+评论- 708&nbsp;
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div class="clear"></div>
+	<div id="topicList">
+		
+	
+<!--done-->
+<div id="topics">
+	<div class = "post">
+		<h1 class = "postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/walkingp/archive/2011/03/28/1997437.html">在Android中查看和管理sqlite数据库</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>在Android中可以使用Eclipse插件DDMS来查看，也可以使用Android工具包中的adb工具来查看。android项目中的sqlite数据库位于/data/data/<em>项目包</em>/databases中。</p>
+<h2>使用DDMS导出sqlite数据库。</h2>
+<p>1、首先打开android项目的调试模式，然后找到显示DDMS：</p>
+<p><img src="http://pic002.cnblogs.com/images/2011/52253/2011032809372684.png" /></p>
+<p>选择DDMS</p>
+<p><img src="http://pic002.cnblogs.com/images/2011/52253/2011032809375743.png" /></p>
+<p>2、切换到DDMS，显示File Explorer窗口，找到/data/data/</p>
+<p><img src="http://pic002.cnblogs.com/images/2011/52253/2011032809381481.png" /></p>
+<p>然后找到程序包的文件夹，打开databases，就能看到sqlite数据库文件了。选择将其导出。</p>
+<p><img src="http://pic002.cnblogs.com/images/2011/52253/2011032809391535.png" /></p>
+<p>这样就把sqlite数据库文件以文件的方式导出来了，然后使用sqlite界面管理工具如sqlite administrator、sqlite man或者firefox插件sqlite manager等打开就可以了。</p>
+<p>使用adb工具访问sqlite数据库</p>
+<p>Android Debug Bridge（ADB）是Android的一个通用调试工具，它可以更新设备或模拟器中的代码，可以管理预定端口，可以在设备上运行shell命令，我们知道android是基于Linux内核，它的内部文件结构也是采用linux文件组织方式，因此访问它的文件结构需要使用shell。这次我们就会用shell来访问android应用中的sqlite数据库文件。</p>
+<p>1、运行cmd，切换到android-sdk目录，运行adb.exe，加上参数shell，出现#号就代表进入了shell命令模式，注意adb要在Android模拟器运行时才能进入shell：</p>
+<p><img src="http://pic002.cnblogs.com/images/2011/52253/2011032820381230.png" /></p>
+<p>2、shell命令记住两个基本命令ls和cd，类似windows命令提示行中的dir和cd，代表列出当前目录下文件列表和进入到指定目录。了解这两个命令之后，就可以找到data/data/<em>项目包名</em>/databases：</p>
+<p><img src="http://pic002.cnblogs.com/images/2011/52253/2011032820435789.png" /></p>
+<p>找到数据库文件：</p>
+<p><img src="http://pic002.cnblogs.com/images/2011/52253/2011032820464044.png" /></p>
+<p>接下来就是使用sqlite管理工具来进行操作了。键入sqlite3 <em>数据库名</em>就进入了sqlite管理模式了。</p>
+<p><img src="http://pic002.cnblogs.com/images/2011/52253/2011032820531792.png" /></p>
+<p>在android的sdk中自带了sqlite3.exe，这是sqlite的官方管理工具，它是一个命令行工具。为了使用方便，将其路径注册到系统环境变量path中，即将;%Android_Home%加在Path中，这样只样运行sqlite3，就能直接打开sqlite管理工具了。</p>
+<p><img src="http://pic002.cnblogs.com/images/2011/52253/2011032820505087.png" /></p>
+<h2>sqlite管理数据库篇</h2>
+<p>sqlite命令行工具默认是以;结束语句的。所以如果只是一行语句，要在末尾加;，或者在下一行中键入;，这样sqlite命令才会被执行。</p>
+<p>sqlite常用命令：</p>
+<p>.tables--查看数据库的表列表</p>
+<p>.exit--退出sqlite命令行</p>
+<p>其他命令可随时.help查看帮助。sql命令可直接在此命令行上执行即可：</p>
+<p><img src="http://pic002.cnblogs.com/images/2011/52253/2011032821043382.png" /></p>
+<p>推荐书籍：<a href="http://www.amazon.cn/Android%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95-%E7%B3%BB%E7%BB%9F%E5%8D%B7-%E6%9D%A8%E4%B8%B0%E7%9B%9B/dp/B0053WMHF6?s=books&amp;ie=UTF8&amp;qid=1313070619&amp;sr=1-2?_encoding=UTF8&amp;tag=walkingp-23&amp;linkCode=ur2&amp;camp=536&amp;creative=3200" target="_blank">Android技术内幕：系统篇</a></p></div><div id="MySignature"></div>
+<script type="text/javascript">
+var isLogined = false;
+var cb_blogId = 55154;
+var cb_entryId = 1997437;
+var cb_blogApp = currentBlogApp;
+var cb_blogUserGuid = "e7ca83b1-9a08-de11-9e4d-001cf0cd104b";
+var cb_entryCreatedDate = '2011/3/28 21:06:00';
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+</script>
+<div id="blog_post_info_block">
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+<script type="text/javascript">
+    //SyntaxHighlighter.config.strings.expandSource = '<span><img src="http://static.cnblogs.com/images/expand-code.gif" alt="" class="expand-code-icon"/>View Code</span>';
+    $(function () {             
+        fixPostBodyFormat();
+        loadAdUnderPost();
+        loadBlogSignature();
+        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);        
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);        
+    });
+</script>
+		</div>
+		<div class = "postDesc">posted @ <span id="post-date">2011-03-28 21:06</span> <a href='http://www.cnblogs.com/walkingp/'>walkingp</a> 阅读(21754) 评论(<span id="post-comment-count">3</span>)  <a href ="http://www.cnblogs.com/walkingp/admin/EditPosts.aspx?postid=1997437" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(1997437);return false;">收藏</a></div>
+	</div>
+	<img src ="http://www.cnblogs.com/walkingp/aggbug/1997437.html?type=1&amp;webview=1" width="1" height="1" alt=""/>
+	
+</div><!--end: topics 文章、评论容器-->
+<div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.loadComments();</script>
+<div id="comment_form" class="commentform">
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"></div>
+
+<script type="text/javascript">
+    if (typeof commentManager === 'undefined') {
+        commentManager = new blogCommentManager();
+    }
+    commentManager.loadCommentForm();   
+</script>
+
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.cnblogs.com/" target="_blank" title="程序员的网上家园">博客园首页</a><a href="http://q.cnblogs.com/" target="_blank" title="程序员问答社区">博问</a><a href="http://news.cnblogs.com/" target="_blank" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/ing/" target="_blank">闪存</a><a href="http://job.cnblogs.com/" target="_blank">程序员招聘</a><a href="http://kb.cnblogs.com/" target="_blank">知识库</a></div>
+<div id="ad_under_post_holder"></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+</div>
+
+
+
+
+
+	</div><!--end: topicList 文章列表容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"></div>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style="displya:none"></div></div>
+			
+			<DIV id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+			</DIV>
+			
+		</div><!--end: sideBarMain -->
+		<div class="clear"></div>
+		<div id="footer">
+			
+<!--done-->
+Copyright &copy;2012 walkingp
+		</div><!--end: footer -->
+	</div><!--end: sideBar 侧边栏容器 -->
+</div><!--end: home 自定义的最大容器 -->
+</center>
+<!--PageEndHtml Block Begin-->
+<span style="display:none;"><script src="http://s20.cnzz.com/stat.php?id=696548&web_id=696548" type="text/javascript"></script></span>
+<!--PageEndHtml Block End-->
+<script type="text/javascript" src="http://common.cnblogs.com/script/google-analytics.js"></script>
+</body>
+</html>
