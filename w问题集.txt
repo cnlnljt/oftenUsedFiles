@@ -1,0 +1,121 @@
+
+-------------------------------------------------------------------
+#1
+ubuntu 12.04 LTS 版eclipse svn报Failed to load JavaHL Library
+Posted on 2012/04/30 by ziki
+Failed to load JavaHL Library.
+These are the errors that were encountered:
+no libsvnjavahl-1 in java.library.path
+no svnjavahl-1 in java.library.path
+no svnjavahl in java.library.path
+java.library.path = /usr/lib/jni
+
+1、sudo apt-get install libsvn-java
+
+2、eclipse.ini中增加参数
+
+-vmargs
+-Dosgi.requiredJavaVersion=1.5
+-Djava.library.path=/usr/lib/i386-linux-gnu/jni
+
+-------------------------------------------------------------------
+#2 github 
+  
+  一、github账号添加ssh key：
+使用git clone命令从github上同步github上的代码库时，如果使用SSH链接（如我自己的Hello-World项目：
+
+git@github.com:wisteriaflash/Hello-World.git），而你的SSH key没有添加到github帐号设置中，系统会报下面的错误：
+Permission denied (publickey).
+fatal: The remote end hung up unexpectedly
+
+这时需要在本地创建SSH key，然后将生成的SSH key文件内容添加到github帐号上去。
+创建SSH key的方法很简单，打开git bash执行如下命令就可以：
+ssh-keygen
+然后系统提示输入文件保存位置等信息，连续敲三次回车即可(此时没有使用密码)，生成的SSH key文件保存在：中用户名/.ssh/id_rsa.pub
+
+然后用文本编辑工具打开该文件：
+用户名/.ssh/id_rsa.pub
+
+接着拷贝.ssh/id_rsa.pub文件内的所有内容，将它粘帖到github帐号管理中的添加SSH key界面中。
+打开github帐号管理中的添加SSH key界面的步骤如下：
+1. 登录github
+2. 点击右上方的Accounting settings图标
+3. 选择 SSH key
+4. 点击 Add SSH key
+在出现的界面中填写SSH key的名称，填一个你自己喜欢的名称即可，然后将上面拷贝的~/.ssh/id_rsa.pub文件内容
+
+粘帖到key一栏，在点击“add key”按钮就可以了。
+添加过程github会提示你输入一次你的github密码
+
+添加完成后再次执行git clone就可以成功克隆github上的代码库了。
+
+二、使用git的clone命令，克隆代码：
+在git bash或者终端输入：git clone git@github.com:wisteriaflash/xinneng.git ，即可获得代码。
+ps:clone后面的字串即为github的ssh串。
+
+三、github中的fork使用：
+1.点击github中某个开源项目的fork按钮后，稍等一会儿，可以将开源的代码库拷贝一份到你的respositories中。
+然后就该份源码，可以进行修改及push request等。
+2.github中取消fork的方法：
+      进入自己账户的respositories下的希望取消的fork目录中，点击Admin按钮，找到Delete this repository这个按钮后并点击，此时会弹出对话框，需要再次输入项目名来确认删除，输入项目名称后，点击下方我明白此行为的后果，删除该仓库，即可删除。
+-------------------------------------------------------------------
+无法识别设备
+
+1. /etc/udev/rules.d/51-android.rules (chmod a+rx)
+2. 加入
+	SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="0502", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="0b05", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="413c", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="0489", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="04c5", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="091e", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="18d1", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="109b", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="0bb4", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="12d1", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="24e3", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="2116", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="0482", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="17ef", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="1004", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="22b8", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="0409", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="2080", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="0955", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="2257", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="10a9", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="1d4d", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="0471", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="04da", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="05c6", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="1f53", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="04e8", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="04dd", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="054c", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="0fce", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="2340", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="0930", MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTR{idVender}=="19d2", MODE="0666", GROUP="plugdev"
+ 第一行适用所有的设备，下面对应各个型号设备(也可以不写)
+
+3. restart udev  adb kill-server adb devices
+
+其它：有些设备需要重新启动一下
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+
