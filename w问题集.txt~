@@ -61,47 +61,8 @@ ps:clone后面的字串即为github的ssh串。
 -------------------------------------------------------------------
 无法识别设备
 
-1. /etc/udev/rules.d/51-android.rules (chmod a+rx)
-2. 加入
-	SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="0502", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="0b05", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="413c", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="0489", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="04c5", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="091e", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="18d1", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="109b", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="0bb4", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="12d1", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="24e3", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="2116", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="0482", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="17ef", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="1004", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="22b8", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="0409", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="2080", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="0955", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="2257", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="10a9", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="1d4d", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="0471", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="04da", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="05c6", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="1f53", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="04e8", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="04dd", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="054c", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="0fce", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="2340", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="0930", MODE="0666", GROUP="plugdev"
-	SUBSYSTEM=="usb", ATTR{idVender}=="19d2", MODE="0666", GROUP="plugdev"
- 第一行适用所有的设备，下面对应各个型号设备(也可以不写)
 
-3. restart udev  adb kill-server adb devices
 
-其它：有些设备需要重新启动一下
 -------------------------------------------------------------------
 -------------------------------------------------------------------
 -------------------------------------------------------------------
