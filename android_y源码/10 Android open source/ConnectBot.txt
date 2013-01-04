@@ -1,0 +1,3 @@
+ConnectBot是Android平台的一个客户端安全壳应用。从该项目代码中，可以学习到很多Android安全方面的内容，这些是你在开发应用时经常需要考虑的安全问题。
+ 
+地址：http://code.google.com/p/connectbot/

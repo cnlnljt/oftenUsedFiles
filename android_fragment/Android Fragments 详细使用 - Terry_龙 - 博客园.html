@@ -1,0 +1,635 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Android Fragments 详细使用 - Terry_龙 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/blog/css/common.css?id=20121228"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="http://common.cnblogs.com/Skins/Minyx2_Lite/style.css?id=20121228"/>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/blog/css/common2.css"/>
+<link type="text/css" rel="stylesheet" href="http://common.cnblogs.com/css/shStyle.css"/>
+<link type="text/css" rel="stylesheet" href="http://www.cnblogs.com/TerryBlog/customcss.aspx?id=65692"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/TerryBlog/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/TerryBlog/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/TerryBlog/wlwmanifest.xml"/>
+<script src="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">
+var currentBlogApp = 'TerryBlog';
+</script>
+<script src="http://common.cnblogs.com/blog/script/common.js?id=20121228" type="text/javascript"></script> 
+<script src="http://common.cnblogs.com/script/json2.js" type="text/javascript"></script>
+<script src="http://common.cnblogs.com/Skins/Minyx2_Lite/script/skin.js" language="javascript" type="text/javascript"></script>
+<script type="text/javascript" src="http://common.cnblogs.com/script/syntaxHighlighter.js"></script>
+</head>
+<body>
+<a name="top"></a>
+
+
+<div id="container">
+    <a class="minyx" href="http://www.spiga.com.mx/">Spiga</a>
+    <ul id="topMnu">
+        <!-- 统计数据 -->
+        <li>
+        
+            
+Posts - 154, 
+Articles - 0, 
+Comments - 1242
+<!---->            
+        
+        </li>
+        <!-- 这边可以增加一些链接 -->
+        <!-- 博客园 -->
+        <li><a href="http://www.cnblogs.com">Cnblogs</a></li>
+        <!-- 管理 -->
+        <li id="topMnu-dashboard"><a id="lnkDashboard" href="http://www.cnblogs.com/TerryBlog/admin/EditPosts.aspx">Dashboard</a></li>
+        <li><a id="lnkLogin" href="http://passport.cnblogs.com/login.aspx?ReturnUrl=http://www.cnblogs.com/TerryBlog/archive/2012/02/17/2355753.html">Login</a></li>
+    </ul>
+    
+    <script language="javascript" type="text/javascript">
+        var m = window.__blog.topMenuRendered;
+        if (m) { m(__$("topMnu")); }
+    </script>
+
+    <div id="header">
+        <ul id="menu">
+                <!-- 首页，当前section加上current类 -->
+                <li id="menu-home" class="current"><a id="lnkHome" href="http://www.cnblogs.com/TerryBlog/">Home</a></li>
+                <!-- 联系 -->
+                <li id="menu-contact"><a id="lnkContact" href="http://space.cnblogs.com/msg/send/Terry_%e9%be%99">Contact</a></li>
+                <!-- 相册 -->
+                <li id="menu-gallary"><a id="lnkGallery" href="http://www.cnblogs.com/TerryBlog/gallery.html">Gallery</a></li>
+                <!-- Rss订阅 -->
+                <li id="rss"><a id="lnkRss" href="http://www.cnblogs.com/TerryBlog/rss">RSS</a></li>
+        </ul>
+	<div id="newmsg"></div>
+        <h1>
+            <!-- 主标题 -->
+            <a id="lnkBlogTitle" href="http://www.cnblogs.com/TerryBlog/">Terry_龙</a>
+            <!-- 子标题 -->
+            <small></small>
+        </h1>
+    </div>
+    
+    <script language="javascript" type="text/javascript">
+        var m = window.__blog.headerRendered;
+        if (m) { m(__$("header")); }
+    </script>
+        
+    <div id="wrapper"> 
+        <div id="content">
+             <script language="javascript" type="text/javascript">
+                        var m = window.__blog.preRenderPosts;
+                        if (m) { m(); } 
+            </script>
+            
+	
+<div class="post" id="post"><a name="top"></a>
+    <h2>
+        <a id="ctl01_lnkTitle" href="http://www.cnblogs.com/TerryBlog/archive/2012/02/17/2355753.html">Android Fragments 详细使用</a></h2>
+    <small>
+        2012-02-17 14:29
+        by
+        Terry_龙,
+        23876
+        阅读,
+        <span id="post-comment-count">6</span>
+        评论,
+        <a href="#" onclick="PutInWz();return false;">收藏</a>,
+        <a id="ctl01_lnkEdit" href="http://www.cnblogs.com/TerryBlog/admin/EditPosts.aspx?postid=2355753">编辑</a></small>
+    <div class="entry">
+        <div id="cnblogs_post_body"><h2>&nbsp; &nbsp;Fragments 诞生初衷</h2>
+<p>&nbsp; &nbsp; &nbsp;自从Android 3.0中引入fragments 的概念,根据词海的翻译可以译为:碎片、片段。其上的是为了解决不同屏幕分辩率的动态和灵活UI设计。大屏幕如平板小屏幕如手机，平板电脑的设计使得其有更多的空间来放更多的UI组件，而多出来的空间存放UI使其会产生更多的交互，从而诞生了fragments 。fragments 的设计不需要你来亲自管理view hierarchy 的复杂变化，通过将Activity 的布局分散到frament 中，可以在运行时修改activity 的外观，并且由activity 管理的back stack 中保存些变化。</p>
+<p>&nbsp;</p>
+<h2>&nbsp; &nbsp; &nbsp; Fragments 设计理念</h2>
+<p>&nbsp; &nbsp; &nbsp; 在设计应用时特别是Android 应用 ，有众多的分辨率要去适应，而fragments 可以让你在屏幕不同的屏幕上动态管理UI。例如：通讯应用程序（QQ），用户列表可以在左边，消息窗口在右边的设计。而在手机屏幕用户列表填充屏幕当点击某一用户时，则弹出对话窗口的设计，如下图：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/terryblog/fragments.png" border="0" alt="" width="561" height="324" />&nbsp;</p>
+<h2>Fragments的生命周期&nbsp;</h2>
+<p>&nbsp; &nbsp; 每一个fragments 都有自己的一套生命周期回调方法和处理自己的用户输入事件。 对应生命周期可参考下图：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/terryblog/fragment_lifecycle.png" border="0" alt="" width="327" height="857" />&nbsp;</p>
+<p>&nbsp;其中大多数程序必须使用Fragments 必须实现的三个回调方法分别为：</p>
+<p><strong>onCreate</strong></p>
+<p>&nbsp; &nbsp;系统创建Fragments 时调用，可做执行初始化工作或者当程序被暂停或停止时用来恢复状态，跟Activity 中的onCreate相当。&nbsp;</p>
+<p><strong>onCreateView</strong></p>
+<p>&nbsp; &nbsp;用于首次绘制用户界面的回调方法，必须返回要创建的Fragments 视图UI。假如你不希望提供Fragments 用户界面则可以返回NULL。&nbsp;</p>
+<p><strong>onPause</strong>&nbsp;</p>
+<p>&nbsp; &nbsp; 当用户离开这个Fragments 的时候调用，这时你要提交任何应该持久的变化，因为用户可能不会回来。更多的事件可以参考上图的生命周期关系图。</p>
+<h2>Fragments 的类别</h2>
+<p>&nbsp; &nbsp; 系统内置了三种Fragments ，这三种Fragments 分别有不同的应用场景分别为：</p>
+<p><strong>DialogFragment</strong></p>
+<p>&nbsp;对话框式的Fragments，可以将一个fragments 对话框并到activity 管理的fragments back stack 中，允许用户回到一个前曾摒弃fragments.</p>
+<p><strong>ListFragments</strong></p>
+<p>&nbsp; &nbsp;类似于ListActivity 的效果，并且还提供了ListActivity 类似的onListItemCLick和setListAdapter等功能。</p>
+<p><strong>PreferenceFragments</strong></p>
+<p>&nbsp; &nbsp;类似于PreferenceActivity .可以创建类似IPAD的设置界面。&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Fragments 的详细使用&nbsp;</h2>
+<p>&nbsp; &nbsp; 首先先来看一张DEMO 效果图：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/terryblog/Screenshot.png" border="0" alt="" />&nbsp;</p>
+<p>&nbsp; &nbsp; 左边点击时，右边的字符会与左边选中的项的字符相同。与IPAD上的设置界面很相似，这一点是否借鉴了ipad 上的UI呢？</p>
+<p>相就的XML文件：</p>
+<div class="cnblogs_code"><span style="color: #0000FF;">&lt;?</span><span style="color: #FF00FF;">xml&nbsp;version="1.0"&nbsp;encoding="utf-8"</span><span style="color: #0000FF;">?&gt;</span><br />
+<span style="color: #0000FF;">&lt;</span><span style="color: #800000;">LinearLayout&nbsp;</span><span style="color: #FF0000;">xmlns:android</span><span style="color: #0000FF;">="http://schemas.android.com/apk/res/android"</span><span style="color: #FF0000;"><br />
+&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width</span><span style="color: #0000FF;">="match_parent"</span><span style="color: #FF0000;"><br />
+&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height</span><span style="color: #0000FF;">="match_parent"</span><span style="color: #FF0000;"><br />
+&nbsp;&nbsp;&nbsp;&nbsp;android:orientation</span><span style="color: #0000FF;">="horizontal"</span><span style="color: #FF0000;">&nbsp;</span><span style="color: #0000FF;">&gt;</span><br />
+<br />
+&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">&lt;</span><span style="color: #800000;">fragment&nbsp;</span><span style="color: #FF0000;">class</span><span style="color: #0000FF;">="com.xuzhi.fragment.FragmentDemoActivity$TitlesFragment"</span><span style="color: #FF0000;">&nbsp;android:id</span><span style="color: #0000FF;">="@+id/titles"</span><span style="color: #FF0000;">&nbsp;android:layout_weight</span><span style="color: #0000FF;">="1"</span><span style="color: #FF0000;"><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width</span><span style="color: #0000FF;">="0px"</span><span style="color: #FF0000;">&nbsp;android:layout_height</span><span style="color: #0000FF;">="match_parent"</span><span style="color: #FF0000;"><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000FF;">/&gt;</span><br />
+&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">&lt;</span><span style="color: #800000;">FrameLayout&nbsp;</span><span style="color: #FF0000;">android:id</span><span style="color: #0000FF;">="@+id/details"</span><span style="color: #FF0000;">&nbsp;android:layout_weight</span><span style="color: #0000FF;">="1"</span><span style="color: #FF0000;">&nbsp;android:layout_width</span><span style="color: #0000FF;">="0px"</span><span style="color: #FF0000;">&nbsp;android:layout_height</span><span style="color: #0000FF;">="match_parent"</span><span style="color: #FF0000;"><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:background</span><span style="color: #0000FF;">="?android:attr/detailsElementBackground"</span><span style="color: #FF0000;"><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000FF;">&gt;&lt;/</span><span style="color: #800000;">FrameLayout</span><span style="color: #0000FF;">&gt;</span><br />
+<span style="font-family: verdana, 'courier new'; font-size: 14px; line-height: 21px; color: #0000ff; ">&lt;/</span><span style="font-family: verdana, 'courier new'; font-size: 14px; line-height: 21px; color: #800000; ">LinearLayout</span><span style="font-family: verdana, 'courier new'; font-size: 14px; line-height: 21px; color: #0000ff; ">&gt;</span></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>主界面代码（己做注释）：</p>
+<p>&nbsp;</p>
+<div class="cnblogs_code"><span style="font-family: verdana, 'courier new'; font-size: 14px; line-height: 21px; color: #0000ff; ">package</span><span style="font-family: verdana, 'courier new'; font-size: 14px; line-height: 21px; ">&nbsp;com.xuzhi.fragment;</span><br />
+<span style="color: #0000FF;">import</span>&nbsp;android.app.Activity;<br />
+<span style="color: #0000FF;">import</span>&nbsp;android.app.AlertDialog;<br />
+<span style="color: #0000FF;">import</span>&nbsp;android.app.Fragment;<br />
+<span style="color: #0000FF;">import</span>&nbsp;android.app.FragmentTransaction;<br />
+<span style="color: #0000FF;">import</span>&nbsp;android.app.ListFragment;<br />
+<span style="color: #0000FF;">import</span>&nbsp;android.os.Bundle;<br />
+<span style="color: #0000FF;">import</span>&nbsp;android.util.TypedValue;<br />
+<span style="color: #0000FF;">import</span>&nbsp;android.view.LayoutInflater;<br />
+<span style="color: #0000FF;">import</span>&nbsp;android.view.View;<br />
+<span style="color: #0000FF;">import</span>&nbsp;android.view.ViewGroup;<br />
+<span style="color: #0000FF;">import</span>&nbsp;android.widget.ArrayAdapter;<br />
+<span style="color: #0000FF;">import</span>&nbsp;android.widget.ListView;<br />
+<span style="color: #0000FF;">import</span>&nbsp;android.widget.ScrollView;<br />
+<span style="color: #0000FF;">import</span>&nbsp;android.widget.TextView;<br />
+<br />
+<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">class</span>&nbsp;FragmentDemoActivity&nbsp;<span style="color: #0000FF;">extends</span>&nbsp;Activity&nbsp;{<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">static</span>&nbsp;String[]&nbsp;array&nbsp;=&nbsp;{&nbsp;"text1,",&nbsp;"text2",&nbsp;"text3",&nbsp;"text4",<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"text5,",&nbsp;"text6",&nbsp;"text7",&nbsp;"text8"&nbsp;};<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">/**</span><span style="color: #008000;">&nbsp;Called&nbsp;when&nbsp;the&nbsp;activity&nbsp;is&nbsp;first&nbsp;created.&nbsp;</span><span style="color: #008000;">*/</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">void</span>&nbsp;onCreate(Bundle&nbsp;savedInstanceState)&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">super</span>.onCreate(savedInstanceState);&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setContentView(R.layout.main);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">static</span>&nbsp;<span style="color: #0000FF;">class</span>&nbsp;TitlesFragment&nbsp;<span style="color: #0000FF;">extends</span>&nbsp;ListFragment&nbsp;{<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">boolean</span>&nbsp;mDualPane;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">int</span>&nbsp;mCurCheckPosition&nbsp;=&nbsp;0;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">void</span>&nbsp;onCreate(Bundle&nbsp;savedInstanceState)&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">super</span>.onCreate(savedInstanceState);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Fragment--&gt;onCreate");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;View&nbsp;onCreateView(LayoutInflater&nbsp;inflater,&nbsp;ViewGroup&nbsp;container,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bundle&nbsp;savedInstanceState)&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Fragment--&gt;onCreateView");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">return</span>&nbsp;<span style="color: #0000FF;">super</span>.onCreateView(inflater,&nbsp;container,&nbsp;savedInstanceState);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">void</span>&nbsp;onPause()&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">super</span>.onPause();<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Fragment--&gt;onPause");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">void</span>&nbsp;onStop()&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">super</span>.onStop();<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Fragment--&gt;onStop");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">void</span>&nbsp;onAttach(Activity&nbsp;activity)&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">super</span>.onAttach(activity);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Fragment--&gt;onAttach");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">void</span>&nbsp;onStart()&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">super</span>.onStart();<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Fragment--&gt;onStart");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">void</span>&nbsp;onResume()&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">super</span>.onResume();<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Fragment--&gt;onResume");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">void</span>&nbsp;onDestroy()&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">super</span>.onDestroy();<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Fragment--&gt;onDestroy");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">void</span>&nbsp;onActivityCreated(Bundle&nbsp;savedInstanceState)&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">super</span>.onActivityCreated(savedInstanceState);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Fragment--&gt;onActivityCreted");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setListAdapter(<span style="color: #0000FF;">new</span>&nbsp;ArrayAdapter&lt;String&gt;(getActivity(),<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android.R.layout.simple_list_item_1,&nbsp;array));<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View&nbsp;detailsFrame&nbsp;=&nbsp;getActivity().findViewById(R.id.details);<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mDualPane&nbsp;=&nbsp;detailsFrame&nbsp;!=&nbsp;<span style="color: #0000FF;">null</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;detailsFrame.getVisibility()&nbsp;==&nbsp;View.VISIBLE;<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">if</span>&nbsp;(savedInstanceState&nbsp;!=&nbsp;<span style="color: #0000FF;">null</span>)&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mCurCheckPosition&nbsp;=&nbsp;savedInstanceState.getInt("curChoice",&nbsp;0);&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">从保存的状态中取出数据</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">if</span>&nbsp;(mDualPane)&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showDetails(mCurCheckPosition);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">void</span>&nbsp;onSaveInstanceState(Bundle&nbsp;outState)&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">super</span>.onSaveInstanceState(outState);<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outState.putInt("curChoice",&nbsp;mCurCheckPosition);<span style="color: #008000;">//</span><span style="color: #008000;">保存当前的下标</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">void</span>&nbsp;onListItemClick(ListView&nbsp;l,&nbsp;View&nbsp;v,&nbsp;<span style="color: #0000FF;">int</span>&nbsp;position,&nbsp;<span style="color: #0000FF;">long</span>&nbsp;id)&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">super</span>.onListItemClick(l,&nbsp;v,&nbsp;position,&nbsp;id);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showDetails(position);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">void</span>&nbsp;showDetails(<span style="color: #0000FF;">int</span>&nbsp;index)&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mCurCheckPosition&nbsp;=&nbsp;index;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">if</span>&nbsp;(mDualPane)&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getListView().setItemChecked(index,&nbsp;<span style="color: #0000FF;">true</span>);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DetailsFragment&nbsp;details&nbsp;=&nbsp;(DetailsFragment)&nbsp;getFragmentManager()<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.findFragmentById(R.id.details);&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">if</span>&nbsp;(details&nbsp;==&nbsp;<span style="color: #0000FF;">null</span>&nbsp;||&nbsp;details.getShownIndex()&nbsp;!=&nbsp;index)&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;details&nbsp;=&nbsp;DetailsFragment.newInstance(mCurCheckPosition);&nbsp;<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">得到一个fragment&nbsp;事务（类似sqlite的操作）</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FragmentTransaction&nbsp;ft&nbsp;=&nbsp;getFragmentManager()<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.beginTransaction();<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ft.replace(R.id.details,&nbsp;details);<span style="color: #008000;">//</span><span style="color: #008000;">将得到的fragment&nbsp;替换当前的viewGroup内容，add则不替换会依次累加</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);<span style="color: #008000;">//</span><span style="color: #008000;">设置动画效果</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ft.commit();<span style="color: #008000;">//</span><span style="color: #008000;">提交</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span style="color: #0000FF;">else</span>&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">new</span>&nbsp;AlertDialog.Builder(getActivity()).setTitle(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android.R.string.dialog_alert_title).setMessage(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[index]).setPositiveButton(android.R.string.ok,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">null</span>).show();<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">/**</span><span style="color: #008000;"><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;作为界面的一部分，为fragment&nbsp;提供一个layout<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span style="color: #808080;">@author</span><span style="color: #008000;">&nbsp;terry<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">*/</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">static</span>&nbsp;<span style="color: #0000FF;">class</span>&nbsp;DetailsFragment&nbsp;<span style="color: #0000FF;">extends</span>&nbsp;Fragment&nbsp;{<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">static</span>&nbsp;DetailsFragment&nbsp;newInstance(<span style="color: #0000FF;">int</span>&nbsp;index)&nbsp;{&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DetailsFragment&nbsp;details&nbsp;=&nbsp;<span style="color: #0000FF;">new</span>&nbsp;DetailsFragment();<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bundle&nbsp;args&nbsp;=&nbsp;<span style="color: #0000FF;">new</span>&nbsp;Bundle();<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args.putInt("index",&nbsp;index);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;details.setArguments(args);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">return</span>&nbsp;details;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">int</span>&nbsp;getShownIndex()&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">return</span>&nbsp;getArguments().getInt("index",&nbsp;0);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;View&nbsp;onCreateView(LayoutInflater&nbsp;inflater,&nbsp;ViewGroup&nbsp;container,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bundle&nbsp;savedInstanceState)&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">if</span>&nbsp;(container&nbsp;==&nbsp;<span style="color: #0000FF;">null</span>)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">return</span>&nbsp;<span style="color: #0000FF;">null</span>;<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ScrollView&nbsp;scroller&nbsp;=&nbsp;<span style="color: #0000FF;">new</span>&nbsp;ScrollView(getActivity());<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TextView&nbsp;text&nbsp;=&nbsp;<span style="color: #0000FF;">new</span>&nbsp;TextView(getActivity());<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">int</span>&nbsp;padding&nbsp;=&nbsp;(<span style="color: #0000FF;">int</span>)&nbsp;TypedValue.applyDimension(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TypedValue.COMPLEX_UNIT_DIP,&nbsp;4,&nbsp;getActivity()<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getResources().getDisplayMetrics());<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text.setPadding(padding,&nbsp;padding,&nbsp;padding,&nbsp;padding);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scroller.addView(text);<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text.setText(array[getShownIndex()]);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">return</span>&nbsp;scroller;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+}</div>
+<p>&nbsp;注意：</p>
+<p>
+</p>
+<ol>
+     <li>如果你想在Fragment 里面创建menu，则必须在onCreate的时候设置让它可以存在optionMenu才可以创建，代码为：<br />
+     <div class="cnblogs_code">
+     <div><span style="color: #0000ff; ">public</span>&nbsp;<span style="color: #0000FF;">static</span>&nbsp;<span style="color: #0000FF;">class</span>&nbsp;DetailsFragment&nbsp;<span style="color: #0000FF;">extends</span>&nbsp;Fragment&nbsp;{<br />
+     <br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">void</span>&nbsp;onCreate(Bundle&nbsp;savedInstanceState)&nbsp;{<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+     </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">super</span>.onCreate(savedInstanceState);<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setHasOptionsMenu(<span style="color: #0000FF;">true</span>);<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+     }</div>
+     </div>
+     之后的操作即可以像平常Android的menu用法一样,代码为：<br />
+     <div class="cnblogs_code">
+     <div>@Override<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">void</span>&nbsp;onCreateOptionsMenu(Menu&nbsp;menu,&nbsp;MenuInflater&nbsp;inflater)&nbsp;{<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+     </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">super</span>.onCreateOptionsMenu(menu,&nbsp;inflater);<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu.add("Menu&nbsp;1a").setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu.add("Menu&nbsp;1b").setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">public</span>&nbsp;<span style="color: #0000FF;">boolean</span>&nbsp;onOptionsItemSelected(MenuItem&nbsp;item)&nbsp;{<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;"><br />
+     </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toast.makeText(getActivity(),&nbsp;"index&nbsp;is"+getShownIndex()+"&nbsp;&amp;&amp;&nbsp;menu&nbsp;text&nbsp;is&nbsp;"+item.getTitle(),&nbsp;1000).show();<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000FF;">return</span>&nbsp;<span style="color: #0000FF;">super</span>.onOptionsItemSelected(item);<br />
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+     </div>
+     </li>
+</ol>
+<div></div>
+<p>&nbsp;更多详细的使用方法，请参考SDK和APIDEMO中相关的例子和解释。</p>
+<p>DEMO下载：</p>
+<p><a target="_blank" title="Android FramentDEMO" href="http://files.cnblogs.com/TerryBlog/FragmentDemo.zip" style="color: #cc0000; ">Android FramentDEMO</a>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+        
+<script type="text/javascript">
+var isLogined = false;
+var cb_blogId = 65692;
+var cb_entryId = 2355753;
+var cb_blogApp = currentBlogApp;
+var cb_blogUserGuid = "015e3f6e-acf7-de11-ba8f-001cf0cd104b";
+var cb_entryCreatedDate = '2012/2/17 14:29:00';
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+</script>
+<div id="blog_post_info_block">
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+<script type="text/javascript">
+    //SyntaxHighlighter.config.strings.expandSource = '<span><img src="http://static.cnblogs.com/images/expand-code.gif" alt="" class="expand-code-icon"/>View Code</span>';
+    $(function () {             
+        fixPostBodyFormat();
+        loadAdUnderPost();
+        loadBlogSignature();
+        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);        
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);        
+    });
+</script>
+    </div>
+    <span><img src ="http://www.cnblogs.com/TerryBlog/aggbug/2355753.html?type=1&webview=1" width="1" height="1" alt=""/></span>
+    <ul class="postmetadata">
+        <li id="ctl01_liCate" class="icon_cat"><strong>Categories: </strong>
+            <a href='http://www.cnblogs.com/TerryBlog/category/355220.html'>Android 4.0相关</a>            
+        </li>
+        <li id="ctl01_liTag" class="icon_bullet"><strong>Tags: </strong>
+            <a href="http://www.cnblogs.com/TerryBlog/tag/android/">android</a>, <a href="http://www.cnblogs.com/TerryBlog/tag/Fragment/">Fragment</a>
+        </li>
+        
+    </ul>
+</div>
+
+<script language="javascript" type="text/javascript">
+    var m = window.__blog.postRendered;
+    if (m) { m(__$("post")); }
+</script>
+
+<script language="javascript" type="text/javascript">
+    var m = window.__blog.postRenderPosts;
+    if (m) { m(); }
+</script><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.loadComments();</script>
+<div id="comment_form" class="commentform">
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"></div>
+
+<script type="text/javascript">
+    if (typeof commentManager === 'undefined') {
+        commentManager = new blogCommentManager();
+    }
+    commentManager.loadCommentForm();   
+</script>
+
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.cnblogs.com/" target="_blank" title="程序员的网上家园">博客园首页</a><a href="http://q.cnblogs.com/" target="_blank" title="程序员问答社区">博问</a><a href="http://news.cnblogs.com/" target="_blank" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/ing/" target="_blank">闪存</a><a href="http://job.cnblogs.com/" target="_blank">程序员招聘</a><a href="http://kb.cnblogs.com/" target="_blank">知识库</a></div>
+<div id="ad_under_post_holder"></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+</div>
+
+
+
+
+
+        </div>
+        
+	    <script language="javascript" type="text/javascript">
+	               var m = window.__blog.contentRendered;
+	               if (m) { m(__$("content")); }
+        </script>
+
+	    <div id="sidebar">
+			    
+
+<div id="about">
+    <div>
+        <h2 id="about_title">
+            About
+        </h2>
+        <div id="about_body">
+        <div id="blog-news"></div>
+        </div>
+    </div>
+</div>
+
+			    <script language="javascript" type="text/javascript">
+                        var m = window.__blog.aboutRendered;
+                        if (m) { m(__$("about")); }
+                </script>
+                
+<script type="text/javascript">
+function zzk_go()
+{
+	var blogapp = 'TerryBlog';
+	var keystr = encodeURIComponent("blog:"+blogapp+" "+document.getElementById('q').value);
+    window.location = "http://zzk.cnblogs.com/s?w="+keystr;
+}
+function zzk_go_enter(event)
+{
+	if(event.keyCode == 13)
+	{
+	    zzk_go();
+	    return false;
+	}
+}
+</script>
+
+<div id="mySearchWrapper">
+    <div id="mySearch">
+        <input type="image" src="/skins/Minyx2_Lite/images/btnsearch.gif" id="btnZzk"  class="submit" onclick="zzk_go();return false;"/>
+        <label class="lb_search"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="keyword" /></label>
+    </div>
+</div>
+
+                <script language="javascript" type="text/javascript">
+                                var m = window.__blog.searchFormRendered;
+                                if (m) { m(__$("searchform")); }
+                </script>
+                <div id="sideMain">
+                </div>
+                <div id="sideRight">
+                </div>
+                <div id="sideLeft">            
+                </div>
+			    
+			    <div id="sideContainer">
+                </div>
+                <script language="javascript" type="text/javascript">
+                    $.ajax({
+                        url: '/' + currentBlogApp + '/mvc/blog/Minyx2_Lite_SideColumn.aspx',
+                        data: '{}',
+                        type: 'post',
+                        dataType: 'text',
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data) {
+                                $("#sideContainer").html(data);
+                                if ($("#blog-calendar").length) {
+                                    loadBlogCalendar();
+                                }
+                                loadBlogSideBlocks();
+                                var m = window.__blog.sideContainerRendered;
+                                if (m) { m(__$("sideContainer")); }
+                                window.__blog.sidebar.__layout();
+                            }
+                        }
+                    });
+                    
+                 </script>       	
+			                      
+ 		    </div>
+     		
+	        <script language="javascript" type="text/javascript">
+	        var m = window.__blog.sidebarRendered;
+	        if (m) { m(__$("sidebar")); }
+                </script>        
+     </div>
+     
+        <script language="javascript" type="text/javascript">
+            var m = window.__blog.wrapperRendered;
+            if (m) { m(__$("wrapper")); }
+        </script>
+
+</div>
+<!-- end of container -->
+    
+<script language="javascript" type="text/javascript">
+    var m = window.__blog.containerRendered;
+    if (m) { m(__$("container")); }
+</script>
+
+<div id="footer">
+        
+<p id="logoFoot">
+    <a href="http://www.spiga.com.mx/" title="Agencia Interactiva Spiga">www.spiga.com.mx</a>
+</p>
+<div class="footText">
+<p>
+Copyright &copy;2012 Terry_龙
+</p>
+<p>
+<a href="http://www.cnblogs.com">博客园</a>
+</p>
+</div>
+</div><!--end: footer -->
+
+<!--PageEndHtml Block Begin-->
+<script language="javascript"> 
+ $(document).ready(function(){   
+    $("body").prepend($("#div_digg").css({   
+        "position" : "fixed", "right" : "0px", "bottom" : "0px", "z-index" : "10", "background-color" : "white", "margin" : "10px", "padding" : "10px", "border" : "1px solid #cccccc"}));   
+
+ 
+
+$("#profile_block").before("<img src='http://pic.cnblogs.com/avatar/a107203.png' width='180px' height='220px' align='left' style='margin-right: 10px; margin-top: 2px;' />");
+
+$("#about_body").append("<br/><fieldset><legend><b>个人信息</b></legend><br/>姓名：杨海龙<br/>English name：terry<br/>Email:terryyhl@gmail.com<br/><a href='http://weibo.com/terryyhl' target='_blank'>【新浪微博】</a><br/>职位：伟大的程序员<br/>51Cto获得荣誉：<font color='red'>博客之星</font> <br/><img src='http://blog.51cto.com/image/skin/blogLogo02.png'><br/><a href='http://2010blog.51cto.com/' target='_blank' ><b>2010年度十大杰出博客大赛入围前50名<br/><img src='http://blog.51cto.com/images/logo_fifteen.jpg' /><br/></b></a><br/>51CTO博客地址：<a href='http://terryblog.blog.51cto.com/' target='_blank'><font color='red'><b>http://terryblog.blog.51cto.com/</b></font></a><br/><br/>CSDN博客地址：<a href='http://blog.csdn.net/terryyhl' target='_blank'><font color='red'><b>http://blog.csdn.net/terryyhl</b></font></a><br/><br/>摄影博客地址：<a href='http://blog.sina.com.cn/terryyhl' target='_blank'><font color='red'><b>http://blog.sina.com.cn/u/1771139015</b></font></a><p/><font color='red'><b>本人最近找工作，3年半工作经验，一年android车机软件经验，一年半机顶盒开发经验，框架或框架以上，其他时间做web开发，深圳地区找一份COCOS2D-X相关的游戏开发，介绍的可通过邮箱联系我，感激。<b/></font></fieldset>");
+
+$("#about_body").append("<br/><fieldset><legend><b>点击下面链接订阅我</b></legend><br/>&nbsp;&nbsp;<a href='http://www.google.com/ig/add?feedurl=http://www.cnblogs.com/TerryBlog/' target='_blank'><font color='red'><b>订阅到&nbsp;&nbsp;<font color=blue>iGoogle</font></b></font></a><br/>&nbsp;&nbsp;<a href='http://xianguo.com/login?rurl=/subscribe?url=http://www.cnblogs.com/TerryBlog/' target='_blank'><font color='red'><b>订阅到&nbsp;&nbsp;<font color=orange>鲜果网</font></b></font></a><br/>&nbsp;&nbsp;<a href='http://mail.qq.com/cgi-bin/feed?u=http://www.cnblogs.com/TerryBlog/' target='_blank'><font color='red'><b>订阅到&nbsp;&nbsp;MAIL<font color=green>QQ邮箱</font></b></font></a><br/>&nbsp;&nbsp;<a href='http://account.youdao.com/login?back_url=http://www.cnblogs.com/TerryBlog/&service=reader' target='_blank'><font color='red'><b>订阅到&nbsp;&nbsp;<u>有道</u></b></font></a><br/>&nbsp;&nbsp;<a href='http://www.zhuaxia.com/indexFrame.php#showNewChannelInfo(5581770)' target='_blank'><font color='red'><b>订阅到&nbsp;&nbsp;<font color=lightgreen>抓虾</font></b></font></a></filedset>");
+
+
+$("#about_body").append("<br/><filedset><legend><b>好友链接</b></legend></br><a  target ='_blank' href='http://blog.csdn.net/android_tutor'>Frankie</a><br/><a target='_blank' href='http://www.disanji.net'><b>第三极-移动开发资源</b></a><br/><a href='http://s08.flagcounter.com/more/wms'><img src='http://s08.flagcounter.com/count/wms/bg=FFFFFF/txt=000000/border=CCCCCC/columns=2/maxflags=12/viewers=0/labels=0/' alt='free counters' border='0'></a><br/><img='http://i.WoTuLa.com/note.png?name=terry_龙&say=欢迎您的来访。'></filedset>");
+
+$("#about_title").html("关于我");
+  $("#lnkHome").html("我的首页");
+ $("#lnkContact").html("联系我");
+$("#lnkGallery").html("我的相册");
+
+$("#lnkDashboard").html("控制面板");
+
+$("#lnkLogin").html("登出");
+
+ $("#author_profile_follow").append("<p><br /><b>您的支持是我动力的源泉</b></p><div><input name='article_support' value='支持' type='button' /><input name='article_pass' value='飘过' type='button' />");
+
+
+ $("input[name=article_support]").click(function(){
+$("textarea[class=comment_textarea]").val("文章不错，支持一下，再接再励！[face]baimantou/223332943.gif[/face]");
+;
+});
+$("input[name=article_pass]").click(function(){
+$("textarea[class=comment_textarea]").val("飘过~~[face]tusiji/203330658.gif[/face]");
+;
+
+});
+
+
+
+
+
+});
+  </script>
+
+ <script type="text/javascript" src="http://v1.jiathis.com/code/jiathis_r.js?move=0&amp;btn=r1.gif" charset="utf-8"></script>
+ 
+<!--PageEndHtml Block End-->
+<script type="text/javascript" src="http://common.cnblogs.com/script/google-analytics.js"></script>
+</body>
+</html>

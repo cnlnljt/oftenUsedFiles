@@ -1,0 +1,575 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Android Fragment使用 - xyz_lmn的博客 - 博客频道 - CSDN.NET</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="2012CSDN年度博客之星评选期待您的参与http://vote.blog.csdn.net/item/blogstar/xyz_lmn&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;通常地 fragment做为宿主activity UI的一部分, 被作为activity整个view hierarchy的一部分被嵌入.&#160;有2种方法你可以添加一个fragment到activity layout：一、在activity的layo" />
+<script src="http://static.blog.csdn.net/scripts/jquery.js" type="text/javascript"></script>
+<script src="http://static.blog.csdn.net/scripts/plugins.js" type="text/javascript"></script>
+<script src="http://static.blog.csdn.net/scripts/common.js?v=1.2" type="text/javascript"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/ad.js?v=1.1"></script>
+<link rel="Stylesheet" type="text/css" href="http://static.blog.csdn.net/skin/dark1/css/style.css?v=1.1" />
+<link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="/xyz_lmn/rss/list" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link type="text/css" rel="stylesheet" href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/default.css" />
+</head>
+<body>
+<script src="http://csdnimg.cn/pubnav/js/pub_topnav_2011.js"type="text/javascript"></script>
+<div id="container">
+<div id="header">
+    <div class="header">
+        <div id="blog_title">
+            <h1><a href="/xyz_lmn">xyz_lmn的博客</a></h1>
+            <h2>致力于移动平台开发，做用户体验至上的移动应用产品。</h2>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div id="navigator">
+    <div class="navigator_bg"></div>
+    <div class="navigator">
+        <ul>
+            <li id="btnContents"><a href="/xyz_lmn?viewmode=contents"><span><img src="http://static.blog.csdn.net/images/ico_list.gif">目录视图</span></a></li>
+            <li id="btnView"><a href="/xyz_lmn?viewmode=list"><span><img src="http://static.blog.csdn.net/images/ico_summary.gif">摘要视图</span></a></li>
+            <li id="btnRss"><a href="/xyz_lmn/rss/list"><span><img src="http://static.blog.csdn.net/images/ico_rss.gif">订阅</span></a></li>
+</ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var username = "xyz_lmn";
+    var blog_address = "http://blog.csdn.net/xyz_lmn";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";
+</script>
+        
+<div id="body">
+<div id="main">
+<div class="main">
+<div class="notice"> 
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/8424776" target="_blank">
+<font color=blue>
+2013年4月微软MVP申请开始啦！   </font></a>
+
+&nbsp;&nbsp;
+
+<a href="http://bbs.csdn.net/topics/390330213
+" target="_blank"><font color=red>写给13岁的CSDN论坛 </font></a>
+
+&nbsp;&nbsp;
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/8424675
+" target="_blank"><font color=red>CSDN博客频道年终送好礼！</font></a>
+
+
+<br />
+
+
+
+
+
+<a href="http://vote.blog.csdn.net/details/blogstar"target="_blank">
+<font color=red>2012CSDN博客之星评选正式上线 </font></a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="http://blog.csdn.net/zhangoi391/article/details/8161343"target="_blank">
+<font color=red>2000元大奖征异构开发博文  </font></a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="http://huiyi.csdn.net/cmdn/view/183"target="_blank">
+<font color=red>Q14年互联网产品进化史   </font></a>
+
+</div><div id="article_details" class="details">
+    <div class="article_title">
+    <span class="ico ico_type_Original"></span>
+    <h3>
+        <span class="link_title"><a href="/xyz_lmn/article/details/6927695">
+        Android Fragment使用
+        </a></span>
+    </h3>
+</div>
+
+        
+    <div class="article_manage">
+        <span class="link_categories">
+        分类：
+            <a href="/xyz_lmn/article/category/566667">android（综合）</a> 
+        </span>
+    <span class="link_postdate">2011-11-02 11:11</span>
+    <span class="link_view" title="阅读次数">6390人阅读</span>
+    <span class="link_comments" title="评论次数"><a href="#comments">评论</a>(3)</span>
+    <span class="link_collect"><a href="javascript:void(0);" onclick="javascript:collectArticle('Android Fragment使用','6927695');return false;" title="收藏">收藏</a></span>
+    <span class="link_report"><a href="#report"  onclick="javascript:report(6927695,2);return false;" title="举报">举报</a></span>
+    
+</div>
+<div class="tag2box"><a href='http://blog.csdn.net/tag/details.html?tag=android' target=_blank>android</a><a href='http://blog.csdn.net/tag/details.html?tag=layout' target=_blank>layout</a><a href='http://blog.csdn.net/tag/details.html?tag=hierarchy' target=_blank>hierarchy</a><a href='http://blog.csdn.net/tag/details.html?tag=encoding' target=_blank>encoding</a><a href='http://blog.csdn.net/tag/details.html?tag=ui' target=_blank>ui</a></div>
+
+
+    
+<div id="article_content" class="article_content">
+<span style="color:#464646;font: 14px/21px simsun; text-align: left; text-transform: none; text-indent: 28px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: rgb(188, 211, 229); -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"></span><div><p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px; ">&nbsp;&nbsp;<a href="http://vote.blog.csdn.net/item/blogstar/xyz_lmn" style="color: rgb(202, 0, 0); text-decoration: none; font-family: FangSong_GB2312; font-size: 18px; "><span style="font-family: Helvetica, Tahoma, Arial, sans-serif; color: rgb(0, 104, 183); "><span style="cursor: pointer; line-height: 24px; ">2012CSDN年度博客之星评选</span></span>期待您的</a><span style="font-family: FangSong_GB2312; font-size: 18px; ">参与</span></p><p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px; "><span style="font-family: FangSong_GB2312; font-size: 18px; "><a href="http://vote.blog.csdn.net/item/blogstar/xyz_lmn" style="color: rgb(202, 0, 0); text-decoration: none; ">http://vote.blog.csdn.net/item/blogstar/xyz_lmn</a></span></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div>通常地 fragment做为宿主activity UI的一部分, 被作为activity整个view hierarchy的一部分被嵌入.&nbsp;<wbr>有2种方法你可以添加一个fragment到activity layout：</wbr></div><div><br /></div><h2>一、在activity的layout文件中声明fragment</h2><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 你可以像为View一样, 为fragment指定layout属性（sdk3.0以后）.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 例子是一个有2个fragment的activity:</div><div><div style="margin: 0px 0px 10px; padding: 0px; border-radius: 5px; border: 1px dashed rgb(187, 187, 187); color: black; overflow-x: auto; overflow-y: auto; background-color: rgb(255, 255, 255);"><div style="margin: 0px; padding: 0px 10px; text-align: left; color: rgb(51, 51, 51); font-size: 0.95em; background-image: none;"><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new=""><span style="font-family:Helvetica, Arial, sans-serif;font-size:13px;color:#333333;line-height: 17px; word-break: normal; word-wrap: normal;"><span style="color:#0091;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">
+&lt;?xml version=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;1.0&quot;</span><span>&nbsp;</span>encoding=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;utf-8&quot;</span>?&gt;</span></span></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&lt;LinearLayout<span>&nbsp;</span><span style="color:#00e000;line-height: 19px;  word-break: normal; word-wrap: normal; background-color: inherit;"><strong>xmlns:android</strong></span>=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;http://schemas.android.com/apk/res/android&quot;</span></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>android:orientation=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;horizontal&quot;</span></wbr></wbr></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>android:layout_width=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;match_parent&quot;</span></wbr></wbr></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>android:layout_height=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;match_parent&quot;</span>&gt;</wbr></wbr></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&nbsp;<wbr>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&lt;fragment android:name=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;com.example.news.ArticleListFragment&quot;</span></wbr></wbr></wbr></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>android:id=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;@+id/list&quot;</span></wbr></wbr></wbr></wbr></wbr></wbr></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>android:layout_weight=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;1&quot;</span></wbr></wbr></wbr></wbr></wbr></wbr></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>android:layout_width=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;0dp&quot;</span></wbr></wbr></wbr></wbr></wbr></wbr></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>android:layout_height=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;match_parent&quot;</span><span>&nbsp;</span>/&gt;</wbr></wbr></wbr></wbr></wbr></wbr></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&nbsp;<wbr>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&lt;fragment android:name=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;com.example.news.ArticleReaderFragment&quot;</span></wbr></wbr></wbr></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>android:id=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;@+id/viewer&quot;</span></wbr></wbr></wbr></wbr></wbr></wbr></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>android:layout_weight=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;2&quot;</span></wbr></wbr></wbr></wbr></wbr></wbr></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>android:layout_width=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;0dp&quot;</span></wbr></wbr></wbr></wbr></wbr></wbr></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>&nbsp;<wbr><span>&nbsp;</span>android:layout_height=<span style="color:#0910;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&quot;match_parent&quot;</span><span>&nbsp;</span>/&gt;</wbr></wbr></wbr></wbr></wbr></wbr></pre><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new="">&nbsp;<wbr><span>&nbsp;</span><span style="color:#0091;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">&lt;/LinearLayout&gt;</span></wbr></pre><div><span style="color:#0091;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;"><br /></span></div></div></div></div><div><div>&lt;fragment&gt; 中的 android:name 属性指定了在layout中实例化的Fragment类.&nbsp;<wbr></wbr></div><div><br /></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 当系统创建这个activity layout时, 它实例化每一个在layout中指定的fragment,并调用每一个上的onCreateView()方法,来获取每一个fragment的layout. 系统将从fragment返回的 View 直接插入到&lt;fragment&gt;元素所在的地方.&nbsp;<wbr></wbr></div><div><br /></div><div><strong>注意</strong>: 每一个fragment都需要一个唯一的标识, 如果activity重启,系统可以用来恢复fragment(并且你也可以用来捕获fragment来处理事务,例如移除它.)&nbsp;<wbr></wbr></div><div><br /></div><div>有3种方法来为一个fragment提供一个标识:</div><div><ul style="border-width: 0px; margin: 0px; padding: 0px; list-style-type: none;"><li style="border-width: 0px; margin: 0px 0px 0px 30px; padding: 0px; list-style-type: disc;">为 android:id 属性提供一个唯一ID.</li><li style="border-width: 0px; margin: 0px 0px 0px 30px; padding: 0px; list-style-type: disc;">为 android:tag 属性提供一个唯一字符串.</li><li style="border-width: 0px; margin: 0px 0px 0px 30px; padding: 0px; list-style-type: disc;">如果以上2个你都没有提供, 系统使用容器view的ID.</li></ul></div></div><div><br /></div><h3>二、使用FragmentManager将fragment添加到一个已存在的ViewGroup.</h3><div><br /></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 当activity运行的任何时候, 都可以将fragment添加到activity layout.只需简单的指定一个需要放置fragment的ViewGroup.为了在你的activity中操作fragment事务(例如添加,移除,或代替一个fragment),必须使用来自 FragmentTransaction 的API.</div><div><br /></div><div>可以按如下方法,从你的Activity取得一个 FragmentTransaction 的实例:</div><div><div style="margin: 0px 0px 10px; padding: 0px; border-radius: 5px; border: 1px dashed rgb(187, 187, 187); color: black; overflow-x: auto; overflow-y: auto; background-color: rgb(255, 255, 255);"><div style="margin: 0px; padding: 0px 10px; text-align: left; color: rgb(51, 51, 51); font-size: 0.95em; background-image: none;"><pre style="margin: 0px; padding: 0px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new=""><p><span style="font-family:Helvetica, Arial, sans-serif;font-size:13px;color:#333333;line-height: 17px; word-break: normal; word-wrap: normal;">
+FragmentManager fragmentManager = getFragmentManager();&nbsp;<wbr>
+</wbr></span></p><p><span style="font-family:Helvetica, Arial, sans-serif;font-size:13px;color:#333333;line-height: 17px; word-break: normal; word-wrap: normal;">FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();</span></p></pre><div><br /></div></div></div></div><div>然后你可以使用 add() 方法添加一个fragment, 指定要添加的fragment, 和要插入的view.</div><div><div style="margin: 0px 0px 10px; padding: 0px; border-radius: 5px; border: 1px dashed rgb(187, 187, 187); width: 875px; height: 104px; color: black; overflow-x: auto; overflow-y: auto; background-color: rgb(255, 255, 255);"><div style="margin: 0px; padding: 0px 10px; text-align: left; color: rgb(51, 51, 51); font-size: 0.95em; background-image: none;"><pre style="margin: 0px; padding: 0px; width: 849px; height: 99px; text-align: left; line-height: 1.3; font-family: ;" auto="" normal="" monospace="" courier="" new=""><p><span style="font-family:Helvetica, Arial, sans-serif;font-size:13px;color:#333333;line-height: 17px; word-break: normal; word-wrap: normal;">
+ExampleFragment fragment =<span>&nbsp;</span><span style="color:#0091;line-height: 19px; word-break: normal; word-wrap: normal; background-color: inherit;">new</span><span>&nbsp;</span>ExampleFragment();</span></p><p><span style="font-family:Helvetica, Arial, sans-serif;font-size:13px;color:#333333;line-height: 17px; word-break: normal; word-wrap: normal;"> f</span><span style="font-family:Helvetica, Arial, sans-serif;font-size:13px;color:#333333;line-height: 17px; word-break: normal; word-wrap: normal;">ragmentTransaction.add(R.id.fragment_container, fragment);<span>&nbsp;</span>
+</span></p><p><span style="font-family:Helvetica, Arial, sans-serif;font-size:13px;color:#333333;line-height: 17px; word-break: normal; word-wrap: normal;">fragmentTransaction.commit();</span></p></pre></div></div></div><div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; add()的第一个参数是fragment要放入的ViewGroup, 由resource ID指定, 第二个参数是需要添加的fragment.一旦用FragmentTransaction做了改变,为了使改变生效,必须调用commit().&nbsp;</div><div>&nbsp;</div><div>/**<br />* @author 张兴业<br />* 邮箱：<a href="mailto:xy-zhang@163.com">xy-zhang#163.com</a><br />* android开发进阶群：<span style="font-family: Arial, Console, Verdana, 'Courier New'; line-height: 14px; "><span style="font-size: 18px; color: rgb(255, 0, 0); ">278401545</span></span><br />*<br />*/</div></div>
+</div>
+<div class="share_buttons" id="sharePanel"></div>
+<!--192.168.1.236-->
+<div class="article_next_prev">
+    <li class="prev_article"><span>上一篇：</span><a href="/xyz_lmn/article/details/6927390">android Fragments (Android官方文档中文版)</a></li>
+    <li class="next_article"><span>下一篇：</span><a href="/xyz_lmn/article/details/6927763">Android FragmentManage FragmentTransaction介绍</a></li>
+</div>
+
+
+    
+</div>
+<div id="ad_cen"></div>
+<script type="text/javascript">
+    new Ad(4, 'ad_cen');
+</script>
+<div id="comment_title" class="panel_head">查看评论<a name="comments"></a></div>
+<div id="comment_list"></div>
+<div id="comment_bar"></div>
+<div id="comment_form"></div>
+<div class="announce">* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>
+<script type="text/javascript">
+    var fileName = '6927695';
+    var commentscount = 3;
+    var islock = false
+</script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/comment.js?v=1.8"></script>
+<div id="ad_bot"></div>
+<script type="text/javascript">
+    new Ad(5, 'ad_bot');
+</script>
+<div id="report_dialog"></div>
+
+<div id="d-top">
+<a href="#" onclick="javascript:document.body.scrollTop=0;document.documentElement.scrollTop=0;this.blur();return false;" title="回到顶部">
+<img src="http://static.blog.csdn.net/images/top.png" alt="TOP" /></a>
+</div>
+
+
+
+<div class="clear"></div>
+</div>
+</div>
+
+<div id="side">
+<div class="side">
+<div id="panel_Profile" class="panel">
+    <ul class="panel_head"><span>个人资料</span></ul>
+    <ul class="panel_body profile">
+        <div id="blog_userface">
+            <a href="http://my.csdn.net/xyz_lmn" target="_blank">
+            <img src="http://avatar.csdn.net/E/D/5/1_xyz_lmn.jpg" title="访问我的空间" style="max-width:90%"/>
+            </a>
+            <br />
+            <span><a href="http://my.csdn.net/xyz_lmn" class="user_name" target="_blank">xyz_lmn</a></span>
+        </div>
+<div class="interact">
+<!--<a href="#" class="attented" title="已关注"></a>-->
+<a href="#" class="attent" id="span_add_follow" title="[加关注]"></a>
+<a href="http://my.csdn.net/my/letter/send/xyz_lmn" class="letter" title="[发私信]"></a>
+</div>
+        <div id="blog_medal">
+                <div class="ico_expert" title="CSDN认证专家"></div>
+        </div>
+        <ul id="blog_rank">
+            <li>访问：<span>352158次</span></li>
+            <li>积分：<span>5879分</span></li>
+            <li>排名：<span>第572名</span></li>
+        </ul>
+        <ul id="blog_statistics">
+            <li>原创：<span>174篇</span></li>
+            <li>转载：<span>227篇</span></li>
+            <li>译文：<span>9篇</span></li>
+            <li>评论：<span>333条</span></li>
+        </ul>
+    </ul>
+</div>
+<script type="text/javascript">
+    var _blogger = 'xyz_lmn';
+</script>
+<script type='text/javascript'>
+$(document).ready(function () {
+    var un = getUN().toLowerCase();
+    if (un == _blogger.toLowerCase()) {
+        $('.interact').hide();
+    } else if(un) {
+        var url = "http://my.csdn.net/index.php/follow/check_is_followed/" + encodeURIComponent(un) + "/" + encodeURIComponent(_blogger) + "?jsonpcallback=?";
+        $.getJSON(url, {}, function (data) {
+            if (data.succ == 1 && data.info == 1) {
+                $('#span_add_follow').attr('class', 'attented');
+            } else {
+                $('#span_add_follow').click(guanzhu);
+            }
+        }, 'json');
+    }
+});
+function guanzhu() {
+    var url = "http://my.csdn.net/index.php/follow/do_follow?jsonpcallback=?";
+    $.getJSON(url, { "username": _blogger }, function (data) {
+        if (data.succ == 1) {
+            alert('关注成功！');
+            $('#span_add_follow').attr('class', 'attented').click(function () { return false; });
+        } else {
+            alert(data.msg);
+        }
+    });
+    return false;
+}
+function getUN() {
+    var m = document.cookie.match(new RegExp("(^| )UserName=([^;]*)(;|$)"));
+    if (m) return m[2];
+    else return '';
+}
+</script>
+
+<div id="custom_column_9068886" class="panel">
+    <ul class="panel_head"><span>新浪微博</span></ul>
+    <ul class="panel_body">
+        <iframe width="100%" height="150" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=150&fansRow=1&ptype=1&speed=0&skin=9&isTitle=1&noborder=0&isWeibo=0&isFans=0&uid=1567949094&verifier=5382a6e2&dpc=1"></iframe>
+    </ul>
+</div><div id="custom_column_22012770" class="panel">
+    <ul class="panel_head"><span>android 开发群</span></ul>
+    <ul class="panel_body">
+        <div>
+	<span style="font-weight: bold;"><span style="font-size:18px;color:#ff0000;">android 开发进阶</span></span>
+</div>
+<br>
+<div>
+	<span style="font-weight: bold;"><span style="font-family: Arial, Console, Verdana, 'Courier New';  line-height: 14px; "><strong><span style="font-size:18px;color:#ff0000;">278401545</span></strong></span><br />
+	</span>
+</div>
+    </ul>
+</div><div id="panel_Category" class="panel">
+    <ul class="panel_head"><span>博客专栏</span></ul>
+    <ul class="panel_body" id="sp_column">
+    <table cellpadding="0" cellspacing="0"><tr>
+    <td style="padding:10px 10px 0 0;">
+    <a href="http://blog.csdn.net/column/details/android-jni.html" target="_blank"><img src="http://avatar.csdn.net/blogpic/20121213112113772.jpg" style="width:75px;height:75px;" /></a>
+    </td>
+    <td style="padding:10px 0; vertical-align:top;">
+    <a href="http://blog.csdn.net/column/details/android-jni.html" target="_blank">Android JNI入门</a>
+    <p>文章：11篇</p>
+    <span>阅读：12780</span>
+    </td>
+    </tr></table>
+    <table cellpadding="0" cellspacing="0"><tr>
+    <td style="padding:10px 10px 0 0;">
+    <a href="http://blog.csdn.net/column/details/xyzlmnnetdev.html" target="_blank"><img src="http://avatar.csdn.net/blogpic/20120902124433885.jpg" style="width:75px;height:75px;" /></a>
+    </td>
+    <td style="padding:10px 0; vertical-align:top;">
+    <a href="http://blog.csdn.net/column/details/xyzlmnnetdev.html" target="_blank">Android网络开发</a>
+    <p>文章：6篇</p>
+    <span>阅读：3401</span>
+    </td>
+    </tr></table>
+    <table cellpadding="0" cellspacing="0"><tr>
+    <td style="padding:10px 10px 0 0;">
+    <a href="http://blog.csdn.net/column/details/xyzlmn.html" target="_blank"><img src="http://avatar.csdn.net/blogpic/20111102143949134.jpg" style="width:75px;height:75px;" /></a>
+    </td>
+    <td style="padding:10px 0; vertical-align:top;">
+    <a href="http://blog.csdn.net/column/details/xyzlmn.html" target="_blank">Android UI开发专栏</a>
+    <p>文章：25篇</p>
+    <span>阅读：46976</span>
+    </td>
+    </tr></table>
+    </ul>
+</div><div id="panel_Category" class="panel">
+    <ul class="panel_head"><span>文章分类</span></ul>
+    <ul class="panel_body">
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/912146">android UI（常用）</a><span>(26)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/566667">android（综合）</a><span>(125)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/1127423">android web（html5）</a><span>(6)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/922246">android NDK（语音编解码）</a><span>(11)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/919453">android 网络编程</a><span>(11)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/924028">android xmpp</a><span>(7)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/912121">android 自动化测试</a><span>(6)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/924790">android 解压缩 加解密</a><span>(3)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/743698">android其他</a><span>(4)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/1252855">MongoDB</a><span>(5)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/761338">SIP/RTP/RTSP</a><span>(24)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/613644">技术思考</a><span>(4)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/614397">Windows Mobile UI</a><span>(10)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/566712">Windows Mobile</a><span>(67)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/639384">iphone</a><span>(2)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/626565">java</a><span>(8)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/599548">c#</a><span>(13)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/620699">基础知识</a><span>(5)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/658102">DirectShow</a><span>(4)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/568848">思考人生</a><span>(4)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/639199">语音识别</a><span>(2)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/651677">Hook</a><span>(6)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/649196">DLL</a><span>(8)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/651675">MFC</a><span>(1)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/626087">servlet</a><span>(1)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/547348">Web 方向</a><span>(6)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/652736">WINCE程序设计笔记</a><span>(5)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/620954">SQlite</a><span>(2)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/646201">VC++</a><span>(5)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/628329">图片处理工具</a><span>(1)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/620694">Web Service</a><span>(1)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/646771">win32</a><span>(15)</span>
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/xyz_lmn/article/category/632818">windows mobile注册表</a><span>(9)</span>
+        </li>
+    </ul>
+</div><div id="panel_Archive" class="panel">
+    <ul class="panel_head"><span>文章存档</span></ul>
+    <ul class="panel_body">
+        <div id="archive_list">
+        <!--归档统计-->
+        <li><a href="http://blog.csdn.net/xyz_lmn/article/month/2012/12">2012年12月</a><span>(5)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2012/11">2012年11月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2012/10">2012年10月</a><span>(10)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2012/09">2012年09月</a><span>(11)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2012/08">2012年08月</a><span>(7)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2012/07">2012年07月</a><span>(5)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2012/06">2012年06月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2012/05">2012年05月</a><span>(2)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2012/04">2012年04月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2012/03">2012年03月</a><span>(8)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2012/02">2012年02月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2012/01">2012年01月</a><span>(5)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2011/12">2011年12月</a><span>(8)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2011/11">2011年11月</a><span>(25)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2011/10">2011年10月</a><span>(25)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2011/06">2011年06月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2011/05">2011年05月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2011/04">2011年04月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2011/03">2011年03月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2011/02">2011年02月</a><span>(9)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2011/01">2011年01月</a><span>(17)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2010/12">2010年12月</a><span>(34)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2010/11">2010年11月</a><span>(11)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2010/10">2010年10月</a><span>(5)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2010/09">2010年09月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2010/08">2010年08月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2010/07">2010年07月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2010/06">2010年06月</a><span>(5)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2010/05">2010年05月</a><span>(2)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2010/04">2010年04月</a><span>(5)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2010/03">2010年03月</a><span>(14)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2010/02">2010年02月</a><span>(23)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2010/01">2010年01月</a><span>(22)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2009/12">2009年12月</a><span>(25)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2009/11">2009年11月</a><span>(46)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2009/10">2009年10月</a><span>(7)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2009/09">2009年09月</a><span>(9)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2009/08">2009年08月</a><span>(30)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2009/07">2009年07月</a><span>(8)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2009/06">2009年06月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2009/05">2009年05月</a><span>(5)</span></li><li><a href="http://blog.csdn.net/xyz_lmn/article/month/2009/03">2009年03月</a><span>(1)</span></li>
+        </div>
+    </ul>
+</div>
+<div id="hotarticls" class="panel">
+    <ul class="panel_head"><span>阅读排行</span></ul>
+    <ul class="panel_body itemlist">
+        <li>
+            <a href="/xyz_lmn/article/details/7004710" title="adb logcat 查看日志">adb logcat 查看日志</a><span>(11418)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/5663245" title="如何在windows7 Home家庭版中创建Administrator管理员账户">如何在windows7 Home家庭版中创建Administrator管理员账户</a><span>(8498)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/4353609" title="如何安装Apk文件到Android模拟器">如何安装Apk文件到Android模拟器</a><span>(6979)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/6930753" title="Android UI开发第十七篇——Android Fragment实例">Android UI开发第十七篇——Android Fragment实例</a><span>(6491)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/6927695" title="Android Fragment使用">Android Fragment使用</a><span>(6390)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/4353553" title="如何安装apk文件到android模拟器上面">如何安装apk文件到android模拟器上面</a><span>(6013)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/5908355" title="Android中Intent传递对象的两种方法(Serializable,Parcelable)">Android中Intent传递对象的两种方法(Serializable,Parcelable)</a><span>(5651)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/5968056" title="Android Intent用法详解">Android Intent用法详解</a><span>(5523)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/6063300" title="Android视频采集+H264编码">Android视频采集+H264编码</a><span>(5497)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/6925359" title="Android——Fragment介绍">Android——Fragment介绍</a><span>(5427)</span>
+        </li>
+    </ul>
+</div>
+<div id="homepageArticles" class="panel">
+    <ul class="panel_head"><span>推荐文章</span></ul>
+    <ul class="panel_body" id="ad_commend">
+    </ul>
+</div>
+<script type="text/javascript">
+    new Ad(12, 'ad_commend');
+</script><div id="newcomments" class="panel">
+<ul class="panel_head"><span>最新评论</span></ul>
+<ul class="panel_body itemlist">
+    <li>
+    <a href="/xyz_lmn/article/details/8027334#comments">Android网络编程——https 不验证证书方式（信任所有证书）</a>
+    <p style="margin:0px;"><a href="/xyz_lmn" class="user_name">xyz_lmn</a>:
+@tianzhw:编译用的4.1，测试手机2.3.
+    </p>
+    </li>
+    <li>
+    <a href="/xyz_lmn/article/details/8027334#comments">Android网络编程——https 不验证证书方式（信任所有证书）</a>
+    <p style="margin:0px;"><a href="/xyz_lmn" class="user_name">xyz_lmn</a>:
+@tianzhw:能贴一下异常的内容吗？我这没出现异常。我获取的内容会贴图到上面。
+    </p>
+    </li>
+    <li>
+    <a href="/xyz_lmn/article/details/8027334#comments">Android网络编程——https 不验证证书方式（信任所有证书）</a>
+    <p style="margin:0px;"><a href="/tianzhw" class="user_name">tianzhw</a>:
+这个代码依旧是会异常的啊 我用的2.3的sdk。
+    </p>
+    </li>
+    <li>
+    <a href="/xyz_lmn/article/details/6146749#comments">java中判断socket服务器端是否断开连接</a>
+    <p style="margin:0px;"><a href="/xuechangchun007" class="user_name">xuechangchun007</a>:
+楼主，不知道你的reconnect是怎样写的？我的问题是：客户端一直向服务器连接，但服务器断开后重启...
+    </p>
+    </li>
+    <li>
+    <a href="/xyz_lmn/article/details/8278003#comments">Android JNI入门第六篇——C调用Java</a>
+    <p style="margin:0px;"><a href="/peter3008" class="user_name">peter3008</a>:
+@cheniwantyou:很有意义
+    </p>
+    </li>
+    <li>
+    <a href="/xyz_lmn/article/details/8278003#comments">Android JNI入门第六篇——C调用Java</a>
+    <p style="margin:0px;"><a href="/peter3008" class="user_name">peter3008</a>:
+很有意义。
+    </p>
+    </li>
+    <li>
+    <a href="/xyz_lmn/article/details/8132420#comments">Android UI开发第二十四篇——Action Bar</a>
+    <p style="margin:0px;"><a href="/xiahao86" class="user_name">xiahao86</a>:
+学习了大牛~~
+    </p>
+    </li>
+    <li>
+    <a href="/xyz_lmn/article/details/8013490#comments">speex编解码在android上实现</a>
+    <p style="margin:0px;"><a href="/xyz_lmn" class="user_name">xyz_lmn</a>:
+@Y080Y:应该是，我没仔细看那个例子，你可以研究下。
+    </p>
+    </li>
+    <li>
+    <a href="/xyz_lmn/article/details/8013490#comments">speex编解码在android上实现</a>
+    <p style="margin:0px;"><a href="/Y080Y" class="user_name">Y080Y</a>:
+@xyz_lmn:那可不可以这样理解,speex其实就相当于rar压缩器,我们包装成.spx和ogg...
+    </p>
+    </li>
+    <li>
+    <a href="/xyz_lmn/article/details/7587807#comments">AndroidPN真机环境测试</a>
+    <p style="margin:0px;"><a href="/x359981514" class="user_name">x359981514</a>:
+你好，我直接运行下载的androidpn-server-0.5.0\bin里面的run.bat文件后...
+    </p>
+    </li>
+</ul>
+</div>
+<div id="hotarticls2" class="panel">
+    <ul class="panel_head"><span>评论排行</span></ul>
+    <ul class="panel_body itemlist">
+        <li>
+            <a href="/xyz_lmn/article/details/6921097" title="Android UI开发第十六篇——分享一个popuwindow实例">Android UI开发第十六篇——分享一个popuwindow实例</a><span>(40)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/7587807" title="AndroidPN真机环境测试">AndroidPN真机环境测试</a><span>(27)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/7046317" title="Android UI开发第二十篇——仿launcher的左右滑动（用ViewPager实现欢迎引导页面）">Android UI开发第二十篇——仿launcher的左右滑动（用ViewPager实现欢迎引导页面）</a><span>(10)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/7367783" title="ant 实现批量打包android应用">ant 实现批量打包android应用</a><span>(10)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/6939160" title="Android UI开发第十八篇——ActivityGroup实现tab功能">Android UI开发第十八篇——ActivityGroup实现tab功能</a><span>(10)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/8278003" title="Android JNI入门第六篇——C调用Java">Android JNI入门第六篇——C调用Java</a><span>(9)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/5962873" title="android 使用vcard示例">android 使用vcard示例</a><span>(8)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/6930753" title="Android UI开发第十七篇——Android Fragment实例">Android UI开发第十七篇——Android Fragment实例</a><span>(8)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/6146749" title="java中判断socket服务器端是否断开连接">java中判断socket服务器端是否断开连接</a><span>(7)</span>
+        </li>
+        <li>
+            <a href="/xyz_lmn/article/details/8013490" title="speex编解码在android上实现">speex编解码在android上实现</a><span>(6)</span>
+        </li>
+    </ul>
+</div>
+<div class="panel" id="panel_Search">
+    <ul class="panel_head"><span>文章搜索</span></ul>
+    <ul class="panel_body">
+        <form id="frmSearch" action="http://so.csdn.net/search" class="form_search" target="_blank">
+        <span><input id="inputSearch" type="text" class="blogsearch" title="请输入关键字" /></span>
+        <input id="btnSubmit" type="submit" value="搜索" title="search in blog" />
+        <input type="hidden" name="q" id="inputQ" />
+        <input type="hidden" name="t" value="blog" />
+        <a id="btnSearchBlog" target="_blank"></a>
+        </form>
+    </ul>
+</div></div>
+<div class="clear"></div>
+</div>
+
+<div class="clear"></div>
+</div>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/SyntaxHighlighter/shCore-src.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/article_code.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/cnick.js"></script>
+
+<script type="text/javascript" src="http://medal.blog.csdn.net/scripts/show.js"></script>
+<script type="text/javascript" src="http://medal.blog.csdn.net/showblogmedal.ashx?blogid=470066"></script>
+
+<script type="text/javascript" src="http://csdnimg.cn/pubfooter/js/publib_footer.js"></script>
+
+<script type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</script>
+<script type="text/javascript" src="http://www.csdn.net/ui/scripts/Csdn/counter.js"></script>
+
+<!--ad.csdn.net-->
+<script type="text/javascript" src="http://ad.csdn.net/scripts/ad-blog.js"></script>
+
+
+
+</div>
+</body>
+</html>

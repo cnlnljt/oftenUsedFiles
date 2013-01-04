@@ -1,0 +1,2 @@
+是Foursquare.com的一个客户端应用，该应用主要分为两个模块：API(com.joelapenna.foursquare)和 界面前端 (com.joelapenna.foursquared)两部分。从该项目代码中，可以学会如何同步、多线程、HTTP连接等技术。
+地址：http://code.google.com/p/foursquared/
