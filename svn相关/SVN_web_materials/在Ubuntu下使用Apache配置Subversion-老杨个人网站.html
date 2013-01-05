@@ -1,0 +1,620 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0079)http://yangyongquan.com/2009/04/configure-subversion-with-apache-in-ubuntu.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>
+  在Ubuntu下使用Apache配置Subversion-老杨个人网站</title>
+
+
+<meta name="robots" content="all">
+<meta name="y_key" content="af3e5c186bff0380">
+<meta name="generator" content="WordPress">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://yangyongquan.com/feed">
+<link rel="alternate" type="text/xml" title="RSS .92" href="http://yangyongquan.com/feed/rss">
+<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://yangyongquan.com/feed/atom">
+<link rel="pingback" href="http://yangyongquan.com/xmlrpc.php">
+
+
+	<script type="text/javascript" src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/jquery.min.js"></script>
+		<script type="text/javascript" src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/tabs.js"></script>
+<script>
+$(document).ready(function(){
+  $("#entry img").each(function(){
+    if($(this).width()>500)
+      $(this).width(520);
+  })
+});
+</script>
+<script>
+function qqime(){
+var ime=document.createElement('script');
+ime.setAttribute('src','http://ime.qq.com/fcgi-bin/getjs');
+ime.setAttribute('ime-cfg','lt=2');
+document.body.appendChild(ime);
+}
+</script>
+<link rel="stylesheet" href="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/fanfou.css" type="text/css" media="screen">
+<link rel="alternate" type="application/rss+xml" title="老杨个人网站 » 在Ubuntu下使用Apache配置Subversion 评论 Feed" href="http://yangyongquan.com/2009/04/configure-subversion-with-apache-in-ubuntu.html/feed">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://yangyongquan.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://yangyongquan.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="在Ubuntu下使用ies4linux安装IE" href="http://yangyongquan.com/2009/04/install-ie-with-ies4linux-in-ubuntu.html">
+<link rel="next" title="阿桑走好" href="http://yangyongquan.com/2009/04/goodbye-asang.html">
+<meta name="generator" content="WordPress 3.4.1">
+<link rel="canonical" href="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/在Ubuntu下使用Apache配置Subversion-老杨个人网站.html">
+<link rel="shortlink" href="http://yangyongquan.com/?p=880">
+ 	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<style type="text/css"><!--.wp-paged-comments {
+	padding: 10px 0px 0px 10px;
+}
+.wp-paged-comments a, #wp-paged-comments a:link, #wp-paged-comments a:active {
+	padding: 2px 4px 2px 4px; 
+	margin: 2px;
+	text-decoration: none;
+	border: 1px solid #0066cc;
+	color: #0066cc;
+	background-color: #FFFFFF;	
+}
+.wp-paged-comments a:hover {	
+	border: 1px solid #114477;
+	color: #114477;
+	background-color: #FFFFFF;
+}
+.wp-paged-comments span.pages {
+	padding: 2px 4px 2px 4px; 
+	margin: 2px 2px 2px 2px;
+	color: #000000;
+	border: 1px solid #000000;
+	background-color: #FFFFFF;
+}
+.wp-paged-comments span.current {
+	padding: 2px 4px 2px 4px; 
+	margin: 2px;
+	font-weight: bold;
+	border: 1px solid #000000;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+.wp-paged-comments span.extend {
+	padding: 2px 4px 2px 4px; 
+	margin: 2px;	
+	border: 1px solid #000000;
+	color: #000000;
+	background-color: #FFFFFF;
+}--></style><!-- wp thread comment 1.4.9.4.002 -->
+<style type="text/css" media="screen">
+			
+</style>
+
+</head><body>
+<div id="body-container">
+
+
+
+<div id="header">
+	<h1><a href="http://yangyongquan.com/" title="老杨个人网站">老杨个人网站</a></h1>
+
+
+<div id="feed">
+<script type="text/javascript">
+fanfou_name="semoryang";fanfou_count=1;fanfou_timeline="user";</script>
+<script type="text/javascript" charset="utf-8" src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/timeline.js"></script><script type="text/javascript" charset="utf-8" src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/semoryang.json"></script>
+<div id="fanfou_statuses_user" class="fanfou_statuses"><ul><li><a class="avatar"><img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/100.jpg"></a><a class="author"></a><a class="text" id="fanfotext">我眼睁睁的看着眼前的这朵茉莉花开放了</a><a class="stamp">老杨</a></li></ul></div>
+</div><!-- feed -->
+	<h2>志存高远 厚积薄发</h2>
+</div><!-- header -->
+<div id="nav-container">
+	<div id="main-nav">
+		<ul>
+<!-- This menu uses Dynamic Menu Highlighting.  To learn more, go to http://codex.wordpress.org/Dynamic_Menu_Highlighting -->
+
+<!-- To show "current" on the home page -->
+<li>
+<a href="http://yangyongquan.com/" title="首页"><span>博客首页</span></a></li>
+
+
+<li>
+
+<a href="http://yangyongquan.com/about" title="关于老杨"><span>关于老杨</span></a></li>
+
+<li>
+<a href="http://yangyongquan.com/guestbook" title="给我留言"><span>给我留言</span></a></li>
+
+<li>
+<a href="http://yangyongquan.com/links" title="友情链接"><span>友情链接</span></a></li>
+
+
+<li>
+
+<a href="http://yangyongquan.com/blogtime" title="博客时间"><span>博客时间</span></a></li>
+
+</ul>
+<!-- END MAIN-NAV.PHP -->
+	</div>
+	<div id="search">
+		<!-- BEGIN SEARCHFORM.PHP -->
+<form method="get" id="searchform" action="http://yangyongquan.com/index.php">
+<div>
+<input class="search" type="text" name="s" id="s" tabindex="7" value="请输入搜索内容并按回车" onfocus="if(this.value==this.defaultValue)this.value=&#39;&#39;;" onblur="if(this.value==&#39;&#39;)this.value=this.defaultValue;">
+</div>
+</form>
+<!-- END SEARCHFORM.PHP -->	</div><!-- search -->
+</div><!-- nav-container -->
+<div id="container">
+<div id="content" class="single"><div id="post-880" class="post">
+   <!--[if lt IE 8]>  <div style='border: 1px solid #F7941D; background: #FEEFDA; text-align: center; clear: both; height: 75px; position: relative;'>    <div style='position: absolute; right: 3px; top: 3px; font-family: courier new; font-weight: bold;'><a href='#' onclick='javascript:this.parentNode.parentNode.style.display="none"; return false;'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-cornerx.jpg' style='border: none;' alt='Close this notice'/></a></div>    <div style='width: 560px; margin: 0 auto; text-align: left; padding: 0; overflow: hidden; color: black;'>      <div style='width: 75px; float: left;'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-warning.jpg' alt='Warning!'/></div>      <div style='width: 175px; float: left; font-family: Arial, sans-serif;'>        <div style='font-size: 14px; font-weight: bold; margin-top: 12px;'>您正使用老掉牙的浏览器</div>        <div style='font-size: 12px; margin-top: 6px; line-height: 12px;'>为了您更好的浏览体验，请升级到更新的浏览器。</div>      </div>      <div style='width: 75px; float: left;'><a href='http://www.firefox.com' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-firefox.jpg' style='border: none;' alt='Get Firefox 3.5'/></a></div>      <div style='width: 75px; float: left;'><a href='http://www.microsoft.com/windows/internet-explorer/default.aspx' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-ie8.jpg' style='border: none;' alt='Get Internet Explorer 8'/></a></div>      <div style='width: 73px; float: left;'><a href='http://www.apple.com/safari/download/' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-safari.jpg' style='border: none;' alt='Get Safari 4'/></a></div>      <div style='float: left;'><a href='http://www.google.com/chrome' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-chrome.jpg' style='border: none;' alt='Get Google Chrome'/></a></div>    </div>  </div>  <![endif]-->
+
+<h2 class="post-title"><a href="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/在Ubuntu下使用Apache配置Subversion-老杨个人网站.html" title="在Ubuntu下使用Apache配置Subversion">在Ubuntu下使用Apache配置Subversion</a></h2>
+<hr width="550" color="#b9c9d8">
+<p class="byline">作者： 
+<span class="author"><a href="http://yangyongquan.com/author/laoyang" title="由 老杨 发布" rel="author">老杨</a></span> 发表于： 
+<span class="time">2009 年 04 月 06 日下午 9:39</span>
+<span class="link"><a href="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/在Ubuntu下使用Apache配置Subversion-老杨个人网站.html">原文地址</a></span>
+<span class="link"><a href="http://yangyongquan.com/2009/04/configure-subversion-with-apache-in-ubuntu.html#commentform">添加评论</a></span>
+</p>
+<div id="entry">
+
+<p>网上写的都超级复杂，好像写的越复杂他们就越牛，其实简单的很。</p>
+<p>首先是安装软件，简单吧：</p>
+<p>sudo apt-get install subversion<br>
+sudo apt-get install libapache2-svn<br>
+sudo apt-get install apache2<br>
+如果又依赖都装上。如果不能上网，那就只能去网站下载然后安装了，这个我没有试过，不过应该不难。<br>
+apache基本不用配置了，现在来创建版本仓库吧：<br>
+sudo svnadmin create /目录地址<br>
+目录地址必须存在，这个就是保存版本仓库的地方，不同的版本仓库创建不同的文件夹即可，比如：<br>
+sudo svnadmin create /home/laoyang/svn/project<br>
+本来/home/laoyang/svn/project这个目录下什么都没有，执行下面的命令之后再去看一下，多出一些文件和文件夹，我们需要操作的是conf这个文件夹，这个文件夹下有一个文件，叫做passwd，用来存放用户名和密码。<br>
+然后把这个版本仓库目录授权给apache读写：<br>
+sudo chown -R www-data:www-data /目录地址<br>
+然后来到打开apache配置文件：<br>
+sudo gedit /etc/apache2/mods-available/dav_svn.conf<br>
+加入如下内容：<br>
+&lt;Location /project&gt;<br>
+DAV svn<br>
+SVNPath /home/laoyang/svn/project<br>
+AuthType Basic<br>
+AuthName “myproject subversion repository”<br>
+AuthUserFile /home/laoyang/svn/project/conf/passwd<br>
+#&lt;LimitExcept GET PROPFIND OPTIONS REPORT&gt;<br>
+Require valid-user<br>
+#&lt;/LimitExcept&gt;<br>
+&lt;/Location&gt;<br>
+<span style="color: #0000ff;">（上述代码因为携带小书名号，不能保证完美显示）</span><br>
+location说的是访问地址，比如上述地址，访问的时候就是</p>
+<p>http://127.0.0.1/project</p>
+<p>下面的都不用解释了，其中有两行被注释掉了，以保证每次都需要用户名密码。<br>
+最后一步就是创建访问用户了。也很简单，建议将用户名密码文件存放在当前版本仓库下conf文件夹下，这样版本仓库多的时候无至于太乱。<br>
+因为conf文件夹下已经存在passwd文件了，所以直接添加用户：<br>
+sudo htpasswd -c /home/laoyang/svn/project/conf/passwd laoyang<br>
+然后输入两遍密码，laoyang这个用户就创建好了。<br>
+打开/home/laoyang/svn/project/conf/passwd这个文件，会开到形如如下形式的文本：<br>
+laoyang:WEd.83H.gealA<br>
+后面是加密后的密码。创建以后，再次需要往别的版本仓库添加老杨这个用户，直接把这一行复制过去就可以了。<br>
+重启apache就可以了。<br>
+sudo /etc/init.d/apache2 restart</p>
+<h4 class="related_post_title">延伸阅读</h4><ul class="related_post"><li><a href="http://yangyongquan.com/2011/08/about-blog-and-friend-link.html" title="博客及友情链接的原则">博客及友情链接的原则</a> (13)</li><li><a href="http://yangyongquan.com/2010/06/i-love-net.html" title="我是一个网络控">我是一个网络控</a> (19)</li><li><a href="http://yangyongquan.com/2010/05/future-of-linux.html" title="Linux的未来">Linux的未来</a> (56)</li><li><a href="http://yangyongquan.com/2010/05/what-to-do-if-you-failed-when-you-install-deb-in-ubuntu.html" title="Ubuntu下DEB包安装错误解救方法">Ubuntu下DEB包安装错误解救方法</a> (0)</li><li><a href="http://yangyongquan.com/2010/03/call-taotao-message.html" title="使用Javascript调用滔滔信息">使用Javascript调用滔滔信息</a> (10)</li><li><a href="http://yangyongquan.com/2009/08/something-about-browser.html" title="浏览器知识扫盲">浏览器知识扫盲</a> (25)</li><li><a href="http://yangyongquan.com/2008/10/ubuntu-window-glass-effect.html" title="Ubuntu的窗口玻璃效果">Ubuntu的窗口玻璃效果</a> (2)</li><li><a href="http://yangyongquan.com/2008/10/learn-linux-with-ubuntu.html" title="学习Linux从Ubuntu开始">学习Linux从Ubuntu开始</a> (11)</li><li><a href="http://yangyongquan.com/2011/07/go-to-hell-spam.html" title="垃圾缠身">垃圾缠身</a> (10)</li><li><a href="http://yangyongquan.com/2011/02/tangle.html" title="纠结">纠结</a> (14)</li></ul>
+<br>
+<strong>版权信息：</strong>本文来自<a href="http://yangyongquan.com/" target="_blank">老杨个人网站</a>，作者<a href="http://yangyongquan.com/author/laoyang" title="由 老杨 发布" rel="author">老杨</a>，<a href="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/在Ubuntu下使用Apache配置Subversion-老杨个人网站.html" target="_blank">原文地址</a>，转载请注明出处。
+<center>
+
+<p style="border:thin dotted #006699 ; padding:3mm ;">如果喜欢本站，敬请订阅：<a href="http://yangyongquan.com/feed/">老杨个人网站</a>。谢谢惠顾！</p><br>
+
+</center>
+
+
+	<strong>分类：</strong> <span class="category"><a href="http://yangyongquan.com/category/tech/ubuntu" title="查看 Ubuntu 中的全部文章" rel="category tag">Ubuntu</a></span>
+	<br>
+		<strong>标签：</strong> <span class="tags"><a href="http://yangyongquan.com/tag/ubuntu" rel="tag">Ubuntu</a>, <a href="http://yangyongquan.com/tag/%e4%bb%a3%e7%a0%81" rel="tag">代码</a>, <a href="http://yangyongquan.com/tag/%e6%96%87%e4%bb%b6" rel="tag">文件</a>, <a href="http://yangyongquan.com/tag/%e7%bd%91%e7%ab%99" rel="tag">网站</a>, <a href="http://yangyongquan.com/tag/%e8%bd%af%e4%bb%b6" rel="tag">软件</a></span>
+
+
+</div><!-- entry -->
+
+
+</div><!-- post -->
+
+<div class="navigation">
+<span class="previous">« <a href="http://yangyongquan.com/2009/04/install-ie-with-ies4linux-in-ubuntu.html" rel="prev">在Ubuntu下使用ies4linux安装IE</a></span>
+<span class="nexta"> <a href="http://yangyongquan.com/2009/04/goodbye-asang.html" rel="next">阿桑走好</a> »</span>
+</div>
+<div id="comments-template">
+<h3 id="comments">前8排已经被占了<a href="http://yangyongquan.com/2009/04/configure-subversion-with-apache-in-ubuntu.html#commentform">我要占座</a></h3><ol id="commentlist">
+	<li id="comment-1740">
+	<div class="commentheader"></div>
+	<div class="comment-avatar">
+					<img alt="" src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/5598d43f907879e2b71fab69825ee563" class="avatar avatar-56 photo" height="56" width="56">				</div>
+	<div class="comment-meta-data">
+		<a href="http://www.naease.com/" rel="external nofollow" class="url">Panther</a> 发表于 
+		<a class="time" href="http://yangyongquan.com/2009/04/configure-subversion-with-apache-in-ubuntu.html#comment-1740" title="">2009 年 05 月 29 日		下午 5:56</a>
+				</div><!-- comment-meta-data -->
+	<div class="comment-text">
+		<p>打死我都不用ubuntu</p>
+<p class="thdrpy"><a href="javascript:void(0)" onclick="movecfm(event,1740,1,&#39;Panther&#39;);">回复Ta</a></p><div style="list-style-type: none;margin-top:5px;" id="comment-1742" class="reply">
+
+<div class="reply-meta-data">
+		老杨 回复于 
+		<a class="time" href="http://yangyongquan.com/2009/04/configure-subversion-with-apache-in-ubuntu.html#comment-1742" title="">2009 年 05 月 29 日		下午 6:32</a>
+				</div><!-- comment-meta-data -->
+	<div class="reply-text">
+		<p> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/10.gif" alt=":emotion520" class="wp-smiley"> 为什么？</p>
+<p class="thdrpy"><a href="javascript:void(0)" onclick="movecfm(event,1742,2,&#39;老杨&#39;);">回复Ta</a></p>	</div><!-- comment-text -->
+</div>	</div><!-- comment-text -->
+	</li>
+
+
+	<li id="comment-2283">
+	<div class="commentheader"></div>
+	<div class="comment-avatar">
+					<img alt="" src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/af236e53e7f9fed860de97d2d41a6694" class="avatar avatar-56 photo" height="56" width="56">				</div>
+	<div class="comment-meta-data">
+		<a href="http://xiaomixiong.com/" rel="external nofollow" class="url">小蜜熊</a> 发表于 
+		<a class="time" href="http://yangyongquan.com/2009/04/configure-subversion-with-apache-in-ubuntu.html#comment-2283" title="">2009 年 07 月 22 日		上午 10:48</a>
+				</div><!-- comment-meta-data -->
+	<div class="comment-text">
+		<p>老杨，我的ubuntu才申请不到一个月就收到了。今天早上收到的。太帅了！</p>
+<p class="thdrpy"><a href="javascript:void(0)" onclick="movecfm(event,2283,1,&#39;小蜜熊&#39;);">回复Ta</a></p><div style="list-style-type: none;margin-top:5px;" id="comment-2284" class="reply">
+
+<div class="reply-meta-data">
+		老杨 回复于 
+		<a class="time" href="http://yangyongquan.com/2009/04/configure-subversion-with-apache-in-ubuntu.html#comment-2284" title="">2009 年 07 月 22 日		上午 10:48</a>
+				</div><!-- comment-meta-data -->
+	<div class="reply-text">
+		<p>是吗，看来现在申请更容易了，恭喜恭喜</p>
+<p class="thdrpy"><a href="javascript:void(0)" onclick="movecfm(event,2284,2,&#39;老杨&#39;);">回复Ta</a></p>	</div><!-- comment-text -->
+</div>	</div><!-- comment-text -->
+	</li>
+
+
+	<li id="comment-3262">
+	<div class="commentheader"></div>
+	<div class="comment-avatar">
+					<img alt="" src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/5479da468987270483a520f88423fccf" class="avatar avatar-56 photo" height="56" width="56">				</div>
+	<div class="comment-meta-data">
+		<a href="http://suiyingsky.cn/" rel="external nofollow" class="url">随影</a> 发表于 
+		<a class="time" href="http://yangyongquan.com/2009/04/configure-subversion-with-apache-in-ubuntu.html#comment-3262" title="">2009 年 11 月 02 日		上午 9:54</a>
+				</div><!-- comment-meta-data -->
+	<div class="comment-text">
+		<p>不可 否认的事实 乌班图上的应用软件 绝对没有windows多 ！！</p>
+<p class="thdrpy"><a href="javascript:void(0)" onclick="movecfm(event,3262,1,&#39;随影&#39;);">回复Ta</a></p><div style="list-style-type: none;margin-top:5px;" id="comment-3269" class="reply">
+
+<div class="reply-meta-data">
+		老杨 回复于 
+		<a class="time" href="http://yangyongquan.com/2009/04/configure-subversion-with-apache-in-ubuntu.html#comment-3269" title="">2009 年 11 月 02 日		上午 10:15</a>
+				</div><!-- comment-meta-data -->
+	<div class="reply-text">
+		<p>嗯，是这样，不过现在开源社区越来越强大，相信linux下的软件会越来越丰富的</p>
+<p class="thdrpy"><a href="javascript:void(0)" onclick="movecfm(event,3269,2,&#39;老杨&#39;);">回复Ta</a></p>	</div><!-- comment-text -->
+</div>	</div><!-- comment-text -->
+	</li>
+
+
+	<li id="comment-3351">
+	<div class="commentheader"></div>
+	<div class="comment-avatar">
+					<img alt="" src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/8b2711407bddc89e75fcb5886943e8e4" class="avatar avatar-56 photo" height="56" width="56">				</div>
+	<div class="comment-meta-data">
+		<a href="http://www.metsky.com/" rel="external nofollow" class="url">天缘博客</a> 发表于 
+		<a class="time" href="http://yangyongquan.com/2009/04/configure-subversion-with-apache-in-ubuntu.html#comment-3351" title="">2009 年 11 月 09 日		下午 5:41</a>
+				</div><!-- comment-meta-data -->
+	<div class="comment-text">
+		<p>相信Linux会越来越多人用，本次Ubuntu已经改进很多了，相信后面会更好。加油Linux</p>
+<p class="thdrpy"><a href="javascript:void(0)" onclick="movecfm(event,3351,1,&#39;天缘博客&#39;);">回复Ta</a></p><div style="list-style-type: none;margin-top:5px;" id="comment-3357" class="reply">
+
+<div class="reply-meta-data">
+		老杨 回复于 
+		<a class="time" href="http://yangyongquan.com/2009/04/configure-subversion-with-apache-in-ubuntu.html#comment-3357" title="">2009 年 11 月 10 日		上午 9:22</a>
+				</div><!-- comment-meta-data -->
+	<div class="reply-text">
+		<p>嗯，会越来越好的</p>
+<p class="thdrpy"><a href="javascript:void(0)" onclick="movecfm(event,3357,2,&#39;老杨&#39;);">回复Ta</a></p>	</div><!-- comment-text -->
+</div>	</div><!-- comment-text -->
+	</li>
+
+</ol>
+
+	
+<form action="http://yangyongquan.com/wp-comments-post.php" method="post" id="commentform">
+
+<div id="author_info">
+<p><input type="text" onfocus="qqime();" name="author" id="author" value="" size="40" tabindex="1">
+<label for="author">名字(必填)</label></p>
+
+<p><input type="text" name="email" id="email" value="" size="40" tabindex="2">
+<label for="email">电子邮件(不会公布) (必填)</label></p>
+
+<p><input type="text" name="url" id="url" value="" size="40" tabindex="3">
+<label for="url">网站</label></p>
+</div>
+
+<p><textarea onfocus="qqime();" name="comment" id="comment" cols="60" rows="10" tabindex="4"></textarea></p>
+
+<p><input class="submit-comment" name="submit" type="submit" id="submit" tabindex="5" value="提交Ctrl+Enter"></p><div class="slide" style="float:right;"><a onclick="jQuery(&#39;#smilies&#39;).slideToggle(&#39;slow&#39;);"><img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/0.gif"></a></div>
+
+<script type="text/javascript"> 
+	function close(){
+	   alert("ok");
+			//$("#smilies").slideToggle("slow");
+ }
+</script>
+<div id="smilies">
+
+     <script type="text/javascript">
+    function grin(tag) {
+    	var myField;
+    	tag = ' ' + tag + ' ';
+        if (document.getElementById('comment') && document.getElementById('comment').type == 'textarea') {
+    		myField = document.getElementById('comment');
+    	} else {
+    		return false;
+    	}
+    	if (document.selection) {
+    		myField.focus();
+    		sel = document.selection.createRange();
+    		sel.text = tag;
+    		myField.focus();
+    	}
+    	else if (myField.selectionStart || myField.selectionStart == '0') {
+    		var startPos = myField.selectionStart;
+    		var endPos = myField.selectionEnd;
+    		var cursorPos = endPos;
+    		myField.value = myField.value.substring(0, startPos)
+    					  + tag
+    					  + myField.value.substring(endPos, myField.value.length);
+    		cursorPos += tag.length;
+    		myField.focus();
+    		myField.selectionStart = cursorPos;
+    		myField.selectionEnd = cursorPos;
+    	}
+    	else {
+    		myField.value += tag;
+    		myField.focus();
+    	}
+    	$("#smilies").slideToggle("slow");
+    }
+    
+    function moreSmilies() {
+    	document.getElementById('wp-smiley-more').style.display = 'inline';
+    	document.getElementById('wp-smiley-toggle').innerHTML = '<a href="javascript:lessSmilies()">&laquo;&nbsp;less</a></span>';
+    }
+    
+    function lessSmilies() {
+    	document.getElementById('wp-smiley-more').style.display = 'none';
+    	document.getElementById('wp-smiley-toggle').innerHTML = '<a href="javascript:moreSmilies()">more&nbsp;&raquo;</a>';
+    }
+    </script>
+<img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/26.gif" alt=":emotion58" onclick="grin(&quot;:emotion58&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/44.gif" alt=":emotion57" onclick="grin(&quot;:emotion57&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/81.gif" alt=":emotion563" onclick="grin(&quot;:emotion563&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/25.gif" alt=":emotion562" onclick="grin(&quot;:emotion562&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/17.gif" alt=":emotion561" onclick="grin(&quot;:emotion561&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/7.gif" alt=":emotion560" onclick="grin(&quot;:emotion560&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/35.gif" alt=":emotion56" onclick="grin(&quot;:emotion56&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/30.gif" alt=":emotion559" onclick="grin(&quot;:emotion559&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/83.gif" alt=":emotion558" onclick="grin(&quot;:emotion558&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/0.gif" alt=":emotion557" onclick="grin(&quot;:emotion557&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/32.gif" alt=":emotion556" onclick="grin(&quot;:emotion556&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/34.gif" alt=":emotion554" onclick="grin(&quot;:emotion554&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/14.gif" alt=":emotion552" onclick="grin(&quot;:emotion552&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/79.gif" alt=":emotion551" onclick="grin(&quot;:emotion551&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/89.gif" alt=":emotion550" onclick="grin(&quot;:emotion550&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/50.gif" alt=":emotion55" onclick="grin(&quot;:emotion55&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/27.gif" alt=":emotion547" onclick="grin(&quot;:emotion547&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/16.gif" alt=":emotion546" onclick="grin(&quot;:emotion546&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/6.gif" alt=":emotion544" onclick="grin(&quot;:emotion544&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/21.gif" alt=":emotion543" onclick="grin(&quot;:emotion543&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/23.gif" alt=":emotion542" onclick="grin(&quot;:emotion542&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/84.gif" alt=":emotion541" onclick="grin(&quot;:emotion541&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/54.gif" alt=":emotion540" onclick="grin(&quot;:emotion540&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/22.gif" alt=":emotion54" onclick="grin(&quot;:emotion54&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/40.gif" alt=":emotion539" onclick="grin(&quot;:emotion539&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/4.gif" alt=":emotion538" onclick="grin(&quot;:emotion538&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/19.gif" alt=":emotion537" onclick="grin(&quot;:emotion537&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/48.gif" alt=":emotion536" onclick="grin(&quot;:emotion536&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/87.gif" alt=":emotion535" onclick="grin(&quot;:emotion535&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/42.gif" alt=":emotion534" onclick="grin(&quot;:emotion534&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/41.gif" alt=":emotion533" onclick="grin(&quot;:emotion533&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/49.gif" alt=":emotion532" onclick="grin(&quot;:emotion532&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/8.gif" alt=":emotion531" onclick="grin(&quot;:emotion531&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/9.gif" alt=":emotion530" onclick="grin(&quot;:emotion530&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/85.gif" alt=":emotion53" onclick="grin(&quot;:emotion53&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/52.gif" alt=":emotion529" onclick="grin(&quot;:emotion529&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/29.gif" alt=":emotion526" onclick="grin(&quot;:emotion526&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/12.gif" alt=":emotion525" onclick="grin(&quot;:emotion525&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/88.gif" alt=":emotion524" onclick="grin(&quot;:emotion524&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/46.gif" alt=":emotion523" onclick="grin(&quot;:emotion523&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/80.gif" alt=":emotion522" onclick="grin(&quot;:emotion522&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/28.gif" alt=":emotion521" onclick="grin(&quot;:emotion521&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/10.gif" alt=":emotion520" onclick="grin(&quot;:emotion520&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/3.gif" alt=":emotion52" onclick="grin(&quot;:emotion52&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/20.gif" alt=":emotion519" onclick="grin(&quot;:emotion519&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/82.gif" alt=":emotion518" onclick="grin(&quot;:emotion518&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/51.gif" alt=":emotion517" onclick="grin(&quot;:emotion517&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/38.gif" alt=":emotion516" onclick="grin(&quot;:emotion516&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/13.gif" alt=":emotion515" onclick="grin(&quot;:emotion515&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/15.gif" alt=":emotion514" onclick="grin(&quot;:emotion514&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/11.gif" alt=":emotion513" onclick="grin(&quot;:emotion513&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/86.gif" alt=":emotion512" onclick="grin(&quot;:emotion512&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/24.gif" alt=":emotion511" onclick="grin(&quot;:emotion511&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/31.gif" alt=":emotion510" onclick="grin(&quot;:emotion510&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/33.gif" alt=":emotion51" onclick="grin(&quot;:emotion51&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/5.gif" alt=":emotion119" onclick="grin(&quot;:emotion119&quot;)" class="wp-smiley-select"> <img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/2.gif" alt=":emotion113" onclick="grin(&quot;:emotion113&quot;)" class="wp-smiley-select">  <div class="close"><a style="cursor:pointer" onclick="jQuery(&#39;#smilies&#39;).slideToggle(&#39;slow&#39;);">关闭</a></div>
+ </div>
+<input type="hidden" name="comment_post_ID" value="880">
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="dcd5a1d456"></p><p><input type="hidden" id="comment_reply_ID" name="comment_reply_ID" value="0"><input type="hidden" id="comment_reply_dp" name="comment_reply_dp" value="0"></p><div id="cancel_reply" style="display:none;"><a href="javascript:void(0)" onclick="movecfm(null,0,1,null);" style="color:red;">取消评论</a></div><p><input type="checkbox" name="comment_mail_notify" id="comment_mail_notify" value="comment_mail_notify" checked="checked" style="width: auto;"><label for="comment_mail_notify" style="display: inline;">有人回复时邮件通知我</label></p><script type="text/javascript">
+/* <![CDATA[ */
+var commentformid = "commentform";
+var USERINFO = false;
+var atreply = "none";
+/* ]]> */
+</script>
+<script type="text/javascript" src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/wp-thread-comment.js.php"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var lstcommentid=3351;
+var needauthoremail=true;
+var sortflag="ASC";
+/* ]]> */
+</script>
+<script type="text/javascript" src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/wp-thread-comment.js(1).php"></script>
+<p></p>
+&nbsp; &nbsp; &nbsp; &nbsp; <script type="text/javascript">        
+        document.getElementById("comment").onkeydown = function (moz_ev)
+        {
+                var ev = null;
+                if (window.event){
+                        ev = window.event;
+                }else{
+                        ev = moz_ev;
+                }
+                if (ev != null && ev.ctrlKey && ev.keyCode == 13)
+                {
+                        document.getElementById("submit").click();
+                }
+        }
+        </script>
+</form>
+	</div>
+
+
+<!-- BEGIN FOOTER.PHP -->
+</div><!-- content / home -->
+
+<div id="sidebar">
+<div class="tabs-block">
+<div class="menu tabbed">
+	<ul class="tabs">
+	<li class="t1"><a class="t1 tab tab-current" title="最新的文章" style="cursor: pointer; ">最新发表</a></li>	
+<li class="t3"><a class="t3 tab" title="订阅博客" style="cursor: pointer; ">订阅博客</a></li>	
+
+		</ul>
+
+	<!-- LATEST HEADLINES -->
+	<div class="t1" style="display: block; ">
+		<ul class="latest">
+		<li><a href="http://yangyongquan.com/2012/08/sport-spirit.html" title="重新审视体育精神" style="cursor: pointer; ">重新审视体育精神</a></li>
+		<li><a href="http://yangyongquan.com/2012/08/are-they-wrong.html" title="她们何错之有？" style="cursor: pointer; ">她们何错之有？</a></li>
+		<li><a href="http://yangyongquan.com/2012/06/i-hate-this-world.html" title="厌倦这虚假世界" style="cursor: pointer; ">厌倦这虚假世界</a></li>
+		<li><a href="http://yangyongquan.com/2012/06/how-difficult-they-are.html" title="你知道他们有多苦" style="cursor: pointer; ">你知道他们有多苦</a></li>
+		<li><a href="http://yangyongquan.com/2012/06/independent.html" title="依赖" style="cursor: pointer; ">依赖</a></li>
+		<li><a href="http://yangyongquan.com/2012/06/i-love-my-home.html" title="密码保护：我爱我家" style="cursor: pointer; ">密码保护：我爱我家</a></li>
+		<li><a href="http://yangyongquan.com/2012/05/no-hope-at-all.html" title="不止浅浅绝望" style="cursor: pointer; ">不止浅浅绝望</a></li>
+		<li><a href="http://yangyongquan.com/2012/04/i-am-not-in-charge.html" title="我不当团长好多年" style="cursor: pointer; ">我不当团长好多年</a></li>
+		<li><a href="http://yangyongquan.com/2012/04/you-can-lie-to-yourself.html" title="一人成虎" style="cursor: pointer; ">一人成虎</a></li>
+		<li><a href="http://yangyongquan.com/2012/03/keep-using-them.html" title="一直在使用,从来未放弃" style="cursor: pointer; ">一直在使用,从来未放弃</a></li>
+		</ul>
+	</div>
+	<div class="t3" style="display: none; ">
+	<ul id="rss">
+	<li><a href="http://fusion.google.com/add?feedurl=http://yangyongquan.com/feed" mce_href="http://fusion.google.com/add?feedurl=http://yangyongquan.com/feed" target="_blank" style="cursor: pointer; ">
+订阅到Google</a></li>
+<li><a href="http://add.my.yahoo.com/rss?url=http://yangyongquan.com/feed" mce_href="http://add.my.yahoo.com/rss?
+url=http://yangyongquan.com/feed" target="_blank" style="cursor: pointer; ">
+订阅到Yahoo</a></li>
+<li><a href="http://www.zhuaxia.com/add_channel.php?url=http://yangyongquan.com/feed" mce_href="http://www.zhuaxia.com/add_channel.php?
+url=http://yangyongquan.com/feed" target="_blank" style="cursor: pointer; ">
+订阅到抓虾</a></li>
+<li><a href="http://www.xianguo.com/subscribe.php?url=http://yangyongquan.com/feed" mce_href="http://www.xianguo.com/subscribe.php?
+url=http://yangyongquan.com/feed" target="_blank" style="cursor: pointer; ">
+订阅到鲜果</a></li>
+<li><a href="http://reader.youdao.com/#url=http://yangyongquan.com/feed" mce_href="http://reader.youdao.com/#url=http://yangyongquan.com/feed" target="_blank" style="cursor: pointer; ">
+订阅到有道</a></li>
+<li><a href="http://inezha.com/add?url=http://yangyongquan.com/feed" mce_href="http://inezha.com/add?
+url=http://yangyongquan.com/feed" target="_blank" style="cursor: pointer; ">
+订阅到MSN,Skype,GTalk</a></li>
+<li><a href="http://mail.qq.com/cgi-bin/feed?u=http://yangyongquan.com/feed" target="_blank" style="cursor: pointer; ">订阅到QQ邮箱</a>
+</li>
+<li><a href="http://www.live.com/?add=http://yangyongquan.com.cn/feed" target="_blank" style="cursor: pointer; ">订阅到windows live</a>
+</li>
+<li><a href="http://list.qq.com/cgi-bin/qf_invite?id=e4479d3ad3b7c87625a2e18177de01fd82d755f769e67476" target="_blank" style="cursor: pointer; ">订阅到邮箱</a>
+</li>
+<li><a href="http://yangyongquan.com/feed" target="_blank" style="cursor: pointer; ">
+原始订阅地址</a></li>
+
+	</ul>
+	</div>
+
+	
+</div><!-- tabbed -->
+</div><div class="menu"><h2>最近评论</h2><div><ul id="recentcomments"><li class="recentcomments"><a href="http://www.nbsijs.com/" rel="external nofollow" class="url">宁波货代公司</a> 发表在《<a href="http://yangyongquan.com/2012/06/i-hate-this-world.html/comment-page-1#comment-12988">厌倦这虚假世界</a>》</li><li class="recentcomments"><a href="http://www.nbsijs.com/" rel="external nofollow" class="url">宁波货代公司</a> 发表在《<a href="http://yangyongquan.com/2012/08/are-they-wrong.html/comment-page-1#comment-12987">她们何错之有？</a>》</li><li class="recentcomments"><a href="http://www.libinlove.com/blog/" rel="external nofollow" class="url">小李</a> 发表在《<a href="http://yangyongquan.com/guestbook/comment-page-4#comment-12931">留言本</a>》</li><li class="recentcomments">老杨 发表在《<a href="http://yangyongquan.com/guestbook/comment-page-4#comment-12671">留言本</a>》</li><li class="recentcomments"><a href="http://www.wyanlin.com/" rel="external nofollow" class="url">吴延琳</a> 发表在《<a href="http://yangyongquan.com/guestbook/comment-page-4#comment-12609">留言本</a>》</li><li class="recentcomments"><a href="http://www.wmtimes.cn/" rel="external nofollow" class="url">wmtimes</a> 发表在《<a href="http://yangyongquan.com/2012/06/i-hate-this-world.html/comment-page-1#comment-10856">厌倦这虚假世界</a>》</li><li class="recentcomments"><a href="http://hainuo.info/" rel="external nofollow" class="url">hainuo</a> 发表在《<a href="http://yangyongquan.com/2012/06/i-hate-this-world.html/comment-page-1#comment-10800">厌倦这虚假世界</a>》</li><li class="recentcomments">zbin 发表在《<a href="http://yangyongquan.com/2012/06/i-hate-this-world.html/comment-page-1#comment-10785">厌倦这虚假世界</a>》</li><li class="recentcomments">sf 发表在《<a href="http://yangyongquan.com/2012/06/i-hate-this-world.html/comment-page-1#comment-10781">厌倦这虚假世界</a>》</li><li class="recentcomments">老杨 发表在《<a href="http://yangyongquan.com/2012/06/i-hate-this-world.html/comment-page-1#comment-10780">厌倦这虚假世界</a>》</li><li class="recentcomments">zbin 发表在《<a href="http://yangyongquan.com/2012/06/i-hate-this-world.html/comment-page-1#comment-10779">厌倦这虚假世界</a>》</li><li class="recentcomments">小幻 发表在《<a href="http://yangyongquan.com/2012/06/how-difficult-they-are.html/comment-page-1#comment-10769">你知道他们有多苦</a>》</li><li class="recentcomments">小幻 发表在《<a href="http://yangyongquan.com/2012/06/i-hate-this-world.html/comment-page-1#comment-10767">厌倦这虚假世界</a>》</li><li class="recentcomments"><a href="http://soulshengfaith.sinaapp.com/?p=224" rel="external nofollow" class="url">SoulSheng iFaith » 跟一个同路人的一次心灵对话2012年6月27日</a> 发表在《<a href="http://yangyongquan.com/2012/06/i-hate-this-world.html/comment-page-1#comment-10766">厌倦这虚假世界</a>》</li><li class="recentcomments"><a href="http://v.liushousheng.com/" rel="external nofollow" class="url">SoulSheng</a> 发表在《<a href="http://yangyongquan.com/2012/06/i-hate-this-world.html/comment-page-1#comment-10765">厌倦这虚假世界</a>》</li><li class="recentcomments">老杨 发表在《<a href="http://yangyongquan.com/2012/06/i-hate-this-world.html/comment-page-1#comment-10740">厌倦这虚假世界</a>》</li><li class="recentcomments">老杨 发表在《<a href="http://yangyongquan.com/2012/06/i-hate-this-world.html/comment-page-1#comment-10739">厌倦这虚假世界</a>》</li><li class="recentcomments"><a href="http://i171.com/" rel="external nofollow" class="url">Jason</a> 发表在《<a href="http://yangyongquan.com/2012/06/i-hate-this-world.html/comment-page-1#comment-10737">厌倦这虚假世界</a>》</li><li class="recentcomments">zbin 发表在《<a href="http://yangyongquan.com/2012/06/i-hate-this-world.html/comment-page-1#comment-10736">厌倦这虚假世界</a>》</li><li class="recentcomments"><a href="http://huangjun.net/" rel="external nofollow" class="url">huangjun</a> 发表在《<a href="http://yangyongquan.com/2012/06/how-difficult-they-are.html/comment-page-1#comment-10726">你知道他们有多苦</a>》</li><li class="recentcomments"><a href="http://hainuo.info/" rel="external nofollow" class="url">hainuo</a> 发表在《<a href="http://yangyongquan.com/2012/06/how-difficult-they-are.html/comment-page-1#comment-10719">你知道他们有多苦</a>》</li><li class="recentcomments"><a href="http://www.wmtimes.cn/" rel="external nofollow" class="url">wmtimes</a> 发表在《<a href="http://yangyongquan.com/2012/06/independent.html/comment-page-1#comment-10568">依赖</a>》</li><li class="recentcomments">小幻 发表在《<a href="http://yangyongquan.com/2010/04/you-can-be-a-good-pm.html/comment-page-1#comment-10510">与项目经理共勉</a>》</li><li class="recentcomments"><a href="http://www.sslnian.com/" rel="external nofollow" class="url">逝毅</a> 发表在《<a href="http://yangyongquan.com/guestbook/comment-page-4#comment-10431">留言本</a>》</li><li class="recentcomments">老杨 发表在《<a href="http://yangyongquan.com/2010/04/you-can-be-a-good-pm.html/comment-page-1#comment-10402">与项目经理共勉</a>》</li></ul></div></div><div class="menu"><h2>分类目录</h2><div>		<ul> 
+	<li class="cat-item cat-item-25"><a href="http://yangyongquan.com/category/life" title="查看 人生感悟 下的所有文章">人生感悟</a> 
+<ul class="children"> 
+	<li class="cat-item cat-item-32"><a href="http://yangyongquan.com/category/life/nature" title="查看 自然辩证法 下的所有文章">自然辩证法</a> 
+</li> 
+</ul> 
+</li> 
+	<li class="cat-item cat-item-28"><a href="http://yangyongquan.com/category/tech" title="查看 信息技术 下的所有文章">信息技术</a> 
+<ul class="children"> 
+	<li class="cat-item cat-item-36"><a href="http://yangyongquan.com/category/tech/note-csharp" title="查看 C#笔记 下的所有文章">C#笔记</a> 
+</li> 
+	<li class="cat-item cat-item-122"><a href="http://yangyongquan.com/category/tech/ubuntu" title="查看 Ubuntu 下的所有文章">Ubuntu</a> 
+</li> 
+	<li class="cat-item cat-item-30"><a href="http://yangyongquan.com/category/tech/bsbj" title="查看 基于Java的B/S系统构建 下的所有文章">基于Java的B/S系统构建</a> 
+</li> 
+	<li class="cat-item cat-item-31"><a href="http://yangyongquan.com/category/tech/virus-2" title="查看 病毒相关 下的所有文章">病毒相关</a> 
+</li> 
+	<li class="cat-item cat-item-170"><a href="http://yangyongquan.com/category/tech/badhabit" title="介绍编程时应注意的坏习惯">编程的坏习惯</a> 
+</li> 
+	<li class="cat-item cat-item-118"><a href="http://yangyongquan.com/category/tech/officeonline" title="查看 网上办公系统 下的所有文章">网上办公系统</a> 
+</li> 
+</ul> 
+</li> 
+	<li class="cat-item cat-item-26"><a href="http://yangyongquan.com/category/past" title="查看 往事随风 下的所有文章">往事随风</a> 
+<ul class="children"> 
+	<li class="cat-item cat-item-35"><a href="http://yangyongquan.com/category/past/college" title="查看 我在大学那几年 下的所有文章">我在大学那几年</a> 
+</li> 
+	<li class="cat-item cat-item-34"><a href="http://yangyongquan.com/category/past/childish" title="查看 童年趣事 下的所有文章">童年趣事</a> 
+</li> 
+	<li class="cat-item cat-item-33"><a href="http://yangyongquan.com/category/past/wonderful" title="查看 精彩生活 下的所有文章">精彩生活</a> 
+</li> 
+</ul> 
+</li> 
+	<li class="cat-item cat-item-4"><a href="http://yangyongquan.com/category/emotion" title="查看 情感随笔 下的所有文章">情感随笔</a> 
+</li> 
+	<li class="cat-item cat-item-27"><a href="http://yangyongquan.com/category/live" title="查看 生活记录 下的所有文章">生活记录</a> 
+<ul class="children"> 
+	<li class="cat-item cat-item-165"><a href="http://yangyongquan.com/category/live/doctoring" title="记录我的博士生涯">博士进行中</a> 
+</li> 
+	<li class="cat-item cat-item-208"><a href="http://yangyongquan.com/category/live/one-year-in-america" title="记录在美国留学一年的生活">美国一年</a> 
+</li> 
+	<li class="cat-item cat-item-206"><a href="http://yangyongquan.com/category/live/swimming" title="查看 老杨学游泳 下的所有文章">老杨学游泳</a> 
+</li> 
+</ul> 
+</li> 
+	<li class="cat-item cat-item-29"><a href="http://yangyongquan.com/category/comment" title="查看 评论杂谈 下的所有文章">评论杂谈</a> 
+</li> 
+		</ul> 
+</div></div>
+<div class="menu"><h2>标签云</h2><div> 
+<!-- Generated by Simple Tags 2.0-beta9 - http://wordpress.org/extend/plugins/simple-tags --> 
+	<div class="st-tag-cloud"> 
+	<a href="http://yangyongquan.com/tag/%e6%89%8b%e6%9c%ba" id="tag-link-148" class="st-tags t1" title="18 topics" rel="tag" style="font-size:8pt; color:#006599;">手机</a> 
+<a href="http://yangyongquan.com/tag/qq" id="tag-link-81" class="st-tags t1" title="31 topics" rel="tag" style="font-size:8pt; color:#006599;">QQ</a> 
+<a href="http://yangyongquan.com/tag/%e6%96%87%e4%bb%b6" id="tag-link-128" class="st-tags t1" title="22 topics" rel="tag" style="font-size:8pt; color:#006599;">文件</a> 
+<a href="http://yangyongquan.com/tag/ubuntu" id="tag-link-122" class="st-tags t1" title="17 topics" rel="tag" style="font-size:8pt; color:#006599;">Ubuntu</a> 
+<a href="http://yangyongquan.com/tag/%e4%bb%a3%e7%a0%81" id="tag-link-146" class="st-tags t1" title="14 topics" rel="tag" style="font-size:8pt; color:#006599;">代码</a> 
+<a href="http://yangyongquan.com/tag/%e5%8d%9a%e5%ae%a2" id="tag-link-44" class="st-tags t4" title="93 topics" rel="tag" style="font-size:12.67pt; color:#14608a;">博客</a> 
+<a href="http://yangyongquan.com/tag/%e7%bd%91%e7%ab%99" id="tag-link-46" class="st-tags t5" title="112 topics" rel="tag" style="font-size:14.22pt; color:#1b5e85;">网站</a> 
+<a href="http://yangyongquan.com/tag/%e5%86%b3%e5%ae%9a" id="tag-link-109" class="st-tags t1" title="17 topics" rel="tag" style="font-size:8pt; color:#006599;">决定</a> 
+<a href="http://yangyongquan.com/tag/%e5%b7%a5%e4%bd%9c" id="tag-link-69" class="st-tags t1" title="34 topics" rel="tag" style="font-size:8pt; color:#006599;">工作</a> 
+<a href="http://yangyongquan.com/tag/%e5%90%8c%e5%ad%a6" id="tag-link-80" class="st-tags t3" title="63 topics" rel="tag" style="font-size:11.11pt; color:#0d618f;">同学</a> 
+<a href="http://yangyongquan.com/tag/%e7%94%b5%e5%bd%b1" id="tag-link-87" class="st-tags t1" title="34 topics" rel="tag" style="font-size:8pt; color:#006599;">电影</a> 
+<a href="http://yangyongquan.com/tag/%e9%9f%b3%e4%b9%90" id="tag-link-75" class="st-tags t1" title="32 topics" rel="tag" style="font-size:8pt; color:#006599;">音乐</a> 
+<a href="http://yangyongquan.com/tag/%e8%af%84%e8%ae%ba" id="tag-link-38" class="st-tags t2" title="42 topics" rel="tag" style="font-size:9.56pt; color:#066394;">评论</a> 
+<a href="http://yangyongquan.com/tag/tomcat" id="tag-link-52" class="st-tags t1" title="19 topics" rel="tag" style="font-size:8pt; color:#006599;">tomcat</a> 
+<a href="http://yangyongquan.com/tag/%e5%9b%bd%e5%ae%b6" id="tag-link-55" class="st-tags t1" title="15 topics" rel="tag" style="font-size:8pt; color:#006599;">国家</a> 
+<a href="http://yangyongquan.com/tag/wordpress" id="tag-link-42" class="st-tags t1" title="34 topics" rel="tag" style="font-size:8pt; color:#006599;">wordpress</a> 
+<a href="http://yangyongquan.com/tag/%e6%8f%92%e4%bb%b6" id="tag-link-48" class="st-tags t1" title="26 topics" rel="tag" style="font-size:8pt; color:#006599;">插件</a> 
+<a href="http://yangyongquan.com/tag/%e7%be%8e%e5%9b%bd" id="tag-link-210" class="st-tags t1" title="16 topics" rel="tag" style="font-size:8pt; color:#006599;">美国</a> 
+<a href="http://yangyongquan.com/tag/windows" id="tag-link-147" class="st-tags t1" title="16 topics" rel="tag" style="font-size:8pt; color:#006599;">Windows</a> 
+<a href="http://yangyongquan.com/tag/%e9%a1%b9%e7%9b%ae" id="tag-link-151" class="st-tags t1" title="15 topics" rel="tag" style="font-size:8pt; color:#006599;">项目</a> 
+<a href="http://yangyongquan.com/tag/%e7%9b%b8%e5%a3%b0" id="tag-link-82" class="st-tags t1" title="35 topics" rel="tag" style="font-size:8pt; color:#006599;">相声</a> 
+<a href="http://yangyongquan.com/tag/%e7%a8%8b%e5%ba%8f" id="tag-link-173" class="st-tags t1" title="17 topics" rel="tag" style="font-size:8pt; color:#006599;">程序</a> 
+<a href="http://yangyongquan.com/tag/google" id="tag-link-39" class="st-tags t2" title="50 topics" rel="tag" style="font-size:9.56pt; color:#066394;">Google</a> 
+<a href="http://yangyongquan.com/tag/%e6%8a%80%e6%9c%af" id="tag-link-63" class="st-tags t1" title="26 topics" rel="tag" style="font-size:8pt; color:#006599;">技术</a> 
+<a href="http://yangyongquan.com/tag/%e7%94%9f%e6%b4%bb" id="tag-link-41" class="st-tags t10" title="207 topics" rel="tag" style="font-size:22pt; color:#3d566c;">生活</a> 
+<a href="http://yangyongquan.com/tag/%e6%9c%8b%e5%8f%8b" id="tag-link-101" class="st-tags t2" title="56 topics" rel="tag" style="font-size:9.56pt; color:#066394;">朋友</a> 
+<a href="http://yangyongquan.com/tag/java" id="tag-link-50" class="st-tags t2" title="44 topics" rel="tag" style="font-size:9.56pt; color:#066394;">java</a> 
+<a href="http://yangyongquan.com/tag/%e5%ae%b6" id="tag-link-129" class="st-tags t1" title="28 topics" rel="tag" style="font-size:8pt; color:#006599;">家</a> 
+<a href="http://yangyongquan.com/tag/jsp" id="tag-link-51" class="st-tags t1" title="29 topics" rel="tag" style="font-size:8pt; color:#006599;">jsp</a> 
+<a href="http://yangyongquan.com/tag/linux" id="tag-link-49" class="st-tags t1" title="23 topics" rel="tag" style="font-size:8pt; color:#006599;">linux</a> 
+<a href="http://yangyongquan.com/tag/%e8%ae%a1%e7%ae%97%e6%9c%ba" id="tag-link-71" class="st-tags t1" title="15 topics" rel="tag" style="font-size:8pt; color:#006599;">计算机</a> 
+<a href="http://yangyongquan.com/tag/%e8%bd%af%e4%bb%b6" id="tag-link-70" class="st-tags t3" title="63 topics" rel="tag" style="font-size:11.11pt; color:#0d618f;">软件</a> 
+<a href="http://yangyongquan.com/tag/%e7%bd%91%e7%bb%9c" id="tag-link-61" class="st-tags t2" title="40 topics" rel="tag" style="font-size:9.56pt; color:#066394;">网络</a> 
+<a href="http://yangyongquan.com/tag/%e5%ad%a6%e4%b9%a0" id="tag-link-67" class="st-tags t1" title="29 topics" rel="tag" style="font-size:8pt; color:#006599;">学习</a> 
+<a href="http://yangyongquan.com/tag/%e4%b8%ad%e5%9b%bd" id="tag-link-188" class="st-tags t1" title="24 topics" rel="tag" style="font-size:8pt; color:#006599;">中国</a> 
+<a href="http://yangyongquan.com/tag/%e6%88%91%e5%9c%a8%e5%a4%a7%e5%ad%a6%e9%82%a3%e5%87%a0%e5%b9%b4" id="tag-link-45" class="st-tags t1" title="18 topics" rel="tag" style="font-size:8pt; color:#006599;">我在大学那几年</a> 
+<a href="http://yangyongquan.com/tag/%e7%ac%94%e8%ae%b0" id="tag-link-85" class="st-tags t1" title="21 topics" rel="tag" style="font-size:8pt; color:#006599;">笔记</a> 
+<a href="http://yangyongquan.com/tag/%e6%95%b0%e6%8d%ae%e5%ba%93" id="tag-link-76" class="st-tags t1" title="23 topics" rel="tag" style="font-size:8pt; color:#006599;">数据库</a> 
+<a href="http://yangyongquan.com/tag/%e7%bd%ae%e9%a1%b6" id="tag-link-93" class="st-tags t1" title="28 topics" rel="tag" style="font-size:8pt; color:#006599;">置顶</a> 
+<a href="http://yangyongquan.com/tag/servlet" id="tag-link-53" class="st-tags t1" title="17 topics" rel="tag" style="font-size:8pt; color:#006599;">servlet</a> 
+<a href="http://yangyongquan.com/tag/%e6%8e%a8%e8%8d%90" id="tag-link-91" class="st-tags t1" title="21 topics" rel="tag" style="font-size:8pt; color:#006599;">推荐</a> 
+<a href="http://yangyongquan.com/tag/%e5%bc%80%e5%a7%8b" id="tag-link-149" class="st-tags t2" title="51 topics" rel="tag" style="font-size:9.56pt; color:#066394;">开始</a> 
+<a href="http://yangyongquan.com/tag/%e6%83%85%e6%84%9f" id="tag-link-37" class="st-tags t1" title="29 topics" rel="tag" style="font-size:8pt; color:#006599;">情感</a> 
+<a href="http://yangyongquan.com/tag/%e4%b9%a0%e6%83%af" id="tag-link-176" class="st-tags t1" title="14 topics" rel="tag" style="font-size:8pt; color:#006599;">习惯</a> 
+<a href="http://yangyongquan.com/tag/%e6%b5%8f%e8%a7%88%e5%99%a8" id="tag-link-150" class="st-tags t1" title="14 topics" rel="tag" style="font-size:8pt; color:#006599;">浏览器</a></div> 
+ 
+</div></div>
+
+<div class="menu"><h2>放弃IE 选择更好的浏览器</h2><div>			<div class="textwidget"><a href="http://www.opera.com/" title="opera浏览器" alt="opera浏览器"><img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/opera.jpg" alt="opera浏览器"></a>
+
+
+
+<a href="http://www.mozilla.org.cn/" title="Firefox浏览器" alt="Firefox浏览器"><img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/firefox.jpg" alt="Firefox浏览器"></a>
+
+
+
+<a href="http://www.apple.com.cn/Safari/" title="苹果Safari浏览器" alt="苹果Safari浏览器"><img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/safari.jpg" alt="苹果Safari浏览器"></a>
+
+
+
+
+
+<a href="http://www.google.com/chrome/index.html?hl=zh-CN" title="Google Chrome浏览器" alt="Google Chrome浏览器"><img src="./在Ubuntu下使用Apache配置Subversion-老杨个人网站_files/chrome.jpg" alt="Google Chrome浏览器"></a>
+
+<center>每一个都是更好的选择</center></div> 
+		</div></div> 
+
+<!-- IE6 bug fix / Do not remove -->
+<p class="ie6-bug">&nbsp;</p>
+
+</div><!-- sidebar -->
+</div><!-- container -->
+<div id="footer">
+	<p>
+	Copyright © 2007-2012 <a href="http://yangyongquan.com/"><span>老杨个人网站</span>|</a> 本博客由<a href="http://wordpress.org/" target="_blank">WordPress</a>驱动
+	<br>	
+	博客主题<a href="http://yangyongquan.com/" title="SimpleCMS Wordpress theme by 老杨">SimpleCMS </a>经<a href="http://yangyongquan.com/" title="老杨"><span>老杨</span></a>修改|主机由<a href="http://my.hengtian.org/aff.php?aff=443" target="_blank">衡天主机</a>提供|
+<a href="http://www.miibeian.gov.cn/" target="_blank">冀ICP备09030352号</a><br>
+</p>
+	<div id="goback">
+
+	<a href="http://yangyongquan.com/2009/04/configure-subversion-with-apache-in-ubuntu.html#header">回到顶部</a>
+	</div>
+	</div>
+
+</div><!-- body-container -->
+</body></html>

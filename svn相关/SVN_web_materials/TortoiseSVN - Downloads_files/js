@@ -1,0 +1,50 @@
+(function() {
+var links = document.getElementsByTagName("a"),
+    counter = 0;
+for(var i=0, len=links.length; i<len; ++i){
+  var link = links[i];
+  if (link.className === "sourceforge_accelerator_link"){
+    var desc = link.innerHTML,
+        clickId = "95211988-c743-11e1-9fc5-001d0966656d" + (counter ? ("-" + counter.toString()) : ""),
+        querystring = "?accel_key=61%3A1341562887%3Ahttp%253A//tortoisesvn.net/downloads.html%3Acb993d4b%24dc6e16c8b3425651577bb4a3caf1218de83943aa&click_id=" + clickId + "&source=accel";
+    link.className = 'sourceforge_accelerator_ready'; // to prevent a double run, if the script is included again
+    if (link.href.indexOf('camstudio') >= 0) {
+      link.target = "_blank";
+    }
+    link.href += querystring;
+    
+    var label = link.getAttribute('data-label'),
+        width, height, img_url_params, size;
+
+    
+        var css_width = link.style.width.match(new RegExp('[0-9]+'));
+        if (css_width && css_width[0] === '230') {
+            size = 'small';
+        } else if (css_width && css_width[0] === '316') {
+            size = 'large';
+        } else {
+            size = 'medium';
+        }
+    
+    if (size === 'small') {
+        width = 230;
+        height = label ? 53 : 40;
+    } else if (size === 'large') {
+        width = 316;
+        height = label ? 73 : 55;
+    } else {
+        width = 276;
+        height = label ? 63 : 48;
+    }
+    img_url_params = '?button_size=' + size;
+    if (label) {
+        img_url_params += '&label=' + encodeURIComponent(label);
+    }
+    link.innerHTML = '<img src="http://a.fsdn.com/con/app/accelerator/button' + img_url_params + '" alt="' + desc + '" width="' + width + '" height="' + height + '">';
+    
+    counter += 1;
+  } else if (link.className === "sourceforge_accelerator_ready") {
+    counter += 1;
+  }
+}
+})();

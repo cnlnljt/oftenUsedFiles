@@ -1,0 +1,1 @@
+document.write('<a href=\'http://www.ohloh.net/p/tortoisesvn?ref=WidgetProjectThinBadge\' target=\'_top\'>\n<img alt=\'Ohloh project report for TortoiseSVN\' border=\'0\' height=\'16\' src=\'http://www.ohloh.net/p/tortoisesvn/widgets/project_thin_badge.gif\' width=\'100\' />\n<\/a>\n')

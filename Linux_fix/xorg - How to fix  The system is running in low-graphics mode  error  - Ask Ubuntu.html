@@ -1,0 +1,3501 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <title>xorg - How to fix &quot;The system is running in low-graphics mode&quot; error? - Ask Ubuntu</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/askubuntu/img/favicon.ico">
+    <link rel="apple-touch-icon" href="http://cdn.sstatic.net/askubuntu/img/apple-touch-icon.png">
+    <link rel="search" type="application/opensearchdescription+xml" title="Ask Ubuntu - Stack Exchange" href="/opensearch.xml">
+
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdn.sstatic.net/js/stub.js?v=32206d9daec4"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.sstatic.net/askubuntu/all.css?v=31956cff20af">
+    
+    <meta name="relativepagescore" content="328954">
+    <link rel="canonical" href="http://askubuntu.com/questions/141606/how-to-fix-the-system-is-running-in-low-graphics-mode-error">
+    <link rel="alternate" type="application/atom+xml" title="Feed for question 'How to fix &quot;The system is running in low-graphics mode&quot; error?'" href="/feeds/question/141606">
+    <script type="text/javascript">
+        
+        StackExchange.ready(function () {
+            
+            StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:141606});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('89', '141606');
+            
+                
+        });
+    </script>
+
+
+        <script type="text/javascript">
+             StackExchange.ready(function () {
+                 StackExchange.realtime.init('ws://sockets-se.or.stackexchange.com:80,sockets-se.or.stackexchange.com:443');
+                StackExchange.realtime.subscribeToInboxNotifications();
+                                 StackExchange.realtime.subscribeToReputationNotifications('89');            
+                         });
+        </script>
+    <script type="text/javascript">
+        StackExchange.init({"stackAuthUrl":"https://stackauth.com","serverTime":1357356367,"styleCode":true,"enableUserHovercards":true,"site":{"name":"Ask Ubuntu","description":"Q&A for Ubuntu users and developers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdsB7sSAAAAAAzjgEF_Hd8vXv-C42sa_KyofaGR","enableSocialMediaInSharePopup":true},"user":{"fkey":"813309b0cb50415e8914a021981ea7ba","isAnonymous":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.js":"c862bf93b3ec","js/moderator.js":"37bba549a03e","js/full-anon.js":"27033739c1ff","js/full.js":"b31d48c4d0c7","js/wmd.js":"0360a509b7c2","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/mobile.js":"6eb68240242f","js/help.js":"fc9fb0517db2","js/tageditor.js":"450c9e8426fc","js/tageditornew.js":"9ac6c13a3a7f","js/inline-tag-editing.js":"30f72b99548b","js/revisions.js":"7273bb714bba","js/review.js":"b0ed21b3aeef"});
+        
+    </script>
+
+
+    <script type="text/javascript">
+        StackExchange.using(
+            "gps",
+            function () {
+                StackExchange.gps.init(false);
+            }
+        );
+    </script>
+</head>
+<body class="question-page">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+    <div class="container">
+        <div id="header">
+            <div id="portalLink">
+                <a class="genu" href="http://stackexchange.com" onclick="StackExchange.ready(function(){genuwine.click();});return false;">Stack Exchange</a>
+            </div>
+            <div id="topbar">
+                <div id="hlinks">
+                    
+
+
+
+
+
+
+
+
+
+<span id="hlinks-user">
+
+</span>
+<span id="hlinks-nav">
+                   <a href="/users/login?returnurl=%2fquestions%2f141606%2fhow-to-fix-the-system-is-running-in-low-graphics-mode-error">log in</a>
+
+ <span class="lsep">|</span>
+
+</span>
+<span id="hlinks-custom">
+        <a href="http://chat.stackexchange.com">chat</a>
+
+ <span class="lsep">|</span>
+                <a href="http://meta.askubuntu.com">meta</a>
+
+ <span class="lsep">|</span>
+        <a href="/about">about</a>
+
+ <span class="lsep">|</span>
+    <a href="/faq">faq</a>
+
+</span>
+                </div>
+                <div id="hsearch">
+                    <form id="search" action="/search" method="get" autocomplete="off">
+                    <div>
+                        <input autocomplete="off" name="q" class="textbox" placeholder="search" tabindex="1" type="text" maxlength="140" size="28" value="">
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >Ask Ubuntu</a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+
+
+
+        <div id="content">
+            
+
+<div itemscope itemtype="http://schema.org/Article">
+<link itemprop="image" href="http://cdn.sstatic.net/askubuntu/img/apple-touch-icon.png">
+<div id="question-header">
+    <h1 itemprop="name"><a href="/questions/141606/how-to-fix-the-system-is-running-in-low-graphics-mode-error" class="question-hyperlink">How to fix &ldquo;The system is running in low-graphics mode&rdquo; error?</a></h1>
+</div>
+<div id="mainbar">
+
+
+
+<div class="question" id="question" data-questionid="141606" >
+    
+    <table>
+    <tr>
+    <td class="votecell">
+        
+
+<div class="vote">
+    <input type="hidden" value="141606">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear (click again to undo)">up vote</a>
+    <span class="vote-count-post ">22</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful (click again to undo)">down vote</a>
+    
+    <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b>18</b></div>   
+
+ 
+</div>
+
+    </td>
+    
+<td class="postcell">
+<div>          
+    <div class="post-text" itemprop="description">
+        <blockquote>
+  <h2>Note:</h2>
+  
+  <p>This is an attempt to create a canonical question that covers all
+  instances of "low-graphics mode" error that occurs to a user,
+  including but <strong><em>not</em> limited</strong> to installation of wrong drivers,
+  incorrect or invalid lightdm greeters, low disk space, incorrect
+  installation of graphics card like ATI and Nvidia, incorrect
+  configuration of xorg.conf file while setting up multiple monitors
+  among others. </p>
+  
+  <p>If you are experiencing the "low-graphics mode" error when trying to
+  login but none of the following answers work for you, please do ask a
+  new question and then update the answers of this canonical question as
+  and when your new question gets answered.</p>
+</blockquote>
+
+<hr>
+
+<p>When I try to boot into my computer, I am getting this error:</p>
+
+<blockquote>
+  <p><strong>The system is running in low-graphics mode</strong></p>
+  
+  <p>Your screen, graphics cards, and input device settings could not be
+  detected correctly. You will need to configure these yourself.</p>
+</blockquote>
+
+<p><img src="http://i.stack.imgur.com/AiwJH.png" alt="fail-safe X mode"></p>
+
+<p>How do I fix the failsafe X mode and login into my computer?</p>
+
+<hr>
+
+<p>Answer index:</p>
+
+<ul>
+<li><a href="http://askubuntu.com/a/141607/25798">The greeter is invalid</a></li>
+</ul>
+
+    </div>            
+    <div class="post-taglist">
+        <a href="/questions/tagged/xorg" class="post-tag" title="show questions tagged 'xorg'" rel="tag">xorg</a> <a href="/questions/tagged/lightdm" class="post-tag" title="show questions tagged 'lightdm'" rel="tag">lightdm</a> <a href="/questions/tagged/login-screen" class="post-tag" title="show questions tagged 'login-screen'" rel="tag">login-screen</a> <a href="/questions/tagged/unity-greeter" class="post-tag" title="show questions tagged 'unity-greeter'" rel="tag">unity-greeter</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/q/141606" title="short permalink to this question" class="short-link" id="link-post-141606">share</a><span class="lsep">|</span><a href="/posts/141606/edit" class="suggest-edit-post" title="">improve this question</a></div>
+    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/141606/revisions" title="show all edits to this post"><span title="2012-11-16 14:39:28Z" class="relativetime">Nov 16 '12 at 14:39</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            
+        </div>
+        <div class="user-details">
+            <br>
+            
+        </div>
+    </div>
+    </td>
+    <td class="post-signature">
+    
+
+    <div class="user-info">
+        <div class="user-details">
+            <span class="community-wiki" title="This post is community owned as of Jul 20 &#39;12 at 15:06. Votes do not generate reputation, and it can be edited by users with 100 rep">
+                community wiki
+            </span>
+        </div><br>
+        <div class="user-details">
+            <a id="history-141606" href="/posts/141606/revisions" title="show revision history for this post">
+5 revs<br>jokerdino            </a>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</div>
+</td>    </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-141606" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>    
+</div>
+
+
+    
+
+
+<div id="answers">
+
+    <a name="tab-top"></a>
+    <div id="answers-header">
+        <div class="subheader answers-subheader">
+            <h2>
+                    23 Answers
+            </h2>
+            <div id="tabs">
+                <a href="/questions/141606/how-to-fix-the-system-is-running-in-low-graphics-mode-error?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+<a href="/questions/141606/how-to-fix-the-system-is-running-in-low-graphics-mode-error?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+<a class="youarehere" href="/questions/141606/how-to-fix-the-system-is-running-in-low-graphics-mode-error?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+
+            </div>
+        </div>    
+    </div>    
+
+
+
+
+
+  
+    <a name="125516"></a>
+    <div id="answer-125516" class="answer"  data-answerid="125516">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="125516">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">13</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>I solved this problem by reinstalling ubuntu-desktop.</p>
+
+<p>When the message that "your system is running in low-graphics mode" appears, press <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F1</kbd>, then login with your credentials. </p>
+
+<p>And then, run the following commands:</p>
+
+<ul>
+<li><code>sudo apt-get install --reinstall ubuntu-desktop</code></li>
+<li><code>sudo reboot</code></li>
+</ul>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/125516" title="short permalink to this answer" class="short-link" id="link-post-125516">share</a><span class="lsep">|</span><a href="/posts/125516/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/125516/revisions" title="show all edits to this post"><span title="2012-07-07 02:52:45Z" class="relativetime">Jul 7 '12 at 2:52</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/18764/jonah"><div class=""><img src="http://www.gravatar.com/avatar/f19a4807544338636bf12e76aff178af?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/18764/jonah">Jonah</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">141</span><span title="8 bronze badges"><span class="badge3"></span><span class="badgecount">8</span></span>
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2012-04-26 18:20:58Z" class="relativetime">Apr 26 '12 at 18:20</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/41938/user41938"><div class=""><img src="http://www.gravatar.com/avatar/bf5b47187b9cf9862a2eecd618c990b5?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/41938/user41938">user41938</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">131</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-125516" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="141607"></a>
+    <div id="answer-141607" class="answer"  data-answerid="141607">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="141607">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">12</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><h3>The greeter is invalid</h3>
+
+<p>This is a bug in LightDM and a <a href="https://bugs.launchpad.net/lightdm/+bug/971891">bug report</a> has already been filed. </p>
+
+<p>The reason why you end up with this failsafe X is because the pantheon-greeter you installed along with the elementary desktop is now not available and LightDM is not able to identify an alternative greeter.</p>
+
+<p>As a workaround, you can edit the LightDM conf file and correct the error.</p>
+
+<p>Run the following command in a terminal:</p>
+
+<pre><code>sudo nano /etc/lightdm/lightdm.conf
+</code></pre>
+
+<p>and change the line</p>
+
+<pre><code>greeter-session=pantheon-greeter
+</code></pre>
+
+<p>to</p>
+
+<pre><code>greeter-session=unity-greeter
+</code></pre>
+
+<p>and save it.</p>
+
+<p>After changing the file, reboot and you will now be greeted with Unity greeter.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/141607" title="short permalink to this answer" class="short-link" id="link-post-141607">share</a><span class="lsep">|</span><a href="/posts/141607/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/141607/revisions" title="show all edits to this post"><span title="2012-07-26 07:47:46Z" class="relativetime">Jul 26 '12 at 7:47</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            
+        </div>
+        <div class="user-details">
+            <br>
+            
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info">
+        <div class="user-details">
+            <span class="community-wiki" title="This post is community owned as of Jul 20 &#39;12 at 15:07. Votes do not generate reputation, and it can be edited by users with 100 rep">
+                community wiki
+            </span>
+        </div><br>
+        <div class="user-details">
+            <a id="history-141607" href="/posts/141607/revisions" title="show revision history for this post">
+3 revs<br>jokerdino            </a>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-141607" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="10870"></a>
+    <div id="answer-10870" class="answer"  data-answerid="10870">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="10870">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">7</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>When this happens there is often an error message indicating why it failed to start X.</p>
+
+<p>Look in your <code>/var/log/Xorg.0.log.old</code> or <code>/var/log/Xorg.0.log</code>.  The error (if there is one) will be at the tail end of the file.  Another good place to look is the log files in <code>/var/log/gdm/*</code> (or /var/log/lightdm/* in oneiric).</p>
+
+<p>Did you happen to manually install fglrx prior to noticing the problem?  If it was not uninstalled properly it can cause weird random issues.  Directions for purging fglrx are available at <a href="https://wiki.ubuntu.com/X/Troubleshooting/FglrxInteferesWithRadeonDriver" rel="nofollow">here</a>. </p>
+
+<p>Is your video card an AGP model?  If so, a common issue with ati agp cards is having an incorrect AGPMode.  Sometimes you can adjust this setting in your BIOS (which perhaps windows screwed with?)  There is also a setting in <code>/etc/X11/xorg.conf</code> for adjusting it in X.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/10870" title="short permalink to this answer" class="short-link" id="link-post-10870">share</a><span class="lsep">|</span><a href="/posts/10870/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/10870/revisions" title="show all edits to this post"><span title="2011-10-20 00:38:14Z" class="relativetime">Oct 20 '11 at 0:38</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            
+        </div>
+        <div class="user-details">
+            <br>
+            
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2010-11-01 22:35:17Z" class="relativetime">Nov 1 '10 at 22:35</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/913/bryce"><div class=""><img src="http://www.gravatar.com/avatar/36cfa1347dd2a8b7a3a7cfa4e03bdfdb?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/913/bryce">Bryce</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">2,734</span><span title="5 silver badges"><span class="badge2"></span><span class="badgecount">5</span></span><span title="29 bronze badges"><span class="badge3"></span><span class="badgecount">29</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-10870" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="126035"></a>
+    <div id="answer-126035" class="answer"  data-answerid="126035">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="126035">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">4</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p><strong>Only for ATI graphics cards</strong></p>
+
+<p>When the message that "your system is running in low-graphics mode" appears:<br>
+Press <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F1</kbd> to see the terminal one. Then login with your credentials, and then run the following commands:   </p>
+
+<pre><code>sudo apt-get install fglrx    
+sudo reboot
+</code></pre>
+
+<p>The same can be done from the recovery mode (after enabling networking), if your Ubuntu completly refuses to enter anything but recovery mode.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/126035" title="short permalink to this answer" class="short-link" id="link-post-126035">share</a><span class="lsep">|</span><a href="/posts/126035/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/126035/revisions" title="show all edits to this post"><span title="2012-09-12 13:46:43Z" class="relativetime">Sep 12 '12 at 13:46</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/-1/community"><div class=""><img src="http://www.gravatar.com/avatar/a007be5a61f6aa8f3e85ae2fc18dd66e?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/-1/community">Community</a><span class="mod-flair" title="moderator">&#9830;</span><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">1</span>
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2012-04-27 10:56:41Z" class="relativetime">Apr 27 '12 at 10:56</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/57142/ltedone"><div class=""><img src="http://www.gravatar.com/avatar/6689e8908b8dd6ff1372e044ecf46003?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/57142/ltedone">ltedone</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">41</span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-126035" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="218095"></a>
+    <div id="answer-218095" class="answer"  data-answerid="218095">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="218095">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">3</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+<div class="bounty-award-container"><span class="bounty-award" title="This answer has been awarded bounty worth 500 reputation by jokerdino">+500</span></div> 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>Will try to answer the ones I can:</p>
+
+<p>Assuming the answer by Jokerdino was already checked: <a href="http://askubuntu.com/a/141607/7035">http://askubuntu.com/a/141607/7035</a></p>
+
+<h2>Nvidia / Ati issues</h2>
+
+<p>This happens when a driver has a problem installing correctly (Most cases). For this do the following:</p>
+
+<ol>
+<li><p>Boot PC leaving <kbd>SHIFT</kbd> pressed to make the GRUB Menu show.</p></li>
+<li><p>Select <strong>Recovery Mode</strong> which will continue booting correctly until the Recovery Menu appeares.</p></li>
+<li><p>Select from the recovery menu <strong>failsafeX</strong>.</p></li>
+<li><p>In some cases failsafeX will load fine (You lucky dog), for others (Me) it will give  an error along the lines of "The system is running in low-graphics mode" and will stay there forever. When this happens, press <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>F1</kbd> to go to the terminal. Type in your Username and Password.</p></li>
+<li><p>Reinstall the drivers depending on your case:</p>
+
+<p>NVIDIA</p>
+
+<p><code>sudo apt-get install nvidia-current</code> - More stable/tested version
+<code>sudo apt-get install nvidia-current-updates</code> - More up-to-date version</p>
+
+<p>ATI</p>
+
+<p>The simple way is to <code>sudo apt-get install fglrx</code>. If this does not work keep reading.</p>
+
+<p>Go to <a href="http://support.amd.com/us/gpudownload/Pages/index.aspx" rel="nofollow">http://support.amd.com/us/gpudownload/Pages/index.aspx</a>, download the one you need, put it in some folder (rename it to "ati.run" to simplify name). Go to the folder where you downloaded the file and type <code>chmod +x ati.run</code> to give it Executable Permission. Now just simply <code>./sh ati.run</code> and follow the onscreen steps.</p>
+
+<p>After rebooting all problems should be solved. If you test 'Additional Drivers' with a problem like this it will finish downloading the package but then it will give an error. It also gives the same error if you use 'Software Center' and 'Synaptic'. The only way was to go to the <code>failsafeX</code> option and do the workaround about changing to the <code>tty1</code> terminal and doing it via command line.</p>
+
+<p>I also need to add that I do not recommend downloading the Drivers from the Nvidia site since they:</p>
+
+<ul>
+<li>Might create additional problems with Ubuntu</li>
+<li>Are not updated automatically</li>
+<li>Are not tested thoroughly in Ubuntu</li>
+</ul>
+
+<p>Always use the <code>nvidia-current</code> package or the <code>nvidia-current-updates</code> one. This are tested and approved already for the Ubuntu version you are using and will give less errors and incompatibility bugs.</p></li>
+</ol>
+
+<h2>Intel</h2>
+
+<p>For Intel it is recommended to do the following after doing all the steps mentioned above but before installing anything (When you are in the Terminal). You can choose from the Xorg-Edgers which is an Unstable PPA or the X-Swat which is more stable:</p>
+
+<p>Warning: This PPA is very unstable for some things. So do it with that in mind.<br>
+ <code>sudo add-apt-repository ppa:xorg-edgers/ppa -y</code></p>
+
+<p>or X-Swat:<br>
+ <code>sudo add-apt-repository ppa:ubuntu-x-swat/x-updates -y</code></p>
+
+<p>After that <code>sudo apt-get update</code> and you should receive several updates. X-Swat currently does not have Intel drivers in the latest versions of Ubuntu.</p>
+
+<p>Like always please test and give feedback so I can enhance my answer since others will be also reading it. The better it is, the more people it will help.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/218095" title="short permalink to this answer" class="short-link" id="link-post-218095">share</a><span class="lsep">|</span><a href="/posts/218095/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+                             <a href="/posts/218095/revisions" title="show all edits to this post"><span title="2012-11-16 15:56:33Z" class="relativetime">Nov 16 '12 at 15:56</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            
+        </div>
+        <div class="user-details">
+            <br>
+            
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info">
+        <div class="user-details">
+            <span class="community-wiki" title="This post is community owned as of Nov 16 &#39;12 at 15:56. Votes do not generate reputation, and it can be edited by users with 100 rep">
+                community wiki
+            </span>
+        </div><br>
+        <div class="user-details">
+            <a id="history-218095" href="/posts/218095/revisions" title="show revision history for this post">
+Luis Alvarado            </a>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-218095" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="137869"></a>
+    <div id="answer-137869" class="answer"  data-answerid="137869">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="137869">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">2</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>I have recently received a similar issue with myPangolin Performance laptop. The folks at System 76 told me to do the following:</p>
+
+<p>Click Okay and then select the option to get a terminal.  (alternatively you can press ctr+alt+f1 to bring up another tty)</p>
+
+<pre><code>sudo chown lightdm:lightdm -R /var/lib/lightdm
+sudo chown avahi-autoipd:avahi-autoipd -R /var/lib/avahi-autoipd
+sudo chown colord:colord -R /var/lib/colord
+</code></pre>
+
+<p>reboot</p>
+
+<p>These commands did the trick for me.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/137869" title="short permalink to this answer" class="short-link" id="link-post-137869">share</a><span class="lsep">|</span><a href="/posts/137869/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2012-05-16 12:58:55Z" class="relativetime">May 16 '12 at 12:58</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/17991/mc1brew"><div class=""><img src="http://www.gravatar.com/avatar/dea816b145d19c7c0e4ae295930f280b?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/17991/mc1brew">Mc1brew</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">41</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-137869" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="130075"></a>
+    <div id="answer-130075" class="answer"  data-answerid="130075">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="130075">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">2</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>Well, I had the same problem and solved it. </p>
+
+<ol>
+<li><p>Start ubuntu with <strong>recovery mode</strong> from grub then choose <strong>filesystem check</strong> followed by <strong>enable networking</strong>. </p></li>
+<li><p>Choose root option to get to terminal. Now uninstall the old drivers </p>
+
+<p><code>sh /usr/share/ati/fglrx-uninstall</code></p></li>
+<li><p>Then reinstall the drivers following the methods for precise from this website <a href="https://help.ubuntu.com/community/BinaryDriverHowto/ATI" rel="nofollow">https://help.ubuntu.com/community/BinaryDriverHowto/ATI</a>. </p></li>
+<li><p>After that everything works out just fine, I suggest you do </p>
+
+<p><code>apt-get update &amp;&amp; apt-get upgrade &amp;&amp; apt-get autoremove</code></p>
+
+<p>-everytime you complete a step. Good luck.</p></li>
+</ol>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/130075" title="short permalink to this answer" class="short-link" id="link-post-130075">share</a><span class="lsep">|</span><a href="/posts/130075/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/130075/revisions" title="show all edits to this post"><span title="2012-05-17 14:09:52Z" class="relativetime">May 17 '12 at 14:09</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/47291/mateo-salta"><div class=""><img src="http://www.gravatar.com/avatar/adf708efd8e843f270c3a6f2935e8368?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/47291/mateo-salta">mateo_salta</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">2,348</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="30 bronze badges"><span class="badge3"></span><span class="badgecount">30</span></span>
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2012-05-02 13:28:19Z" class="relativetime">May 2 '12 at 13:28</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/59569/user59569"><div class=""><img src="http://www.gravatar.com/avatar/59b0f7203e3a36aed71aa9647eaac20a?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/59569/user59569">user59569</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">21</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-130075" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="138582"></a>
+    <div id="answer-138582" class="answer"  data-answerid="138582">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="138582">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">2</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>I had the same problem with an Acer Aspire 3810tg. I solved it by doing the following:</p>
+
+<ul>
+<li>Do a normal boot</li>
+<li>Press Ctrl-Alt-F1 on the "Your system is running in low-graphics mode" screen</li>
+<li>Download the correct driver from <a href="http://support.amd.com/us/gpudownload/Pages/index.aspx" rel="nofollow">http://support.amd.com/us/gpudownload/Pages/index.aspx</a>, in my case (ATI Mobility Radeon HD 4330): <code>wget http://www2.ati.com/drivers/linux/amd-driver-installer-12-4-x86.x86_64.run</code> which should also cover your case (Mobility Radeon HD 4xxx Series)</li>
+<li><code>chmod 755 amd-driver-installer-12-4-x86.x86_64.run</code> to make the file executable</li>
+<li><code>sudo ./amd-driver-installer-12-4-x86.x86_64.run</code> and follow the standard steps</li>
+<li>You might need to run: <code>sudo aticonfig --initial</code>, but that was not necessary for me.</li>
+</ul>
+
+<p>In my case the driver installation finished with an error, but it still worked. I hope this helps.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/138582" title="short permalink to this answer" class="short-link" id="link-post-138582">share</a><span class="lsep">|</span><a href="/posts/138582/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/138582/revisions" title="show all edits to this post"><span title="2012-05-21 19:11:07Z" class="relativetime">May 21 '12 at 19:11</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            
+        </div>
+        <div class="user-details">
+            <br>
+            
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2012-05-17 19:12:20Z" class="relativetime">May 17 '12 at 19:12</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/64126/torbenl"><div class=""><img src="http://www.gravatar.com/avatar/69cb18c81b44800ea3a03e04f6281ec7?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/64126/torbenl">torbenl</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">21</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-138582" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="173238"></a>
+    <div id="answer-173238" class="answer"  data-answerid="173238">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="173238">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">2</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>Let's assume, arrogantly, that it is a problem with your X display manager.</p>
+
+<p>Enter the terminal, the one you said that you have access to, and enter the following:</p>
+
+<p><code>sudo apt-get install gdm</code></p>
+
+<p>. . . and choose gdm.</p>
+
+<p>Then type:</p>
+
+<p><code>sudo service gdm restart</code></p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/173238" title="short permalink to this answer" class="short-link" id="link-post-173238">share</a><span class="lsep">|</span><a href="/posts/173238/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2012-08-08 02:23:33Z" class="relativetime">Aug 8 '12 at 2:23</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/71836/david-m-sousa"><div class=""><img src="http://www.gravatar.com/avatar/b3bea8eae2076576373d1a9d0470e2de?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/71836/david-m-sousa">David M. Sousa</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">253</span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-173238" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="128408"></a>
+    <div id="answer-128408" class="answer"  data-answerid="128408">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="128408">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">2</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>Follow these commands:</p>
+
+<pre><code>sudo apt-get update
+sudo apt-get -d install --reinstall gdm
+sudo apt-get remove --purge gdm
+</code></pre>
+
+<p>(I ran this command above, but was told by the system to use   # sudo apt-get autoremove  instead, after the  #sudo apt-get remove --purge gdm    command.) </p>
+
+<pre><code>sudo apt-get install gdm
+</code></pre>
+
+<p>select GDM when prompted</p>
+
+<pre><code>sudo reboot
+</code></pre>
+
+<p>That fixed it for me :)</p>
+
+<p>It took very long to start after the reboot, 10+ mins. But I got in eventually.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/128408" title="short permalink to this answer" class="short-link" id="link-post-128408">share</a><span class="lsep">|</span><a href="/posts/128408/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/128408/revisions" title="show all edits to this post"><span title="2012-11-19 16:21:29Z" class="relativetime">Nov 19 '12 at 16:21</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/-1/community"><div class=""><img src="http://www.gravatar.com/avatar/a007be5a61f6aa8f3e85ae2fc18dd66e?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/-1/community">Community</a><span class="mod-flair" title="moderator">&#9830;</span><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">1</span>
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2012-04-30 09:41:17Z" class="relativetime">Apr 30 '12 at 9:41</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/58619/shaeve"><div class=""><img src="http://www.gravatar.com/avatar/4e78abc6c17ce959f9a39d59acbad077?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/58619/shaeve">Shaeve</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">21</span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-128408" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="220423"></a>
+    <div id="answer-220423" class="answer"  data-answerid="220423">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="220423">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">2</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>This problem destroyed my morning.  It turns out that if your root filesystem runs out of space then Ubuntu will boot into low graphics mode and it's hard to figure out why since the xorg log shows nothing wrong.  To find out from the command line if you're low on space type</p>
+
+<pre><code>df -h
+</code></pre>
+
+<p>Sample output from my machine:</p>
+
+<pre><code>Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda6        18G   10G  6.6G  61% /
+udev            3.9G  4.0K  3.9G   1% /dev
+tmpfs           3.9G  108K  3.9G   1% /tmp
+tmpfs           1.6G  1.2M  1.6G   1% /run
+none            5.0M     0  5.0M   0% /run/lock
+none            3.9G  1.3M  3.9G   1% /run/shm
+none            100M   16K  100M   1% /run/user
+/dev/sda4       317G   33G  285G  11% /media/data
+/dev/sda1       197M   16M  182M   8% /boot/efi
+</code></pre>
+
+<p>If your <code>/</code> mount has a high <code>Use%</code> (90%+) then this could be your problem.  In my case, <code>~/.xsession.errors</code> had grown to fill most of my partition and caused me to fall into low-graphics mode.  Found my answer for that in this <a href="http://ubuntuforums.org/showthread.php?t=1517991" rel="nofollow">Ubuntuforums thread</a>:</p>
+
+<pre><code>rm ~/.xsession-errors
+mkdir ~/.xsession-errors
+</code></pre>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/220423" title="short permalink to this answer" class="short-link" id="link-post-220423">share</a><span class="lsep">|</span><a href="/posts/220423/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+                             <a href="/posts/220423/revisions" title="show all edits to this post"><span title="2012-11-22 03:17:28Z" class="relativetime">Nov 22 '12 at 3:17</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            
+        </div>
+        <div class="user-details">
+            <br>
+            
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info">
+        <div class="user-details">
+            <span class="community-wiki" title="This post is community owned as of Nov 22 &#39;12 at 3:17. Votes do not generate reputation, and it can be edited by users with 100 rep">
+                community wiki
+            </span>
+        </div><br>
+        <div class="user-details">
+            <a id="history-220423" href="/posts/220423/revisions" title="show revision history for this post">
+Tron            </a>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-220423" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="10669"></a>
+    <div id="answer-10669" class="answer"  data-answerid="10669">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="10669">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>Try delete your /etc/X11/xorg.conf and restart.</p>
+
+<p>Before restart, run</p>
+
+<pre><code>sudo apt-get install xserver-xorg-video-ati xserver-xorg-video-radeon
+</code></pre>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/10669" title="short permalink to this answer" class="short-link" id="link-post-10669">share</a><span class="lsep">|</span><a href="/posts/10669/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2010-11-01 04:26:47Z" class="relativetime">Nov 1 '10 at 4:26</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/2026/extender"><div class=""><img src="http://www.gravatar.com/avatar/def3af051c387fc266b3de98abe97a5f?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/2026/extender">Extender</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">1,291</span><span title="8 silver badges"><span class="badge2"></span><span class="badgecount">8</span></span><span title="19 bronze badges"><span class="badge3"></span><span class="badgecount">19</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-10669" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="37004"></a>
+    <div id="answer-37004" class="answer"  data-answerid="37004">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="37004">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>I had a similar problem.</p>
+
+<p>When I was booting my PC, i was getting the following message:
+“Ubuntu is running in low-graphics mode”</p>
+
+<p>When I used <code>startx</code> on the command prompt however, everything was
+fine and i could start the xserver.</p>
+
+<p>Now I found out that for some strange reason GDM has been uninstalled 
+(it took me hours to realize that), i did fix the problem by reinstalling gdm with:</p>
+
+<pre><code>apt-get install gdm
+</code></pre>
+
+<p>now everything's running. Hope this helps you.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/37004" title="short permalink to this answer" class="short-link" id="link-post-37004">share</a><span class="lsep">|</span><a href="/posts/37004/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/37004/revisions" title="show all edits to this post"><span title="2011-10-08 20:27:03Z" class="relativetime">Oct 8 '11 at 20:27</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/14356/fossfreedom"><div class=""><img src="http://www.gravatar.com/avatar/c88f455192559b06f95d006abfe33f9f?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/14356/fossfreedom">fossfreedom</a><span class="mod-flair" title="moderator">&#9830;</span><br>
+            <span class="reputation-score" title="reputation score 67206" dir="ltr">67.2k</span><span title="11 gold badges"><span class="badge1"></span><span class="badgecount">11</span></span><span title="126 silver badges"><span class="badge2"></span><span class="badgecount">126</span></span><span title="177 bronze badges"><span class="badge3"></span><span class="badgecount">177</span></span>
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2011-04-25 20:10:48Z" class="relativetime">Apr 25 '11 at 20:10</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/14992/i-c"><div class=""><img src="http://www.gravatar.com/avatar/2c54a8d477d8797189283c7d504bb188?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/14992/i-c">I.C.</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">11</span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-37004" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="197077"></a>
+    <div id="answer-197077" class="answer"  data-answerid="197077">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="197077">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>Install gdm.</p>
+
+<p>During the installation of gdm you will be asked to select either gdm or lightdm as the default login display manager. Select gdm.</p>
+
+<p>By the way, the fact that you have this problem on 2 different computers is a sign that there may be an irregular voltage to your computer power supply. To test for this possibility take one computer to a different address and try booting it there.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/197077" title="short permalink to this answer" class="short-link" id="link-post-197077">share</a><span class="lsep">|</span><a href="/posts/197077/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/197077/revisions" title="show all edits to this post"><span title="2012-10-08 19:22:19Z" class="relativetime">Oct 8 '12 at 19:22</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/49542/devav2"><div class=""><img src="http://www.gravatar.com/avatar/1d8ba65bd6f41c7892b10983ce834af8?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/49542/devav2">devav2</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">6,139</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="13 silver badges"><span class="badge2"></span><span class="badgecount">13</span></span><span title="38 bronze badges"><span class="badge3"></span><span class="badgecount">38</span></span>
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2012-10-06 11:07:33Z" class="relativetime">Oct 6 '12 at 11:07</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/94914/karel"><div class=""><img src="http://www.gravatar.com/avatar/ef9ffa88b68564b31dabd5744bb735b4?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/94914/karel">karel</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">26</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-197077" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="138729"></a>
+    <div id="answer-138729" class="answer"  data-answerid="138729">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="138729">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p><strong>You have too many files on your computer, and have exhausted disk space</strong></p>
+
+<p>Try moving personal files off the computer onto a USB drive.</p>
+
+<hr>
+
+<p><em>To check whether this is the issue:</em></p>
+
+<ol>
+<li>Press <code>Ctrl+Alt+F1</code></li>
+<li>Type <code>df -h</code></li>
+<li>If you see that there is no space available on the root ("/") then you need to free some space.</li>
+</ol>
+
+<p><em>To free space you can:</em></p>
+
+<ol>
+<li><code>sudo apt-get autoclean</code> </li>
+<li>Look for large directories with <code>sudo du -sc /*/* |sort -g</code> and delete unwanted content, </li>
+<li><p>Clean your home directory using a combination of </p>
+
+<pre><code>cd ~   
+du -sc * |sort -g
+rm myLargeFile
+</code></pre></li>
+</ol>
+
+<p>When this is done, restart: <code>shutdown -r now</code></p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/138729" title="short permalink to this answer" class="short-link" id="link-post-138729">share</a><span class="lsep">|</span><a href="/posts/138729/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/138729/revisions" title="show all edits to this post"><span title="2012-11-30 22:20:47Z" class="relativetime">Nov 30 '12 at 22:20</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/47291/mateo-salta"><div class=""><img src="http://www.gravatar.com/avatar/adf708efd8e843f270c3a6f2935e8368?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/47291/mateo-salta">mateo_salta</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">2,348</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="30 bronze badges"><span class="badge3"></span><span class="badgecount">30</span></span>
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2012-05-18 02:42:42Z" class="relativetime">May 18 '12 at 2:42</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/63602/azul-mascara"><div class=""><img src="http://www.gravatar.com/avatar/c14082276795615ed47954bdce0d2a85?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/63602/azul-mascara">Azul Mascara</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">39</span><span title="5 bronze badges"><span class="badge3"></span><span class="badgecount">5</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-138729" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-272758" class="comment">
+        <td></td>
+        <td class="comment-text"><div><span class="comment-copy">It is a valid reason. If you exhaust disk space. Ubuntu will run in low graphics mode. I tested this in virtual machine.</span> &ndash;&nbsp;<a href="/users/35775/web-e" title="5722 reputation" class="comment-user">Web-E</a> <span class="comment-date" dir="ltr"><span title="2012-11-23 10:46:51Z" class="relativetime-clean">Nov 23 '12 at 10:46</span></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="12142"></a>
+    <div id="answer-12142" class="answer"  data-answerid="12142">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="12142">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>Try to boot from grub using a different parameter or even booting an older kernel from the list.</p>
+
+<p><a href="https://help.ubuntu.com/community/BootOptions" rel="nofollow">https://help.ubuntu.com/community/BootOptions</a></p>
+
+<p>See the section on kernel options. Something like: xforcevesa </p>
+
+<p>Good luck! :)</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/12142" title="short permalink to this answer" class="short-link" id="link-post-12142">share</a><span class="lsep">|</span><a href="/posts/12142/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2010-11-08 18:30:01Z" class="relativetime">Nov 8 '10 at 18:30</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/5015/linuxcanuck"><div class=""><img src="http://www.gravatar.com/avatar/ad61fe9b7b5301b37773abe57b9be4eb?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/5015/linuxcanuck">LinuxCanuck</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">332</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-12142" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="24230"></a>
+    <div id="answer-24230" class="answer"  data-answerid="24230">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="24230">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>Follow these commands:</p>
+
+<pre><code>sudo apt-get update
+sudo apt-get -d install --reinstall gdm
+sudo apt-get remove --purge gdm
+sudo apt-get install gdm
+sudo apt-get remove --purge xserver-xgl compiz compiz-plugins compiz-core compiz-manager csm cgwd cgwd-themes
+sudo apt-get install --reinstall compiz compiz-core compiz-fusion-plugins-extra compiz-fusion-plugins-main compiz-gnome compiz-plugins libcompizconfig0
+sudo dpkg-reconfigure -phigh xserver-xorg
+</code></pre>
+
+<p>choose the driver 'ati' and when you get to monitor resolution choose the resolution you want to run and any resolution ABOVE that resolution should be removed. Once that is done issue the following:*</p>
+
+<pre><code>sudo reboot
+</code></pre>
+
+<p>You will most likely get errors on specific packages.  Repeat the command removing the problem package until it works.</p>
+
+<p>There will be a time where you will be without the desktop, so have another internet connected device nearby to reference this from or to Google with in case of emergency.</p>
+
+<p>This worked for me, hope this helps.</p>
+
+<p>*If you are never prompted, just skip this.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/24230" title="short permalink to this answer" class="short-link" id="link-post-24230">share</a><span class="lsep">|</span><a href="/posts/24230/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2011-02-01 03:35:51Z" class="relativetime">Feb 1 '11 at 3:35</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/5179/john"><div class=""><img src="http://www.gravatar.com/avatar/95c231233b30e7e7a1e7c0740fe36815?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/5179/john">John</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">662</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="8 silver badges"><span class="badge2"></span><span class="badgecount">8</span></span><span title="20 bronze badges"><span class="badge3"></span><span class="badgecount">20</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-24230" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="57232"></a>
+    <div id="answer-57232" class="answer"  data-answerid="57232">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="57232">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>I had a special case of this problem, where I somehow caused the removal of some packages. I only noticed the actual problem after some time spent looking at the problem.</p>
+
+<p>So:</p>
+
+<ol>
+<li>Log into the text mode console</li>
+<li>Enter the command: <code>sudo apt-get install ubuntu-desktop</code></li>
+</ol>
+
+<p>This will ensure all the needed packages are installed. Without some of those, symptoms like those described here may occur.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/57232" title="short permalink to this answer" class="short-link" id="link-post-57232">share</a><span class="lsep">|</span><a href="/posts/57232/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/57232/revisions" title="show all edits to this post"><span title="2011-09-02 16:01:34Z" class="relativetime">Sep 2 '11 at 16:01</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/17739/kris-harper"><div class=""><img src="http://www.gravatar.com/avatar/4ad1bf5323f1d059639a3d13bcbf8121?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/17739/kris-harper">Kris Harper</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">4,022</span><span title="6 gold badges"><span class="badge1"></span><span class="badgecount">6</span></span><span title="16 silver badges"><span class="badge2"></span><span class="badgecount">16</span></span><span title="40 bronze badges"><span class="badge3"></span><span class="badgecount">40</span></span>
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2011-08-15 20:15:30Z" class="relativetime">Aug 15 '11 at 20:15</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/23339/user23339"><div class=""><img src="http://www.gravatar.com/avatar/d40ce9a1746b595bfb3004ebd62da2d0?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/23339/user23339">user23339</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">36</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-57232" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="132832"></a>
+    <div id="answer-132832" class="answer"  data-answerid="132832">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="132832">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>I had the issue when I upgraded from 11.10 on my Acer Aspire One AO-722. I also had the propriety ATi/AMD driver installed from 11.10, which carried over to the 12.04 installation. I followed this guide to remove the proprietary drivers and use the Open Source drivers. <a href="http://wiki.cchtml.com/index.php/Ubuntu_Oneiric_Installation_Guide#Removing_Catalyst.2Ffglrx" rel="nofollow">http://wiki.cchtml.com/index.php/Ubuntu_Oneiric_Installation_Guide#Removing_Catalyst.2Ffglrx</a>
+Everything seems to be working now. </p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/132832" title="short permalink to this answer" class="short-link" id="link-post-132832">share</a><span class="lsep">|</span><a href="/posts/132832/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2012-05-06 20:35:48Z" class="relativetime">May 6 '12 at 20:35</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/61121/jeremy"><div class=""><img src="http://www.gravatar.com/avatar/b7ab1818efe5c8bb0172899a8166713e?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/61121/jeremy">Jeremy</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">1</span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-132832" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-158253" class="comment">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'useful comment' votes received" class="cool">1</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">Welcome to Ask Ubuntu! Whilst this may theoretically answer the question, <a href="http://meta.stackoverflow.com/q/8259">it would be preferable</a> to include the essential parts of the answer here, and provide the link for reference.</span> &ndash;&nbsp;<a href="/users/14356/fossfreedom" title="67206 reputation" class="comment-user">fossfreedom<span class="mod-flair" title="moderator">&#9830;</span></a> <span class="comment-date" dir="ltr"><span title="2012-05-07 08:58:46Z" class="relativetime-clean">May 7 '12 at 8:58</span></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="64853"></a>
+    <div id="answer-64853" class="answer"  data-answerid="64853">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="64853">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p><strong>Your Memory may be bad.</strong></p>
+
+<p>If you experience Low graphics mode intermittently like I was.</p>
+
+<ol>
+<li><p>Run a memory check to check for memory errors.</p></li>
+<li><p>Buy New memory(Make sure it is the right type for your computer)</p></li>
+<li><p>Run the memory test again, to make sure all is good.</p></li>
+</ol>
+
+<p>The Low Graphics Mode error should now be gone.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/64853" title="short permalink to this answer" class="short-link" id="link-post-64853">share</a><span class="lsep">|</span><a href="/posts/64853/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/64853/revisions" title="show all edits to this post"><span title="2012-11-30 22:13:40Z" class="relativetime">Nov 30 '12 at 22:13</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/47291/mateo-salta"><div class=""><img src="http://www.gravatar.com/avatar/adf708efd8e843f270c3a6f2935e8368?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/47291/mateo-salta">mateo_salta</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">2,348</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="30 bronze badges"><span class="badge3"></span><span class="badgecount">30</span></span>
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2011-10-08 17:43:54Z" class="relativetime">Oct 8 '11 at 17:43</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/26465/bruce"><div class=""><img src="http://www.gravatar.com/avatar/0cda77848a0d41a689b36abd156d38bd?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/26465/bruce">Bruce</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">1</span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-64853" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="201698"></a>
+    <div id="answer-201698" class="answer"  data-answerid="201698">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="201698">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p><strong>You may be using a diffrent greeter than unity-greeter</strong></p>
+
+<ol>
+<li>Press <kbd>alt</kbd>+<kbd>ctrl</kbd>+<kbd>F1</kbd> or <kbd>alt</kbd>+<kbd>ctrl</kbd>+<kbd>F2</kbd> or   <kbd>F6</kbd></li>
+<li>Log in with your name and password</li>
+<li><code>sudo service lightdm stop</code></li>
+<li><p><code>sudo nano /etc/lightdm/lightdm.conf</code></p>
+
+<p>And change the line:</p>
+
+<p><code>greeter-session=pantheon-greeter</code></p>
+
+<p>to</p>
+
+<p><code>greeter-session=unity-greeter</code></p>
+
+<ul>
+<li>save the file</li>
+</ul></li>
+<li><p><code>sudo service lightdm start</code></p></li>
+</ol>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/201698" title="short permalink to this answer" class="short-link" id="link-post-201698">share</a><span class="lsep">|</span><a href="/posts/201698/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/201698/revisions" title="show all edits to this post"><span title="2012-11-30 22:25:24Z" class="relativetime">Nov 30 '12 at 22:25</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            
+        </div>
+        <div class="user-details">
+            <br>
+            
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info">
+        <div class="user-details">
+            <span class="community-wiki" title="This post is community owned as of Oct 16 &#39;12 at 12:28. Votes do not generate reputation, and it can be edited by users with 100 rep">
+                community wiki
+            </span>
+        </div><br>
+        <div class="user-details">
+            <a id="history-201698" href="/posts/201698/revisions" title="show revision history for this post">
+2 revs, 2 users 77%<br>Sk Hasanujjaman
+            </a>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-201698" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="10877"></a>
+    <div id="answer-10877" class="answer"  data-answerid="10877">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="10877">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">-1</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>You said that you were stuck in low graphics mode and now you say that you can only get a command prompt. What happens when you type: <code>startx</code></p>
+
+<p>If you are stuck in a command prompt all is not lost. You can still reconfigure xserver with: <code>sudo dpkg --reconfigure --phigh xserver-xorg</code></p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/10877" title="short permalink to this answer" class="short-link" id="link-post-10877">share</a><span class="lsep">|</span><a href="/posts/10877/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+                            edited
+                             <a href="/posts/10877/revisions" title="show all edits to this post"><span title="2011-09-12 16:40:12Z" class="relativetime">Sep 12 '11 at 16:40</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/19490/n-n"><div class=""><img src="http://www.gravatar.com/avatar/916f60f3569667d756fa30ed5a2ffdd5?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/19490/n-n">N.N.</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">3,127</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="16 silver badges"><span class="badge2"></span><span class="badgecount">16</span></span><span title="53 bronze badges"><span class="badge3"></span><span class="badgecount">53</span></span>
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2010-11-02 00:22:25Z" class="relativetime">Nov 2 '10 at 0:22</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/5015/linuxcanuck"><div class=""><img src="http://www.gravatar.com/avatar/ad61fe9b7b5301b37773abe57b9be4eb?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/5015/linuxcanuck">LinuxCanuck</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">332</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-10877" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-11200" class="comment">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'useful comment' votes received" class="cool">1</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">dpkg-reconfigure xorg no longer does anything useful, since X is generally much better at detecting your hardware than our crufty old maintainer scripts were.</span> &ndash;&nbsp;<a href="/users/188/raof" title="7419 reputation" class="comment-user">RAOF</a> <span class="comment-date" dir="ltr"><span title="2010-11-02 05:50:16Z" class="relativetime-clean">Nov 2 '10 at 5:50</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-276491" class="comment">
+        <td></td>
+        <td class="comment-text"><div><span class="comment-copy">not allays true @RAOF, I have some old hardware that can not be properly detected unless I reinstall xorg completely.</span> &ndash;&nbsp;<a href="/users/47291/mateo-salta" title="2348 reputation" class="comment-user">mateo_salta</a> <span class="comment-date" dir="ltr"><span title="2012-11-30 22:15:31Z" class="relativetime-clean">Nov 30 '12 at 22:15</span></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+
+
+  
+    <a name="10711"></a>
+    <div id="answer-10711" class="answer"  data-answerid="10711">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="10711">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">-2</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+ 
+</div>
+
+        </td>
+        
+
+
+<td class="answercell">
+    <div class="post-text"><p>Go to System, Administration and click on Hardware drivers (in Maverick it is called Additional Drivers). It will search for and allow you to install the proper graphics driver which should allow you to run in higher res.</p>
+
+<p>In Linux there are two ways to do most things, by the GUI or by the terminal. This is easier for most people used to a graphical user interface. The second GUI way to do it would be to go to Software Center or Synaptic and install the packages in the previous post. Search for them in the search bar. I don't think that Ubuntu has used xorg.conf for awhile, so it would not help to look for it.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/10711" title="short permalink to this answer" class="short-link" id="link-post-10711">share</a><span class="lsep">|</span><a href="/posts/10711/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+                                    answered
+ <span title="2010-11-01 12:15:10Z" class="relativetime">Nov 1 '10 at 12:15</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/5015/linuxcanuck"><div class=""><img src="http://www.gravatar.com/avatar/ad61fe9b7b5301b37773abe57b9be4eb?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/5015/linuxcanuck">LinuxCanuck</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">332</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-10711" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>            </table>
+</div>
+    <div class="question-status">
+        <h2><strong>protected</strong> by <a href="/users/-1/community">Community</a><span class="mod-flair" title="moderator">&#9830;</span> <span title="2012-10-19 11:33:47Z" class="relativetime">Oct 19 '12 at 11:33</span></h2>
+        <p>This question is protected to prevent "thanks!", "me too!", or spam answers by new users. To answer it, you must have earned at least 10 <a href="/faq#reputation">reputation</a> on this site.</p>
+    </div>
+
+
+
+        <h2 class="bottom-notice">
+                Not the answer you're looking for? 
+            Browse other questions tagged <a href="/questions/tagged/xorg" class="post-tag" title="show questions tagged 'xorg'" rel="tag">xorg</a> <a href="/questions/tagged/lightdm" class="post-tag" title="show questions tagged 'lightdm'" rel="tag">lightdm</a> <a href="/questions/tagged/login-screen" class="post-tag" title="show questions tagged 'login-screen'" rel="tag">login-screen</a> <a href="/questions/tagged/unity-greeter" class="post-tag" title="show questions tagged 'unity-greeter'" rel="tag">unity-greeter</a> 
+                or <a href="/questions/ask">ask your own question</a>.
+        </h2>
+</div>
+</div>
+<div id="sidebar">
+
+
+
+     <script type="text/javascript">
+        window.showNewUser = true;
+
+            
+                (function(){
+                    var cs = window.sessionStorage && window.sessionStorage['tNewsletter'];
+                    var m = /:\/\/([^\/]*)/.exec(document.referrer);
+                    var h = {'www.reddit.com':1,'news.ycombinator.com':1};
+                    if(window.sessionStorage && (cs || (m && m.length == 2 && h[m[1]]))){
+                        showNewUser = false;
+                        StackExchange.ready(function(){
+                            StackExchange.newsletterAd.loader(m[1], cs);
+                        });
+                    }
+                    if (window.localStorage && showNewUser){
+                        var c = parseInt(localStorage['nuCounter'],10); 
+                        c = isNaN(c) ? 1 : c+1;
+                        window.localStorage['nuCounter'] = c; 
+                        showNewUser = c < 10;
+                    }
+                })()
+            
+     </script>
+    <div class="module newuser newuser-greeting" id="newuser-box" style="display:none;">
+        <h4>Welcome!</h4>
+        <div>
+            <p>This is a collaboratively edited question and answer site for <b>Ubuntu users and developers</b>. It's 100% free, no registration required.</p><p>Got a question about the site itself? <a href="http://meta.askubuntu.com">meta</a> is the place to talk about things like what questions are appropriate, what tags we should use, etc.</p>
+            <p class="ar"><a href="/about?mnu=1">about &raquo;</a>&nbsp;&nbsp;&nbsp;<a href="/faq?mnu=1">faq &raquo;</a>
+&nbsp; <a href="http://meta.askubuntu.com">meta &raquo;</a>            </p>
+        </div>
+    </div>
+     <script type="text/javascript">
+        if (showNewUser) {
+            document.getElementById('newuser-box').style.display = '';
+        }
+     </script>
+        <div class="module question-stats">
+        <p class="label-key">tagged</p>
+        <div class="tagged"><a href="/questions/tagged/xorg" class="post-tag" title="show questions tagged 'xorg'" rel="tag">xorg</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">974</span></span><br>
+<a href="/questions/tagged/lightdm" class="post-tag" title="show questions tagged 'lightdm'" rel="tag">lightdm</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">418</span></span><br>
+<a href="/questions/tagged/login-screen" class="post-tag" title="show questions tagged 'login-screen'" rel="tag">login-screen</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">328</span></span><br>
+<a href="/questions/tagged/unity-greeter" class="post-tag" title="show questions tagged 'unity-greeter'" rel="tag">unity-greeter</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">43</span></span><br>
+</div>
+        <table id="qinfo">
+            <tr>
+                <td><p class="label-key">asked</p></td>
+                <td style="padding-left:10px"><p class="label-key" title="2012-05-24 10:48:59Z"><b>7 months ago</b></p></td>
+            </tr>
+            <tr>
+                <td><p class="label-key">viewed</p></td>
+
+                <td style="padding-left:10px">
+                    <p class="label-key">
+                        <b>20310 times</b>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td><p class="label-key">active</p></td>
+                <td style="padding-left:10px"><p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2012-11-30 22:25:24Z">1 month ago</a></b></p></td>
+            </tr>
+        </table>
+    </div>
+    
+<div class="module community-bulletin" data-tracker="cb=1">
+    <h4>Community Bulletin</h4>
+    <div class="related">
+        <div class="spacer">
+            <div class="bulletin-item-type"><a href="http://meta.askubuntu.com" class="event-date" target="_blank">meta</a></div>
+            <div class="bulletin-item-content">
+                <a href="http://meta.askubuntu.com/questions/5664/does-answering-your-own-question-constitute-abuse-on-ask-ubuntu" class="question-hyperlink" target="_blank">Does answering your own question constitute abuse on Ask Ubuntu?</a>
+            </div>
+            <br class="cbt" />
+        </div>
+        <div class="spacer">
+            <div class="bulletin-item-type"><a href="http://meta.askubuntu.com" class="event-date" target="_blank">meta</a></div>
+            <div class="bulletin-item-content">
+                <a href="http://meta.askubuntu.com/questions/5582/should-the-restart-cinnamon-from-tty-question-be-reopened-or-moved-to-the-unix-a" class="question-hyperlink" target="_blank">Should the Restart Cinnamon from tty question be reopened or moved to the Uni&hellip;</a>
+            </div>
+            <br class="cbt" />
+        </div>
+        <div class="spacer">
+            <div class="bulletin-item-type"><a href="http://meta.askubuntu.com" class="event-date" target="_blank">meta</a></div>
+            <div class="bulletin-item-content">
+                <a href="http://meta.askubuntu.com/questions/5275/if-youre-not-going-to-review-and-fix-questions-dont-use-the-review-queue" class="question-hyperlink" target="_blank">If you&#39;re not going to review and fix questions, don&#39;t use the review queue!</a>
+            </div>
+            <br class="cbt" />
+        </div>
+        <div class="spacer">
+            <div class="bulletin-item-type"><a href="http://meta.askubuntu.com" class="event-date" target="_blank">meta</a></div>
+            <div class="bulletin-item-content">
+                <a href="http://meta.askubuntu.com/questions/5557/stack-exchange-winter-bash-has-begun-hats-all-around" class="question-hyperlink" target="_blank">Stack Exchange Winter Bash has begun! Hats all around!</a>
+            </div>
+            <br class="cbt" />
+        </div>
+    </div>
+</div>    
+    
+
+<div class="module" id="chat-feature">
+    
+
+    
+<h4><a href="http://chat.stackexchange.com" id="h-chat-link">Visit Chat</a></h4>
+
+<div class="related" id="ad502-rooms"></div>
+<script type="text/javascript">
+// <!--
+    StackExchange.ready(
+    function () {
+        var options = {
+            chatUrl: 'http://chat.stackexchange.com',
+            reloadUrl: '/api/recent-chat',
+            preloadData: {"activeUsers":38,"activeRooms":26,"rooms":[{"name":"Ask Ubuntu General Room","id":201,"lastPost":1357356233,"posts":627983,"users":[{"name":"Luis Alvarado","id":12093,"emailhash":"8d85f84b3c0241ebca2eee5a2552014f","lastPost":1357356233},{"name":"jrg","id":6738,"emailhash":"de85c185f39ef9feef79d9933409d400","lastPost":1357356206},{"name":"Flabricorn","id":43504,"emailhash":"9cc597b80fd9b9db9ceddb8e82f1d829","lastPost":1357356154},{"name":"iSeth","id":31465,"emailhash":"6fce102dc34236cd4e485c69d7293ee9","lastPost":1357356103},{"name":"George Edison","id":1345,"emailhash":"bba8a1d044a8309d5f9b562ddd3b8bef","lastPost":1357348324},{"name":"Journeyman Geek","id":10208,"emailhash":"e88cb2b3858ca0df735806f1a8476b23","lastPost":1357195328},{"name":"HackToHell","id":16796,"emailhash":"9d99bca757765b04e79e37bf74c01673","lastPost":1357185934}],"messages":[{"date":1357356233,"user":"Luis Alvarado","userid":12093}],"singleImage":false,"tags":[]},{"name":"Ubuntu Regulators","id":206,"lastPost":1357341821,"posts":13344,"users":[{"name":"iSeth","id":31465,"emailhash":"6fce102dc34236cd4e485c69d7293ee9","lastPost":1357341821},{"name":"Bruno Pereira","id":24421,"emailhash":"858395cf1fc125b0609a1070081038b8","lastPost":1357186738},{"name":"jrg","id":6738,"emailhash":"de85c185f39ef9feef79d9933409d400","lastPost":1357016847},{"name":"Eliah Kagan","id":26825,"emailhash":"631f04176f88084e982e7b343c7973f8","lastPost":1356924348}],"messages":[{"date":1357341821,"user":"iSeth","userid":31465}],"singleImage":false,"tags":[]}]} 
+        };
+
+        StackExchange.chatAd.init(options);
+    });
+// -->
+</script>
+
+</div>
+<style type="text/css">
+    .ads { margin-left: 60px; }
+    .ad-container { width: 220px; height: 250px; margin-right: 20px; margin-bottom: 20px; }
+    .ad-container .ad { height: 250px; }
+    .ad-container .footer-container { overflow: hidden; height: 30px; position: relative; top: -30px; }
+    .ad-container .footer-container .footer { font-family: Arial,Helvetic,Sans-Serif; font-size: 12px; text-align: center; padding-top: 9px; background-color: #000; color: #EFF; opacity: 0.9; filter: alpha(opacity=90); top: 30px; height: 30px; position: relative; }
+    .ad-container a:hover { text-decoration: underline; }
+    #adzerk2 { height: 250px; }
+</style>
+<script type="text/javascript">
+    StackExchange.ready(function () {
+        $(".ad-container").hover(
+            function () {
+                $(".ad-container .footer-container .footer").animate({ top: "0px" }, "fast") 
+            },
+            function () {
+                $(".ad-container .footer-container .footer").animate({ top: "30px" }, "fast") 
+            });
+    });
+</script>
+    <script type="text/javascript">
+        var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = 'http://engine.adzerk.net/z/12057/adzerk2_2_17_76?keywords=x-host-askubuntu.com'; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);
+    </script>
+    <div class="everyonelovesstackoverflow" id="adzerk2">
+    </div>  
+    <div style="margin-bottom: 10px;">
+        
+
+<style type="text/css">
+#newsletter-ad {
+    width: 190px;
+    height: 250px;
+    overflow: hidden;
+    background: url('http://cdn.sstatic.net/askubuntu/img/newsletter-ad.png');
+    padding: 0 15px 0 15px;
+}
+#newsletter-ad-header {
+    margin-top: 60px;
+}
+#newsletter-ad ul {
+    margin: 1em 0 1em 1.5em;
+}
+#newsletter-ad ul li {
+    margin-bottom: 5px;
+}
+#newsletter-signup-container {
+    text-align: center;
+}
+#newsletter-preview-container {
+    margin-top: 10px;
+    text-align: center;
+}
+#newsletter-email-input {
+    width: 200px;
+}
+</style>
+
+<script>
+    StackExchange.ready(function () {
+        StackExchange.newsletterAd.init();
+    });
+</script>
+
+<div id="newsletter-ad">
+    <p id="newsletter-ad-header">Get the <strong>weekly newsletter!</strong></p>
+    <ul>
+        <li>Top questions and answers</li>
+        <li>Important announcements</li>
+        <li>Unanswered questions</li>
+    </ul>
+    <div id="newsletter-signup-container"><input id="newsletter-signup" type="button" value="Sign up for the newsletter" /></div>
+    <p id="newsletter-preview-container">see an <a href="http://stackexchange.com/newsletters/newsletter?site=askubuntu.com" id="newsletter-preview">example newsletter</a></p>
+    <div class="dno">
+            <p class="privacy-policy-agreement">
+        By subscribing, you agree to the 
+        <a href="http://stackexchange.com/legal/privacy-policy" target="_blank">privacy policy</a> and 
+        <a href="http://stackexchange.com/legal/terms-of-service" target="_blank">terms of service</a>.
+    </p>
+
+    </div>
+</div>
+
+    </div>
+
+      
+    
+    <div class="module sidebar-linked">
+        <h4 id="h-linked">Linked</h4>
+        <div class="linked" data-tracker="lq=1">
+            <div class="spacer">
+<a href="/questions/10664/how-do-i-fix-ubuntu-is-running-in-low-graphics-mode" class="question-hyperlink">How do I fix &ldquo;Ubuntu is running in low-graphics mode?&rdquo;</a>
+</div>
+<div class="spacer">
+<a href="/questions/125453/how-do-i-fix-your-system-is-running-in-low-graphics-mode" class="question-hyperlink">How do I fix &ldquo;Your system is running in low-graphics mode&rdquo;?</a>
+</div>
+<div class="spacer">
+<a href="/questions/129776/how-do-i-fix-running-in-low-graphics-mode-ubuntu-12-04" class="question-hyperlink">How do I fix &#39; running in low graphics mode&#39; Ubuntu 12.04</a>
+</div>
+<div class="spacer">
+<a href="/questions/128375/low-graphics-mode-after-upgrade-to-12-04" class="question-hyperlink">Low graphics mode after upgrade to 12.04</a>
+</div>
+<div class="spacer">
+<a href="/questions/127606/your-system-is-running-in-low-graphics-mode-on-an-acer-aspire-5552" class="question-hyperlink">"Your system is running in low-graphics mode&#39;&#39; on an Acer Aspire 5552</a>
+</div>
+<div class="spacer">
+<a href="/questions/137325/how-can-i-get-out-of-low-graphics-mode-on-12-04" class="question-hyperlink">How can I get out of low graphics mode on 12.04?</a>
+</div>
+<div class="spacer">
+<a href="/questions/117562/how-do-i-fix-ubuntu-is-running-in-low-graphics-mode-for-nvidia-geforce-gt555m" class="question-hyperlink">How do I fix “Ubuntu is running in low-graphics mode?” for NVIDIA GeForce GT555M</a>
+</div>
+<div class="spacer">
+<a href="/questions/196382/system-in-low-graphics-mode" class="question-hyperlink">System in low-graphics mode</a>
+</div>
+<div class="spacer">
+<a href="/questions/141845/graphics-problems-in-ubuntu-12-04-newbie" class="question-hyperlink">Graphics Problems in Ubuntu 12.04 - Newbie</a>
+</div>
+<div class="spacer">
+<a href="/questions/198837/ubuntu-is-running-in-low-graphics-mode" class="question-hyperlink">Ubuntu is running in low graphics mode</a>
+</div>
+<div class="spacer">
+<a href="/questions/198759/your-system-is-running-in-low-graphics-mode-on-12-04-no-space-left-on-device" class="question-hyperlink">Your system is running in low graphics mode on 12.04 + no space left on device (issue)?</a>
+</div>
+<div class="spacer">
+<a href="/questions/18578/ubuntu-is-running-in-low-graphics-mode" class="question-hyperlink">Ubuntu is running in low-graphics-mode</a>
+</div>
+<div class="spacer">
+<a href="/questions/168190/lightdm-conf-content-erased-now-stuck-in-low-graphics-mode" class="question-hyperlink">lightdm.conf content erased, now stuck in low graphics mode</a>
+</div>
+<div class="spacer">
+<a href="/questions/163703/ubuntu-12-04-boots-into-low-graphics-mode" class="question-hyperlink">Ubuntu 12.04 boots into low-graphics mode</a>
+</div>
+<div class="spacer">
+<a href="/questions/214690/system-is-running-in-low-graphics-mode" class="question-hyperlink">&ldquo;System is running in low graphics mode&rdquo;</a>
+</div>
+<div class="spacer">
+<a href="/questions/211039/getting-system-to-boot-in-headless-mode-set-up-without-display-problems" class="question-hyperlink">Getting system to boot in headless mode set-up without display problems</a>
+</div>
+<div class="spacer">
+<a href="/questions/184810/your-system-is-running-in-low-graphics-mode-with-an-ati-radeon-x550" class="question-hyperlink">your system is running in low graphics mode with an ATI Radeon x550</a>
+</div>
+<div class="spacer">
+<a href="/questions/143735/im-running-in-low-graphics-mode-on-ubuntu-12-04-i-have-and-nvidia-fx-5500" class="question-hyperlink">I&#39;m running in low graphics mode on ubuntu 12.04, I have and nvidia fx 5500</a>
+</div>
+<div class="spacer">
+<a href="/questions/168620/low-graphics-mode-nvidia-no-way-to-desktop" class="question-hyperlink">Low Graphics Mode- NVIDIA. No way to desktop</a>
+</div>
+<div class="spacer">
+<a href="/questions/113844/ubuntu-10-4-is-running-in-low-graphics-mode-no-device-detected" class="question-hyperlink">Ubuntu 10.4 is running in low graphics mode No device detected</a>
+</div>
+<div class="spacer">
+<a href="/questions/148758/ubuntu-12-04-suddenly-in-low-graphics-mode-help" class="question-hyperlink">Ubuntu 12.04 suddenly in low graphics mode help</a>
+</div>
+<div class="spacer more">
+<a href="/search?q=url%3a%22http%3a%2f%2faskubuntu.com%2fquestions%2f141606%2f*%22">see more linked questions&hellip;</a></div>
+
+        </div>
+    </div>
+    <div class="module sidebar-related">
+        <h4 id="h-related">Related</h4>
+        <div class="related" data-tracker="rq=1">
+            <div class="spacer">
+<a href="/questions/10664/how-do-i-fix-ubuntu-is-running-in-low-graphics-mode" class="question-hyperlink">How do I fix &ldquo;Ubuntu is running in low-graphics mode?&rdquo;</a>
+</div>
+<div class="spacer">
+<a href="/questions/86132/lightdm-log-in-screen-is-black-with-no-graphics" class="question-hyperlink">LightDM log in screen is black with no graphics</a>
+</div>
+<div class="spacer">
+<a href="/questions/86217/how-to-make-the-login-screen-be-in-portrait-mode" class="question-hyperlink">How to make the login screen be in portrait mode?</a>
+</div>
+<div class="spacer">
+<a href="/questions/99760/how-to-change-login-screen-background-on-11-10" class="question-hyperlink">How To Change Login Screen Background On 11.10</a>
+</div>
+<div class="spacer">
+<a href="/questions/112061/how-to-take-a-screenshot-of-login-screen" class="question-hyperlink">How to take a screenshot of login screen?</a>
+</div>
+<div class="spacer">
+<a href="/questions/114303/how-to-limit-user-names-in-lightdm-login-screen-when-accountsservice-is-used" class="question-hyperlink">How-To limit user-names in LightDM login-screen when AccountsService is used</a>
+</div>
+<div class="spacer">
+<a href="/questions/121352/how-to-change-circular-icon-to-indicate-chosen-session-in-unity-greeter" class="question-hyperlink">How to change circular icon to indicate chosen session in unity-greeter?</a>
+</div>
+<div class="spacer">
+<a href="/questions/121858/how-to-change-the-badges-for-the-xsessions-in-lightdm" class="question-hyperlink">How to change the badges for the xsessions in LightDM?</a>
+</div>
+<div class="spacer">
+<a href="/questions/130017/how-do-i-configure-lightdm-to-run-seamlessly" class="question-hyperlink">How Do I configure LightDM to run seamlessly?</a>
+</div>
+<div class="spacer">
+<a href="/questions/135715/how-to-fix-unity-greeter-login-splash-screen" class="question-hyperlink">How to fix Unity greeter login/splash screen?</a>
+</div>
+<div class="spacer">
+<a href="/questions/137336/how-do-i-remove-the-shutdown-button-only-on-the-login-screen" class="question-hyperlink">How do I remove the shutdown button only on the login screen?</a>
+</div>
+<div class="spacer">
+<a href="/questions/154172/how-do-i-get-the-login-screen-to-display-a-clock-system-time" class="question-hyperlink">How do I get the login screen to display a clock/system time?</a>
+</div>
+<div class="spacer">
+<a href="/questions/155611/no-unity-greeter-conf-file-in-etc-lightdm" class="question-hyperlink">No unity-greeter.conf file in /etc/lightdm/</a>
+</div>
+<div class="spacer">
+<a href="/questions/158577/how-can-i-require-users-to-also-enter-their-usernames-upon-login" class="question-hyperlink">How can I require users to also enter their usernames upon login?</a>
+</div>
+<div class="spacer">
+<a href="/questions/160707/how-to-change-the-font-in-lightdm" class="question-hyperlink">How to change the font in LightDM</a>
+</div>
+<div class="spacer">
+<a href="/questions/168190/lightdm-conf-content-erased-now-stuck-in-low-graphics-mode" class="question-hyperlink">lightdm.conf content erased, now stuck in low graphics mode</a>
+</div>
+<div class="spacer">
+<a href="/questions/170696/how-do-i-log-in-with-a-user-that-is-not-included-on-the-list-in-ubuntu-12-04" class="question-hyperlink">How do I log in with a user that is not included on the list in Ubuntu 12.04?</a>
+</div>
+<div class="spacer">
+<a href="/questions/184174/can-i-change-the-scale-method-used-by-the-login-screen" class="question-hyperlink">Can I change the scale method used by the login screen?</a>
+</div>
+<div class="spacer">
+<a href="/questions/188048/12-04-started-in-low-graphics-mode-couldnt-fix" class="question-hyperlink">12.04 started in low graphics mode, couldn&#39;t fix</a>
+</div>
+<div class="spacer">
+<a href="/questions/198604/cannot-usermod-l-in-lightdm-scripts" class="question-hyperlink">Cannot usermod -L in LightDM scripts</a>
+</div>
+<div class="spacer">
+<a href="/questions/208392/when-will-the-unity-greeter-begin-to-look-like-the-propositions-from-the-design" class="question-hyperlink">When will the Unity Greeter begin to look like the propositions from the Design Team?</a>
+</div>
+<div class="spacer">
+<a href="/questions/211100/how-to-use-lightdm-greeter-menu-bar-as-standard-menu-bar-within-a-user-session" class="question-hyperlink">How to use LightDM Greeter Menu Bar as Standard Menu Bar within a User Session</a>
+</div>
+<div class="spacer">
+<a href="/questions/211212/how-to-change-font-size-of-the-login-screen" class="question-hyperlink">How to change font size of the login screen?</a>
+</div>
+<div class="spacer">
+<a href="/questions/217032/unable-to-sign-in-how-to-debug" class="question-hyperlink">Unable to sign in. How to debug?</a>
+</div>
+<div class="spacer">
+<a href="/questions/229018/all-logins-fail-after-running-command" class="question-hyperlink">All logins fail after running command</a>
+</div>
+
+        </div>
+    </div>
+</div>
+
+<div id="feed-link">
+    <div id="feed-link-text"><a href="/feeds/question/141606" title="feed of this question and its answers"><span class="feed-icon"></span>question feed</a></div>
+</div>
+<script type="text/javascript">
+StackExchange.ready(function(){$.get('/posts/141606/ivc/b5d8');});
+</script>
+<noscript>
+    <div><img src="/posts/141606/ivc/b5d8" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang"></div></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <a href="/about">about</a> |
+                <a href="/faq">faq</a> |
+                <a href="http://blog.stackexchange.com?blb=1">blog</a> |
+                    <a href="http://chat.stackexchange.com">chat</a> |
+                <a href="http://data.stackexchange.com">data</a> |
+                <a href="http://stackexchange.com/legal">legal</a> |
+                <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a> |
+                <a href="http://stackexchange.com/about/hiring">jobs</a> |
+                <a href="http://stackexchange.com/about/contact">advertising info</a> |
+
+                <a onclick="StackExchange.switchMobile('on', '/questions/141606/how-to-fix-the-system-is-running-in-low-graphics-mode-error')">mobile</a> |
+
+                <b><a href="/help">contact us</a></b>
+                  | <b><a href="http://meta.askubuntu.com">feedback</a></b>
+                <div id="footer-sites">
+                    
+                        <span style="color:#FE7A15;font-size:140%">&#9632;</span>&nbsp;<a href="http://stackoverflow.com">stackoverflow.com</a>&nbsp; 
+                        <span style="color:#FE7A15;font-size:140%">&#9632;</span>&nbsp;<a href="http://stackapps.com">api/apps</a>&nbsp; 
+                        <span style="color:#FE7A15;font-size:140%">&#9632;</span>&nbsp;<a href="http://careers.stackoverflow.com">careers 2.0</a>&nbsp; 
+                        <span style="color:#E8272C;font-size:140%">&#9632;</span>&nbsp;<a href="http://serverfault.com">serverfault.com</a>&nbsp; 
+                        <span style="color:#00AFEF;font-size:140%">&#9632;</span>&nbsp;<a href="http://superuser.com">superuser.com</a>&nbsp; 
+                        <span style="color:#969696;font-size:140%">&#9632;</span>&nbsp;<a href="http://meta.stackoverflow.com">meta</a>&nbsp; 
+                        <span style="color:#46937D;font-size:140%">&#9632;</span>&nbsp;<a href="http://area51.stackexchange.com">area&nbsp;51</a>&nbsp; 
+                        <span style="color:#C0D0DC;font-size:140%">&#9632;</span>&nbsp;<a href="http://webapps.stackexchange.com">webapps</a>&nbsp; 
+                        <span style="color:#000000;font-size:140%">&#9632;</span>&nbsp;<a href="http://gaming.stackexchange.com">gaming</a>&nbsp; 
+                        <span style="color:#dd4814;font-size:140%">&#9632;</span>&nbsp;<a href="http://askubuntu.com">ubuntu</a>&nbsp; 
+                        <span style="color:#9ce4fe;font-size:140%">&#9632;</span>&nbsp;<a href="http://webmasters.stackexchange.com">webmasters</a>&nbsp; 
+                        <span style="color:#cf4d3f;font-size:140%">&#9632;</span>&nbsp;<a href="http://cooking.stackexchange.com">cooking</a>&nbsp; 
+                        <span style="color:#f4f28d;font-size:140%">&#9632;</span>&nbsp;<a href="http://gamedev.stackexchange.com">game development</a>&nbsp; 
+                        <span style="color:#0f3559;font-size:140%">&#9632;</span>&nbsp;<a href="http://math.stackexchange.com">math</a>&nbsp; 
+                        <span style="color:#f2f2f2;font-size:140%">&#9632;</span>&nbsp;<a href="http://photo.stackexchange.com">photography</a>&nbsp; 
+                        <span style="color:#037187;font-size:140%">&#9632;</span>&nbsp;<a href="http://stats.stackexchange.com">stats</a>&nbsp; 
+                        <span style="color:#f1e7cc;font-size:140%">&#9632;</span>&nbsp;<a href="http://tex.stackexchange.com">tex</a>&nbsp; 
+                        <span style="color:#e1cdae;font-size:140%">&#9632;</span>&nbsp;<a href="http://english.stackexchange.com">english</a>&nbsp; 
+                        <span style="color:#a2d9f6;font-size:140%">&#9632;</span>&nbsp;<a href="http://cstheory.stackexchange.com">theoretical cs</a>&nbsp; 
+                        <span style="color:#1b3e6c;font-size:140%">&#9632;</span>&nbsp;<a href="http://programmers.stackexchange.com">programmers</a>&nbsp; 
+                        <span style="color:#293a5d;font-size:140%">&#9632;</span>&nbsp;<a href="http://unix.stackexchange.com">unix</a>&nbsp;
+                        <span style="color:#bec0cb;font-size:140%">&#9632;</span>&nbsp;<a href="http://apple.stackexchange.com">apple</a>&nbsp;
+                        <span style="color:#939185;font-size:140%">&#9632;</span>&nbsp;<a href="http://wordpress.stackexchange.com">wordpress</a>&nbsp;
+                        <span style="color:#ebf5f5;font-size:140%">&#9632;</span>&nbsp;<a href="http://physics.stackexchange.com">physics</a>&nbsp;
+                        <span style="color:#4176ab;font-size:140%">&#9632;</span>&nbsp;<a href="http://diy.stackexchange.com">home&nbsp;improvement</a>&nbsp;
+                        <span style="color:#d1d8d7;font-size:140%">&#9632;</span>&nbsp;<a href="http://gis.stackexchange.com">gis</a>&nbsp;
+                        <span style="color:#e5e2d3;font-size:140%">&#9632;</span>&nbsp;<a href="http://electronics.stackexchange.com">electrical&nbsp;engineering</a>&nbsp;
+                        <span style="color:#a4c639;font-size:140%">&#9632;</span>&nbsp;<a href="http://android.stackexchange.com">android</a>&nbsp;
+                        <span style="color:#2e4e60;font-size:140%">&#9632;</span>&nbsp;<a href="http://security.stackexchange.com">security</a>&nbsp;
+                        <span style="color:#45bcb5;font-size:140%">&#9632;</span>&nbsp;<a href="http://bicycles.stackexchange.com">bicycles</a>&nbsp;
+                        <span style="color:#00adee;font-size:140%">&#9632;</span>&nbsp;<a href="http://dba.stackexchange.com">dba</a>&nbsp;
+                        <span style="color:#2edaf0;font-size:140%">&#9632;</span>&nbsp;<a href="http://drupal.stackexchange.com">drupal</a>&nbsp;
+                        <span style="color:#213951;font-size:140%">&#9632;</span>&nbsp;<a href="http://sharepoint.stackexchange.com">sharepoint</a>&nbsp;
+                        <span style="color:#73abb3;font-size:140%">&#9632;</span>&nbsp;<a href="http://scifi.stackexchange.com">scifi &amp; fantasy</a>&nbsp;
+                        <span style="color:#23629F;font-size:140%">&#9632;</span>&nbsp;<a href="http://ux.stackexchange.com">user experience</a>&nbsp;
+                        <span style="color:#faff72;font-size:140%">&#9632;</span>&nbsp;<a href="http://skeptics.stackexchange.com">skeptics</a>&nbsp;
+                        <span style="color:#623121;font-size:140%">&#9632;</span>&nbsp;<a href="http://rpg.stackexchange.com">rpg</a>&nbsp;
+                        <span style="color:#e4be88;font-size:140%">&#9632;</span>&nbsp;<a href="http://judaism.stackexchange.com">judaism</a>&nbsp;
+                        <span style="color:#ffecb1;font-size:140%">&#9632;</span>&nbsp;<a href="http://mathematica.stackexchange.com">mathematica</a>&nbsp;
+                </div>
+            </div>
+            <div id="footer-flair">
+                <a class="peer1" href="http://www.peer1.com/stackoverflow"></a>  
+	            <a href="http://creativecommons.org/licenses/by-sa/3.0/" class="cc-wiki-link"></a>
+                <div id="svnrev">rev 2013.1.4.775</div>
+                        </div>
+            <div id="copyright">
+                site design / logo &copy; 2013 stack exchange inc; 
+                user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc-wiki</a> with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+                <div id="additional-notices">
+                    Ubuntu and Canonical are registered trademarks of Canonical Ltd.
+                </div>
+            
+
+        </div>
+    </div>
+    
+    <noscript>
+        <div id="noscript-warning">Ask Ubuntu - Stack Exchange works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+    <script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-5620270-29']);
+        _gaq.push(['_setCustomVar', 1, 'tags', '|xorg|lightdm|login-screen|unity-greeter|']); 
+_gaq.push(['_trackPageview']);
+    var _qevents = _qevents || [];
+    (function(){
+        var s=document.getElementsByTagName('script')[0];
+        var ga=document.createElement('script');
+        ga.type='text/javascript';
+        ga.async=true;
+        ga.src='http://www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(ga,s);
+        var sc=document.createElement('script');
+        sc.type='text/javascript';
+        sc.async=true;
+        sc.src='http://edge.quantserve.com/quant.js'; 
+        s.parentNode.insertBefore(sc,s);
+    })();
+    </script>
+    <script type="text/javascript">
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>    
+    
+</body>
+</html>

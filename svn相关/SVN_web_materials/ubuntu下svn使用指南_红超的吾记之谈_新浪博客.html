@@ -1,0 +1,767 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0052)http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>ubuntu下svn使用指南_红超的吾记之谈_新浪博客</title>
+<meta name="keywords" content="ubuntu下svn使用指南_红超的吾记之谈_新浪博客,红超的吾记之谈,ubuntu,svn,使用指南">
+<meta name="description" content="ubuntu下svn使用指南_红超的吾记之谈_新浪博客,红超的吾记之谈,">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<!--–[if lte IE 6]-->
+<script type="text/javascript">
+try{
+document.execCommand("BackgroundImageCache", false, true);
+}catch(e){}
+</script>
+<!--[endif]–-->
+<script type="text/javascript">
+window.staticTime=new Date().getTime();
+
+var locInterval = setInterval(function(){
+var tc = document.getElementById('trayContainer');
+if(tc) {
+var isLogin = false;var sup = document.cookie.match(/sup=([^;]+);/gi);if(sup != null){ sup = decodeURIComponent(sup[0]);var uid = sup.match(/uid=([^&]+)/gi); isLogin = (uid != null); } if (isLogin){ tc.innerHTML = '<div class="topbar_loading"><img src="http://simg.sinajs.cn/blog7style/images/common/loading.gif" />加载中…</div>'; } else { tc.innerHTML = '<div class="topbar_menu"><span class="link"><a href="http://blog.sina.com.cn" target="_blank">博客首页</a></span><span class="line_s"></span></div><div class="topbar_login"><a href="#" class="login" id="linkTrayLogin" onclick="return false;">登录</a><a href="http://login.sina.com.cn/signup/signupmail.php?entry=blog&r=&srcuid=&src=blogicp" class="register" target="_blank" id="linkReg">注册</a></div><div class="topbar_ad" id="divPopularize"></div><div id="phprender" ></div>';}
+clearInterval(locInterval);
+locInterval = null;
+}
+},50);
+
+</script>
+<link rel="pingback" href="http://upload.move.blog.sina.com.cn/blog_rebuild/blog/xmlrpc.php">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://upload.move.blog.sina.com.cn/blog_rebuild/blog/xmlrpc.php?rsd">
+<link href="http://blog.sina.com.cn/blog_rebuild/blog/wlwmanifest.xml" type="application/wlwmanifest+xml" rel="wlwmanifest">
+<link rel="alternate" type="application/rss+xml" href="http://blog.sina.com.cn/rss/1279598094.xml" title="RSS">
+<link href="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/article.css" type="text/css" rel="stylesheet"><style id="tplstyle" type="text/css">@charset "utf-8";@import url("http://simg.sinajs.cn/blog7newtpl/css/4/4_2/t.css");
+</style>
+<style id="positionstyle" type="text/css">
+.sinabloghead .blogtoparea{ left:129px;top:106.4px;}
+</style>
+<style id="bgtyle" type="text/css">
+</style>
+<style id="headtyle" type="text/css">
+</style>
+<style id="navtyle" type="text/css">
+</style>
+</head>
+<body>
+<!--$sinatopbar-->
+<div style="z-index:512;" class="sinatopbar">
+			<div class="topbar_main">
+				<a id="login_bar_logo_link_350" href="http://blog.sina.com.cn/" target="_blank"><img class="topbar_logo" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/topbar_logo.gif" width="100" alt="新浪博客"></a>
+
+				<div id="trayContainer" style="float:left"><div class="topbar_menu"><span class="link"><a href="http://blog.sina.com.cn/" target="_blank">博客首页</a></span><span class="line_s"></span></div><div class="topbar_login"><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" class="login" id="linkTrayLogin" onclick="return false;">登录</a><a href="http://login.sina.com.cn/signup/signupmail.php?entry=blog&srcuid=1279598094&src=blogicp" class="register" target="_blank" id="linkReg">注册</a></div><div class="topbar_ad" id="divPopularize"><a onclick="v7sendLog(&#39;69_01_07&#39;);return true;" style="color:red" href="http://qing.weibo.com/tag/%E6%95%85%E5%AE%AB?blogid=10bc9c893300172r" target="_blank">故宫飞檐上的神鬼传说</a></div><div id="phprender"></div></div>
+				<div class="topbar_floatR">
+					<span class="tb_wrtBlog">
+						<a target="_blank" href="http://control.blog.sina.com.cn/admin/article/article_add.php"><img class="SG_icon SG_icon15" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="15" height="15" title="博文" align="absmiddle">	发博文</a>
+
+						<span id="arrowAddArticle" class="wrtblog_arrow"></span>
+					</span>
+					<div class="topbar_search">
+						<form action="http://search.sina.com.cn/?c=blog" target="_blank" method="get" id="loginBarSearchForm">
+							<div class="topbar_input">
+								<input id="loginBarSearchInput" name="q" class="topbar_txt" type="text" value="">
+							</div>
+							<div id="searchSelect" class="topbar_list">
+								<div id="loginBarSearchMenuLabel" class="anainp">博文</div>
+
+								<div class="arrow"></div>
+							</div>
+							<input type="submit" class="topbar_searchBtn" value="搜索">
+							<input type="hidden" id="ie" value="utf-8" name="ie">
+							<input type="hidden" id="loginBarSearchT" value="article" name="range">
+							<input type="hidden" id="loginBarSearchTS" value="" name="ts">
+							<input type="hidden" id="loginBarSearchS" value="" name="s">
+							<input type="hidden" id="loginBarSearchType" value="all" name="by">
+							<input type="hidden" id="loginBarSearchSType" value="title" name="stype">
+
+							<input type="hidden" id="e" value="utf-8" name="e">
+						<input type="hidden" name="c" id="loginBarSearchC" value="blog"></form>
+					</div>
+					
+				</div>
+			</div>
+			<div style="position:absolute;left:0;top:0;" id="trayFlashConnetion"><embed pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" src="http://sjs.sinajs.cn/blog7swf/scache.swf" width="1" height="1" style="undefined" id="scache" name="scache" bgcolor="#00ff00" quality="high" wmode="transparent" allowscriptaccess="always"></div>
+		</div>
+		
+<!--$end sinatopbar-->
+
+
+<div class="sinabloga" id="sinabloga">
+	<div id="sinablogb" class="sinablogb">
+
+	       
+ <div id="sinablogHead" class="sinabloghead">
+     <div style="display: none;" id="headflash" class="headflash"></div>
+	   <div id="headarea" class="headarea">
+      <div id="blogTitle" class="blogtoparea">
+      <h1 id="blogname" class="blogtitle"><a href="http://blog.sina.com.cn/wzhnsc"><span id="blognamespan">红超的吾记之谈</span></a></h1>
+      <div id="bloglink" class="bloglink"><a href="http://blog.sina.com.cn/wzhnsc">http://blog.sina.com.cn/wzhnsc</a>  <a onclick="return false;" class="CP_a_fuc" href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" id="SubscribeNewRss">[<cite>订阅</cite>]</a><a class="CP_a_fuc" href="javascript:void(scope.pa_add.add('1279598094'));">[<cite>手机订阅</cite>]</a></div>
+      </div>
+      <div class="blognav" id="blognav">
+      			  <div id="blognavBg" class="blognavBg"></div> <div class="blognavInfo"> 
+		<span><a href="http://blog.sina.com.cn/wzhnsc">首页</a></span>
+      <span><a class="on" href="http://blog.sina.com.cn/s/articlelist_1279598094_0_1.html">博文目录</a></span>
+      <span><a href="http://photo.blog.sina.com.cn/wzhnsc">图片</a></span>
+      <span class="last"><a href="http://blog.sina.com.cn/s/profile_1279598094.html">关于我</a></span></div>
+      </div>
+      		      		 	
+      
+             <div class="autoskin" id="auto_skin">
+       </div>
+
+<div class="adsarea">
+     <a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#"><div id="template_clone_pic" class="pic"></div></a>
+     <div id="template_clone_link" class="link wdc_HInf"></div>
+     <div id="template_clone_other" class="other"></div>        
+</div>
+    </div>
+    	    	    </div>    
+    <!--主题内容开始 -->
+    <div class="sinablogbody" id="sinablogbody" isidcard="0">
+		
+	<!--第一列start-->
+    <div id="column_1" class="SG_colW21 SG_colFirst"><div class="SG_conn" id="module_901">
+    <div class="SG_connHead">
+            <span class="title" comp_title="个人资料">个人资料</span>
+            <span class="edit">
+                        </span>
+    </div>
+    <div class="SG_connBody">
+        <div class="info">
+            		        
+			<div class="info_img" id="comp_901_head"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/180" real_src="http://portrait7.sinaimg.cn/1279598094/blog/180" id="comp_901_head_image" width="180" height="180" alt="红超的吾记之谈" title="红超的吾记之谈"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" class="fiveyearsIcon" style="background-image: url(http://simg.sinajs.cn/blog7style/images/special/fiveyears/at/3y.png); border: none; " alt="三周年勋章" title="三周年勋章"></div>
+			
+       	    <div class="info_txt">
+		      <div class="info_nm">
+		        <img id="comp_901_online_icon" style="display:none;" class="SG_icon SG_icon1" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="15" height="15" align="absmiddle">
+		        <span class="SG_txtb"><strong id="ownernick">红超的吾记之谈</strong></span>
+		        
+                <div class="clearit"></div>
+              </div>
+		      <div class="info_btn1">
+			  <!--user['qing_url'] -->
+		        <a target="_blank" href="http://qing.weibo.com/1279598094" onclick="v7sendLog &amp;&amp; v7sendLog(&#39;79_01_01&#39;,scope.$pageid,&#39;qingLink&#39;);" class="SG_aBtn SG_aBtn_ico"><cite><img class="SG_icon SG_icon205" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="15" height="15" align="absmiddle">Qing</cite></a>
+		        <a target="_blank" href="http://weibo.com/u/1279598094?source=blog" class="SG_aBtn SG_aBtn_ico"><cite><img class="SG_icon SG_icon51" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="15" height="15" align="absmiddle">微博</cite></a>
+		        <div class="clearit"></div>
+		      </div>
+	<div class="SG_j_linedot"></div>		<div class="info_locate" id="info_locate_id">
+<div class="SG_j_linedot"></div>
+<div class="info_btn2">
+	<p>
+	<a href="javascript:void(0)" class="SG_aBtn " id="comp901_btn_invite"><cite>加好友</cite></a>
+	<a href="javascript:void(0)" class="SG_aBtn" id="comp901_btn_sendpaper"><cite>发纸条</cite></a>
+	</p>
+	<p>
+	<a href="http://blog.sina.com.cn/s/profile_1279598094.html#write" class="SG_aBtn" id="comp901_btn_msninfo"><cite>写留言</cite></a>
+	<a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" onclick="return false;" class="SG_aBtn" id="comp901_btn_follow"><cite>加关注</cite></a>
+	</p>
+	<div class="clearit"></div>
+</div>
+<div class="SG_j_linedot"></div>
+</div>
+			      <div class="info_list">	  
+			   					<ul class="info_list1">
+					<li><span class="SG_txtc">博客等级：</span><span id="comp_901_grade"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/1.gif" real_src="http://simg.sinajs.cn/blog7style/images/common/number/1.gif"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/5.gif" real_src="http://simg.sinajs.cn/blog7style/images/common/number/5.gif"></span></li>
+					<li><span class="SG_txtc">博客积分：</span><span id="comp_901_score"><strong>811</strong></span></li>
+					</ul>
+					<ul class="info_list2">
+					<li><span class="SG_txtc">博客访问：</span><span id="comp_901_pv"><strong>72,395</strong></span></li>
+					<li><span class="SG_txtc">关注人气：</span><span id="comp_901_attention"><strong>19</strong></span></li>
+					</ul>
+		</div>
+<div class="clearit"></div>
+	</div>
+	<div class="clearit"></div>
+</div>
+            </div>       
+            <div class="SG_connFoot"></div>
+</div>
+<!--Qingtuijian--><div id="module_903" class="SG_conn">
+    <div class="SG_connHead">
+    <span comp_title="相关博文" class="title">相关博文</span>
+    <span class="edit"> </span>
+    </div>
+    <div class="SG_connBody">
+    	<div class="atcTitList relaList"><ul>
+				            <li class="SG_j_linedot1">
+		                <p class="atcTitCell_tit SG_dot"><a onclick="v7sendLog(&#39;69_01_09&#39;);" href="http://qing.weibo.com/tag/%E6%A8%A1%E7%89%B9?blogid=7e215a7832001xtn" target="_blank" title="性感熟女大秀美腿！完爆CJ雅典娜">性感熟女大秀美腿！完爆CJ雅典娜</a></p>
+		                <p class="atcTitCell_nm"><a class="SG_linkb" onclick="v7sendLog(&#39;69_01_09&#39;);" href="http://qing.weibo.com/tag/%E6%A8%A1%E7%89%B9?blogid=7e215a7832001xtn" target="_blank">新浪Qing</a></p>
+		            </li> 
+				            <li class="SG_j_linedot1">
+		                <p class="atcTitCell_tit SG_dot"><a onclick="v7sendLog(&#39;69_01_08&#39;);" href="http://union.9173.com/pub?p=1&u=1007-1" target="_blank" title="曹操一家为啥都喜欢有夫之妇？">曹操一家为啥都喜欢有夫之妇？</a></p>
+		                <p class="atcTitCell_nm"><a class="SG_linkb" onclick="v7sendLog(&#39;69_01_08&#39;);" href="http://union.9173.com/pub?p=1&u=1007-1" target="_blank">微三国</a></p>
+		            </li> 
+		        			<li class="SG_j_linedot1">
+					<p class="atcTitCell_tit SG_dot"><a href="http://blog.sina.com.cn/s/blog_54559518010123u9.html" target="_blank" title="Ubuntu Linux中VLAN的配置">Ubuntu Linux中VLAN的配置</a></p>
+					<p class="atcTitCell_nm"><a class="SG_linkb" href="http://blog.sina.com.cn/u/1414894872" target="_blank">kaikai</a></p>
+			</li>
+					<li class="SG_j_linedot1">
+					<p class="atcTitCell_tit SG_dot"><a href="http://blog.sina.com.cn/s/blog_10bc243901011xd0.html" target="_blank" title="FW: This is an">FW:&nbsp;This&nbsp;is&nbsp;an</a></p>
+					<p class="atcTitCell_nm"><a class="SG_linkb" href="http://blog.sina.com.cn/u/280765497" target="_blank">三国杀我懂的</a></p>
+			</li>
+			</ul>
+		<div class="atcTit_more"><span class="SG_more"><a href="http://search.sina.com.cn/?c=blog&q=%D4%D3%CC%B8%2C%D0%DD%CF%D0&by=tag" target="_blank">更多&gt;&gt;</a></span></div></div>
+    </div>
+    <div class="SG_connFoot"></div>
+  </div><!--BeijingQingtuijian--><div class="SG_conn" id="module_911">
+<div class="SG_connHead">
+<span class="title">精彩图文</span>
+</div>
+<div class="SG_connBody">
+<div class="atcTitLists relaList">
+<div class="wondPicSlide">
+<div style="opacity: 1; " id="qingRecWindow" class="pic"><a href="http://qing.weibo.com/tj/769571ab3200219k.html" target="_blank" onclick="v7sendLog(&#39;q2b_bj_4_big&#39;);return true;"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/769571abjw1dvb50vb8x3j.jpg"><span>拾光盒子</span></a></div><ul id="qingRecPic" class="SG_j_linedot1">
+<li noo="0" class=""><a target="_blank" href="http://qing.weibo.com/tj/5a3cb36132001w0b.html" onclick="v7sendLog(&#39;q2b_bj_2&#39;);return true;" bigcode="q2b_bj_2_big"><img bigsrc="http://www.sinaimg.cn/blog/qing/image/qingzujian/qing073002.jpg" height="50" width="50" alt="超可爱大眼美女" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/qing073002.jpg"></a></li><li noo="1" class=""><a target="_blank" href="http://qing.weibo.com/tj/a893b04a32001v87.html" onclick="v7sendLog(&#39;q2b_bj_3&#39;);return true;" bigcode="q2b_bj_3_big"><img bigsrc="http://ww4.sinaimg.cn/mw205/a893b04ajw1dvb69r7x75j.jpg" height="50" width="50" alt="斯洛克宝贝" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/a893b04ajw1dvb69r7x75j.jpg"></a></li><li class="current mgr" noo="2"><a target="_blank" href="http://qing.weibo.com/tj/769571ab3200219k.html" onclick="v7sendLog(&#39;q2b_bj_4&#39;);return true;" bigcode="q2b_bj_4_big"><img bigsrc="http://ww3.sinaimg.cn/mw205/769571abjw1dvb50vb8x3j.jpg" height="50" width="50" alt="拾光盒子" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/769571abjw1dvb50vb8x3j(1).jpg"></a></li></ul>
+</div>
+<div class="atcTit_more"><span class="SG_more"><a href="http://qing.weibo.com/fancy.html" onclick="v7sendLog(&#39;q2b_bj_more&#39;);return true;" target="_blank">查看更多</a>&gt;&gt;</span></div>
+</div>
+</div>
+<div class="SG_connFoot"></div>
+</div>
+<!--endBeijingQing--><div class="SG_conn" id="module_904">
+<div class="SG_connHead">
+<span class="title">推荐博文</span>
+</div>
+<div class="SG_connBody">
+	<div class="atcTitList relaList">
+		<ul>
+			<li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a title="盘点：自然界那些相貌迷人可爱内" target="_blank" href="http://blog.sina.com.cn/s/blog_64e5abde0102e3x1.html">盘点：自然界那些相貌迷人可爱内</a></p>
+		<p class="atcTitCell_nm"><a target="_blank" href="http://blog.sina.com.cn/u/1692773342" class="SG_linkb">李秋雨</a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a title="全球皮肤最松弛的人：拉起肚皮能" target="_blank" href="http://blog.sina.com.cn/s/blog_9d7449b30101100n.html">全球皮肤最松弛的人：拉起肚皮能</a></p>
+		<p class="atcTitCell_nm"><a target="_blank" href="http://blog.sina.com.cn/u/2641643955" class="SG_linkb">星光</a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a title="百年前的日本真实民生(组图)" target="_blank" href="http://blog.sina.com.cn/s/blog_a538a57d01011qup.html">百年前的日本真实民生(组图)</a></p>
+		<p class="atcTitCell_nm"><a target="_blank" href="http://blog.sina.com.cn/u/2771953021" class="SG_linkb">博物绘</a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a title="手机落水？教你如何弄干并打造一" target="_blank" href="http://blog.sina.com.cn/s/blog_4a46c3960102evxx.html">手机落水？教你如何弄干并打造一</a></p>
+		<p class="atcTitCell_nm"><a target="_blank" href="http://blog.sina.com.cn/u/1246151574" class="SG_linkb">康斯坦丁</a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a title="盘点：动物界的10种“混血儿”" target="_blank" href="http://blog.sina.com.cn/s/blog_6061bc970102eghr.html">盘点：动物界的10种“混血儿”</a></p>
+		<p class="atcTitCell_nm"><a target="_blank" href="http://blog.sina.com.cn/u/1617018007" class="SG_linkb">陆伟</a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a title="运动员公布奥运村“冰浴”场景(" target="_blank" href="http://blog.sina.com.cn/s/blog_a53f49db010123fd.html">运动员公布奥运村“冰浴”场景(</a></p>
+		<p class="atcTitCell_nm"><a target="_blank" href="http://blog.sina.com.cn/u/2772388315" class="SG_linkb">观天下</a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a title="在苏宁易购购物问题重重" target="_blank" href="http://blog.sina.com.cn/s/blog_40345c100102e4g0.html">在苏宁易购购物问题重重</a></p>
+		<p class="atcTitCell_nm"><a target="_blank" href="http://blog.sina.com.cn/u/1077173264" class="SG_linkb">于斌</a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a title="【实拍】阳光--暴雨后的北京迎" target="_blank" href="http://blog.sina.com.cn/s/blog_7513fcdf0102e3wx.html">【实拍】阳光--暴雨后的北京迎</a></p>
+		<p class="atcTitCell_nm"><a target="_blank" href="http://blog.sina.com.cn/u/1964244191" class="SG_linkb">杨孝文原创摄影</a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a title="朝鲜手机用户破百万：禁止拨打国" target="_blank" href="http://blog.sina.com.cn/s/blog_a28aa0f501011tn9.html">朝鲜手机用户破百万：禁止拨打国</a></p>
+		<p class="atcTitCell_nm"><a target="_blank" href="http://blog.sina.com.cn/u/2726994165" class="SG_linkb">留声机</a></p>
+		</li><li class="SG_j_linedot1"><p class="atcTitCell_tit SG_dot"><a title="美国观众杯具：奥运开幕式被延时" target="_blank" href="http://blog.sina.com.cn/s/blog_a28aa0f501011tig.html">美国观众杯具：奥运开幕式被延时</a></p>
+		<p class="atcTitCell_nm"><a target="_blank" href="http://blog.sina.com.cn/u/2726994165" class="SG_linkb">留声机</a></p>
+		</li>		</ul>
+		<div id="atcPicList"><!--[346,152,91] published at 2012-08-21 16:38:47 from #236 by system-->
+ <script language="javascript">document.domain="sina.com.cn";</script>
+
+<div class="relaPic SG_j_linedot1"> 
+	<ul>
+			<li>
+		<p><a onclick="v5SendLog(&#39;v5_one&#39;,&#39;rela_pic_113&#39;);" href="http://blog.sina.com.cn/s/blog_58dc7b860102e2ik.html?tj=1" target="_blank"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/U7917P2T276D86261F7168DT20120821152841_w80.jpg" width="80" height="58" alt="谁在拆毁济南" border="0"></a></p>
+		<p><a onclick="v5SendLog(&#39;v5_one&#39;,&#39;rela_pic_113&#39;);" href="http://blog.sina.com.cn/s/blog_58dc7b860102e2ik.html?tj=1" target="_blank">谁在拆毁济南</a></p>
+	</li>
+	<li>
+		<p><a onclick="v5SendLog(&#39;v5_one&#39;,&#39;rela_pic_113&#39;);" href="http://blog.sina.com.cn/s/blog_614d572701018hou.html?tj=1" target="_blank"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/U7917P2T276D86260F7168DT20120821140711_w80.jpg" width="80" height="58" alt="荒漠戈壁情人湖的传说" border="0"></a></p>
+		<p><a onclick="v5SendLog(&#39;v5_one&#39;,&#39;rela_pic_113&#39;);" href="http://blog.sina.com.cn/s/blog_614d572701018hou.html?tj=1" target="_blank">荒漠戈壁情人湖的传说</a></p>
+	</li>
+	<li>
+		<p><a onclick="v5SendLog(&#39;v5_one&#39;,&#39;rela_pic_113&#39;);" href="http://blog.sina.com.cn/s/blog_4c69568e0102dxvb.html?tj=1" target="_blank"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/U7917P2T276D86253F7168DT20120821134854_w80.jpg" width="80" height="58" alt="我的世姐不是梦" border="0"></a></p>
+		<p><a onclick="v5SendLog(&#39;v5_one&#39;,&#39;rela_pic_113&#39;);" href="http://blog.sina.com.cn/s/blog_4c69568e0102dxvb.html?tj=1" target="_blank">我的世姐不是梦</a></p>
+	</li>
+	<li>
+		<p><a onclick="v5SendLog(&#39;v5_one&#39;,&#39;rela_pic_113&#39;);" href="http://blog.sina.com.cn/s/blog_67e535b601018bf5.html?tj=1" target="_blank"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/U7917P2T276D86252F7168DT20120821111726_w80.jpg" width="80" height="58" alt="苏梅岛海滩别墅" border="0"></a></p>
+		<p><a onclick="v5SendLog(&#39;v5_one&#39;,&#39;rela_pic_113&#39;);" href="http://blog.sina.com.cn/s/blog_67e535b601018bf5.html?tj=1" target="_blank">苏梅岛海滩别墅</a></p>
+	</li>
+
+	</ul>
+	<div class="clearfix"></div>
+</div>
+</div>
+		<div class="atcTit_more"><span class="SG_more"><a target="_blank" href="http://blog.sina.com.cn/lm/top/it/day.html">查看更多</a>&gt;&gt;</span></div>
+	</div>
+</div>
+<div class="SG_connFoot"></div>
+</div>
+</div>
+	<!--第一列end-->
+	
+	<!--第二列start-->
+	<div id="column_2" class="SG_colW73">	
+<div id="module_920" class="SG_conn">
+	<div class="SG_connHead">
+	    <span comp_title="正文" class="title">正文</span>
+	    <span class="edit"><span id="articleFontManage" class="fontSize">字体大小：<a href="javascript:;" onclick="changeFontSize(2);return false;">大</a> <strong>中</strong> <a href="javascript:;" onclick="changeFontSize(0);return false;">小</a></span></span>
+	</div>
+    <div class="SG_connBody" id="module_920_SG_connBody">
+<!--博文正文 begin -->
+	<div id="articlebody" class="artical" favmd5="{&quot;4c451e0e0100dhbl&quot;:&quot;7e3dd542eea79020863b2e8134fd20f5&quot;}">
+		<div class="articalTitle"> 
+					
+			<h2 id="t_4c451e0e0100dhbl" class="titName SG_txta">ubuntu下svn使用指南</h2>
+			
+					<span class="time SG_txtc">(2009-06-10 11:52:34)</span><div class="turnBoxzz"><a href="javascript:;" class="SG_aBtn SG_aBtn_ico SG_turn" action-type="reblog" action-data="{srcBlog:1, blogId:&#39;4c451e0e0100dhbl&#39;}"><cite><img class="SG_icon SG_icon111" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="15" height="15" align="absmiddle">转载<em class="arrow">▼</em></cite></a></div>		</div>
+		<div class="articalTag" id="sina_keyword_ad_area">
+			<table>
+				<tbody><tr>
+					<td class="blog_tag">
+					<script>
+					var $tag='ubuntu,svn,使用指南';
+					var $tag_code='0d57cc682f0f9c8cb8903d9ab5075a61';
+					var $r_quote_bligid='4c451e0e0100dhbl';
+					var $worldcup='0';
+					var $worldcupball='0';
+					</script>
+											<span class="SG_txtb">标签：</span>
+																				<h3><a href="http://search.sina.com.cn/?c=blog&q=ubuntu&by=tag" target="_blank">ubuntu</a></h3>
+																				<h3><a href="http://search.sina.com.cn/?c=blog&q=svn&by=tag" target="_blank">svn</a></h3>
+																				<h3><a href="http://search.sina.com.cn/?c=blog&q=%CA%B9%D3%C3%D6%B8%C4%CF&by=tag" target="_blank">使用指南</a></h3>
+																</td>
+					<td class="blog_class">
+											<span class="SG_txtb">分类：</span>
+						<a target="_blank" href="http://blog.sina.com.cn/s/articlelist_1279598094_3_1.html">*OS常见问题</a>
+										</td>
+				</tr>
+			</tbody></table>
+		</div>
+						<!-- 正文开始 -->
+		<div id="sina_keyword_ad_area2" class="articalContent  ">
+			<div>
+<p><font style="font-size: 14pt;" color="#02368D"><b>ubuntu下安装subversion客户端:<br>
+<br></b></font><span style="font-weight: bold;">sudo apt-get
+install subversion subversion-tools</span><br style="font-weight: bold;">
+<br>
+<strong>详细请看 http://www.subversion.org.cn/svnbook/1.1/index.html
+svn子命令<br>
+<br>
+1、检出</strong><br>
+<strong>svn&nbsp;<wbr> co&nbsp;<wbr>
+http://</strong>路径(目录或文件的全路径)　[本地目录全路径]&nbsp;<wbr>
+<strong>--username</strong> 用户名 <span style="font-weight: bold;">--password</span>
+密码<strong>svn&nbsp;<wbr> co&nbsp;<wbr>
+svn://</strong>路径(目录或文件的全路径)　[本地目录全路径]&nbsp;<wbr>
+<strong>--username</strong> 用户名 <span style="font-weight: bold;">--password</span> 密码<br>
+<strong>svn&nbsp;<wbr> checkout&nbsp;<wbr>
+http://</strong>路径(目录或文件的全路径)　[本地目录全路径]
+<strong>--username</strong>　用户名<br>
+<strong>svn&nbsp;<wbr> checkout&nbsp;<wbr>
+svn://</strong>路径(目录或文件的全路径)　[本地目录全路径]&nbsp;<wbr>
+<strong>--username</strong>　用户名<br>
+注：如果不带<span style="font-weight: bold;">--password</span>
+参数传输密码的话，会提示输入密码，建议不要用明文的<span style="font-weight: bold;">--password 选项</span>。<br>
+　　其中 <span style="font-weight: bold;">username</span> 与
+<span style="font-weight: bold;">password</span>前是两个短线，不是一个。<br>
+　　不指定本地目录全路径，则检出到当前目录下。<br>
+例子：<br>
+<strong><font color="#FF0000">svn co
+svn://</font></strong>192.168.0.3/测试工具 <strong><font color="#000000">/home/testtools</font></strong> <strong><font color="#FF0000">--username</font>
+wzhnsc<br></strong><strong><font color="#FF0000">svn co
+http://</font></strong>192.168.0.3/test/testapp
+<strong><font color="#FF0000">--username</font>
+wzhnsc<br></strong><strong><font color="#FF0000">svn checkout
+svn://</font></strong>192.168.0.3/测试工具 <strong><font color="#000000">/home/testtools</font></strong> <strong><font color="#FF0000">--username</font>
+wzhnsc<br></strong><strong><font color="#FF0000">svn</font></strong> <strong><font color="#FF0000">checkout</font></strong><strong><font color="#FF0000">http://</font></strong>192.168.0.3/test/testapp
+<strong><font color="#FF0000">--username</font> wzhnsc<br>
+<br style="font-weight: normal;">
+2、导出(</strong>导出一个干净的不带.svn文件夹的目录树<strong style="font-weight: normal;">)</strong><strong><br>
+<span style="font-weight: normal;"><span style="font-weight: bold;">svn</span>&nbsp;<wbr> <span style="font-weight: bold;">export</span>&nbsp;<wbr> [<span style="font-weight: bold;">-r</span> 版本号]&nbsp;<wbr> <span style="font-weight: bold;">http://</span>路径(目录或文件的全路径)
+[本地目录全路径]　<span style="font-weight: bold;">--username</span>　用户名</span><br style="font-weight: normal;">
+<span style="font-weight: normal;"><span style="font-weight: bold;">svn</span>&nbsp;<wbr> <span style="font-weight: bold;">export</span>&nbsp;<wbr> [<span style="font-weight: bold;">-r</span> 版本号]&nbsp;<wbr> <span style="font-weight: bold;">svn://</span>路径(目录或文件的全路径)
+[本地目录全路径]　<span style="font-weight: bold;">--username</span>　用户名</span><br style="font-weight: normal;">
+<span style="font-weight: normal;"><span style="font-weight: bold;">svn</span>&nbsp;<wbr> <span style="font-weight: bold;">export</span>&nbsp;<wbr>
+本地检出的(即带有.svn文件夹的)目录全路径&nbsp;<wbr>
+要导出的本地目录全路径</span><br style="font-weight: normal;">
+<span style="font-weight: normal;">注：第一种从版本库导出干净工作目录树的形式是指定URL，</span><br style="font-weight: normal;">
+
+<span style="font-weight: normal;">　　　如果指定了修订版本号，会导出相应的版本，<br>
+　　　如果没有指定修订版本，则会导出最新的，导出到指定位置。</span><br style="font-weight: normal;">
+<span style="font-weight: normal;">　　　如果省略</span></strong>
+<strong><span style="font-weight: normal;">本地目录全路径</span></strong><strong><span style="font-weight: normal;">，URL的最后一部分会作为本地目录的名字。</span><br style="font-weight: normal;">
+<span style="font-weight: normal;">　　第二种形式是指定 本地检出的目录全路径 到
+要导出的本地目录全路径，所有的本地修改将会保留，</span><br style="font-weight: normal;">
+<span style="font-weight: normal;">　　　但是不在版本控制下(即没提交的新文件，因为.svn文件夹里没有与之相关的信息记录)的文件不会拷贝。</span><br>
+</strong>例子：<br>
+<strong><font color="#FF0000">svn</font></strong> <strong style="color: rgb(237, 28, 36);"><span style="font-weight: normal;"><span style="font-weight: bold;">export</span></span></strong><strong><font color="#FF0000">svn://</font></strong>192.168.0.3/测试工具
+<strong><font color="#000000">/home/testtools</font></strong>
+<strong><font color="#FF0000">--username</font> <span style="color: rgb(0, 0, 0);">wzhnsc</span></strong><br>
+<strong><font color="#FF0000">svn</font></strong> <strong style="color: rgb(237, 28, 36);"><span style="font-weight: normal;"><span style="font-weight: bold;">export</span></span></strong><strong><font color="#FF0000">http://</font></strong>192.168.0.3/test/testapp
+<strong><font color="#FF0000">--username</font> <span style="color: rgb(0, 0, 0);">wzhnsc</span></strong><br>
+<strong><font color="#FF0000">svn</font></strong> <strong style="color: rgb(237, 28, 36);"><span style="font-weight: normal;"><span style="font-weight: bold;">export</span></span></strong><strong><font color="#000000">/home/</font></strong><span style="font-weight: bold; color: rgb(0, 0, 0);">testapp</span>
+<strong><font color="#000000">/home/testtools</font></strong><br style="font-weight: normal;">
+<strong><br>
+3、</strong><strong>添加新文件&nbsp;<wbr><br></strong><strong>svn　add</strong>　文件名<br>
+
+注：告诉SVN服务器要添加文件了，还要用svn commint -m真实的上传上去！<br>
+例子：<br>
+<font color="#FF0000">svn add</font> test.php <font color="#000000">＜－</font> 添加test.php&nbsp;<wbr><br>
+<font color="#FF0000">svn commit -m</font> “添加我的测试用test.php“
+test.php<br>
+<font color="#FF0000">svn add</font> *.php <font color="#000000">＜－</font> 添加当前目录下所有的php文件<br>
+<font color="#FF0000">svn commit -m</font> “添加我的测试用全部php文件“
+*.php<strong><br>
+<br>
+4、</strong><strong>提交<br></strong><strong>svn　commit　-m　</strong>“提交备注信息文本“　<strong>[-N]　[--no-unlock]　</strong>文件名<br>
+
+<strong>svn　ci　</strong><strong>-m　</strong>“提交备注信息文本“　<strong>[-N]　[--no-unlock]　</strong>文件名<br>
+
+必须带上-m参数，参数可以为空，但是必须写上-m<br>
+例子：<br>
+<font color="#FF0000">svn commit -m</font> “提交当前目录下的全部在版本控制下的文件“ *
+<font color="#000000">＜－</font> 注意这个*表示全部文件<br>
+<font color="#FF0000">svn commit -m</font> “提交我的测试用test.php“
+test.php<br>
+<font color="#FF0000">svn commit -m</font> “提交我的测试用test.php“
+<font color="#FF0000">-N --no-unlock</font> test.php <font color="#000000">＜－</font> 保持锁就用–no-unlock开关<br>
+<font color="#FF0000">svn ci -m</font> “提交当前目录下的全部在版本控制下的文件“ *
+<font color="#000000">＜－</font> 注意这个*表示全部文件<br>
+<font color="#FF0000">svn ci -m</font> “提交我的测试用test.php“
+test.php<br>
+<font color="#FF0000">svn ci -m</font> “提交我的测试用test.php“
+<font color="#FF0000">-N --no-unlock</font> test.php <font color="#000000">＜－</font> 保持锁就用–no-unlock开关<strong><br>
+<br>
+5、</strong><strong>更新文件</strong><br>
+<strong>svn　update<br>
+svn　update　-r</strong>　修正版本　文件名<br>
+<strong>svn　update</strong>　文件名<br>
+例子：<br>
+<font color="#FF0000">svn update</font> <font color="#000000">＜－
+后面没有目录，默认将当前目录以及子目录下的所有文件都更新到最新版本<br></font><font color="#FF0000">svn update -r</font> <font color="#000000">200
+test.cpp</font> <font color="#000000">＜－</font> <font color="#000000">将版本库中的文件 test.cpp
+还原到修正版本（revision）200<br></font><font color="#FF0000">svn
+update</font> <font color="#000000">test.php</font> <font color="#000000">＜－</font> <font color="#000000">更新与版本库同步。<br>
+　　　　　　　　　　　 提交的时候提示过期冲突，需要先 update 修改文件，<br>
+　　　　　　　　　　　 然后清除svn resolved，最后再提交commit。</font><strong><br>
+<br>
+6、</strong><strong>删除文件</strong><br>
+<strong>svn　delete　svn://</strong>路径(目录或文件的全路径) <strong>-m</strong>
+“删除备注信息文本”<br>
+推荐如下操作：<br>
+<font color="#000000"><strong>svn　delete</strong>　</font>文件名&nbsp;<wbr><br>
+
+<font color="#000000"><strong>svn　ci　-m</strong>　</font>“删除备注信息文本”<br>
+例子：<br>
+<font color="#FF0000">svn delete
+svn://</font>192.168.1.1/testapp/test.php <font color="#FF0000">-m</font> “删除测试文件test.php”<br>
+推荐如下操作：<br>
+<font color="#FF0000">svn delete</font>
+test.php&nbsp;<wbr><br>
+<font color="#FF0000">svn ci -m</font> “删除测试文件test.php”<br>
+<br>
+<strong>７、</strong><strong>加锁/解锁&nbsp;<wbr></strong><br>
+<strong>svn　lock　-m　</strong>“加锁备注信息文本“<strong>　[--force]　</strong>文件名&nbsp;<wbr><br>
+
+<strong>svn　unlock　</strong>文件名<br>
+例子：<br>
+<font color="#FF0000">svn lock -m</font> “锁信测试用test.php文件“
+test.php&nbsp;<wbr><br>
+<font color="#FF0000">svn unlock</font> test.php <strong><br>
+<br>
+8、</strong><strong>比较差异&nbsp;<wbr></strong><br>
+<strong>svn　diff　</strong>文件名&nbsp;<wbr><br>
+<strong>svn　diff　-r　</strong>修正版本号m<strong>:</strong>修正版本号n<strong>　</strong>文件名<br>
+
+例子：<br>
+<font color="#FF0000">svn diff</font> test.php<font color="#000000">＜－</font> 将修改的文件与基础版本比较<br>
+<font color="#FF0000">svn diff -r</font> 200<font color="#FF0000">:</font>201 test.php<font color="#000000">＜－</font> 对
+修正版本号200 和 修正版本号201 比较差异<strong><br>
+<br>
+9、</strong><strong>查看文件或者目录状态</strong><br>
+<strong>svn st</strong>&nbsp;<wbr>目录路径/名<br>
+<strong>svn status</strong> 目录路径/名<font color="#000000">＜－</font>
+目录下的文件和子目录的状态，正常状态不显示&nbsp;<wbr><br>
+　　　　　　　　　　　　　【?：不在svn的控制中； &nbsp;<wbr>M：内容被修改；C：发生冲突；<br>
+　　　　　　　　　　　　　　A：预定加入到版本库；K：被锁定】&nbsp;<wbr><br>
+<strong>svn &nbsp;<wbr>-v</strong> 目录路径/名<br>
+<strong>svn status -v</strong> 目录路径/名<font color="#000000">＜－</font> 显示文件和子目录状态<br>
+　　　　　　　　　　　　　　【第一列保持相同，第二列显示工作版本号，<br>
+　　　　　　　　　　　　　　　第三和第四列显示最后一次修改的版本号和修改人】&nbsp;<wbr><br>
+注：svn status、svn diff和 svn revert这三条命令在没有网络的情况下也可以执行的，<br>
+　　原因是svn在本地的.svn中保留了本地版本的原始拷贝。&nbsp;<wbr><br>
+<strong><br>
+</strong><strong>10、</strong><strong>查看日志</strong><br>
+<strong>svn　log　</strong>文件名<br>
+例子：<br>
+<font color="#FF0000">svn log</font> test.php<font color="#000000">＜－</font> 显示这个文件的所有修改记录，及其版本号的变化&nbsp;<wbr><br>
+<br>
+<strong>11、</strong><strong>查看文件详细信息</strong><br>
+<strong>svn　info　</strong>文件名<br>
+例子：<br>
+<font color="#FF0000">svn info</font> test.php<br>
+<br>
+<strong>12、</strong><strong>SVN 帮助</strong><br>
+<strong>svn　help</strong> <font color="#000000">＜－</font>
+全部功能选项<br>
+<strong>svn　help　</strong>ci <font color="#000000">＜－
+具体功能的说明</font><br>
+<br>
+<strong>13、</strong><strong>查看版本库下的文件和目录列表</strong>&nbsp;<wbr><br>
+
+<strong>svn　list　</strong><strong>svn://</strong>路径(目录或文件的全路径)<br>
+
+<strong>svn　ls　</strong><strong>svn://</strong>路径(目录或文件的全路径)<br>
+例子：<br>
+<strong><font color="#FF0000">svn list
+svn://</font></strong>192.168.0.3/test<br>
+<strong><font color="#FF0000">svn ls
+svn://</font></strong>192.168.0.3/test <font color="#000000">＜－</font> 显示<strong><font color="#FF0000">svn://</font></strong>192.168.0.3/test目录下的所有属于版本库的文件和目录&nbsp;<wbr><br>
+
+<br>
+<strong>14、</strong><strong>创建纳入版本控制下的新目录</strong><br>
+<strong>svn　mkdir　</strong>目录名<br>
+<strong>svn　mkdir　-m　</strong>"新增目录备注文本"　<strong>http://</strong>目录全路径<br>
+
+例子：<br>
+<font color="#FF0000">svn mkdir</font> newdir<br>
+<font color="#FF0000">svn mkdir -m</font> "Making a new dir."
+<font color="#FF0000">http://</font>192.168.0.3/test/newdir&nbsp;<wbr><br>
+
+注：添加完子目录后，一定要回到根目录更新一下，不然在该目录下提交文件会提示“提交失败”<br>
+<font color="#FF0000">svn update</font><br>
+注：如果手工在checkout出来的目录里创建了一个新文件夹newsubdir，<br>
+　　再用<font color="#FF0000">svn mkdir</font>
+newsubdir命令后，SVN会提示：<br>
+　　svn: 尝试用 “svn add”或 “svn add --non-recursive”代替？<br>
+　　svn: 无法创建目录“hello”: 文件已经存在<br>
+　　此时，用如下命令解决：<br>
+　　<font color="#FF0000">svn add --non-recursive</font>
+newsubdir<br>
+　　在进入这个newsubdir文件夹，用ls -a查看它下面的全部目录与文件，会发现多了：.svn目录<br>
+　　再用 svn mkdir -m "添hello功能模块文件"
+svn://192.168.0.3/test/newdir/newsubdir 命令，<br>
+　　SVN提示：<br>
+　　svn: File already exists: filesystem '/data/svnroot/test/db',
+transaction '4541-1',<br>
+　　path '/newdir/newsubdir '<br>
+<br>
+<strong>15、恢复本地修改&nbsp;<wbr></strong><br>
+<strong>svn　revert　</strong><strong>[--recursive]</strong><strong>　文件名<br>
+</strong>注意: 本子命令不会存取网络，并且会解除冲突的状况。但是它不会恢复被删除的目录。<br>
+例子：<br>
+<font color="#FF0000">svn revert</font> foo.c <font color="#000000">＜－</font> 丢弃对一个文件的修改<br>
+<font color="#FF0000">svn revert --recursive</font> . <font color="#000000">＜－恢复一整个目录的文件，. 为当前目录&nbsp;<wbr></font><br>
+<br>
+<span style="font-weight: bold;">16、把工作拷贝更新到别的URL&nbsp;<wbr></span><br>
+
+<strong>svn　switch　http://</strong>目录全路径　本地目录全路径<br>
+例子：<br>
+<font color="#FF0000">svn switch http://</font>192.163.0.3/test/456
+. <font color="#000000">＜－
+(原为123的分支)当前所在目录分支到</font>192.163.0.3/test/456<br>
+<br>
+<strong>17、解决冲突&nbsp;<wbr></strong><br>
+<strong>svn　resolved　</strong>[本地目录全路径]<br>
+例子：<br>
+$ svn update<br>
+C foo.c<br>
+Updated to revision 31.<br>
+如果你在更新时得到冲突，你的工作拷贝会产生三个新的文件：<br>
+$ ls<br>
+foo.c<br>
+foo.c.mine<br>
+foo.c.r30<br>
+foo.c.r31<br>
+当你解决了foo.c的冲突，并且准备提交，运行svn resolved让你的工作拷贝知道你已经完成了所有事情。<br>
+你可以仅仅删除冲突的文件并且提交，但是svn
+resolved除了删除冲突文件，还修正了一些记录在工作拷贝管理区域的记录数据，所以我们推荐你使用这个命令。<br>
+<br>
+<strong>18、不checkout而查看输出特定文件或URL的内容&nbsp;<wbr><br></strong><strong>svn　cat　http://</strong>文件全路径<br>
+
+例子：<br>
+<font color="#FF0000">svn cat
+http://</font>192.168.0.3/test/readme.txt<br></p>
+</div>							
+		</div>
+						<!-- 正文结束 -->
+		<div class="shareUp">
+        	<div class="share SG_txtb">分享 <a href="javascript:void((function(s,d,e,r,l,p,t,z,c,w){var%20f='http://v.t.sina.com.cn/share/share.php?',u=z||d.location,p=['url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||''),'&ralateUid=',w].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'新浪-博客','http://blog.sina.com.cn','','分享红超的吾记之谈的博文：ubuntu下svn使用指南 推荐给@头条博客','http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html','utf-8','1231759973'));" id="sharewb"><img class="SG_icon SG_icon110" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="18" height="18" title="" align="absmiddle"></a> <a href="http://profile.live.com/badge/?url=http%3A%2F%2Fblog.sina.com.cn%2Fs%2Fblog_4c451e0e0100dhbl.html&title=ubuntu%E4%B8%8Bsvn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97&screenshot=http%3A%2F%2Fportrait7.sinaimg.cn%2F1279598094%2Fblog%2F180&description=ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85subversion%E5%AE%A2%E6%88%B7%E7%AB%AF%3Asudo%20apt-getinstall%20subversion%20subversion-tools%E8%AF%A6%E7%BB%86%E8%AF%B7%E7%9C%8B%20http%3A%2F%2Fwww.subversion.org." id="sharemsn" target="_blank"><img class="SG_icon SG_icon136" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="18" height="18" title="" align="absmiddle"></a> <a href="javascript:d=document;t=d.selection?(d.selection.type!='None'?d.selection.createRange().text:''):(d.getSelection?d.getSelection():'');void(kaixin=window.open('http://www.kaixin001.com/~repaste/repaste.php?&rurl='+escape(d.location.href)+'&rtitle='+escape('ubuntu下svn使用指南_红超的吾记之谈_新浪博客')+'&rcontent='+escape('ubuntu下svn使用指南_红超的吾记之谈_新浪博客'),'kaixin'));kaixin.focus();" id="sharekx"><img class="SG_icon SG_icon117" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="18" height="18" title="" align="absmiddle"></a> <a href="javascript:u='http://share.xiaonei.com/share/buttonshare.do?link='+location.href+'&title='+encodeURIComponent(document.title);window.open(u,'xiaonei','toolbar=0,resizable=1,scrollbars=yes,status=1,width=626,height=436');void(0)" id="sharexn"><img class="SG_icon SG_icon113" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="18" height="18" title="" align="absmiddle"></a> <a href="http://www.douban.com/recommend/?url=http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html&title=ubuntu%E4%B8%8Bsvn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_%E7%BA%A2%E8%B6%85%E7%9A%84%E5%90%BE%E8%AE%B0%E4%B9%8B%E8%B0%88_%E6%96%B0%E6%B5%AA%E5%8D%9A%E5%AE%A2;window.open(u,'douban','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330');void(0)" id="sharedb" target="_blank"><img class="SG_icon SG_icon116" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="18" height="18" title="" align="absmiddle"></a> <a href="javascript:void(0)" onclick="v7sendLog(&#39;68_01_01&#39;);window.open(&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+encodeURIComponent(location.href)+&#39;&amp;title=&#39;+encodeURIComponent(document.title)+&#39;&amp;summary=&#39;+encodeURIComponent(&#39; ubuntu下安装subversion客户端: sudo apt-get install subversion subversion-tools  详细请看 http://www.subversion.org.cn/svnbook/1.1/index.htm&#39;)); return false;" target="_blank" title="分享到QQ空间"><img style="margin-bottom:-3px;margin-right:3px;" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/qz_logo.png" alt="分享到QQ空间"></a><a href="javascript:;" id="shareqing"><img class="SG_icon SG_icon205" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="18" height="18" title="分享到新浪Qing" align="absmiddle">分享到新浪Qing</a></div>
+            <div class="up">
+	        	<div title="喜欢后让更多人看到" id="dbox_4c451e0e0100dhbl" class="upBox" style="cursor: pointer; ">
+	            	<p ti_title="ubuntu下svn使用指南" id="dbox2_4c451e0e0100dhbl" class="count" mnum="0">0</p>
+	                <p class="link"><img width="15" height="15" align="absmiddle" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" class="SG_icon SG_icon34">喜欢</p>
+	            </div>
+	        </div>
+            <div class="clearit"></div>
+		</div>
+		<div class="articalInfo">
+			<!-- 分享到微博 {$t_blog} -->
+			<div class="IL">
+				阅读<span id="r_4c451e0e0100dhbl" class="SG_txtb">(2247)</span><em class="SG_txtb">┊</em> 
+				<a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#comment">评论</a> <span id="c_4c451e0e0100dhbl" class="SG_txtb">(1)</span><em class="SG_txtb">┊</em>				<a href="javascript:;" onclick="$articleManage(&#39;4c451e0e0100dhbl&#39;,5);return false;">收藏</a><span id="f_4c451e0e0100dhbl" class="SG_txtb">(1)</span>
+				<em class="SG_txtb">┊</em><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" id="quote_set_sign" onclick="return false ;">转载</a><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" id="z_4c451e0e0100dhbl" onclick="return false ;" class="zznum">(1)</a>				<span id="fn_ubuntu下svn使用指南" class="SG_txtb"></span><em class="SG_txtb">┊</em>
+				<a onclick="return false;" href="javascript:;"><cite id="d1_digg_4c451e0e0100dhbl">喜欢</cite></a><a id="d1_digg_down_4c451e0e0100dhbl" href="javascript:;"><b>▼</b></a>
+									<em class="SG_txtb">┊</em><a href="http://blog.sina.com.cn/main_v5/ria/print.html?blog_id=blog_4c451e0e0100dhbl" target="_blank">打印</a><em class="SG_txtb">┊</em><a id="q_4c451e0e0100dhbl" onclick="report(&#39;4c451e0e0100dhbl&#39;);return false;" href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#">举报</a>
+											</div>
+			<div class="IR">
+				<table>
+					<tbody><tr>
+											<th class="SG_txtb" scope="row">已投稿到：</th>
+						<td>
+							<div class="IR_list">
+								<span><img class="SG_icon SG_icon36" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="15" height="15" title="排行榜" align="absmiddle"> <a href="http://blog.sina.com.cn/lm/114/113/day.html" class="SG_linkb" target="_blank">排行榜</a></span><span><img class="SG_icon SG_icon13" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="15" height="15" title="圈子" align="absmiddle"> <a href="http://q.sina.com.cn/blog_groups.php?fid=4c451e0e0100dhbl" class="SG_linkb" target="_blank">圈子</a></span>							</div>
+						</td>
+										</tr>
+									</tbody></table>
+			</div>
+		</div>
+		<div class="clearit"></div>
+		<div class="blogzz_zzlist borderc" id="blog_quote" style="display:none"><h3><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" onclick="return false" title="关闭" id="ql_close4c451e0e0100dhbl" class="blogzz_closepic SG_floatR"></a>转载列表：</h3>                <ul class="ul_zzlist" id="ql_content4c451e0e0100dhbl">                </ul>				<ul style="display:none"><li id="ql_tip4c451e0e0100dhbl"></li></ul>                <div class="SG_clearB"></div>                <div class="blogzz_btn">					<a id="btnArticleQuote4c451e0e0100dhbl" href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" onclick="scope.article_quote &amp;&amp; scope.article_quote.check(&#39;4c451e0e0100dhbl&#39;);return false;" class="SG_aBtn SG_aBtn_ico SG_turn" style=""><cite><img class="SG_icon SG_icon111" id="quoteList_quote4c451e0e0100dhbl" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="15" height="15" align="absmiddle">转载</cite></a>					<p id="quoteDescription4c451e0e0100dhbl" class="SG_turntxt" style="display: none; ">转载是分享博文的一种常用方式...</p>				</div>				<div id="ql_page4c451e0e0100dhbl" class="blogzz_paged"></div>				<div class="clearit"></div></div>
+		<div class="articalfrontback SG_j_linedot1 clearfix" id="new_nextprev_4c451e0e0100dhbl">
+							<div><span class="SG_txtb">前一篇：</span><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100de06.html">读《Unix编程艺术》笔记&nbsp;（五）</a></div>
+										<div><span class="SG_txtb">后一篇：</span><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100di53.html">个人常用的VIM命令列表</a></div>
+					</div>
+		<div class="clearit"></div>
+					
+				<div class="allComm">
+			<div class="allCommTit">
+				<div class="SG_floatL">
+				    <strong>评论</strong>
+				    <span id="commAd_1" style="display: inline-block; "><span style="margin-left:15px; width:220px; display:inline-block;"><a target="_blank" href="http://blog.sina.com.cn/lm/8/2009/0325/105340.html">重要提示：警惕虚假中奖信息</a></span><span style="margin:0 60px 0 20px; display:inline-block;">|</span><span style="display:inline-block;width:220px;white-space:nowrap;">[商讯]<a href="http://sina.allyes.com/main/adfclick?db=sina&bid=418850,480487,485758&cid=0,0,0&sid=484616&advid=1293&camid=76131&show=ignore&url=http://www.redbull.com.cn/product/drink-all-the-time/" target="_blank">欧洲杯,有红牛更从容!</a></span></span>
+				</div>
+				<div class="SG_floatR"><a class="CP_a_fuc" href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#post">[<cite>发评论</cite>]</a></div>
+			</div>
+			<ul id="article_comment_list" class="SG_cmp_revert"><span name="#comment1" id="#comment1">	<li id="cmt_1955272">
+		<table class="SG_revert_Left">
+			<tbody><tr>
+				<td></td>
+			</tr>
+		</tbody></table>
+		<div class="SG_revert_Cont">
+			<p><span class="SG_revert_Tit" id="nick_cmt_1955272"><a href="http://blog.sina.com.cn/u/1941485530" target="_blank">myluke</a></span><span class="SG_revert_Time" userid="1941485530"><em class="SG_txtc">2012-02-22 22:35:37</em>&nbsp;<a id="4c451e0e0100dhbl_1955272" onclick="comment_report(&#39;4c451e0e0100dhbl_1955272&#39;)" href="javascript:;">[举报]</a></span></p>
+			<div class="SG_revert_Inner SG_txtb" id="body_cmt_1955272">不错的教程。。。<img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/E___0084EN00SIGT.gif" style="margin:1px;cursor:pointer;" onclick="window.open(&#39;http://blog.sina.com.cn/myshow2010&#39;)" border="0" title="无聊"></div>
+			
+			
+					</div>
+	</li><div><input id="v1x" type="hidden" value="e690546bdaf61a6cd78bbfafc60b45f8"><input id="v2x" type="hidden" value=""></div></span></ul>
+			<div class="clearit"></div>
+			<div class="myCommPages SG_j_linedot1" style="display: none; ">
+				<div class="SG_page" id="commentPaging" style="display:none;">
+					<ul class="SG_pages">
+					</ul>
+				</div>
+				<div class="clearit"></div>
+			</div>
+			<a name="post"></a>
+			<div class="writeComm">
+				<div class="allCommTit">
+					<div class="SG_floatL">
+					    <strong>发评论</strong>
+					    <span id="commAd_2" style="display: inline-block; "><span style="display:inline-block;width:220px;white-space:nowrap;">[商讯]<a href="http://sina.allyes.com/main/adfclick?db=sina&bid=277830,334360,339653&cid=0,0,0&sid=334533&advid=7567&camid=52451&show=ignore&url=http://all.vic.sina.com.cn/2011citicgongyi/index.php" target="_blank">爱心签名换梦想，天天派奖</a></span><span style="margin:0 60px 0 20px; display:inline-block;">|</span><span style="display:inline-block;width:220px;white-space:nowrap;">[商讯]<a href="http://sina.allyes.com/main/adfclick?db=sina&bid=204720,299859,305135&cid=0,0,0&sid=298939&advid=358&camid=37389&show=ignore&url=http://blog.sina.com.cn/s/blog_705463570100phtd.html?tj=1" target="_blank">提高博客人气新方法</a></span></span>
+					    <span></span>
+					</div>
+					<div class="SG_floatR"></div>
+				</div>
+				<div class="wrCommTit">
+					<div class="SG_floatL" id="commentNick" style="display:none;"></div>
+				</div>
+				<div class="formTextarea">
+					<div style="float:left;" id="commonComment">
+					<iframe id="postCommentIframe" frameborder="0" style="border:1px solid #C7C7C7;
+		height:158px;width:448px;maring-top:1px;background-color:white;" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/ubuntu下svn使用指南_红超的吾记之谈_新浪博客.html"></iframe>
+					<textarea id="commentArea" tabindex="1" style="display:none;"></textarea>
+					</div>
+					<div id="mobileComment" style="float:left;display:none;">
+						<textarea id="mbCommentTa" style="width:438px;height:150px;border:1px solid #C7C7C7;line-height:18px;padding:5px;"></textarea>
+					</div>
+					<div class="faceblk" id="faceWrap">
+						<div id="smilesSortShow" class="faceline1">
+						<div class="facestyle" id="recomm_1345538784320"><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" key="302"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/302-25.gif" alt="小新小浪" title="小新小浪"></a><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" key="308"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/308-25.gif" alt="炮炮兵" title="炮炮兵"></a><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" key="315"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/315-25.gif" alt="张富贵" title="张富贵"></a><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" key="316"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/316-25.gif" alt="旺狗" title="旺狗"></a><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" key="331"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/331-25.gif" alt="悠嘻猴" title="悠嘻猴"></a><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" key="351"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/351-25.gif" alt="酷巴熊" title="酷巴熊"></a></div><span class="SG_more"><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#">更多&gt;&gt;</a></span><div class="clearit"></div></div>
+						<ul id="smilesRecommended" class="faceline01"><li><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/E___0321EN00SIGT.gif" alt="就不买你" title="就不买你" height="50" width="50"></a></li><li><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/E___0320EN00SIGT.gif" alt="股市" title="股市" height="50" width="50"></a></li><li><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/E___0319EN00SIGT.gif" alt="发霉" title="发霉" height="50" width="50"></a></li><li><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/E___0318EN00SIGT.gif" alt="陈水边" title="陈水边" height="50" width="50"></a></li><li><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/E___0317EN00SIGT.gif" alt="裁员" title="裁员" height="50" width="50"></a></li><li><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/E___0316EN00SIGT.gif" alt="音乐" title="音乐" height="50" width="50"></a></li><li><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/E___0315EN00SIGT.gif" alt="贴你" title="贴你" height="50" width="50"></a></li><li><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/E___0314EN00SIGT.gif" alt="抢车位" title="抢车位" height="50" width="50"></a></li></ul>
+					</div>
+					<div class="clearit"></div>
+				</div>
+				<div class="formLogin">
+					<div class="SG_floatL"> 
+					<p id="commentlogin" style="display: block; "><span>登录名：</span><input type="text" style="width: 115px;" id="login_name" tabindex="2">   <span>密码：</span><input type="password" style="width: 115px;" id="login_pass" tabindex="3">   <a href="http://login.sina.com.cn/getpass.html" target="_blank">找回密码</a>   <a href="http://login.sina.com.cn/signup/signup.php?entry=blog&src=blogicp&srcuid=1279598094" target="_blank">注册</a>	<input type="checkbox" id="login_remember"><label for="login_remember" style="display:inline-block;" title="建议在网吧/公用电脑上取消该选项">记住登录状态</label></p><p id="commentloginM" style="display:none;"><span>昵&nbsp;&nbsp;&nbsp;称：</span><input type="text" style="width: 115px;" id="comment_anonyous" value="新浪网友" tabindex="2" disabled=""></p><p id="quote_comment_p"><input type="checkbox" id="bb"> <label for="bb"><img height="18" align="absmiddle" width="18" title="" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" class="SG_icon SG_icon110">分享到微博 <img height="15" align="absmiddle" width="15" title="新" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" class="SG_icon SG_icon11"></label>&nbsp;&nbsp;&nbsp;<input type="checkbox" id="cbCommentQuote"><label for="cbCommentQuote">评论并转载此博文</label><img class="SG_icon SG_icon11" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="15" height="15" title="新" align="absmiddle"></p><p><span>验证码：</span><input type="text" style="width: 46px;" id="login_check" tabindex="4" onclick="return false;">  <a class="SG_linka" id="check_show">请点击后输入验证码</a><img id="comment_check_img" align="absmiddle" style="display: none; ">  <span>		<a style="margin-left:3px;" id="comment_get_vcode" href="javascript:;" onclick="Lib.AudioCheck.callAudioCheck();return false;">收听验证码</a>		<img id="play_img" name="play_img" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/blank.gif" align="absmiddle" style="margin-right:2px;" height="15">		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="0" height="0" id="mp3_player" align="middle">		<param name="allowScriptAccess" value="always">		<param name="movie" value="http://sjs.sinajs.cn/blog7swf/mp3.swf">		<param name="quality" value="high">		<param name="bgcolor" value="#ffffff">		<param name="FlashVars" value="mp3URL=http://icp.cws.api.sina.com.cn/login/login_audio.php?1345538784666">		<embed src="http://sjs.sinajs.cn/blog7swf/mp3.swf" flashvars="mp3URL=http://icp.cws.api.sina.com.cn/login/login_audio.php?1345538784666" quality="high" bgcolor="#ffffff" width="0" height="0" name="mp3_player" swliveconnect="true" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">		</object>	</span></p>
+					</div>
+
+					<span style="display: none; color: rgb(153, 153, 153); margin-left: 10px;" id="login_remember_caution"></span>
+
+											<div class="SG_floatR" id="anonymity_cont"><input type="checkbox" id="anonymity"><label for="anonymity">匿名评论</label></div>
+									</div>
+				<div class="formBtn">
+					<a href="javascript:;" onclick="return false;" class="SG_aBtn" tabindex="5"><cite id="postcommentid">发评论</cite></a>
+					<p class="SG_txtc">以上网友发言只代表其个人观点，不代表新浪网的观点或立场。</p>
+				</div>
+			</div>
+		</div>
+				<div class="clearit"></div>
+		
+				<div class="articalfrontback articalfrontback2 clearfix">
+						  <div class="SG_floatL"><span class="SG_txtb">&lt;&nbsp;前一篇</span><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100de06.html">读《Unix编程艺术》笔记&nbsp;（五）</a></div>
+									  <div class="SG_floatR"><span class="SG_txtb">后一篇&nbsp;&gt;</span><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100di53.html">个人常用的VIM命令列表</a></div>
+					</div>
+		<div class="clearit"></div>
+				
+	</div>
+	<!--博文正文 end -->
+		<script type="text/javascript">
+			var voteid="";
+		</script>
+
+            </div>       
+            <div class="SG_connFoot"></div>
+          </div>
+</div>
+	<!--第二列start-->
+	
+	<!--第三列start-->
+	<div id="column_3" class="SG_colWnone"><div style="width:0px;height:0.1px;margin:0px;">&nbsp;&nbsp;</div></div>
+	<!--第三列end-->
+
+	
+    </div>
+   <!--主题内容结束 -->
+  
+
+	<div id="diggerFla" style="position:absolute;left:0px;top:0px;width:0px"><embed pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" src="http://sjs.sinajs.cn/blog7swf/digger.swf" width="1" height="1" style="undefined" id="digger" name="digger" bgcolor="#00ff00" quality="high" wmode="transparent" allowscriptaccess="always"></div>
+    <div class="sinablogfooter" id="sinablogfooter" style="position:relative;">
+      
+      <p class="SG_linka"><a href="http://control.blog.sina.com.cn/admin/advice/advice_list.php" target="_blank">新浪BLOG意见反馈留言板</a>　<a href="javascript:;" onclick="window.open (&#39;http://control.blog.sina.com.cn/admin/advice/impeach.php?url=http%3A//blog.sina.com.cn/s/blog_4cf7b4ec0100eudp.html%3Ftj%3D1&#39;, &#39;&#39;,&#39;height=495, width=510, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no&#39;);">不良信息反馈</a>　电话：4006900000 提示音后按1键（按当地市话标准计费）　欢迎批评指正</p>
+   
+      <p class="SG_linka"><a href="http://corp.sina.com.cn/chn/" target="_blank">新浪简介</a> | <a href="http://corp.sina.com.cn/eng/" target="_blank">About Sina</a> | <a href="http://emarketing.sina.com.cn/" target="_blank">广告服务</a> | <a href="http://www.sina.com.cn/contactus.html" target="_blank">联系我们</a> | <a href="http://corp.sina.com.cn/chn/sina_job.html" target="_blank">招聘信息</a> | <a href="http://www.sina.com.cn/intro/lawfirm.shtml" target="_blank">网站律师</a> | <a href="http://english.sina.com/" target="_blank">SINA English</a> | <a href="http://members.sina.com.cn/apply/" target="_blank">会员注册</a> | <a href="http://help.sina.com.cn/" target="_blank">产品答疑</a> </p>
+      <p class="copyright SG_linka"> Copyright © 1996 - 2012 SINA Corporation,  All Rights Reserved</p>
+      <p class="SG_linka"> 新浪公司 <a href="http://www.sina.com.cn/intro/copyright.shtml" target="_blank">版权所有</a></p>
+	  <a href="http://www.bj.cyberpolice.cn/index.jsp" target="_blank" class="gab_link"></a>
+    </div>
+  </div>
+</div>
+<div id="swfbox"><embed pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" src="http://sjs.sinajs.cn/blog7swf/voteCookie.swf" width="1" height="1" style="undefined" id="swfId" name="swfId" bgcolor="#00ff00" quality="high" allowscriptaccess="always" flashvars="readyFun=readyFun&amp;realfull=1&amp;moz=1&quot;/"></div>
+<script id="PVCOUNTER_FORIE" type="text/javascript"></script>
+
+<script type="text/javascript">
+var scope = {
+	$setDomain : true,
+	$uid : "1279598094",
+	$PRODUCT_NAME : "blog7",		//blog7photo,blog7icp
+	$pageid : "article",
+	$key :  "71c6e596d12cb6a49026dda01dc51e2e",
+	$uhost : "wzhnsc",
+	$private: {"cms":0,"hidecms":0,"blogsize":0,"ad":0,"sms":0,"adver":0,"tj":0,"p4p":0,"spamcms":1,"pageset":0,"invitationset":0,"top":0,"active":"4","medal":3,"quote":0,"foot":1,"isprivate":0,"t_sina":1279598094,"oauth_token":"7368afb71108c14564b58659c4ec5187","oauth_token_secret":"64ecb2fe356e4f7839f484f0dcf2ba32","uname":"wzhnsc","p_push_t":"1","p_get_t":"1","headpic":1,"daRenState":"2"},
+	$is_photo_vip:0,
+		 $nClass:0,
+		 $articleid:"4c451e0e0100dhbl",
+		 $sort_id:113,
+		 $isCommentAllow:0,
+		 $album_pic:"",
+		 $pn_x_rank:0,
+		 $x_quote_c:"1",
+		 $flag2008:"",
+		 	component_lists:{"2":{"size":730,"list":[920]},"1":{"size":210,"list":[901,910,903,911,904]}},
+	formatInfo:1,
+	UserPic:[{"pid":"","repeat":"repeat-x","align-h":"center","align-v":"top","apply":"0"},{"pid":"","repeat":"repeat-x","align-h":"center","align-v":"top","apply":"0"},{"pid":"","repeat":"repeat-x","align-h":"center","align-v":"top","apply":"0"}],
+	UserBabyPic:{"photoX":null,"photoY":null,"photoURL":null,"angle":null,"zoom":null,"maskX":null,"maskY":null,"maskURL":null,"frameURL":null},
+	UserColor:1,
+	backgroundcolor:"rgb(244, 230, 219)",
+	tpl:"4_2",
+	reclist:0	};
+var	$encrypt_code = "21b4d6952900bd49e766c45cf619a1ef";
+</script>
+
+<script type="text/javascript" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/boot.js"></script>
+<script type="text/javascript">__load_js();</script>
+<script type="text/javascript">__render_page();</script>
+
+
+
+
+<iframe style="border: none; z-index: 512; opacity: 0; position: absolute; width: 0px; height: 0px; display: none; left: 841px; top: 26px; "></iframe><div id="_1271345538784113_panel" class="wrtBlog_sub" style="z-index: 512; position: absolute; display: none; left: 841px; top: 26px; "><div class="wrtBlog_sub2"><p><img class="SG_icon SG_icon88" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="15" height="15" title="长微博" align="absmiddle"><a target="_blank" href="http://control.blog.sina.com.cn/admin/article/changWeiBo.php">长微博</a></p><div class="SG_j_linedot"></div><p><img class="SG_icon SG_icon87" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="15" height="15" title="微语录" align="absmiddle"><a target="_blank" href="http://t.blog.sina.com.cn/weiyulu/weiyulu.php">微语录</a></p><div class="SG_j_linedot"></div><p><img class="SG_icon SG_icon85" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="15" height="15" title="九宫格" align="absmiddle"><a target="_blank" href="http://control.blog.sina.com.cn/admin/article/daily.php">九宫格</a></p><div class="SG_j_linedot"></div><p><img class="SG_icon SG_icon18" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="15" height="15" title="发照片" align="absmiddle"><a target="_blank" href="http://photo.blog.sina.com.cn/upload/upload.php">发照片</a></p><div class="SG_j_linedot"></div><p><img class="SG_icon SG_icon16" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" width="15" height="15" title="发视频" align="absmiddle"><a target="_blank" href="http://vupload.you.video.sina.com.cn/u.php?m=1">发视频</a></p></div></div><iframe style="border: none; z-index: 512; opacity: 0; position: absolute; width: 0px; height: 0px; left: 1015px; top: 24px; display: none; "></iframe><div id="_9241345538784122_panel" style="z-index: 512; position: absolute; display: none; left: 1015px; top: 24px; " class="tb_layerBox"><ul><li id="_9241345538784122_blog"><a href="javascript:;">博文</a></li><li id="_9241345538784122_bauthor"><a href="javascript:;">博主</a></li><li id="_9241345538784122_song"><a href="javascript:;">音乐</a></li><li id="_9241345538784122_video"><a href="javascript:;">视频</a></li><li id="_9241345538784122_vauthor"><a href="javascript:;">播主 </a></li></ul></div><div class="tb_layer_Y tb_layer_w3" style="z-index: 511; position: absolute; display: none; width: 160px; "><div class="tb_layer_arrow"></div><div class="tb_layer_Y_main tip_ps" style="width: auto; "><a style="margin-top: 5px;" title="关闭" class="tb_friend_inputDel" href="javascript:void(0)"></a>						<div style="text-align:left;color:#999999">最近喜欢了的博主：</div>						<div style="white-space: nowrap; "><div style="text-align:center;"><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/loading.gif">加载中…</div></div></div></div><div id="reblog_1345538784190" class="turnList" style="display:none;position:absolute;z-index:20;"><ul><li><a action-type="click_reblog" action-data="{action:&#39;toQing&#39;}" href="javascript:void(0);" title="转载到Qing博客"><img width="15" height="15" align="absmiddle" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" class="SG_icon SG_icon205">Qing</a></li><li><a action-type="click_reblog" action-data="{action:&#39;toBlog&#39;}" href="javascript:void(0);" title="转载到博客"><img width="18" height="18" align="absmiddle" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" class="SG_icon SG_icon141">博客</a></li><li><a action-type="click_reblog" action-data="{action:&#39;toBlog&#39;}" href="javascript:void(0);" title="转载原文"><img width="18" height="18" align="absmiddle" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" class="SG_icon SG_icon141">转载原文</a></li><li style="display:none"><a action-type="click_reblog" action-data="{action:&#39;editor&#39;}" href="javascript:void(0);" title="采编"><img width="18" height="18" align="absmiddle" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" class="SG_icon SG_icon142">采编</a></li><li><a action-type="click_reblog" action-data="{action:&#39;cwb&#39;}" href="javascript:;" title="发布长微博"><img width="18" height="18" align="absmiddle" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/sg_trans.gif" class="SG_icon SG_icon143">长微博</a></li></ul></div><div id="sharePhoto" style="display:none;width:120px;position:absolute;"><div class="picShareQing"><div class="share SG_txtb"><span>分享到新浪Qing</span></div></div><div class="picShareFlt"><div class="share SG_txtb" style="margin-top:5px;"><span>分享到新浪微博</span></div></div></div><iframe style="border: none; z-index: 512; opacity: 0; position: absolute; width: 0px; height: 0px; "></iframe><div id="_8281345538784257_panel" style="z-index: 512; width: 200px; position: absolute; display: none; " class="tb_layer_Y tb_layer_w5"><div class="tb_layer_Y_main tip_layer_main"><div class="tip_ps" style="width:auto;float:right"><a id="closeBindEmail" title="关闭提示" class="tb_friend_inputDel" href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" onclick="return false"></a></div><div style="padding:6px">为了您的账号安全，请<a id="linkBindEmail" href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" target="_blank">绑定邮箱</a></div></div><div class="tb_layer_arrow tip_arrow"></div></div><div id="selectionShare" style="position: absolute; cursor: pointer; left: 916px; top: 684px; display: none; "><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/share.gif" title="将选中内容分享到新浪微博"></div><div id="ramdomVisitDiv" style="position: absolute; width: 140px; z-index: 101; top: 30px; right: 0px; "><embed pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" src="http://sjs.sinajs.cn/blog7swf/lookView1.swf?2" width="140" height="87" style="undefined" id="map" name="map" bgcolor="#000" quality="high" scale="noscale" allowscriptaccess="always" wmode="transparent" flashvars="target=_self&amp;URL=&amp;realfull=1&amp;moz=1&quot;/"></div><a id="openwin" href="http://qing.weibo.com/tag/%E7%A7%91%E5%AD%A6" target="_blank" style="position: absolute; top: 30px; right: 0px; width: 140px; height: 87px; z-index: 102; background-color: rgb(255, 255, 255); opacity: 0; display: none; "></a><script type="text/javascript" charset="gb2312" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/blognew2011.js"></script><script type="text/javascript" charset="gb2312" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/blognew2011.js"></script><script type="text/javascript" charset="gb2312" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/blognew2011.js"></script><script type="text/javascript" charset="gb2312" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/blognew2011.js"></script><div class="ad_layer" id="_8391345538786200_entity" style="position: fixed; padding-top: 0px; left: -1000px; top: 0px; z-index: 102; display: none; "><p class="close_x" style="margin-left:105px;"><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" id="_8391345538786200_closeBtn" title="关闭" onclick="return false;"><img height="18" align="absmiddle" width="40" title="关闭" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/closenew.jpg" class="adclose"></a></p><p class="right_arr adtop"></p><div class="center adlist" id="_8391345538786200_content" style="position: relative; "><img src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/450321_140x150.jpg" style="width:140px; height:150px;"><a href="http://sina.allyes.com/main/adfclick?db=sina&bid=437750,500119,505396&cid=0,0,0&sid=504799&advid=1293&camid=80093&show=ignore&url=http://ad-apac.doubleclick.net/click;h=v2|3F2A|0|0|%2a|b;255923038;0-0;0;79591893;31-1|1;47629893|47645366|1;;%3fhttp://detail.tmall.com/item.htm?id=19182284612&utm_source=Sina&utm_medium=Day&utm_term=v1&utm_content=PFA03&utm_campaign=UL_Ponds_FC_Angie" target="_blank" style="opacity: 0; height: 150px; width: 140px; background-color: rgb(255, 0, 0); display: block; z-index: 1020; position: absolute; left: 0px; top: 0px; background-position: initial initial; background-repeat: initial initial; "></a></div></div><div class="ad_layer" id="_6921345538786206_entity" style="position: fixed; padding-top: 0px; left: 1261px; top: 117px; z-index: 103; "><p id="_6921345538786206_content" style="height: 150px; width: 25px; position: relative; "><img height="150" width="25" src="./ubuntu下svn使用指南_红超的吾记之谈_新浪博客_files/450323_25x150.jpg" alt=""><a href="http://sina.allyes.com/main/adfclick?db=sina&bid=437750,500119,505396&cid=0,0,0&sid=504799&advid=1293&camid=80093&show=ignore&url=http://ad-apac.doubleclick.net/click;h=v2|3F2A|0|0|%2a|b;255923038;0-0;0;79591893;31-1|1;47629893|47645366|1;;%3fhttp://detail.tmall.com/item.htm?id=19182284612&utm_source=Sina&utm_medium=Day&utm_term=v1&utm_content=PFA03&utm_campaign=UL_Ponds_FC_Angie" target="_blank" style="opacity: 0; height: 150px; width: 25px; background-color: rgb(255, 0, 0); display: block; z-index: 1020; position: absolute; left: 0px; top: 0px; background-position: initial initial; background-repeat: initial initial; "></a></p><div class="ad_con"><p><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" style="background:url(http://simg.sinajs.cn/blog7style/images/common/ad/blogAdClose.jpg) 0 0; display:inline-block; width:25px; height:24px;" onclick="return false;" title="重新播放" id="_6921345538786206_replayBtn"></a></p><div class="ad_c"><a href="http://blog.sina.com.cn/s/blog_4c451e0e0100dhbl.html#" onclick="return false;" title="关闭" id="_6921345538786206_closeBtn" style="background:url(http://simg.sinajs.cn/blog7style/images/common/ad/blogAdClose.jpg) 0 -24px; display:inline-block; width:25px; height:45px;"></a></div></div></div><div style="overflow: hidden; height: 255px; position: absolute; "></div><div id="_6701345538786568_panel" style="left: 1026px; top: 492px; z-index: 100; position: fixed; display: none; "><div id="_6701345538786568_content"><div id="blogVideoAd" width="260" height="190"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9" width="260" height="190" type="application/x-shockwave-flash">
+	<param name="movie" value="http://d4.sina.com.cn/201208/17/449955_260x190ta2.swf">
+	<param name="quality" value="High">
+	<param name="bgcolor" value="#FFFFFF">
+	<param name="allowscriptaccess" value="always">
+	<param name="wmode" value="transparent">
+	<embed width="260" height="190" src="http://d4.sina.com.cn/201208/17/449955_260x190ta2.swf" quality="High" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" bgcolor="#FFFFFF" allowscriptaccess="always" wmode="transparent">
+</object></div></div></div></body></html>
